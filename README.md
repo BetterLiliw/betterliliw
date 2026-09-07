@@ -326,6 +326,28 @@ Steps to bring the portal live:
 
 See [`ARCHITECTURE.md`](./ARCHITECTURE.md#deployment) for detailed deployment strategies.
 
+## 🙏 Credits
+
+BetterLiliw stands on work done by others:
+
+- **[BetterLB](https://github.com/BetterLosBanos/betterlb)** — the portal template
+  this repository is built from. The entire application, data pipeline, and
+  Cloudflare deployment setup are BetterLB's work, created by the
+  [BetterLosBanos](https://github.com/BetterLosBanos) team for the Municipality of
+  Los Baños. BetterLiliw is a fork of that template with Liliw's identity and data.
+- **[BetterGov.ph](https://bettergov.ph)** ([bettergovph/bettergov](https://github.com/bettergovph/bettergov))
+  — the parent civic-tech project this movement grew out of.
+- **[@bettergov/kapwa](https://www.npmjs.com/package/@bettergov/kapwa)** — the design
+  system and component library the portal is built on.
+- **[BetterSolano](https://github.com/BetterSolano/bettersolano)** and
+  **[Betterlocalgov](https://github.com/iyanski/betterlocalgov)** — earlier LGU
+  portals that shaped the approach.
+
+Upstream improvements can be pulled in with `git merge upstream/main`
+(`upstream` = `BetterLosBanos/betterlb`).
+
+---
+
 ## License and Data Sources
 
 ### Code License

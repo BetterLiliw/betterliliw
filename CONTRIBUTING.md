@@ -1,6 +1,26 @@
-# Contributing to BetterLB
+# Contributing to BetterLiliw
 
 Thank you for your interest in contributing! We welcome developers, designers, writers, and anyone passionate about better government transparency.
+
+BetterLiliw is the community-run portal for the **Municipality of Liliw, Laguna**.
+It is built from the [BetterLB](https://github.com/BetterLosBanos/betterlb)
+template and is still being customised, so you do not need to write code to help.
+
+### Where help is most needed
+
+The portal's structure works; its **content is still the template's**. The most
+valuable contributions right now are Liliw's own data:
+
+- **Barangay directory** — Liliw's 33 barangays (`src/data/directory/barangays.json`)
+- **Departments and officials** — municipal offices, contact details, the executive and Sangguniang Bayan rosters (`src/data/directory/`)
+- **Services and Citizens Charter** — requirements, fees, and steps for municipal services (`src/data/services/`, `src/data/citizens-charter/`)
+- **Copy** — the hero and footer strings in `public/locales/en/common.json` and `public/locales/fil/common.json`
+- **Logos and branding** — Liliw assets to replace the template's in `public/logos/`
+
+See the Current Status table in the [README](./README.md#-current-status) for what
+is done and what is still inherited from the template. Data contributions do not
+require any JavaScript — they are JSON files, and an issue with a source link is
+just as welcome as a pull request.
 
 ---
 
@@ -8,8 +28,8 @@ Thank you for your interest in contributing! We welcome developers, designers, w
 
 1. **Fork and Clone**
    ```bash
-   git clone https://github.com/<your-username>/betterlb
-   cd betterlb
+   git clone https://github.com/<your-username>/betterliliw
+   cd betterliliw
    npm install
    ```
 
@@ -208,7 +228,9 @@ export default function PageName() {
 
 ### Updating LGU Config
 
-Edit `config/lgu.config.json` - changes apply automatically.
+Edit `config/lgu.config.json` - changes apply automatically. Note that
+`node scripts/setup-lgu.cjs` regenerates this file from scratch, so do not re-run
+the wizard to make a small change.
 
 ---
 
@@ -244,9 +266,12 @@ Closes #123
 
 ## Getting Help
 
-- **Issues:** [github.com/BetterLosBanos/betterlb/issues](https://github.com/BetterLosBanos/betterlb/issues)
-- **Discussions:** [github.com/BetterLosBanos/betterlb/discussions](https://github.com/BetterLosBanos/betterlb/discussions)
-- **Live Site:** [https://betterlb.org](https://betterlb.org)
+- **Issues:** [github.com/BetterLiliw/betterliliw/issues](https://github.com/BetterLiliw/betterliliw/issues)
+- **Maintainers:** [@Kiko915](https://github.com/Kiko915), [@johnchristiancoronacion](https://github.com/johnchristiancoronacion)
+- **Live Site:** not launched yet
+- **Template questions:** for issues with the underlying platform rather than Liliw's
+  content, see the upstream
+  [BetterLB discussions](https://github.com/BetterLosBanos/betterlb/discussions)
 
 ---
 
@@ -256,4 +281,4 @@ By contributing, you agree that your code will be released under the [Creative C
 
 ---
 
-**Thank you for contributing to BetterLB!** 🇵🇭
+**Thank you for contributing to BetterLiliw!** 🇵🇭

@@ -46,9 +46,7 @@
     },
     "infrastructure": {
       "searchString": "Liliw",
-      "exactMatchTargets": [
-        "liliw"
-      ]
+      "exactMatchTargets": ["liliw"]
     }
   },
   "dataPaths": {

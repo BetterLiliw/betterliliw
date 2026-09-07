@@ -158,17 +158,67 @@ Everything here costs money or needs an account; none of it blocks local work.
 
 ---
 
+## CI/CD
+
+Four workflows run on every push to `main`.
+
+| Workflow | Status | Notes |
+| --- | --- | --- |
+| Quality Check | ✅ green | Type check, lint, format check, production build |
+| zizmor security analysis | ✅ green | Scans the workflow files themselves |
+| Build and Deploy | ❌ expected | Passes its Quality Gate, then fails at Cloudflare. Phase 5 |
+| E2E Tests | ⏳ | Playwright, `timeout-minutes: 30` per job |
+
+**Build and Deploy** is gated: a `Quality Gate` job re-runs the same type
+check, lint, and format check, and `Deploy to Cloudflare Pages` only runs if
+it passes. So a formatting error fails the deploy workflow too — the deploy
+step never executes. Once the gate passes, deploy fails with:
+
+> In a non-interactive environment, it's necessary to set a
+> `CLOUDFLARE_API_TOKEN` environment variable for wrangler to work.
+
+That is expected until Phase 5. It cannot deploy anywhere without those
+credentials, which is the safe outcome while `wrangler.jsonc` still names the
+upstream project.
+
+### Formatting: the trap to know about
+
+`.prettierrc` sets `endOfLine: "lf"`. On Windows with `core.autocrlf=true`,
+your working tree is CRLF, so **`npx prettier --check .` reports hundreds of
+files locally that are perfectly fine in CI**. Do not chase those. Trust what
+CI names, or check a single file you actually touched.
+
+Generated files are the real risk. `scripts/setup-lgu.cjs` writes
+`config/lgu.config.json` with `JSON.stringify(config, null, 2)`, which expands
+single-element arrays across three lines where prettier wants them inline.
+That one difference broke both Quality Check and Build and Deploy until it was
+formatted. After running the wizard, or any script that writes JSON:
+
+```bash
+npx prettier --write config/lgu.config.json   # or whichever file it wrote
+```
+
+### Notes for Phase 2
+
+- `e2e/government/barangays.spec.ts` asserts more than 10 barangay cards
+  render. Los Baños's 14 pass and Liliw's 33 will pass, but a partially
+  populated `barangays.json` with fewer than 11 entries fails the suite
+- `e2e/test-config.ts` mocks the weather API with Los Baños coordinates. It is
+  a fixture, not shipped content, but worth updating for clarity
+- Force-pushing cancels in-flight runs, since the commits under test disappear
+
+---
+
 ## Known issues
 
 Inherited from the template, not caused by Liliw customisation.
 
 | Issue | Detail |
 | --- | --- |
-| Quality Check CI fails | `npx prettier --check .` trips on `.backups/*.json` and `.devcontainer/devcontainer.json`. Add to `.prettierignore` or format them |
-| Build and Deploy CI fails | Expected until Phase 5 secrets exist. Safe: it cannot reach the upstream Cloudflare project without credentials |
 | `npm audit` | 18 vulnerabilities (2 critical) in template dependencies. Worth raising upstream rather than patching downstream |
 | Repo size | ~1.9 GB working tree; `.backups/` and `raw_data/` carry the template's source documents. Consider pruning what Liliw will not use |
 | Dependabot | Five PRs auto-closed during the history squash; they will be re-raised |
+| Missing `pipeline/README.md` | The template's README links it, but the file was never there |
 
 ---
 

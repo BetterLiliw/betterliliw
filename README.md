@@ -1,8 +1,14 @@
-# 🏛️ Better LB (Los Baños)
+# 🏛️ BetterLiliw (Liliw, Laguna)
 
-A community-led, open-source portal designed to make the government of the **Municipality of Los Baños** accessible, transparent, and user-friendly.
+A community-led, open-source portal designed to make the government of the **Municipality of Liliw** accessible, transparent, and user-friendly.
 
-This project is a municipal-focused fork of [BetterGov.ph](https://bettergov.ph), adapted to meet the specific needs of Los Bañenses.
+Liliw is a 4th-class municipality of 33 barangays in the province of Laguna, CALABARZON (Region IV-A).
+
+This project is a municipal-focused fork of [BetterGov.ph](https://bettergov.ph), built from the [BetterLB](https://github.com/BetterLosBanos/betterlb) template and adapted to meet the specific needs of Liliweños.
+
+> **Status: 🟡 Work in Progress.** The portal is being customised and is not yet
+> launched. Municipal data is still being collected, so much of what the app renders
+> today is inherited template content — see [Current Status](#-current-status).
 
 ---
 ### Inspirations
@@ -10,52 +16,81 @@ This project is a municipal-focused fork of [BetterGov.ph](https://bettergov.ph)
 BetterGov.PH https://github.com/bettergovph/bettergov
 BetterSolano.org https://github.com/BetterSolano/bettersolano
 Betterlocalgov https://github.com/iyanski/betterlocalgov
+BetterLB (upstream template) https://github.com/BetterLosBanos/betterlb
 
 ### Portal Features
-BetterLB provides Los Baños with:
+BetterLiliw is being built to give Liliw:
 - **Public Services Directory**: Comprehensive guide to municipal services with requirements, fees, and step-by-step processes
 - **Legislative Portal**: Access to ordinances, resolutions, and executive orders from the Sangguniang Bayan
 - **Transparency Dashboard**: Financial data, procurement bids, and infrastructure projects
 - **Government Directory**: Contact information for all municipal departments and officials
 - **Multi-language Support**: English and Filipino translations
 
+Modules enabled for Liliw (`features` in `config/lgu.config.json`): OpenLGU,
+Transparency, and Statistics. Tourism is currently off.
+
 ---
 
-## 🔄 Forking for Your LGU
+## 📋 Current Status
 
-BetterLB is designed to be easily adapted for any Local Government Unit (LGU) in the Philippines.
+The portal identity, branding, SEO metadata, and configuration are set for Liliw.
+The municipal **content** is not yet Liliw's. Outstanding work:
 
-## Quick Start for Other LGUs
+| Area | State |
+|------|-------|
+| `config/lgu.config.json` | ✅ Liliw |
+| SEO metadata, page titles, navbar | ✅ Liliw |
+| `src/data/directory/barangays.json` | ❌ still the template's 14 Los Baños barangays — needs Liliw's 33 |
+| `src/data/directory/departments.json` | ❌ still template data |
+| `src/data/directory/executive.json`, `legislative.json` | ❌ still template data |
+| `public/locales/{en,fil}/common.json` | ❌ hero copy still reads "Welcome to BetterLB" |
+| `public/logos/` | ❌ still `betterlb-*` assets; config points at `liliw-*` |
+| `src/data/services/`, `citizens-charter/`, `statistics/` | ❌ still template data |
+| Domain | ❌ `betterliliw.org` is a placeholder, not registered |
+| Deployment (`wrangler.jsonc`) | ❌ still points at the upstream Cloudflare project and D1 database |
 
-1. **Edit Configuration**: Update `/config/lgu.config.json` with your LGU details
-2. **Update Translations**: Modify `/public/locales/en/common.json` for LGU-specific text
-3. **Add Your Data**: Replace data files in `/src/data/` with your municipality's information
-4. **Build and Test**: Run `npm install && npm run build`
+Until those rows are cleared, do not deploy this publicly — it would publish another
+municipality's contact details under Liliw's name.
 
-### Configuration Files to Edit
+---
 
-| File | What to Change |
+## ⚙️ Configuration
+
+All LGU settings live in `config/lgu.config.json`. Current values for Liliw:
+
+| Field | Value |
+|-------|-------|
+| `lgu.name` | `Liliw` |
+| `lgu.fullName` | `Municipality of Liliw` |
+| `lgu.shortName` | `LIL` |
+| `lgu.province` | `Laguna` |
+| `lgu.region` | `CALABARZON (IV-A)` |
+| `lgu.regionCode` | `040000000` |
+| `lgu.type` | `municipality` |
+| `lgu.officialWebsite` | `https://betterliliw.org` (placeholder — not registered) |
+| `portal.name` | `BetterLiliw` |
+| `portal.baseUrl` | `https://betterliliw.org` (placeholder) |
+| `portal.tagline` | `Community Powered Liliw Portal` |
+| `portal.contactEmail` | `volunteers@bettergov.ph` |
+
+Content that is **not** driven by that config, and must be edited directly:
+
+| File | What it controls |
 |------|------------------|
-| `/config/lgu.config.json` | All LGU settings (name, province, coordinates, branding, transparency config) |
-| `/public/locales/en/common.json` | UI text strings (hero title, footer copyright, government section) |
+| `/public/locales/en/common.json`, `/public/locales/fil/common.json` | UI text strings (hero title, footer copyright, government section) |
 | `/src/data/directory/departments.json` | Municipal departments and offices |
 | `/src/data/directory/barangays.json` | Barangay information |
+| `/src/data/directory/executive.json`, `legislative.json` | Elected officials |
 | `/src/data/services/categories/*.json` | Public services data by category |
+| `/public/logos/` | Logo and favicon assets |
 
-### Key Configuration Fields
+The configuration was generated by `node scripts/setup-lgu.cjs`, the upstream
+template's setup wizard. Re-running it overwrites `config/lgu.config.json` and `.env`.
 
-| Field | Description | Example (Los Baños) |
-|-------|-------------|---------------------|
-| `lgu.name` | Short municipality name | "Los Baños" |
-| `lgu.fullName` | Full official name | "Municipality of Los Baños" |
-| `lgu.province` | Province name | "Laguna" |
-| `lgu.region` | Region name | "Region IV-A" |
-| `lgu.regionCode` | Region code | "CALABARZON" |
-| `lgu.type` | LGU type | "municipality" or "city" |
-| `lgu.officialWebsite` | Official LGU website | "https://losbanos.gov.ph" |
-| `portal.name` | Portal name | "BetterLB" |
-| `portal.baseUrl` | Portal base URL | "https://betterlb.org" |
-| `portal.tagline` | Portal tagline | "Community Powered Los Baños Portal" |
+### Forking for another LGU
+
+This repository is one municipality's portal, not the template. To build a portal
+for your own LGU, start from [BetterLB](https://github.com/BetterLosBanos/betterlb) instead.
 
 **Note:** See [`FORKING.md`](./FORKING.md) for comprehensive forking instructions including database setup for legislative data.
 
@@ -79,7 +114,7 @@ BetterLB is designed to be easily adapted for any Local Government Unit (LGU) in
 ## Project Structure
 
 ```
-betterlb/
+betterliliw/
 ├── e2e/                         # End-to-end tests
 │   └── utils/                   # Test helpers and shared testing logic
 ├── functions/                   # Serverless / backend functions (Cloudflare Pages)
@@ -161,22 +196,23 @@ betterlb/
 - **Search Integration**: Meilisearch-powered search with real-time indexing
 - **Internationalization**: Multi-language support with i18next
 
-### Los Baños-Specific Data
+### Liliw-Specific Data
 
-BetterLB includes structured data for Los Baños:
+Structured data lives in the following places. Rows marked ❌ still hold the
+upstream template's Los Baños data and are pending replacement:
 
 | Data Type | Location | Description |
 |-----------|----------|-------------|
-| **Departments** | `/src/data/directory/departments.json` | Municipal departments and offices with contact info |
-| **Barangays** | `/src/data/directory/barangays.json` | 14 barangay profiles and officials |
-| **Services** | `/src/data/services/categories/*.json` | Public services by category (BPLO, Assessor, Engineering, etc.) |
-| **Citizens Charter** | `/src/data/citizens-charter/citizens-charter.json` | Service requirements, fees, and client steps |
-| **Legislation** | Cloudflare D1 Database | Ordinances, resolutions, executive orders |
-| **Statistics** | `/src/data/statistics/` | Municipal demographics and indicators |
+| **Departments** ❌ | `/src/data/directory/departments.json` | Municipal departments and offices with contact info |
+| **Barangays** ❌ | `/src/data/directory/barangays.json` | Barangay profiles and officials — Liliw has 33 |
+| **Services** ❌ | `/src/data/services/categories/*.json` | Public services by category (BPLO, Assessor, Engineering, etc.) |
+| **Citizens Charter** ❌ | `/src/data/citizens-charter/citizens-charter.json` | Service requirements, fees, and client steps |
+| **Legislation** | Cloudflare D1 Database | Ordinances, resolutions, executive orders (no Liliw database provisioned yet) |
+| **Statistics** ❌ | `/src/data/statistics/` | Municipal demographics and indicators |
 
 #### Data Pipeline for Legislative Documents
 
-Los Baños legislative documents are processed through a Python pipeline:
+Liliw legislative documents are processed through a Python pipeline:
 
 1. **Scrape** (`pipeline/1_scrape.py`) - Download PDFs from official sources
 2. **Normalize** (`pipeline/1.5_normalize.py`) - Standardize filenames and metadata
@@ -191,8 +227,8 @@ See [`pipeline/README.md`](./pipeline/README.md) for complete documentation.
 
 ### 1. Clone and Install
 ```bash
-git clone https://github.com/BetterLosBanos/betterlb
-cd betterlb
+git clone https://github.com/BetterLiliw/betterliliw
+cd betterliliw
 npm install
 ```
 
@@ -224,7 +260,9 @@ npm run build           # Combines merge_services, TypeScript, and Vite build
 
 ---
 
-## 🏛️ Los Baños Government Structure
+## 🏛️ Liliw Government Structure
+
+Liliw is governed as a municipality under the Local Government Code (RA 7160).
 
 ### Executive Branch
 - **Mayor**: Chief executive officer of the municipality
@@ -232,31 +270,27 @@ npm run build           # Combines merge_services, TypeScript, and Vite build
 - **Municipal Departments**: Administrative offices implementing municipal programs
 
 ### Legislative Branch (Sangguniang Bayan)
-The Sangguniang Bayan is the legislative body of Los Baños, composed of:
-- **Vice Mayor** (Presiding Officer)
-- **8 Regular Councilors** (District representatives)
-- **2 Ex-Officio Councilors** (ABC President and SK Federation President)
+The Sangguniang Bayan is the legislative body of Liliw. Under RA 7160 a municipal
+sanggunian is composed of the Vice Mayor as presiding officer, eight regular
+councilors, and ex-officio members (the ABC President and the SK Federation
+President).
 
-### Key Departments
-- **BPLO**: Business Permit and Licensing Office
-- **MTO**: Municipal Treasurer's Office
-- **Assessor's Office**: Property assessment and taxation
-- **Engineering Office**: Infrastructure and public works
-- **MPDC**: Municipal Planning and Development Coordinator
-- **LCR**: Local Civil Registry
-- **Municipal Health Office**: Public health services
-- **Municipal Agriculture Office**: Agricultural programs
+### Departments
 
-See the [Government Directory](https://betterlb.org/government) on the live site for complete department listings and contact information.
+The department directory has not yet been populated with Liliw's offices. The
+current contents of `src/data/directory/departments.json` are inherited from the
+upstream template and describe Los Baños, not Liliw. Sourcing Liliw's actual
+department list and contact details is open work — see
+[Current Status](#-current-status).
 
 ---
 
 ## Join the Grassroots Movement
-We are looking for volunteers passionate individuals who want to make Los Baños a better place. You don't need to be a developer to help!
+We are looking for volunteers passionate individuals who want to make Liliw a better place. You don't need to be a developer to help!
 
 ### How You Can Contribute:
 1.  **Non-Developers**: Visit the `/contribute` page on the live site to suggest new services or fix outdated information via GitHub Issues (requires a free GitHub account).
-2.  **Developers**: Check the [Issues](https://github.com/BetterLosBanos/betterlb/issues) tab for "Help Wanted" or "Good First Issue" labels.
+2.  **Developers**: Check the [Issues](https://github.com/BetterLiliw/betterliliw/issues) tab for "Help Wanted" or "Good First Issue" labels.
 3.  **Data Auditors**: Help us verify community submissions on GitHub to ensure the portal remains an authoritative source of information.
 4.  **Translators**: Help translate the portal to Filipino and other Philippine languages by working on `public/locales/` files.
 
@@ -269,25 +303,24 @@ We are looking for volunteers passionate individuals who want to make Los Baños
 
 ## 🚢 Deployment
 
-### Production Deployment (BetterLB)
+### Production Deployment
 
-BetterLB is deployed on **Cloudflare Pages** with:
-- **Frontend**: Vite build automatically deployed on push to `main` branch
-- **Backend**: Cloudflare Pages Functions for API endpoints
-- **Database**: Cloudflare D1 (`betterlb_openlgu`) for legislative data
-- **Search**: Meilisearch instance for fuzzy search
-- **KV Storage**: Weather data caching with automatic updates
-- **Wrangler**: Version 4.70.0 (pinned for compatibility)
+**BetterLiliw is not deployed yet.** No domain is registered and no Cloudflare
+resources have been provisioned for Liliw.
 
-### Deployment for Other LGUs
+⚠️ `wrangler.jsonc` still carries the upstream template's values — Cloudflare
+project `betterlb` and D1 database `betterlb-openlgu`, including its `database_id`.
+Those belong to the upstream project and **must be replaced** before any deploy
+attempt.
 
-When deploying for your own LGU:
+Steps to bring the portal live:
 
-1. **Cloudflare Pages**: Connect your GitHub repository
-2. **Environment Variables**: Configure your D1 database binding
-3. **Custom Domain**: Set up your custom domain (e.g., `betterlgu.gov.ph`)
-4. **Database Migration**: Run database migrations on remote D1 instance
-5. **Meilisearch**: Deploy your own Meilisearch instance or use alternative search
+1. **Register the domain** and update `portal.domain` / `portal.baseUrl` in `config/lgu.config.json`
+2. **Cloudflare Pages**: connect this repository as its own project
+3. **`wrangler.jsonc`**: replace the project name, D1 `database_name`, and `database_id`
+4. **Database Migration**: run migrations against the new remote D1 instance
+5. **Meilisearch**: point `.env` at a search instance and set `VITE_MEILISEARCH_API_KEY`
+6. **Environment Variables**: configure the D1 binding in the Pages project
 
 **Note:** The deployment workflow uses Wrangler 4.70.0 (pinned in both `.github/workflows/deploy.yml` and `package.json`). If upgrading, ensure compatibility with the Wrangler Action and test thoroughly.
 
@@ -299,11 +332,11 @@ See [`ARCHITECTURE.md`](./ARCHITECTURE.md#deployment) for detailed deployment st
 This project is released under the [Creative Commons CC0](https://creativecommons.org/publicdomain/zero/1.0/) dedication. The work is dedicated to the public domain and can be freely used, modified, and distributed without restriction.
 
 ### Data Attribution
-BetterLB aggregates data from multiple sources:
+BetterLiliw aggregates data from multiple sources:
 
 | Data Source | Type | Attribution |
 |-------------|------|-------------|
-| **Municipality of Los Baños** | Official government data, services directory | Public domain |
+| **Municipality of Liliw** | Official government data, services directory | Public domain |
 | **Philippine Government Procurement Portal (PhilGEPS)** | Procurement bids and awards | Republic of the Philippines |
 | **Department of Budget and Management (DBM)** | Financial releases | Republic of the Philippines |
 | **Department of Public Works and Highways (DPWH)** | Infrastructure projects | Republic of the Philippines |
@@ -315,10 +348,11 @@ BetterLB aggregates data from multiple sources:
 
 ## 📞 Contact and Support
 
-### For Los Baños Residents
-- **Website**: https://betterlb.org
-- **GitHub Issues**: Report bugs or suggest features at [github.com/BetterLosBanos/betterlb/issues](https://github.com/BetterLosBanos/betterlb/issues)
-- **Community**: Join our community contributions via the "Contribute" page on the portal
+### For Liliw Residents
+- **Website**: not live yet
+- **GitHub Issues**: Report bugs or suggest features at [github.com/BetterLiliw/betterliliw/issues](https://github.com/BetterLiliw/betterliliw/issues)
+- **Maintainers**: [@Kiko915](https://github.com/Kiko915), [@johnchristiancoronacion](https://github.com/johnchristiancoronacion)
+- **Directory listing**: [BetterGov.ph LGU Directory](https://github.com/jmacj/better-lgu-directory)
 
 ### For Other LGUs
 - **Forking Guide**: See [`FORKING.md`](./FORKING.md) for detailed instructions

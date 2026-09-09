@@ -6,9 +6,13 @@ Liliw is a 4th-class municipality of 33 barangays in the province of Laguna, CAL
 
 This project is a municipal-focused fork of [BetterGov.ph](https://bettergov.ph), built from the [BetterLB](https://github.com/BetterLosBanos/betterlb) template and adapted to meet the specific needs of Liliweños.
 
-> **Status: 🟡 Work in Progress.** The portal is being customised and is not yet
-> launched. Municipal data is still being collected, so much of what the app renders
-> today is inherited template content — see [Current Status](#-current-status).
+> **Status: 🟡 In development — deployed, but gated.**
+> [betterliliw.org](https://betterliliw.org) is live and serves an "in development"
+> holding page on **every** route. The portal itself sits behind the
+> `VITE_COMING_SOON` flag while municipal data is collected, so the public never
+> sees half-finished pages. Behind the gate, much of what the app renders is still
+> inherited template content — see [Current Status](#-current-status) and
+> [Holding page](#holding-page-in-development-gate).
 
 ---
 ### Inspirations
@@ -44,13 +48,19 @@ The municipal **content** is not yet Liliw's. Outstanding work:
 | `src/data/directory/departments.json` | ❌ still template data |
 | `src/data/directory/executive.json`, `legislative.json` | ❌ still template data |
 | `public/locales/{en,fil}/common.json` | ❌ hero copy still reads "Welcome to BetterLB" |
-| `public/logos/` | ❌ still `betterlb-*` assets; config points at `liliw-*` |
+| `public/logos/` | ⚠️ Liliw brand assets added (`betterliliw-*`); `navbarLogoPath` / `logoWhitePath` still point at non-existent `liliw-*` files |
+| Favicon, web manifest, OG image | ✅ Liliw |
+| Holding page + `VITE_COMING_SOON` gate | ✅ live |
 | `src/data/services/`, `citizens-charter/`, `statistics/` | ❌ still template data |
-| Domain | ❌ `betterliliw.org` is a placeholder, not registered |
-| Deployment (`wrangler.jsonc`) | ❌ still points at the upstream Cloudflare project and D1 database |
+| Domain | ✅ `betterliliw.org` registered, nameservers on Cloudflare, HTTPS live (`www` subdomain not yet bound) |
+| Deployment (`wrangler.jsonc`) | ✅ Cloudflare Pages project `betterliliw`, with its own D1 and KV |
+| `public/sitemap.xml` | ❌ still lists bettergov.ph URLs — needs regenerating |
+| CI auto-deploy | ❌ GitHub Actions secrets unset; deploys are manual for now |
 
-Until those rows are cleared, do not deploy this publicly — it would publish another
-municipality's contact details under Liliw's name.
+Those ❌ rows are why the portal is gated. Publishing them would put another
+municipality's contact details under Liliw's name, so every route serves the holding
+page until the data is replaced. **Do not turn off `VITE_COMING_SOON` while any ❌ row
+above remains.**
 
 ---
 
@@ -67,11 +77,11 @@ All LGU settings live in `config/lgu.config.json`. Current values for Liliw:
 | `lgu.region` | `CALABARZON (IV-A)` |
 | `lgu.regionCode` | `040000000` |
 | `lgu.type` | `municipality` |
-| `lgu.officialWebsite` | `https://betterliliw.org` (placeholder — not registered) |
+| `lgu.officialWebsite` | `https://betterliliw.org` |
 | `portal.name` | `BetterLiliw` |
-| `portal.baseUrl` | `https://betterliliw.org` (placeholder) |
+| `portal.baseUrl` | `https://betterliliw.org` |
 | `portal.tagline` | `Community Powered Liliw Portal` |
-| `portal.contactEmail` | `volunteers@bettergov.ph` |
+| `portal.contactEmail` | `hello@betterliliw.org` |
 
 Content that is **not** driven by that config, and must be edited directly:
 
@@ -289,7 +299,7 @@ department list and contact details is open work — see
 We are looking for volunteers passionate individuals who want to make Liliw a better place. You don't need to be a developer to help!
 
 ### How You Can Contribute:
-1.  **Non-Developers**: Visit the `/contribute` page on the live site to suggest new services or fix outdated information via GitHub Issues (requires a free GitHub account).
+1.  **Non-Developers**: Suggest new services or fix outdated information via GitHub Issues (requires a free GitHub account). The in-app `/contribute` page is behind the holding page until launch.
 2.  **Developers**: Check the [Issues](https://github.com/BetterLiliw/betterliliw/issues) tab for "Help Wanted" or "Good First Issue" labels.
 3.  **Data Auditors**: Help us verify community submissions on GitHub to ensure the portal remains an authoritative source of information.
 4.  **Translators**: Help translate the portal to Filipino and other Philippine languages by working on `public/locales/` files.
@@ -303,24 +313,68 @@ We are looking for volunteers passionate individuals who want to make Liliw a be
 
 ## 🚢 Deployment
 
-### Production Deployment
+### Live environments
 
-**BetterLiliw is not deployed yet.** No domain is registered and no Cloudflare
-resources have been provisioned for Liliw.
+| Environment | URL |
+|-------------|-----|
+| Production | <https://betterliliw.org> |
+| Cloudflare default | <https://betterliliw.pages.dev> |
 
-⚠️ `wrangler.jsonc` still carries the upstream template's values — Cloudflare
-project `betterlb` and D1 database `betterlb-openlgu`, including its `database_id`.
-Those belong to the upstream project and **must be replaced** before any deploy
-attempt.
+Cloudflare resources, all provisioned under this project's own account and
+recorded in `wrangler.jsonc`:
 
-Steps to bring the portal live:
+| Resource | Name |
+|----------|------|
+| Pages project | `betterliliw` (production branch `main`) |
+| D1 database | `betterliliw-openlgu` — binding `BETTERLB_DB`, all migrations applied |
+| KV namespace | `WEATHER_KV` |
 
-1. **Register the domain** and update `portal.domain` / `portal.baseUrl` in `config/lgu.config.json`
-2. **Cloudflare Pages**: connect this repository as its own project
-3. **`wrangler.jsonc`**: replace the project name, D1 `database_name`, and `database_id`
-4. **Database Migration**: run migrations against the new remote D1 instance
-5. **Meilisearch**: point `.env` at a search instance and set `VITE_MEILISEARCH_API_KEY`
-6. **Environment Variables**: configure the D1 binding in the Pages project
+> The `BETTERLB_DB` binding keeps its template name on purpose: it is referenced
+> in 41 files. Only the database it points at changed.
+
+### Holding page (in-development gate)
+
+While `VITE_COMING_SOON` is `true`, `src/App.tsx` returns `src/pages/ComingSoon.tsx`
+for **every** route before the router resolves — no navbar, ticker or footer, and no
+API calls. This is what makes it safe to have the domain live while the data behind
+it is still the template's.
+
+| Action | How |
+|--------|-----|
+| Preview the real portal | Visit `?preview=1` — persists in `localStorage` |
+| Return to the holding page | Visit `?preview=0` |
+| Launch the portal for everyone | Set `VITE_COMING_SOON` to `'false'` in `.github/workflows/deploy.yml` and redeploy |
+
+The flag is set on the build step in `deploy.yml` rather than in `.env`, because
+`.env` is gitignored and would never reach CI. For local work, `.env` controls it.
+
+### Deploying
+
+CI deploys are **not working yet** — the `CLOUDFLARE_API_TOKEN` and
+`CLOUDFLARE_ACCOUNT_ID` secrets are unset on both the `production` and `preview`
+environments, and pushes to `main` are currently not triggering workflow runs at all.
+Until that is resolved, deploy manually:
+
+```bash
+npx wrangler login                 # once
+npx vite build                     # see note below
+npx wrangler pages deploy dist --project-name=betterliliw
+```
+
+Use `npx vite build`, not `npm run build`: the full script calls
+`scripts/merge_services.py`, which shells out to `npx` in a way that fails on
+Windows. The merged data files are committed, so skipping that step is safe.
+
+To restore CI, set both secrets on each environment:
+
+```bash
+gh secret set CLOUDFLARE_API_TOKEN  -R BetterLiliw/betterliliw --env production
+gh secret set CLOUDFLARE_ACCOUNT_ID -R BetterLiliw/betterliliw --env production
+```
+
+Still outstanding: bind `www.betterliliw.org` as a second custom domain, point
+`.env` at a Meilisearch instance (`VITE_MEILISEARCH_API_KEY`), and regenerate
+`public/sitemap.xml`, which still contains bettergov.ph URLs.
 
 **Note:** The deployment workflow uses Wrangler 4.70.0 (pinned in both `.github/workflows/deploy.yml` and `package.json`). If upgrading, ensure compatibility with the Wrangler Action and test thoroughly.
 
@@ -371,10 +425,17 @@ BetterLiliw aggregates data from multiple sources:
 ## 📞 Contact and Support
 
 ### For Liliw Residents
-- **Website**: not live yet
+- **Website**: <https://betterliliw.org> — currently showing an in-development
+  holding page while the portal is being built
+- **Email**: <hello@betterliliw.org>
 - **GitHub Issues**: Report bugs or suggest features at [github.com/BetterLiliw/betterliliw/issues](https://github.com/BetterLiliw/betterliliw/issues)
 - **Maintainers**: [@Kiko915](https://github.com/Kiko915), [@johnchristiancoronacion](https://github.com/johnchristiancoronacion)
 - **Directory listing**: [BetterGov.ph LGU Directory](https://github.com/jmacj/better-lgu-directory)
+
+BetterLiliw is an independent, volunteer-run project. It is **not** an official
+website of the Municipality of Liliw and is not affiliated with or endorsed by any
+government agency. For official announcements, refer to the municipality's own
+channels.
 
 ### For Other LGUs
 - **Forking Guide**: See [`FORKING.md`](./FORKING.md) for detailed instructions

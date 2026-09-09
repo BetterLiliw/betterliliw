@@ -23,6 +23,100 @@
   }
 }
 
+/* --- GLOBAL SCROLLBAR ---
+ * Compact, low-chrome scrollbars for the document and every scrollable pane.
+ *
+ * Two mechanisms, deliberately both present:
+ *  - `scrollbar-width` / `scrollbar-color` are the standard properties and are
+ *    what current Chrome, Edge and Firefox actually use. Once `scrollbar-color`
+ *    is set, Chromium ignores the ::-webkit-scrollbar pseudo-elements entirely.
+ *  - The ::-webkit-scrollbar block below is the fallback for Safari and older
+ *    Chromium, which do not support the standard properties.
+ *
+ * `scrollbar-color` inherits, so it is set once on the root. `scrollbar-width`
+ * does NOT inherit, so it is applied broadly — without that, inner panes fall
+ * back to the chunky OS default while the page scrollbar stays slim.
+ */
+@layer base {
+  html {
+    scrollbar-color: var(--color-kapwa-gray-300) transparent;
+  }
+
+  *,
+  ::before,
+  ::after {
+    scrollbar-width: thin;
+  }
+
+  /* Fallback: Safari and pre-121 Chromium. */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  /* Suppress stepper arrows on the browsers that still render them. */
+  ::-webkit-scrollbar-button {
+    display: none;
+  }
+
+  /* Transparent border + padding-box clip insets the thumb, so a 10px track
+   * reads as a 6px bar while keeping the full-width hit target. */
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--color-kapwa-gray-300);
+    background-clip: padding-box;
+    border: 2px solid transparent;
+    border-radius: 9999px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: var(--color-kapwa-gray-400);
+  }
+
+  ::-webkit-scrollbar-thumb:active {
+    background-color: var(--color-kapwa-gray-500);
+  }
+
+  /* Where both axes scroll, keep the junction invisible rather than grey. */
+  ::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+}
+
+/* Opt-in slimmer bar for scroll panes inside cards, sidebars and tables.
+ * Already referenced by ChartContainer, SidebarNavigation, forex and
+ * openlgu/[person] — until now it resolved to nothing. */
+@utility scrollbar-thin {
+  scrollbar-width: thin;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-button {
+    display: none;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--color-kapwa-gray-300);
+    background-clip: padding-box;
+    border: 1px solid transparent;
+    border-radius: 9999px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: var(--color-kapwa-gray-400);
+  }
+}
+
 /* --- LEAFLET MAP OVERRIDES --- */
 .leaflet-popup-content-wrapper {
   border-radius: 12px !important;

@@ -23,13 +23,13 @@
     "logoWhitePath": "/logos/svg/liliw-icon-white.svg",
     "navbarLogoPath": "/logos/svg/liliw-icon-colored.svg",
     "defaultOgImagePath": "/logos/svg/liliw-icon-colored.svg",
-    "faviconPath": "/logos/png/liliw-banner-colored.png",
-    "faviconSvgPath": "/logos/svg/liliw-logo-primary.svg",
-    "appleTouchIconPath": "/logos/png/liliw-banner-inverted.png",
+    "faviconPath": "/favicon.ico",
+    "faviconSvgPath": "/favicon.svg",
+    "appleTouchIconPath": "/apple-touch-icon.png",
     "githubUrl": "https://github.com/BetterLiliw/betterliliw",
     "discordUrl": "",
     "facebookUrl": "",
-    "contactEmail": "volunteers@bettergov.ph"
+    "contactEmail": "hello@betterliliw.org"
   },
   "location": {
     "coordinates": {

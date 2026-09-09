@@ -10,6 +10,7 @@ import { lazy, Suspense } from 'react';
 
 import { NuqsAdapter } from 'nuqs/adapters/react-router/v6';
 
+import { isComingSoonEnabled, resolvePreviewAccess } from '@/lib/comingSoon';
 import { config } from '@/lib/lguConfig';
 import { Footer } from '@/components/layout/Footer';
 // --- Layouts ---
@@ -127,6 +128,8 @@ const AdminOpenLguWorkbench = lazy(
 
 // NotFound — keep eager, it's tiny and needs to render instantly
 import NotFound from '@/pages/NotFound';
+// ComingSoon — eager: it is the first paint for every visitor while gated
+import ComingSoon from '@/pages/ComingSoon';
 
 /** Minimal loading fallback for route transitions */
 function PageLoader() {
@@ -150,6 +153,12 @@ function App() {
 function AppContent() {
   const location = useLocation();
   const isAdminRoute = location.pathname.startsWith('/admin');
+
+  // While the portal is gated, every route resolves to the holding page.
+  // `?preview=1` lets the team through; see `@/lib/comingSoon`.
+  if (isComingSoonEnabled() && !resolvePreviewAccess(location.search)) {
+    return <ComingSoon />;
+  }
 
   return (
     <div className='flex flex-col min-h-screen'>

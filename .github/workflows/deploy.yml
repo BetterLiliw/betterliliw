@@ -69,6 +69,10 @@ jobs:
 
       - name: Build
         run: npm run build
+        env:
+          # Holding page gate. While this is 'true' every route renders the
+          # "in development" page. Set to 'false' to take the portal public.
+          VITE_COMING_SOON: 'true'
 
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@da0e0dfe58b7a431659754fdf3f186c529afbe65 # v3.14.1

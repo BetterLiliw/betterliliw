@@ -1,22 +1,22 @@
 {
-	"name": "betterlb",
+	"name": "betterliliw",
 	"pages_build_output_dir": "dist",
 	"compatibility_date": "2026-01-13",
 	"kv_namespaces": [
 		{
 			"binding": "WEATHER_KV",
-			"id": "a6daec9904a04769918521d0b3d836e3"
+			"id": "0302fd7e1ae64facad1ec1ffc2fb9516"
 		}
 	],
 	"d1_databases": [
 		{
 			"binding": "BETTERLB_DB",
-			"database_name": "betterlb-openlgu",
-			"database_id": "2adbe9e2-d061-473b-8de2-8aacdae4fb0d",
+			"database_name": "betterliliw-openlgu",
+			"database_id": "865fe9e4-9515-4d75-b6c5-d2c92c11d883",
 			"migrations_dir": "db/migrations"
 		}
 	],
 	"vars": {
-		"GITHUB_REPO": "BetterLosBanos/betterlb",
+		"GITHUB_REPO": "BetterLiliw/betterliliw",
 	}
 }

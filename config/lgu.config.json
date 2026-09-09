@@ -22,7 +22,7 @@
     "footerTagline": "Community Civic Portal",
     "logoWhitePath": "/logos/svg/liliw-icon-white.svg",
     "navbarLogoPath": "/logos/svg/liliw-icon-colored.svg",
-    "defaultOgImagePath": "/logos/svg/liliw-icon-colored.svg",
+    "defaultOgImagePath": "/og_image.png",
     "faviconPath": "/favicon.ico",
     "faviconSvgPath": "/favicon.svg",
     "appleTouchIconPath": "/apple-touch-icon.png",

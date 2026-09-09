@@ -18,11 +18,53 @@
       rel="stylesheet"
     />
 
-    <meta property="og:image" content="/logos/png/liliw-blue.png" />
-    <meta property="og:image:type" content="image/jpeg" />
-    <meta property="og:image:width" content="768" />
-    <meta property="og:image:height" content="768" />
+    <!-- Social crawlers (Facebook, Messenger, X, LinkedIn, Viber) do not run
+       JavaScript, so these static tags — not the runtime ones in
+       src/components/layout/SEO.tsx — are what produce link previews.
+       Keep the two in sync, and revisit the wording below when the portal
+       leaves development (see VITE_COMING_SOON). -->
+    <title>
+      BetterLiliw.org — Community-powered civic portal for Liliw, Laguna
+    </title>
+    <meta
+      name="description"
+      content="A community-powered civic portal for the Municipality of Liliw, Laguna. Currently in development."
+    />
+
+    <meta property="og:site_name" content="BetterLiliw.org" />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://betterliliw.org/" />
+    <meta property="og:title" content="A better Liliw is being built." />
+    <meta
+      property="og:description"
+      content="A community-powered civic portal for the Municipality of Liliw, Laguna. Launching soon."
+    />
+    <meta property="og:image" content="https://betterliliw.org/og_image.png" />
+    <meta
+      property="og:image:secure_url"
+      content="https://betterliliw.org/og_image.png"
+    />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="BetterLiliw.org — a better Liliw is being built."
+    />
+    <meta property="og:locale" content="en_PH" />
+    <meta property="og:locale:alternate" content="fil_PH" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="A better Liliw is being built." />
+    <meta
+      name="twitter:description"
+      content="A community-powered civic portal for the Municipality of Liliw, Laguna. Launching soon."
+    />
+    <meta name="twitter:image" content="https://betterliliw.org/og_image.png" />
+    <meta
+      name="twitter:image:alt"
+      content="BetterLiliw.org — a better Liliw is being built."
+    />
   </head>
 
   <body>

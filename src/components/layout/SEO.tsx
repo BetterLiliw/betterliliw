@@ -187,7 +187,15 @@ export function SEO({
       <meta property='og:description' content={finalDescription} />
       <meta property='og:type' content={ogType} />
       <meta property='og:image' content={fullOgImage} />
+      <meta property='og:image:secure_url' content={fullOgImage} />
+      {/* Dimensions let crawlers lay the card out without fetching the file
+          first, which is what makes a preview render on the first paste. */}
+      <meta property='og:image:width' content='1200' />
+      <meta property='og:image:height' content='630' />
+      <meta property='og:image:alt' content={fullTitle} />
       <meta property='og:site_name' content={siteTitle} />
+      <meta property='og:locale' content='en_PH' />
+      <meta property='og:locale:alternate' content='fil_PH' />
       {fullCanonical && <meta property='og:url' content={fullCanonical} />}
 
       {/* Twitter Card */}
@@ -195,6 +203,7 @@ export function SEO({
       <meta name='twitter:title' content={fullTitle} />
       <meta name='twitter:description' content={finalDescription} />
       <meta name='twitter:image' content={fullOgImage} />
+      <meta name='twitter:image:alt' content={fullTitle} />
 
       {/* Government Specific Meta Tags */}
       <meta name='geo.country' content='PH' />

@@ -19,6 +19,7 @@ import { Navbar } from '@/components/layout/Navbar';
 import { SEO } from '@/components/layout/SEO';
 import { ScrollToTop } from '@/components/layout/ScrollToTop';
 import { SkipLink } from '@/components/layout/SkipLink';
+import { ReloadPrompt } from '@/components/pwa/ReloadPrompt';
 import Ticker from '@/components/ui/Ticker';
 
 // --- Lazy-loaded Pages ---
@@ -172,6 +173,7 @@ function AppContent() {
       <SEO />
       {!isAdminRoute && <Navbar />}
       {!isAdminRoute && <Ticker />}
+      {!isAdminRoute && <ReloadPrompt />}
       <ScrollToTop />
 
       <main id='main-content' className='flex-1'>

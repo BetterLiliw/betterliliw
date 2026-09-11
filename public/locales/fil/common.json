@@ -107,5 +107,11 @@
     "directoryTitle": "Opisyal na Direktoryo",
     "directoryDescription": "Maghanap ng impormasyon ng kontak para sa mga opisyal ng pamahalaan, ahensya, at opisina sa pambansa at lokal na antas.",
     "viewDirectory": "Tingnan ang Direktoryo"
+  },
+  "pwa": {
+    "updateAvailable": "May bagong bersyon ng BetterLiliw.",
+    "offlineReady": "Handa na ang BetterLiliw kahit walang internet.",
+    "reload": "I-reload",
+    "dismiss": "Isara"
   }
 }

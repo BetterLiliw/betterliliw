@@ -107,16 +107,15 @@ export const Navbar: FC = () => {
             className='group flex max-w-[60%] min-w-0 items-center md:max-w-md'
             onClick={closeMenu}
           >
+            {/* The wordmark already carries the portal name, so only the
+                tagline is rendered as text beside it. */}
             <img
               src={config.portal.navbarLogoPath}
               alt={`${config.portal.name} Logo`}
-              className='mr-3 w-10 h-10 transition-transform shrink-0 group-hover:scale-105 md:h-12 md:w-12'
+              className='mr-3 h-10 w-auto transition-transform shrink-0 group-hover:scale-105 md:h-12'
             />
-            <div className='flex flex-col justify-center min-w-0'>
-              <div className='text-lg font-black tracking-tighter leading-none text-kapwa-text-strong md:text-xl'>
-                {config.portal.name}
-              </div>
-              <div className='line-clamp-2 text-[9px] leading-tight font-medium text-kapwa-text-support md:line-clamp-1 md:text-xs md:leading-normal'>
+            <div className='hidden min-w-0 flex-col justify-center border-l border-kapwa-border-weak pl-3 sm:flex'>
+              <div className='line-clamp-2 text-[10px] leading-tight font-medium text-kapwa-text-support md:text-xs'>
                 Community Portal for {config.lgu.fullName}
               </div>
             </div>

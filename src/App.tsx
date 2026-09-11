@@ -6,11 +6,12 @@ import {
   useLocation,
 } from 'react-router-dom';
 
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 
 import { NuqsAdapter } from 'nuqs/adapters/react-router/v6';
 
 import { isComingSoonEnabled, resolvePreviewAccess } from '@/lib/comingSoon';
+import { dismissSplash } from '@/lib/splash';
 import { config } from '@/lib/lguConfig';
 import { Footer } from '@/components/layout/Footer';
 // --- Layouts ---
@@ -153,6 +154,11 @@ function App() {
 function AppContent() {
   const location = useLocation();
   const isAdminRoute = location.pathname.startsWith('/admin');
+
+  // The shell is on screen: retire the splash from index.html.
+  useEffect(() => {
+    dismissSplash();
+  }, []);
 
   // While the portal is gated, every route resolves to the holding page.
   // `?preview=1` lets the team through; see `@/lib/comingSoon`.

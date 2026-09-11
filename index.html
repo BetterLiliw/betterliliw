@@ -65,9 +65,174 @@
       name="twitter:image:alt"
       content="BetterLiliw.org — a better Liliw is being built."
     />
+
+    <!-- Splash screen. Lives in the static HTML so it paints on every page
+       load before the JavaScript bundle arrives; the app dismisses it once
+       the shell has mounted and the wordmark reveal has played
+       (src/lib/splash.ts). Colours are the logo palette, not theme tokens,
+       because the stylesheet has not loaded yet when this renders. -->
+    <style>
+      #splash {
+        position: fixed;
+        inset: 0;
+        z-index: 2147483000;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: #ffffff;
+        color: #1c3a5b;
+        font-family:
+          'Figtree',
+          'Inter',
+          ui-sans-serif,
+          system-ui,
+          -apple-system,
+          'Segoe UI',
+          sans-serif;
+        -webkit-font-smoothing: antialiased;
+        transition:
+          opacity 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+          visibility 0s linear 0.45s;
+      }
+      #splash.is-leaving {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+      }
+
+      /* Brand rule across the top, mirroring the portal chrome */
+      #splash::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 6px;
+        background: #1c3a5b;
+      }
+
+      .splash__stage {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        animation: splash-rise 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+      }
+
+      .splash__mark {
+        display: block;
+        width: min(72vw, 420px);
+        height: auto;
+        aspect-ratio: 2848.79 / 1094.64;
+      }
+      .splash__mark--static {
+        display: none;
+      }
+
+      .splash__caption {
+        margin-top: 1.75rem;
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: #306f8e;
+        opacity: 0;
+        animation: splash-fade 0.5s ease 1.2s both;
+      }
+
+      .splash__footer {
+        position: absolute;
+        bottom: 1.75rem;
+        left: 0;
+        right: 0;
+        padding: 0 1.5rem;
+        text-align: center;
+        font-size: 0.6875rem;
+        letter-spacing: 0.06em;
+        color: #6b7c8f;
+        opacity: 0;
+        animation: splash-fade 0.5s ease 1.5s both;
+      }
+
+      @keyframes splash-rise {
+        from {
+          opacity: 0;
+          transform: translateY(12px);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+      @keyframes splash-fade {
+        to {
+          opacity: 1;
+        }
+      }
+
+      /* Reduced motion: static wordmark, no choreography. The app also
+         shortens the minimum display time (src/lib/splash.ts). */
+      @media (prefers-reduced-motion: reduce) {
+        .splash__mark--motion {
+          display: none;
+        }
+        .splash__mark--static {
+          display: block;
+        }
+        .splash__stage,
+        .splash__caption,
+        .splash__footer {
+          animation: none;
+          opacity: 1;
+        }
+        #splash {
+          transition: none;
+        }
+      }
+    </style>
   </head>
 
   <body>
+    <div
+      id="splash"
+      role="status"
+      aria-live="polite"
+      aria-label="Loading BetterLiliw"
+    >
+      <div class="splash__stage">
+        <img
+          class="splash__mark splash__mark--motion"
+          src="/logos/betterliliw-wordmark-reveal.svg"
+          alt=""
+          width="2849"
+          height="1095"
+          decoding="async"
+          fetchpriority="high"
+        />
+        <img
+          class="splash__mark splash__mark--static"
+          src="/logos/betterliliw-wordmark-primary.svg"
+          alt=""
+          width="2849"
+          height="1095"
+          decoding="async"
+        />
+        <p class="splash__caption">Municipality of Liliw, Laguna</p>
+      </div>
+      <p class="splash__footer">
+        Community-powered civic portal · betterliliw.org
+      </p>
+    </div>
+    <script>
+      // Failsafe: if the bundle never signals readiness (blocked script,
+      // runtime crash before mount), do not leave visitors staring at the
+      // splash forever.
+      window.setTimeout(function () {
+        var splash = document.getElementById('splash');
+        if (splash) splash.classList.add('is-leaving');
+      }, 12000);
+    </script>
+
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

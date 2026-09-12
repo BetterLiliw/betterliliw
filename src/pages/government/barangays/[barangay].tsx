@@ -7,6 +7,7 @@ import {
   OfficialCard,
   PunongBarangayCard,
 } from '@/components/government/OfficialCard';
+import { SEO } from '@/components/layout/SEO';
 import {
   Breadcrumb,
   BreadcrumbHome,
@@ -17,6 +18,8 @@ import {
   BreadcrumbSeparator,
 } from '@/components/navigation/Breadcrumb';
 
+import { config } from '@/lib/lguConfig';
+import { lguLabels } from '@/lib/lguLabels';
 import { toTitleCase } from '@/lib/stringUtils';
 
 import barangaysData from '@/data/directory/barangays.json';
@@ -38,8 +41,55 @@ export default function BarangayDetail() {
   const secretary = barangay.officials?.find(o => o.role.includes('Secretary'));
   const treasurer = barangay.officials?.find(o => o.role.includes('Treasurer'));
 
+  // --- SEO ---
+  const barangayName = toTitleCase(
+    barangay.barangay_name.replace('BARANGAY ', '')
+  );
+  const seoTitle = `Barangay ${barangayName}`;
+  const seoDescription = `Barangay officials, contact details and address for Barangay ${barangayName}, ${lguLabels.fullName}.`;
+  const barangayJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'GovernmentOrganization',
+    name: seoTitle,
+    ...(barangay.website ? { url: barangay.website } : {}),
+    ...(barangay.trunkline
+      ? {
+          telephone: Array.isArray(barangay.trunkline)
+            ? barangay.trunkline[0]
+            : barangay.trunkline,
+        }
+      : {}),
+    ...(barangay.address
+      ? {
+          address: {
+            '@type': 'PostalAddress',
+            streetAddress: barangay.address,
+            addressLocality: lguLabels.name,
+            addressRegion: lguLabels.province,
+            addressCountry: 'PH',
+          },
+        }
+      : {}),
+    parentOrganization: {
+      '@type': 'GovernmentOrganization',
+      name: lguLabels.fullName,
+      url: config.portal.baseUrl,
+    },
+  };
+
   return (
     <div className='animate-in fade-in space-y-6 pb-20 duration-500'>
+      <SEO
+        title={seoTitle}
+        description={seoDescription}
+        breadcrumbs={[
+          { name: 'Home', url: '/' },
+          { name: 'Barangays', url: '/government/barangays' },
+          { name: seoTitle, url: `/government/barangays/${slug}` },
+        ]}
+        jsonLd={barangayJsonLd}
+      />
+
       {/* Skip Link for Accessibility */}
       <a
         href='#main-content'
@@ -62,9 +112,7 @@ export default function BarangayDetail() {
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
-            <BreadcrumbPage>
-              {toTitleCase(barangay.barangay_name.replace('BARANGAY ', ''))}
-            </BreadcrumbPage>
+            <BreadcrumbPage>{barangayName}</BreadcrumbPage>
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>

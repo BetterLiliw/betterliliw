@@ -31,6 +31,7 @@ export interface SEOProps {
 export function SEO({
   title,
   description,
+  canonical,
   ogImage = config.portal.defaultOgImagePath,
   ogType = 'website',
   noIndex = false,
@@ -131,7 +132,6 @@ export function SEO({
   // Default values
   const defaultTitle = `${config.portal.name} | Community Powered ${config.lgu.name} Portal`;
   const defaultDescription = `${config.portal.description} Access government services, stay updated with the latest news, and find information about ${config.lgu.fullName}.`;
-  const defaultCanonical = location.pathname + location.search;
 
   useEffect(() => {
     // Force a re-render of this component on route or query-string changes
@@ -146,9 +146,14 @@ export function SEO({
   const siteTitle = config.portal.name;
   const fullTitle = title ? `${title} | ${siteTitle}` : finalTitle;
   const baseUrl = config.portal.baseUrl;
-  const fullCanonical = defaultCanonical
-    ? `${baseUrl}${defaultCanonical}`
-    : undefined;
+  // Canonical defaults to the bare path (no query string) so filter/sort/page
+  // params don't fragment a page into duplicate-content URLs. Pages with a
+  // query variant that's deliberately indexable (e.g. a services category
+  // filter) should pass an explicit `canonical` prop naming that variant.
+  const canonicalPath = canonical ?? location.pathname;
+  const fullCanonical = canonicalPath.startsWith('http')
+    ? canonicalPath
+    : `${baseUrl}${canonicalPath}`;
   const fullOgImage = ogImage.startsWith('http')
     ? ogImage
     : `${baseUrl}${ogImage}`;

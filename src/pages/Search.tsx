@@ -1,11 +1,11 @@
 import { FC, useMemo, useState } from 'react';
 
 import Fuse from 'fuse.js';
-import { Helmet } from 'react-helmet-async';
 
 import { Input } from '@bettergov/kapwa/input';
 import { SearchIcon } from 'lucide-react';
 
+import { SEO } from '@/components/layout/SEO';
 import mergedServicesData from '@/data/citizens-charter/merged-services.json';
 import { Badge, EmptyState } from '@/components/ui';
 
@@ -80,13 +80,11 @@ const SearchPage: FC = () => {
 
   return (
     <div className='container mx-auto px-4 py-8 md:py-12'>
-      <Helmet>
-        <title>Search - Better Government Portal</title>
-        <meta
-          name='description'
-          content='Search for government services and resources'
-        />
-      </Helmet>
+      <SEO
+        title='Search'
+        description='Search Liliw government services, requirements and offices in one place.'
+        keywords={['search', 'Liliw services', 'Citizen', 'Charter']}
+      />
 
       <h1 className='kapwa-heading-xl text-kapwa-text-strong font-extrabold'>
         Search

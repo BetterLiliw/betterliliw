@@ -20,7 +20,9 @@ import {
 } from '@/components/data-display/ChartContainer';
 import { DetailSection } from '@/components/layout/PageLayouts';
 import { PageHero } from '@/components/layout/PageLayouts';
+import { SEO } from '@/components/layout/SEO';
 
+import { lguLabels } from '@/lib/lguLabels';
 import { cn } from '@/lib/utils';
 
 // Data Import
@@ -28,7 +30,7 @@ import populationData from '@/data/statistics/population.json';
 
 // 14 Highly Distinct Colors (Top 3 mapped to Brand Primaries)
 const BRGY_COLORS = [
-  '#0066eb', // 1. Municipal Blue (Mayondon)
+  '#1c3a5b', // 1. Municipal Blue (Mayondon)
   '#cc3e00', // 2. Brand Orange (San Antonio)
   '#059669', // 3. Emerald Green (Batong Malake)
   '#7c3aed', // 4. Vivid Purple
@@ -84,6 +86,15 @@ export default function PopulationPage() {
 
   return (
     <>
+      <SEO
+        title='Population Profile'
+        description={`Demographic data for ${lguLabels.fullName}, tracking population growth from the municipal level down to individual barangays.`}
+        breadcrumbs={[
+          { name: 'Home', url: '/' },
+          { name: 'Population Profile', url: '/statistics/population' },
+        ]}
+      />
+
       {/* PageHero - documented pattern for layout headers */}
       <PageHero
         title='Population Profile'

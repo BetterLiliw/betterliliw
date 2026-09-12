@@ -15,6 +15,7 @@ import {
 
 import { StatCard } from '@/components/ui/StatCard';
 import { ModuleHeader } from '@/components/layout/PageLayouts';
+import { SEO } from '@/components/layout/SEO';
 import { Badge } from '@/components/ui/Badge';
 import { CardGrid } from '@/components/ui/Card';
 import { EmptyState } from '@/components/ui/EmptyState';
@@ -241,6 +242,16 @@ export default function ProcurementPage() {
 
   return (
     <div className='animate-in fade-in mx-auto max-w-full space-y-8 px-4 pb-20 duration-500 md:px-8'>
+      <SEO
+        title='Procurement Transparency'
+        description={`Real-time database of bids and awarded contracts from ${lguLabels.fullName}.`}
+        breadcrumbs={[
+          { name: 'Home', url: '/' },
+          { name: 'Transparency', url: '/transparency' },
+          { name: 'Procurement', url: '/transparency/procurement' },
+        ]}
+      />
+
       <ModuleHeader
         title='Procurement Transparency'
         description={`Real-time database of bids and awards from the ${lguLabels.fullName}.`}

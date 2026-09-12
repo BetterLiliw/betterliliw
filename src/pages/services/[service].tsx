@@ -23,6 +23,7 @@ import {
 } from 'lucide-react';
 
 import { DetailSection, useBreadcrumbs } from '@/components/layout';
+import { SEO } from '@/components/layout/SEO';
 import {
   Breadcrumb,
   BreadcrumbHome,
@@ -147,8 +148,71 @@ export default function ServiceDetail() {
     });
   }
 
+  // --- SEO ---
+  const displayName = service.plainLanguageName || service.service;
+  const seoDescription =
+    service.description ||
+    `${displayName} — a ${service.classification ? `${service.classification.toLowerCase()} ` : ''}government service from ${config.lgu.fullName}${
+      service.officeDivision
+        ? `, handled by ${toTitleCase(service.officeDivision)}`
+        : ''
+    }. See requirements, fees and how to apply.`;
+
+  const seoBreadcrumbs = breadcrumbs.map((crumb, index) => ({
+    name: index === breadcrumbs.length - 1 ? displayName : crumb.label,
+    url: crumb.href,
+  }));
+
+  const serviceJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'GovernmentService',
+    name: displayName,
+    description: seoDescription,
+    serviceType: service.category.name,
+    provider: {
+      '@type': 'GovernmentOrganization',
+      name: config.lgu.fullName,
+      url: config.portal.baseUrl,
+    },
+    areaServed: {
+      '@type': 'AdministrativeArea',
+      name: `${config.lgu.name}, ${config.lgu.province}`,
+    },
+    ...(service.whoMayAvail
+      ? {
+          audience: {
+            '@type': 'Audience',
+            audienceType: service.whoMayAvail,
+          },
+        }
+      : {}),
+  };
+
+  const faqJsonLd =
+    service.faqs && service.faqs.length > 0
+      ? {
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          mainEntity: service.faqs.map(faq => ({
+            '@type': 'Question',
+            name: faq.question,
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: faq.answer,
+            },
+          })),
+        }
+      : null;
+
   return (
     <div className='animate-in fade-in mx-auto max-w-7xl space-y-6 duration-500'>
+      <SEO
+        title={displayName}
+        description={seoDescription}
+        breadcrumbs={seoBreadcrumbs}
+        jsonLd={faqJsonLd ? [serviceJsonLd, faqJsonLd] : serviceJsonLd}
+      />
+
       <Breadcrumb>
         <BreadcrumbList>
           {breadcrumbs.map((crumb, index) => {

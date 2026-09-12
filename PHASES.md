@@ -37,15 +37,17 @@ Make the portal *look* like Liliw. Cheap wins, high visible impact.
       `liliw-*` filenames, so the navbar logo is currently a broken image. Needed
       variants: `liliw-icon-white`, `liliw-icon-colored`, `liliw-logo-primary`,
       `liliw-banner-colored`, `liliw-banner-inverted`, `liliw-blue`
-- [ ] **Hero and footer copy** — `public/locales/en/common.json` still reads
-      "Welcome to BetterLB" and describes Los Baños
-- [ ] **Filipino translations** — same strings in `public/locales/fil/common.json`
+- [x] **Hero and footer copy** — `public/locales/en/common.json` now reads
+      "Welcome to BetterLiliw" and describes Liliw
+- [x] **Filipino translations** — same strings in `public/locales/fil/common.json`
 - [ ] **Map coordinates** — `location.coordinates` in `config/lgu.config.json` is
       `{lat: 0, lng: 0}`, which puts the map in the Gulf of Guinea. Set to Liliw's
       municipal hall
 - [ ] **Weather** — set `location.weather.enabled` once coordinates are real
-- [ ] **Brand color** — `portal.brandColor` is the template's `#0066eb`; change if
-      Liliw has its own palette
+- [x] **Brand color** — `portal.brandColor` is now `#1c3a5b` (the navy already
+      used in the logo and splash screen), and the Kapwa `brand` token scale in
+      `src/index.css` is overridden to match, so every `bg`/`text`/`border-kapwa-*
+      -brand*` class across the app uses it
 - [ ] **Favicon / OG image** — follow from the logo work; verify link previews
 
 ---

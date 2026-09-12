@@ -7,7 +7,9 @@ import { parseAsInteger, useQueryState } from 'nuqs';
 import { Badge } from '@/components/ui/Badge';
 import { CardSkeleton } from '@/components/ui/Skeletons';
 import { IndexPageLayout } from '@/components/layout/IndexPageLayout';
+import { SEO } from '@/components/layout/SEO';
 
+import { lguLabels } from '@/lib/lguLabels';
 import type {
   Committee,
   DocumentItem,
@@ -137,6 +139,17 @@ export default function LegislationIndex() {
     setCurrentPage,
   ]);
 
+  const seoTag = (
+    <SEO
+      title='Legislation'
+      description={`Browse ordinances, resolutions, and executive orders from the ${lguLabels.body}, ${lguLabels.fullName}.`}
+      breadcrumbs={[
+        { name: 'Home', url: '/' },
+        { name: 'OpenLGU', url: '/openlgu' },
+      ]}
+    />
+  );
+
   // Show loading skeleton while data is being fetched
   if (isLoading) {
     return (
@@ -149,6 +162,7 @@ export default function LegislationIndex() {
           placeholder: 'Search legislation...',
         }}
       >
+        {seoTag}
         <section className='space-y-4'>
           {Array.from({ length: 10 }).map((_, i) => (
             <CardSkeleton key={i} />
@@ -178,6 +192,7 @@ export default function LegislationIndex() {
           : undefined
       }
     >
+      {seoTag}
       {/* Filter Bar */}
       <DocumentFilters
         filterType={filterType}

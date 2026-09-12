@@ -4,11 +4,15 @@ import { useOutletContext } from 'react-router-dom';
 
 import { SearchXIcon } from 'lucide-react';
 
+import { SEO } from '@/components/layout/SEO';
 import { Badge } from '@/components/ui/Badge';
 import { CardGrid } from '@/components/ui/Card';
 import { EmptyState } from '@/components/ui/EmptyState';
+import { lguLabels } from '@/lib/lguLabels';
 import { config } from '@/lib/lguConfig';
 import { filterServices } from '@/lib/services';
+
+import serviceCategories from '@/data/service_categories.json';
 
 import ServiceCard from './components/ServiceCard';
 import FilterBar from './components/FilterBar';
@@ -78,23 +82,61 @@ export default function ServicesPage() {
     return () => observer.disconnect();
   }, [handleLoadMore]);
 
+  // --- SEO ---
+  const activeCategory =
+    selectedCategorySlug !== 'all'
+      ? serviceCategories.categories.find(c => c.slug === selectedCategorySlug)
+      : null;
+  const seoTitle = activeCategory
+    ? `${activeCategory.name} Services`
+    : 'Government Services';
+  const seoDescription = activeCategory
+    ? `${activeCategory.description} Find requirements, fees and how to apply in ${lguLabels.fullName}.`
+    : `Browse all ${lguLabels.fullName} government services — requirements, fees, processing times and how to apply.`;
+  const seoCanonical = activeCategory
+    ? `/services?category=${activeCategory.slug}`
+    : '/services';
+  const seoBreadcrumbs = [
+    { name: 'Home', url: '/' },
+    ...(activeCategory
+      ? [
+          { name: 'Services', url: '/services' },
+          { name: activeCategory.name, url: seoCanonical },
+        ]
+      : [{ name: 'Services', url: '/services' }]),
+  ];
+
+  const seoTag = (
+    <SEO
+      title={seoTitle}
+      description={seoDescription}
+      canonical={seoCanonical}
+      breadcrumbs={seoBreadcrumbs}
+    />
+  );
+
   // 3. EMPTY STATE
   if (filteredServices.length === 0) {
     return (
-      <EmptyState
-        icon={SearchXIcon}
-        title='No services found'
-        message={
-          "We couldn't find any services matching your filters. Try adjusting your search or filters."
-        }
-        actionHref={`${config.portal.githubUrl}/issues/new?template=contribution.yml`}
-        actionLabel='Suggest New Service'
-      />
+      <>
+        {seoTag}
+        <EmptyState
+          icon={SearchXIcon}
+          title='No services found'
+          message={
+            "We couldn't find any services matching your filters. Try adjusting your search or filters."
+          }
+          actionHref={`${config.portal.githubUrl}/issues/new?template=contribution.yml`}
+          actionLabel='Suggest New Service'
+        />
+      </>
     );
   }
 
   return (
     <div className='animate-in fade-in space-y-6 duration-500'>
+      {seoTag}
+
       {/* Filter Bar */}
       <FilterBar
         selectedOfficeDivision={selectedOfficeDivision}

@@ -6,15 +6,17 @@ import { StatGrid } from '@/components/ui/StatCard';
 import { Badge } from '@/components/ui/Badge';
 import { DetailSection } from '@/components/layout/PageLayouts';
 import { PageHero } from '@/components/layout/PageLayouts';
+import { SEO } from '@/components/layout/SEO';
 
 import FinancialPieChart from '@/pages/transparency/components/FinancialPieChart';
 
 import { formatPesoAdaptive } from '@/lib/format';
+import { lguLabels } from '@/lib/lguLabels';
 
 import ariData from '@/data/statistics/ari.json';
 
 const COLORS = {
-  national: '#0066eb',
+  national: '#1c3a5b',
   local: '#cc3e00',
   special: '#059669',
   other: '#64748b',
@@ -64,6 +66,18 @@ export default function MunicipalIncomePage() {
 
   return (
     <>
+      <SEO
+        title='Municipal Income'
+        description={`Revenue sources, fiscal autonomy and national tax dependency of ${lguLabels.fullName}.`}
+        breadcrumbs={[
+          { name: 'Home', url: '/' },
+          {
+            name: 'Municipal Income',
+            url: '/statistics/municipal-income',
+          },
+        ]}
+      />
+
       {/* PageHero - documented pattern for layout headers */}
       <PageHero
         title='Municipal Income'

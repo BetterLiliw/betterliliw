@@ -16,6 +16,7 @@ import {
 } from 'lucide-react';
 
 import { DetailSection } from '@/components/layout/PageLayouts';
+import { SEO } from '@/components/layout/SEO';
 import {
   Breadcrumb,
   BreadcrumbHome,
@@ -28,6 +29,7 @@ import {
 import { EmptyState, PageLoadingState } from '@/components/ui';
 import { Badge } from '@/components/ui/Badge';
 
+import { lguLabels } from '@/lib/lguLabels';
 import { getDocTypeBadgeVariant, getPersonName } from '@/lib/openlgu';
 
 export default function SessionDetail() {
@@ -44,6 +46,7 @@ export default function SessionDetail() {
   if (!session)
     return (
       <div className='p-20 text-center' role='alert'>
+        <SEO title='Session Not Found' noIndex />
         Session not found
       </div>
     );
@@ -62,8 +65,42 @@ export default function SessionDetail() {
 
   const isRegular = session.type === 'Regular';
 
+  // --- SEO ---
+  const seoTitle = `${session.ordinal_number} ${session.type} Session`;
+  const seoDescription = `${seoTitle} of the ${lguLabels.body}, ${lguLabels.fullName}, held on ${session.date}. ${presentMembers.length} present, ${absentMembers.length} absent, ${relatedDocs.length} document${relatedDocs.length === 1 ? '' : 's'} enacted.`;
+  const sessionJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Event',
+    name: seoTitle,
+    startDate: session.date,
+    eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+    eventStatus: 'https://schema.org/EventScheduled',
+    location: {
+      '@type': 'Place',
+      name: `${lguLabels.body} Session Hall, ${lguLabels.fullName}`,
+    },
+    organizer: {
+      '@type': 'GovernmentOrganization',
+      name: lguLabels.fullName,
+    },
+  };
+
   return (
     <div className='animate-in fade-in mx-auto max-w-5xl space-y-6 duration-500'>
+      <SEO
+        title={seoTitle}
+        description={seoDescription}
+        breadcrumbs={[
+          { name: 'Home', url: '/' },
+          { name: 'OpenLGU', url: '/openlgu' },
+          {
+            name: `${session.ordinal_number} Session`,
+            url: `/openlgu/session/${session.id}`,
+          },
+        ]}
+        jsonLd={sessionJsonLd}
+      />
+
       <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem>

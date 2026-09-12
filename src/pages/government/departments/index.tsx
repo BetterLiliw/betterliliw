@@ -5,9 +5,12 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Building2Icon, Globe, Phone, User2 } from 'lucide-react';
 
 import { PageHero } from '@/components/layout/PageLayouts';
+import { SEO } from '@/components/layout/SEO';
 import { Card, CardContent } from '@/components/ui/Card';
 import SearchInput from '@/components/ui/SearchInput';
 
+import { lguLabels } from '@/lib/lguLabels';
+import { config } from '@/lib/lguConfig';
 import { officeIcons } from '@/lib/officeIcons';
 import { formatGovName, toTitleCase } from '@/lib/stringUtils';
 import { toTelUri } from '@/lib/utils';
@@ -25,8 +28,29 @@ export default function DepartmentsIndex() {
       return clean(a.office_name).localeCompare(clean(b.office_name));
     });
 
+  const departmentsJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    itemListElement: departmentsData.map((dept, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: toTitleCase(dept.office_name),
+      url: `${config.portal.baseUrl}/government/departments/${dept.slug}`,
+    })),
+  };
+
   return (
     <>
+      <SEO
+        title='Municipal Departments'
+        description={`Directory of ${departmentsData.length} municipal departments and offices of ${lguLabels.fullName}, with contact details and leadership.`}
+        breadcrumbs={[
+          { name: 'Home', url: '/' },
+          { name: 'Departments', url: '/government/departments' },
+        ]}
+        jsonLd={departmentsJsonLd}
+      />
+
       <PageHero
         title='Municipal Departments'
         description={`${filtered.length} active offices.`}

@@ -64,7 +64,7 @@ export default defineConfig({
         start_url: '/',
         scope: '/',
         display: 'standalone',
-        theme_color: '#0066eb',
+        theme_color: '#1c3a5b',
         background_color: '#ffffff',
         categories: ['government', 'news', 'utilities'],
         icons: [

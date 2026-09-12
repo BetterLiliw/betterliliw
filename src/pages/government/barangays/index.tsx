@@ -5,11 +5,13 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, MapPinIcon, Phone, User2 } from 'lucide-react';
 
 import { PageHero } from '@/components/layout/PageLayouts';
+import { SEO } from '@/components/layout/SEO';
 import { Card, CardContent } from '@/components/ui/Card';
 import SearchInput from '@/components/ui/SearchInput';
 
 import { toTitleCase } from '@/lib/stringUtils';
 import { lguLabels } from '@/lib/lguLabels';
+import { config } from '@/lib/lguConfig';
 
 import barangaysData from '@/data/directory/barangays.json';
 
@@ -20,8 +22,29 @@ export default function BarangaysIndex() {
     .filter(b => b.barangay_name.toLowerCase().includes(search.toLowerCase()))
     .sort((a, b) => a.barangay_name.localeCompare(b.barangay_name));
 
+  const barangaysJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    itemListElement: barangaysData.map((brgy, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: toTitleCase(brgy.barangay_name.replace('BARANGAY ', '')),
+      url: `${config.portal.baseUrl}/government/barangays/${brgy.slug}`,
+    })),
+  };
+
   return (
     <>
+      <SEO
+        title='Local Barangays'
+        description={`Directory of all ${barangaysData.length} barangays of ${lguLabels.fullName}, with officials and contact details.`}
+        breadcrumbs={[
+          { name: 'Home', url: '/' },
+          { name: 'Barangays', url: '/government/barangays' },
+        ]}
+        jsonLd={barangaysJsonLd}
+      />
+
       <PageHero
         title='Local Barangays'
         description={`${filtered.length} component barangays of the ${lguLabels.fullName}.`}

@@ -5,10 +5,12 @@ import { Link } from 'react-router-dom';
 import { BookOpenIcon, ChevronLeft, User2, UsersIcon } from 'lucide-react';
 
 import { PageHero } from '@/components/layout/PageLayouts';
+import { SEO } from '@/components/layout/SEO';
 import { Card, CardContent } from '@/components/ui/Card';
 import { EmptyState } from '@/components/ui/EmptyState';
 import SearchInput from '@/components/ui/SearchInput';
 
+import { lguLabels } from '@/lib/lguLabels';
 import { toTitleCase } from '@/lib/stringUtils';
 
 import legislativeData from '@/data/directory/legislative.json';
@@ -49,6 +51,22 @@ export default function MunicipalCommitteesPage() {
 
   return (
     <>
+      <SEO
+        title='Standing Committees'
+        description={`Standing committees of the ${sbData?.chamber ?? lguLabels.body}, ${lguLabels.fullName}, with chairpersons and members.`}
+        breadcrumbs={[
+          { name: 'Home', url: '/' },
+          {
+            name: 'Elected Officials',
+            url: '/government/elected-officials',
+          },
+          {
+            name: 'Committees',
+            url: '/government/elected-officials/committees',
+          },
+        ]}
+      />
+
       <PageHero
         title='Standing Committees'
         description={`Active committees of the ${sbData?.chamber ?? 'Sangguniang Bayan'}.`}

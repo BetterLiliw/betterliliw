@@ -20,7 +20,9 @@ import {
 } from '@/components/data-display/ChartContainer';
 import { DetailSection } from '@/components/layout/PageLayouts';
 import { PageHero } from '@/components/layout/PageLayouts';
+import { SEO } from '@/components/layout/SEO';
 
+import { lguLabels } from '@/lib/lguLabels';
 import { cn } from '@/lib/utils';
 
 // Data Import
@@ -84,6 +86,15 @@ export default function PopulationPage() {
 
   return (
     <>
+      <SEO
+        title='Population Profile'
+        description={`Demographic data for ${lguLabels.fullName}, tracking population growth from the municipal level down to individual barangays.`}
+        breadcrumbs={[
+          { name: 'Home', url: '/' },
+          { name: 'Population Profile', url: '/statistics/population' },
+        ]}
+      />
+
       {/* PageHero - documented pattern for layout headers */}
       <PageHero
         title='Population Profile'

@@ -17,6 +17,7 @@ import {
 
 import { StatCard } from '@/components/ui/StatCard';
 import { ModuleHeader } from '@/components/layout/PageLayouts';
+import { SEO } from '@/components/layout/SEO';
 import { Badge } from '@/components/ui/Badge';
 import { CardGrid } from '@/components/ui/Card';
 import { EmptyState } from '@/components/ui/EmptyState';
@@ -199,6 +200,16 @@ export default function InfrastructurePage() {
 
   return (
     <div className='animate-in fade-in mx-auto max-w-full space-y-8 px-4 pb-20 duration-500 md:px-8'>
+      <SEO
+        title='Infrastructure Projects'
+        description={`Community monitoring of national DPWH infrastructure projects within ${lguLabels.fullName}: budgets, contractors, progress and status.`}
+        breadcrumbs={[
+          { name: 'Home', url: '/' },
+          { name: 'Transparency', url: '/transparency' },
+          { name: 'Infrastructure', url: '/transparency/infrastructure' },
+        ]}
+      />
+
       {/* Header + Search + Status Toggle  */}
       <ModuleHeader
         title='Infrastructure Projects'

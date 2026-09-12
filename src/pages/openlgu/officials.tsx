@@ -8,6 +8,7 @@ import {
   IndexPageLayout,
   type BreadcrumbItem,
 } from '@/components/layout/IndexPageLayout';
+import { SEO } from '@/components/layout/SEO';
 
 import type { DocumentItem, Person, Session, Term } from '@/lib/openlgu';
 import { getPersonName } from '@/lib/openlgu';
@@ -113,10 +114,13 @@ export default function OfficialsIndex() {
     { label: 'Officials', href: '/openlgu/officials' },
   ];
 
+  const pageTitle = `Officials of ${lguLabels.name}`;
+  const pageDescription = `Browse the historical collection of all LGU politicians who have served ${lguLabels.name}.`;
+
   return (
     <IndexPageLayout
-      title={`Officials of ${lguLabels.name}`}
-      description={`Browse the historical collection of all LGU politicians who have served ${lguLabels.name}.`}
+      title={pageTitle}
+      description={pageDescription}
       breadcrumbs={breadcrumbs}
       search={{
         value: searchQuery,
@@ -134,6 +138,12 @@ export default function OfficialsIndex() {
           : undefined
       }
     >
+      <SEO
+        title={pageTitle}
+        description={pageDescription}
+        breadcrumbs={breadcrumbs.map(b => ({ name: b.label, url: b.href }))}
+      />
+
       {/* Filter Bar */}
       <OfficialsFilterBar
         searchQuery={searchQuery}

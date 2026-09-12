@@ -16,6 +16,7 @@ import {
 } from 'lucide-react';
 
 import { DetailSection, useBreadcrumbs } from '@/components/layout';
+import { SEO } from '@/components/layout/SEO';
 import {
   Breadcrumb,
   BreadcrumbHome,
@@ -28,6 +29,7 @@ import {
 import { EmptyState, PageLoadingState } from '@/components/ui';
 import { Badge } from '@/components/ui/Badge';
 
+import { lguLabels } from '@/lib/lguLabels';
 import type { Committee, DocumentItem, Person, Session } from '@/lib/openlgu';
 import { getDocTypeBadgeVariant, getPersonName } from '@/lib/openlgu';
 import { isExecutiveRole, isLegislativeRole } from '@/lib/roleHelpers';
@@ -128,6 +130,7 @@ export default function TermDetail() {
   if (!term) {
     return (
       <div className='text-kapwa-text-disabled p-20 text-center font-bold uppercase'>
+        <SEO title='Term Not Found' noIndex />
         Term data not found
       </div>
     );
@@ -143,8 +146,42 @@ export default function TermDetail() {
     (d: DocumentItem) => d.type === 'executive_order'
   ).length;
 
+  // --- SEO ---
+  const seoDescription = `${term.name} (${term.year_range}), ${lguLabels.fullName}: ${ordCount} ordinances, ${resCount} resolutions${
+    eoCount > 0 ? `, ${eoCount} executive orders` : ''
+  } across ${termSessions.length} session${termSessions.length === 1 ? '' : 's'}.`;
+  const termJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Event',
+    name: term.name,
+    startDate: term.start_date,
+    endDate: term.end_date,
+    eventStatus: 'https://schema.org/EventScheduled',
+    location: {
+      '@type': 'Place',
+      name: lguLabels.fullName,
+    },
+    organizer: {
+      '@type': 'GovernmentOrganization',
+      name: lguLabels.fullName,
+    },
+  };
+
   return (
     <div className='animate-in fade-in mx-auto max-w-5xl space-y-8 pb-20 duration-500'>
+      <SEO
+        title={term.name}
+        description={seoDescription}
+        breadcrumbs={breadcrumbs.map((crumb, index) => ({
+          name:
+            index === breadcrumbs.length - 1
+              ? `${term.ordinal} Term`
+              : crumb.label,
+          url: crumb.href,
+        }))}
+        jsonLd={termJsonLd}
+      />
+
       <Breadcrumb>
         <BreadcrumbList>
           {breadcrumbs.map((crumb, index) => {

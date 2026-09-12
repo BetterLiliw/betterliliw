@@ -20,7 +20,9 @@ import {
 } from '@/components/data-display/ChartContainer';
 import { DetailSection } from '@/components/layout/PageLayouts';
 import { PageHero } from '@/components/layout/PageLayouts';
+import { SEO } from '@/components/layout/SEO';
 
+import { lguLabels } from '@/lib/lguLabels';
 import { cn } from '@/lib/utils';
 
 import cmciData from '@/data/statistics/cmci.json';
@@ -74,6 +76,18 @@ export default function CompetitivenessPage() {
 
   return (
     <>
+      <SEO
+        title='Competitiveness'
+        description={`National Competitiveness Index evaluation of ${lguLabels.fullName}'s progress across pillars of governance and development.`}
+        breadcrumbs={[
+          { name: 'Home', url: '/' },
+          {
+            name: 'Competitiveness',
+            url: '/statistics/competitiveness',
+          },
+        ]}
+      />
+
       {/* PageHero - documented pattern for layout headers */}
       <PageHero
         title='Competitiveness'

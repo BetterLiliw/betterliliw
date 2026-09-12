@@ -7,9 +7,11 @@ import {
   IndexPageLayout,
   type BreadcrumbItem,
 } from '@/components/layout/IndexPageLayout';
+import { SEO } from '@/components/layout/SEO';
 import { Badge } from '@/components/ui/Badge';
 import { Card, CardGrid } from '@/components/ui/Card';
 
+import { lguLabels } from '@/lib/lguLabels';
 import type { DocumentItem, Person, Session, Term } from '@/lib/openlgu';
 
 interface LegislationContext {
@@ -88,6 +90,12 @@ export default function TermsIndex() {
         message: 'No legislative terms are available at this time.',
       }}
     >
+      <SEO
+        title='Legislative Terms'
+        description={`Browse historical terms of the ${lguLabels.body}, ${lguLabels.fullName}.`}
+        breadcrumbs={breadcrumbs.map(b => ({ name: b.label, url: b.href }))}
+      />
+
       <CardGrid columns={3}>
         {termsWithStats.map(term => (
           <Link

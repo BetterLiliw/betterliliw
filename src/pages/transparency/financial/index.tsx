@@ -15,6 +15,7 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from '@/components/navigation/Breadcrumb';
+import { SEO } from '@/components/layout/SEO';
 // UI Components
 import { Badge } from '@/components/ui/Badge';
 
@@ -27,6 +28,7 @@ import SummaryCards from '@/pages/transparency/components/SummaryCards';
 import { useFinancialData } from '@/hooks/useFinancialData';
 
 import { formatLabel } from '@/lib/budgetUtils';
+import { lguLabels } from '@/lib/lguLabels';
 
 export default function FinancialPage() {
   const {
@@ -203,6 +205,16 @@ export default function FinancialPage() {
 
   return (
     <div className='animate-in fade-in mx-auto max-w-7xl space-y-6 pb-20 duration-500'>
+      <SEO
+        title='Financial Reports'
+        description={`Independent visualization of ${lguLabels.fullName}'s municipal income, expenditure and fund allocation.`}
+        breadcrumbs={[
+          { name: 'Home', url: '/' },
+          { name: 'Transparency', url: '/transparency' },
+          { name: 'Financial Report', url: '/transparency/financial' },
+        ]}
+      />
+
       {/* 1. Standardized Breadcrumbs */}
       <Breadcrumb>
         <BreadcrumbList>

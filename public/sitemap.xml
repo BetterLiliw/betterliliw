@@ -1,549 +1,559 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://bettergov.ph/</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
+    <loc>https://betterliliw.org/</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/about</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://betterliliw.org/about</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/search</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <loc>https://betterliliw.org/accessibility</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/services</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <loc>https://betterliliw.org/contact</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/sitemap</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
+    <loc>https://betterliliw.org/contribute</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/data/weather</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>hourly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://betterliliw.org/data/forex</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/data/forex</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
+    <loc>https://betterliliw.org/data/weather</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/flood-control-projects</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://betterliliw.org/discord</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/flood-control-projects/table</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://betterliliw.org/government/barangays</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/flood-control-projects/map</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://betterliliw.org/government/barangays/barangay-anos</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/flood-control-projects/contractors</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <loc>https://betterliliw.org/government/barangays/barangay-bagong-silang</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/philippines</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <loc>https://betterliliw.org/government/barangays/barangay-bambang</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/philippines/about</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://betterliliw.org/government/barangays/barangay-batong-malake</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/philippines/history</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://betterliliw.org/government/barangays/barangay-baybayin</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/philippines/regions</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://betterliliw.org/government/barangays/barangay-bayog</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/philippines/map</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://betterliliw.org/government/barangays/barangay-lalakay</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/philippines/hotlines</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://betterliliw.org/government/barangays/barangay-maahas</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/philippines/holidays</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://betterliliw.org/government/barangays/barangay-malinta</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/services</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <loc>https://betterliliw.org/government/barangays/barangay-mayondon</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/services?category=business-trade</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://betterliliw.org/government/barangays/barangay-putho-tuntungi</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/services?category=certificates-ids</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://betterliliw.org/government/barangays/barangay-san-antonio</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/services?category=contributions</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://betterliliw.org/government/barangays/barangay-tadlak</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/services?category=disaster-weather</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://betterliliw.org/government/barangays/barangay-timugan</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/services?category=education</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://betterliliw.org/government/departments</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/services?category=employment</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://betterliliw.org/government/departments/bids-and-awards-committee</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/services?category=health</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://betterliliw.org/government/departments/bureau-fire-protection</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/services?category=housing</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://betterliliw.org/government/departments/business-permit-and-licensing-office</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/services?category=passport-travel</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://betterliliw.org/government/departments/gender-and-development-office</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/services?category=social-services</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://betterliliw.org/government/departments/information-and-communication-systems-office</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/services?category=tax</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://betterliliw.org/government/departments/local-civil-registry-office</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/services?category=transport-driving</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://betterliliw.org/government/departments/local-youth-and-development-office</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/services?category=uncategorized</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://betterliliw.org/government/departments/market</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/travel</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://betterliliw.org/government/departments/municipal-accounting-office</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/travel/visa</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://betterliliw.org/government/departments/municipal-agriculture-office</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/travel/visa-types</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://betterliliw.org/government/departments/municipal-assessors-office</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/travel/visa-types/swp-c</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://betterliliw.org/government/departments/municipal-budget-office</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/government</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://betterliliw.org/government/departments/municipal-engineering-office</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/government/executive</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://betterliliw.org/government/departments/municipal-environment-and-natural-resources-office</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/government/departments</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://betterliliw.org/government/departments/municipal-general-services-office</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/government/constitutional</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://betterliliw.org/government/departments/municipal-health-office</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/government/legislative</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://betterliliw.org/government/departments/municipal-human-resource-management-office</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/government/local</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://betterliliw.org/government/departments/municipal-local-government-operations-office</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/government/diplomatic</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://betterliliw.org/government/departments/municipal-mdrrmo-office</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/government/salary-grade</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://betterliliw.org/government/departments/municipal-nutrition-office</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/flood-control-projects</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://betterliliw.org/government/departments/municipal-planning-and-development-office</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/flood-control-projects</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://betterliliw.org/government/departments/municipal-police-station</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/flood-control-projects/table</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://betterliliw.org/government/departments/municipal-social-welfare-development-office</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/flood-control-projects/map</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://betterliliw.org/government/departments/municipal-tourism-office</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/flood-control-projects/contractors</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://betterliliw.org/government/departments/municipal-treasurers-office</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/government/executive/office-of-the-mayor</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://betterliliw.org/government/departments/municipal-urban-development-and-housing-office</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/government/executive/office-of-the-vice-mayor</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://betterliliw.org/government/departments/office-senior-citizens-affairs</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/government/executive/presidential-communications-office</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <loc>https://betterliliw.org/government/departments/operation-center</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/government/executive/other-executive-offices</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <loc>https://betterliliw.org/government/departments/persons-with-disability-affairs-office</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/government/departments/department-of-budget-and-management</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <loc>https://betterliliw.org/government/departments/public-employment-service-office</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/government/departments/department-of-agriculture</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <loc>https://betterliliw.org/government/departments/public-information-office</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/government/departments/department-of-agrarian-reform</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <loc>https://betterliliw.org/government/departments/public-order-and-safety-office</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/government/departments/department-of-education</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <loc>https://betterliliw.org/government/departments/slaughterhouse</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/government/departments/department-of-energy</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <loc>https://betterliliw.org/government/elected-officials</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/government/departments/department-of-environment-and-natural-resources</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <loc>https://betterliliw.org/government/elected-officials/committees</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/government/departments/department-of-finance</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <loc>https://betterliliw.org/ideas</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/government/departments/department-of-foreign-affairs</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <loc>https://betterliliw.org/join-us</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/government/departments/department-of-health</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <loc>https://betterliliw.org/openlgu</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/government/departments/department-of-human-settlements-and-urban-development</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <loc>https://betterliliw.org/openlgu/officials</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/government/departments/department-of-information-and-communications-technology</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <loc>https://betterliliw.org/openlgu/terms</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/government/departments/department-of-the-interior-and-local-government</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <loc>https://betterliliw.org/search</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/government/departments/department-of-justice</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <loc>https://betterliliw.org/services</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/government/departments/department-of-labor-and-employment</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <loc>https://betterliliw.org/services/acceptance-of-livestock-and-ante-mortem-inspection</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/government/departments/department-of-migrant-workers</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <loc>https://betterliliw.org/services/admission-of-paternityra-9255</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/government/departments/department-of-national-defense</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <loc>https://betterliliw.org/services/animal-bite-treatment-center</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/government/departments/department-of-public-works-and-highways</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <loc>https://betterliliw.org/services/animal-treatment</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/government/departments/department-of-science-and-technology</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <loc>https://betterliliw.org/services/application-and-issuance-of-marriage-license</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/government/departments/department-of-social-welfare-and-development</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <loc>https://betterliliw.org/services/business-registration-new-applicant---online</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/government/departments/department-of-tourism</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <loc>https://betterliliw.org/services/business-registration-new-applicant-face-to-face</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/government/departments/department-of-trade-and-industry</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <loc>https://betterliliw.org/services/business-registration-renewal-face-to-face</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/government/departments/department-of-transportation</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <loc>https://betterliliw.org/services/business-registration-renewal-online</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/government/departments/national-economic-and-development-authority</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <loc>https://betterliliw.org/services/business-terminationclosure</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/government/constitutional/civil-service-commission-csc</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <loc>https://betterliliw.org/services/collection-of-other-payments</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/government/constitutional/commission-on-audit-coa</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <loc>https://betterliliw.org/services/collection-of-other-payments-traffic-and-municipal-ordinance-violation</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/government/constitutional/commission-on-elections-comelec</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <loc>https://betterliliw.org/services/delayed-registration-of-certificate-of-death</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/government/constitutional/commission-on-human-rights-chr</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <loc>https://betterliliw.org/services/delayed-registration-of-certificate-of-marriage</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/government/constitutional/office-of-the-ombudsman</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <loc>https://betterliliw.org/services/delayed-registration-of-regular-and-timely-certificate-of-live-birth</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/government/constitutional/goccs</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <loc>https://betterliliw.org/services/expanded-centenarian-payout</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/government/constitutional/sucs</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <loc>https://betterliliw.org/services/fire-safety-inspection-certificate</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/government/legislative/house-members</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://betterliliw.org/services/garbage-collection-schedule</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/government/legislative/party-list-members</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://betterliliw.org/services/inquiriesassistance-to-new-cooperatives</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/government/legislative/senate-committees</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <loc>https://betterliliw.org/services/issuance-of-animal-health-certificates-certificate-of-acceptance-certificate-to-travel-livestock-fish-and-companion-animal</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/government/legislative/senate-of-the-philippines-20th-congress</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://betterliliw.org/services/issuance-of-assorted-vegetable-seedsseedlings</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/government/legislative/house-of-representatives-20th-congress</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://betterliliw.org/services/issuance-of-barangay-business-clearance-and-barangay-building-clearance</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/government/diplomatic/missions</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <loc>https://betterliliw.org/services/issuance-of-building-permit-highly-technical-transaction</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/government/diplomatic/consulates</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <loc>https://betterliliw.org/services/issuance-of-building-permit-simple-transaction</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://bettergov.ph/government/diplomatic/organizations</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <loc>https://betterliliw.org/services/issuance-of-certificate-of-annual-inspection-for-business-permit</loc>
+    <lastmod>2026-09-12</lastmod>
+  </url>
+  <url>
+    <loc>https://betterliliw.org/services/issuance-of-certificate-of-final-electrical-inspection</loc>
+    <lastmod>2026-09-12</lastmod>
+  </url>
+  <url>
+    <loc>https://betterliliw.org/services/issuance-of-certificate-of-inspection-for-road-worthiness</loc>
+    <lastmod>2026-09-12</lastmod>
+  </url>
+  <url>
+    <loc>https://betterliliw.org/services/issuance-of-certificate-of-occupancy</loc>
+    <lastmod>2026-09-12</lastmod>
+  </url>
+  <url>
+    <loc>https://betterliliw.org/services/issuance-of-certification-of-no-outstanding-obligation</loc>
+    <lastmod>2026-09-12</lastmod>
+  </url>
+  <url>
+    <loc>https://betterliliw.org/services/issuance-of-certified-true-copy-of-tax-declaration-and-other-kinds-of-certification</loc>
+    <lastmod>2026-09-12</lastmod>
+  </url>
+  <url>
+    <loc>https://betterliliw.org/services/issuance-of-community-tax-certificate-individual-and-corporation</loc>
+    <lastmod>2026-09-12</lastmod>
+  </url>
+  <url>
+    <loc>https://betterliliw.org/services/issuance-of-locational-clearance-for-building-application</loc>
+    <lastmod>2026-09-12</lastmod>
+  </url>
+  <url>
+    <loc>https://betterliliw.org/services/issuance-of-locational-clearance-for-land-reclassification</loc>
+    <lastmod>2026-09-12</lastmod>
+  </url>
+  <url>
+    <loc>https://betterliliw.org/services/issuance-of-locational-clearance-for-titling-application-free-patent</loc>
+    <lastmod>2026-09-12</lastmod>
+  </url>
+  <url>
+    <loc>https://betterliliw.org/services/issuance-of-tax-declaration-for-transfer-of-ownership-consolidationsubdivision</loc>
+    <lastmod>2026-09-12</lastmod>
+  </url>
+  <url>
+    <loc>https://betterliliw.org/services/issuance-of-updated-tax-declaration-for-corrected-information-eg-spelling-of-name-lot-area-lot-number-etc</loc>
+    <lastmod>2026-09-12</lastmod>
+  </url>
+  <url>
+    <loc>https://betterliliw.org/services/issuance-of-updated-tax-declaration-for-new-or-reassessment-of-buildingmachineries</loc>
+    <lastmod>2026-09-12</lastmod>
+  </url>
+  <url>
+    <loc>https://betterliliw.org/services/issuance-of-updated-tax-declaration-for-new-or-reassessment-of-lands</loc>
+    <lastmod>2026-09-12</lastmod>
+  </url>
+  <url>
+    <loc>https://betterliliw.org/services/issuance-of-zoning-certification</loc>
+    <lastmod>2026-09-12</lastmod>
+  </url>
+  <url>
+    <loc>https://betterliliw.org/services/legitimation-with-admission-of-paternity-including-ra-9858-supplemental-report</loc>
+    <lastmod>2026-09-12</lastmod>
+  </url>
+  <url>
+    <loc>https://betterliliw.org/services/livestock-dispersal-and-monitoring</loc>
+    <lastmod>2026-09-12</lastmod>
+  </url>
+  <url>
+    <loc>https://betterliliw.org/services/meat-inspection-services-fee-assessment-and-issuance-of-official-receipt</loc>
+    <lastmod>2026-09-12</lastmod>
+  </url>
+  <url>
+    <loc>https://betterliliw.org/services/medical-assistance-aics</loc>
+    <lastmod>2026-09-12</lastmod>
+  </url>
+  <url>
+    <loc>https://betterliliw.org/services/monitoring-and-evaluation-of-barangay-community-gardenhapag-backyardhome-gardens-and-farmers-production-area</loc>
+    <lastmod>2026-09-12</lastmod>
+  </url>
+  <url>
+    <loc>https://betterliliw.org/services/payment-of-fees-for-sealing-and-licensing-of-weights-and-measure-instrument</loc>
+    <lastmod>2026-09-12</lastmod>
+  </url>
+  <url>
+    <loc>https://betterliliw.org/services/payment-of-market-fees-rental</loc>
+    <lastmod>2026-09-12</lastmod>
+  </url>
+  <url>
+    <loc>https://betterliliw.org/services/payment-of-market-fees-utilities</loc>
+    <lastmod>2026-09-12</lastmod>
+  </url>
+  <url>
+    <loc>https://betterliliw.org/services/payment-of-real-property-tax</loc>
+    <lastmod>2026-09-12</lastmod>
+  </url>
+  <url>
+    <loc>https://betterliliw.org/services/payment-of-real-property-tax-clearance</loc>
+    <lastmod>2026-09-12</lastmod>
+  </url>
+  <url>
+    <loc>https://betterliliw.org/services/provision-of-anti-rabies-vaccination-for-cats-and-dogs</loc>
+    <lastmod>2026-09-12</lastmod>
+  </url>
+  <url>
+    <loc>https://betterliliw.org/services/public-school-directory</loc>
+    <lastmod>2026-09-12</lastmod>
+  </url>
+  <url>
+    <loc>https://betterliliw.org/services/ra-9048---petition-for-change-of-first-name-cfn</loc>
+    <lastmod>2026-09-12</lastmod>
+  </url>
+  <url>
+    <loc>https://betterliliw.org/services/ra-9048---petition-for-correction-of-clerical-error-cce</loc>
+    <lastmod>2026-09-12</lastmod>
+  </url>
+  <url>
+    <loc>https://betterliliw.org/services/registration-of-regular-and-timely-certificate-of-death</loc>
+    <lastmod>2026-09-12</lastmod>
+  </url>
+  <url>
+    <loc>https://betterliliw.org/services/registration-of-regular-and-timely-certificate-of-live-birth</loc>
+    <lastmod>2026-09-12</lastmod>
+  </url>
+  <url>
+    <loc>https://betterliliw.org/services/registration-of-regular-and-timely-certificate-of-marriage</loc>
+    <lastmod>2026-09-12</lastmod>
+  </url>
+  <url>
+    <loc>https://betterliliw.org/services/request-and-issuance-of-certified-true-copy-of-birthdeathmarriage-certificate</loc>
+    <lastmod>2026-09-12</lastmod>
+  </url>
+  <url>
+    <loc>https://betterliliw.org/services/request-for-burial-permit</loc>
+    <lastmod>2026-09-12</lastmod>
+  </url>
+  <url>
+    <loc>https://betterliliw.org/services/request-for-cremation-permit</loc>
+    <lastmod>2026-09-12</lastmod>
+  </url>
+  <url>
+    <loc>https://betterliliw.org/services/request-for-exhumation-permit</loc>
+    <lastmod>2026-09-12</lastmod>
+  </url>
+  <url>
+    <loc>https://betterliliw.org/services/rhu-locations</loc>
+    <lastmod>2026-09-12</lastmod>
+  </url>
+  <url>
+    <loc>https://betterliliw.org/services/slaughtering-of-smalllarge-animals-and-issuance-of-local-meat-inspection-certificate</loc>
+    <lastmod>2026-09-12</lastmod>
+  </url>
+  <url>
+    <loc>https://betterliliw.org/services/solo-parents-cash-subsidy</loc>
+    <lastmod>2026-09-12</lastmod>
+  </url>
+  <url>
+    <loc>https://betterliliw.org/services/special-promotional-fee</loc>
+    <lastmod>2026-09-12</lastmod>
+  </url>
+  <url>
+    <loc>https://betterliliw.org/sitemap</loc>
+    <lastmod>2026-09-12</lastmod>
+  </url>
+  <url>
+    <loc>https://betterliliw.org/statistics/competitiveness</loc>
+    <lastmod>2026-09-12</lastmod>
+  </url>
+  <url>
+    <loc>https://betterliliw.org/statistics/municipal-income</loc>
+    <lastmod>2026-09-12</lastmod>
+  </url>
+  <url>
+    <loc>https://betterliliw.org/statistics/population</loc>
+    <lastmod>2026-09-12</lastmod>
+  </url>
+  <url>
+    <loc>https://betterliliw.org/terms-of-service</loc>
+    <lastmod>2026-09-12</lastmod>
+  </url>
+  <url>
+    <loc>https://betterliliw.org/transparency</loc>
+    <lastmod>2026-09-12</lastmod>
+  </url>
+  <url>
+    <loc>https://betterliliw.org/transparency/financial</loc>
+    <lastmod>2026-09-12</lastmod>
+  </url>
+  <url>
+    <loc>https://betterliliw.org/transparency/infrastructure</loc>
+    <lastmod>2026-09-12</lastmod>
+  </url>
+  <url>
+    <loc>https://betterliliw.org/transparency/procurement</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
 </urlset>

@@ -13,7 +13,9 @@ import {
 } from 'lucide-react';
 
 import { DetailSection } from '@/components/layout';
+import { SEO } from '@/components/layout/SEO';
 import { config } from '@/lib/lguConfig';
+import { lguLabels } from '@/lib/lguLabels';
 import { Badge } from '@/components/ui/Badge';
 import { Card, CardContent, CardGrid } from '@/components/ui/Card';
 
@@ -33,7 +35,7 @@ export default function TransparencyIndex() {
       description:
         'Community tracking of road repairs, building constructions, and local infrastructure projects.',
       icon: HardHat,
-      href: '/transparency/infrastructure-projects',
+      href: '/transparency/infrastructure',
       color: 'orange',
       badge: 'Monitoring',
     },
@@ -50,6 +52,15 @@ export default function TransparencyIndex() {
 
   return (
     <div className='animate-in fade-in duration-500'>
+      <SEO
+        title='Transparency'
+        description={`Public funds, procurement and infrastructure projects of ${lguLabels.fullName}, tracked and visualized by the community.`}
+        breadcrumbs={[
+          { name: 'Home', url: '/' },
+          { name: 'Transparency', url: '/transparency' },
+        ]}
+      />
+
       {/* 1. Grassroots Mission Box - Uses Brand Orange to signify "Community" */}
       <div className='mb-10'>
         <div className='bg-kapwa-orange-50 flex flex-col items-center gap-6 rounded-3xl border-0 p-6 shadow-sm md:flex-row'>

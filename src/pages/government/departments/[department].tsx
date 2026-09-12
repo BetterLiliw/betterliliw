@@ -9,6 +9,7 @@ import {
   PhoneIcon,
   UserIcon,
 } from 'lucide-react';
+import { SEO } from '@/components/layout/SEO';
 import {
   Breadcrumb,
   BreadcrumbHome,
@@ -21,6 +22,7 @@ import {
 import { Badge } from '@/components/ui/Badge';
 import { Card, CardContent } from '@/components/ui/Card';
 
+import { config } from '@/lib/lguConfig';
 import { toTitleCase } from '@/lib/stringUtils';
 import { toTelUri } from '@/lib/utils';
 import { lguLabels } from '@/lib/lguLabels';
@@ -59,8 +61,47 @@ export default function DepartmentDetail() {
     ? dept.trunkline[0]
     : dept.trunkline;
 
+  // --- SEO ---
+  const officeName = toTitleCase(dept.office_name);
+  const seoDescription = `Contact details, leadership and services for the ${officeName}, ${lguLabels.fullName}.`;
+  const departmentJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'GovernmentOrganization',
+    name: officeName,
+    ...(dept.website ? { url: dept.website } : {}),
+    ...(contactValue ? { telephone: contactValue } : {}),
+    ...(dept.email ? { email: dept.email } : {}),
+    ...(dept.address
+      ? {
+          address: {
+            '@type': 'PostalAddress',
+            streetAddress: dept.address,
+            addressLocality: lguLabels.name,
+            addressRegion: lguLabels.province,
+            addressCountry: 'PH',
+          },
+        }
+      : {}),
+    parentOrganization: {
+      '@type': 'GovernmentOrganization',
+      name: lguLabels.fullName,
+      url: config.portal.baseUrl,
+    },
+  };
+
   return (
     <div className='animate-in fade-in space-y-6 pb-20 duration-500'>
+      <SEO
+        title={officeName}
+        description={seoDescription}
+        breadcrumbs={[
+          { name: 'Home', url: '/' },
+          { name: 'Departments', url: '/government/departments' },
+          { name: officeName, url: `/government/departments/${slug}` },
+        ]}
+        jsonLd={departmentJsonLd}
+      />
+
       {/* Skip Link for Accessibility */}
       <a
         href='#main-content'
@@ -246,11 +287,11 @@ export default function DepartmentDetail() {
           <Card variant='default' hover={false} className='bg-kapwa-bg-surface'>
             <CardContent className='p-6'>
               <p className='text-kapwa-text-support text-sm leading-relaxed'>
-                The {toTitleCase(dept.office_name)} is a frontline office of the
+                The {toTitleCase(dept.office_name)} is a frontline office of the{' '}
                 {lguLabels.fullName}. It is responsible for executing
                 administrative mandates and technical functions to ensure the
-                delivery of high-quality public services within the Science and
-                Nature City.
+                delivery of high-quality public services to the residents of{' '}
+                {lguLabels.name}, {lguLabels.province}.
               </p>
             </CardContent>
           </Card>

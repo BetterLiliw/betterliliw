@@ -21,6 +21,7 @@ import {
 
 import FlagForReviewButton from '@/components/admin/FlagForReviewButton';
 import { DetailSection, useBreadcrumbs } from '@/components/layout';
+import { SEO } from '@/components/layout/SEO';
 import {
   Breadcrumb,
   BreadcrumbHome,
@@ -33,7 +34,9 @@ import {
 import { PageLoadingState } from '@/components/ui';
 import { Badge } from '@/components/ui/Badge';
 
+import { lguLabels } from '@/lib/lguLabels';
 import { getDocTypeBadgeVariant, getPersonName } from '@/lib/openlgu';
+import { toTitleCase } from '@/lib/stringUtils';
 
 import type { LegislationContext, Person } from '@/types/legislationTypes';
 
@@ -59,6 +62,7 @@ export default function LegislationDocument() {
   if (!doc)
     return (
       <div className='p-20 text-center' role='alert'>
+        <SEO title='Document Not Found' noIndex />
         <h2 className='text-kapwa-text-strong text-xl font-bold'>
           Document not found
         </h2>
@@ -90,8 +94,43 @@ export default function LegislationDocument() {
     : null;
   const term = terms?.find((t: any) => t.id === (doc as any).term_id);
 
+  // --- SEO ---
+  const docTypeLabel = toTitleCase(doc.type.replace('_', ' '));
+  const seoDescription =
+    doc.subjects && doc.subjects.length > 0
+      ? `${docTypeLabel} ${doc.number}, ${lguLabels.fullName}: ${doc.subjects.join(', ')}.`
+      : `${docTypeLabel} ${doc.number}, enacted ${doc.date_enacted}, ${lguLabels.fullName}.`;
+  const documentJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Legislation',
+    name: doc.title,
+    legislationIdentifier: doc.number,
+    legislationType: docTypeLabel,
+    ...(doc.date_enacted ? { legislationDate: doc.date_enacted } : {}),
+    legislationJurisdiction: lguLabels.fullName,
+    ...(doc.link ? { url: doc.link } : {}),
+    ...(displayAuthors.length > 0
+      ? {
+          author: displayAuthors.map(author => ({
+            '@type': 'Person',
+            name: getPersonName(author),
+          })),
+        }
+      : {}),
+  };
+
   return (
     <div className='animate-in fade-in mx-auto max-w-5xl space-y-6 duration-500'>
+      <SEO
+        title={doc.title}
+        description={seoDescription}
+        breadcrumbs={breadcrumbs.map((crumb, index) => ({
+          name: index === breadcrumbs.length - 1 ? doc.number : crumb.label,
+          url: crumb.href,
+        }))}
+        jsonLd={documentJsonLd}
+      />
+
       <Breadcrumb>
         <BreadcrumbList>
           {breadcrumbs.map((crumb, index) => {

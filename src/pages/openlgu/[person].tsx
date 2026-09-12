@@ -19,6 +19,7 @@ import {
 } from 'lucide-react';
 
 import { DetailSection, useBreadcrumbs } from '@/components/layout';
+import { SEO } from '@/components/layout/SEO';
 import {
   Breadcrumb,
   BreadcrumbHome,
@@ -32,6 +33,7 @@ import { PageLoadingState } from '@/components/ui';
 import { Badge } from '@/components/ui/Badge';
 import { Card } from '@/components/ui/Card';
 
+import { lguLabels } from '@/lib/lguLabels';
 // Use the library types as the source of truth to ensure compatibility with helpers
 import type {
   Committee,
@@ -104,6 +106,7 @@ export default function PersonDetail() {
         className='text-kapwa-text-disabled p-12 text-center font-bold tracking-widest uppercase'
         role='alert'
       >
+        <SEO title='Official Not Found' noIndex />
         Official not found
       </div>
     );
@@ -211,8 +214,35 @@ export default function PersonDetail() {
       : authoredDocs
   ).slice(0, 6);
 
+  // --- SEO ---
+  const seoDescription = `${officialName}${
+    latestMembership?.role ? `, ${latestMembership.role}` : ''
+  } of ${lguLabels.fullName}${
+    latestMembership?.term ? ` (${latestMembership.term.year_range})` : ''
+  }. ${authoredDocs.length} authored document${authoredDocs.length === 1 ? '' : 's'}, ${overallAttendanceRate}% session attendance.`;
+  const personJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: officialName,
+    ...(latestMembership?.role ? { jobTitle: latestMembership.role } : {}),
+    memberOf: {
+      '@type': 'GovernmentOrganization',
+      name: lguLabels.fullName,
+    },
+  };
+
   return (
     <div className='animate-in fade-in mx-auto max-w-6xl space-y-8 px-4 pb-20 duration-500 md:px-0'>
+      <SEO
+        title={`Hon. ${officialName}`}
+        description={seoDescription}
+        breadcrumbs={breadcrumbs.map((crumb, index) => ({
+          name: index === breadcrumbs.length - 1 ? officialName : crumb.label,
+          url: crumb.href,
+        }))}
+        jsonLd={personJsonLd}
+      />
+
       {/* Breadcrumbs */}
       <Breadcrumb>
         <BreadcrumbList>

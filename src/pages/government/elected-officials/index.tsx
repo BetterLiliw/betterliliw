@@ -22,9 +22,11 @@ import {
   ContactItem,
 } from '@/components/data-display/ContactInfo';
 import { DetailSection, PageHero } from '@/components/layout/PageLayouts';
+import { SEO } from '@/components/layout/SEO';
 import { Badge } from '@/components/ui/Badge';
 import { Card, CardContent } from '@/components/ui/Card';
 
+import { lguLabels } from '@/lib/lguLabels';
 import { toTitleCase } from '@/lib/stringUtils';
 
 import executiveData from '@/data/directory/executive.json';
@@ -261,6 +263,18 @@ export default function ElectedOfficialsPage() {
 
   return (
     <div className='space-y-8'>
+      <SEO
+        title='Elected Officials'
+        description={`Elected leaders and legislative body of ${lguLabels.fullName}: the ${lguLabels.head}, Vice ${lguLabels.head}, and members of the ${lguLabels.body}.`}
+        breadcrumbs={[
+          { name: 'Home', url: '/' },
+          {
+            name: 'Elected Officials',
+            url: '/government/elected-officials',
+          },
+        ]}
+      />
+
       <PageHero
         title='Elected Officials'
         description='The elected leaders and legislative body of the Municipal Government.'

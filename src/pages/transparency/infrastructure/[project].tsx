@@ -23,6 +23,7 @@ import {
 
 // --- Components ---
 import { DetailSection } from '@/components/layout/PageLayouts';
+import { SEO } from '@/components/layout/SEO';
 import {
   Breadcrumb,
   BreadcrumbHome,
@@ -259,6 +260,7 @@ export default function InfrastructureDetail() {
   if (error || !project)
     return (
       <div className='container px-4 pt-20 mx-auto min-h-screen animate-in fade-in'>
+        <SEO title='Project Unavailable' noIndex />
         <EmptyState
           title='Project Unavailable'
           message={error || 'Project not found'}
@@ -272,8 +274,45 @@ export default function InfrastructureDetail() {
   const hasDocuments =
     project.links && Object.values(project.links).some(link => !!link);
 
+  // --- SEO ---
+  const seoDescription = `${project.description} — a ${project.category} infrastructure project in ${project.location.province}, ${project.status.toLowerCase()}, budgeted at ${formatPesoAdaptive(project.budget).fullString} and contracted to ${project.contractor}.`;
+  const projectJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'CivicStructure',
+    name: project.description,
+    description: seoDescription,
+    ...(project.latitude && project.longitude
+      ? {
+          geo: {
+            '@type': 'GeoCoordinates',
+            latitude: project.latitude,
+            longitude: project.longitude,
+          },
+        }
+      : {}),
+    address: {
+      '@type': 'PostalAddress',
+      addressRegion: project.location.province,
+      addressCountry: 'PH',
+    },
+  };
+
   return (
     <div className='pb-20 mx-auto space-y-8 max-w-7xl duration-500 animate-in fade-in'>
+      <SEO
+        title={project.description}
+        description={seoDescription}
+        breadcrumbs={[
+          { name: 'Home', url: '/' },
+          { name: 'Infrastructure', url: '/transparency/infrastructure' },
+          {
+            name: project.contractId,
+            url: `/transparency/infrastructure/${project.contractId}`,
+          },
+        ]}
+        jsonLd={projectJsonLd}
+      />
+
       {/* 1. Breadcrumb */}
       <Breadcrumb>
         <BreadcrumbList>

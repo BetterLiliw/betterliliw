@@ -5,6 +5,38 @@
 @source '../node_modules/@bettergov/kapwa/dist';
 @import '@bettergov/kapwa/styles';
 
+/* BetterLiliw brand override.
+ *
+ * Kapwa's default `brand` scale is a generic BetterGov blue. This portal's
+ * actual identity color is the navy used in the logo and splash screen
+ * (#1c3a5b — see index.html and config/lgu.config.json `portal.brandColor`).
+ * Every `bg-kapwa-bg-brand-*`, `text-kapwa-text-brand*` and
+ * `border-kapwa-border-brand` token resolves from this scale (see
+ * node_modules/@bettergov/kapwa/dist/kapwa.css), so redeclaring it here is
+ * enough to recolor every brand-tinted surface in the app — no per-component
+ * changes needed. Tailwind v4 merges repeated `@theme` declarations for the
+ * same variable, with the later one (this file, imported after the kapwa
+ * package) winning.
+ *
+ * Ramp generated from the anchor at 600 (the "default" step every semantic
+ * brand token points to) by holding hue/saturation constant and varying
+ * lightness — not a proportional rescale of Kapwa's original ramp, since
+ * this navy is already about as dark as Kapwa's darkest default step.
+ */
+@theme {
+  --color-kapwa-brand-50: #f4f7fb;
+  --color-kapwa-brand-100: #e5edf5;
+  --color-kapwa-brand-200: #c6d8eb;
+  --color-kapwa-brand-300: #9cbbde;
+  --color-kapwa-brand-400: #6597cd;
+  --color-kapwa-brand-500: #366dab;
+  --color-kapwa-brand-600: #1c3a5b;
+  --color-kapwa-brand-700: #162f4b;
+  --color-kapwa-brand-800: #11253b;
+  --color-kapwa-brand-900: #0c1b2c;
+  --color-kapwa-brand-950: #07101a;
+}
+
 :root {
   --font-kapwa-sans:
     'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,

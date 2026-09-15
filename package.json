@@ -55,6 +55,7 @@
     "leaflet": "^1.9.4",
     "lucide-react": "^0.575.0",
     "meilisearch": "^0.55.0",
+    "motion": "^13.3.0",
     "nuqs": "^2.6.0",
     "react": "19.1.0",
     "react-dom": "19.1.0",

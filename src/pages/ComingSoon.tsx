@@ -1,20 +1,75 @@
-import {
-  BarChart3Icon,
-  BuildingIcon,
-  GithubIcon,
-  MailIcon,
-  ScrollTextIcon,
-  ScaleIcon,
-} from 'lucide-react';
+import { useRef, type RefObject } from 'react';
 
+import { BookOpenTextIcon } from '@/components/icons/book-open-text';
+import { ChartColumnIcon } from '@/components/icons/chart-column';
+import { FileTextIcon } from '@/components/icons/file-text';
+import { GithubIcon } from '@/components/icons/github';
+import { MailIcon } from '@/components/icons/mail';
+import { UsersIcon } from '@/components/icons/users';
 import { SEO } from '@/components/layout/SEO';
 import { config } from '@/lib/lguConfig';
 
+/** Imperative handle shared by every AnimateIcons component. */
+interface AnimatedIconHandle {
+  startAnimation: () => void;
+  stopAnimation: () => void;
+}
+
 interface UpcomingModule {
-  icon: typeof BuildingIcon;
+  icon: typeof FileTextIcon;
   title: string;
   description: string;
   enabled: boolean;
+}
+
+/**
+ * Lets a parent element (card, button) drive its icon's micro-animation so
+ * the hover target is the whole control rather than the 16–18px glyph.
+ * Focus is wired too so keyboard users get the same feedback.
+ */
+function useIconHover(): {
+  iconRef: RefObject<AnimatedIconHandle>;
+  hoverProps: {
+    onMouseEnter: () => void;
+    onMouseLeave: () => void;
+    onFocus: () => void;
+    onBlur: () => void;
+  };
+} {
+  const iconRef = useRef<AnimatedIconHandle>(null);
+  const start = () => iconRef.current?.startAnimation();
+  const stop = () => iconRef.current?.stopAnimation();
+  return {
+    iconRef,
+    hoverProps: {
+      onMouseEnter: start,
+      onMouseLeave: stop,
+      onFocus: start,
+      onBlur: stop,
+    },
+  };
+}
+
+function ModuleItem({
+  icon: Icon,
+  title,
+  description,
+}: Omit<UpcomingModule, 'enabled'>) {
+  const { iconRef, hoverProps } = useIconHover();
+
+  return (
+    <li className='flex gap-3' {...hoverProps}>
+      <span className='bg-kapwa-bg-brand-weak text-kapwa-text-brand mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg'>
+        <Icon ref={iconRef} size={18} aria-hidden />
+      </span>
+      <div>
+        <h2 className='text-kapwa-text-strong font-semibold'>{title}</h2>
+        <p className='text-kapwa-text-support mt-1 text-sm leading-relaxed'>
+          {description}
+        </p>
+      </div>
+    </li>
+  );
 }
 
 /**
@@ -25,31 +80,33 @@ interface UpcomingModule {
 export default function ComingSoon() {
   const { portal, lgu, features } = config;
   const year = new Date().getFullYear();
+  const github = useIconHover();
+  const mail = useIconHover();
 
   const modules: UpcomingModule[] = [
     {
-      icon: ScrollTextIcon,
+      icon: FileTextIcon,
       title: 'Municipal services',
       description:
         'Step-by-step requirements, fees and processing times drawn from the Citizen’s Charter.',
       enabled: true,
     },
     {
-      icon: BuildingIcon,
+      icon: UsersIcon,
       title: 'Government directory',
       description:
         'Elected officials, municipal departments and all barangays in one searchable place.',
       enabled: true,
     },
     {
-      icon: ScaleIcon,
+      icon: BookOpenTextIcon,
       title: 'Legislation tracker',
       description:
         'Ordinances, resolutions and session records, kept openly and linked to the officials behind them.',
       enabled: features.openLGU,
     },
     {
-      icon: BarChart3Icon,
+      icon: ChartColumnIcon,
       title: 'Transparency & statistics',
       description:
         'Budgets, procurement and infrastructure projects presented in plain language.',
@@ -105,20 +162,13 @@ export default function ComingSoon() {
           <ul className='mt-10 grid gap-x-8 gap-y-6 sm:grid-cols-2'>
             {modules
               .filter(module => module.enabled)
-              .map(({ icon: Icon, title, description }) => (
-                <li key={title} className='flex gap-3'>
-                  <span className='bg-kapwa-bg-brand-weak text-kapwa-text-brand mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg'>
-                    <Icon className='h-4.5 w-4.5' aria-hidden />
-                  </span>
-                  <div>
-                    <h2 className='text-kapwa-text-strong font-semibold'>
-                      {title}
-                    </h2>
-                    <p className='text-kapwa-text-support mt-1 text-sm leading-relaxed'>
-                      {description}
-                    </p>
-                  </div>
-                </li>
+              .map(({ icon, title, description }) => (
+                <ModuleItem
+                  key={title}
+                  icon={icon}
+                  title={title}
+                  description={description}
+                />
               ))}
           </ul>
 
@@ -129,8 +179,9 @@ export default function ComingSoon() {
                 target='_blank'
                 rel='noopener noreferrer'
                 className='bg-kapwa-bg-brand-default hover:bg-kapwa-bg-brand-hover text-kapwa-text-inverse focus-visible:outline-kapwa-border-focus inline-flex items-center justify-center gap-2 rounded-lg px-5 py-2.5 text-sm font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2'
+                {...github.hoverProps}
               >
-                <GithubIcon className='h-4 w-4' aria-hidden />
+                <GithubIcon ref={github.iconRef} size={16} aria-hidden />
                 Follow the build on GitHub
               </a>
             )}
@@ -138,8 +189,9 @@ export default function ComingSoon() {
               <a
                 href={`mailto:${portal.contactEmail}`}
                 className='border-kapwa-border-strong text-kapwa-text-strong hover:bg-kapwa-bg-brand-weak focus-visible:outline-kapwa-border-focus inline-flex items-center justify-center gap-2 rounded-lg border px-5 py-2.5 text-sm font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2'
+                {...mail.hoverProps}
               >
-                <MailIcon className='h-4 w-4' aria-hidden />
+                <MailIcon ref={mail.iconRef} size={16} aria-hidden />
                 Contact the volunteers
               </a>
             )}

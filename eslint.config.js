@@ -45,5 +45,13 @@ export default tseslint.config(
         runtime: 'automatic', // Use automatic JSX runtime
       },
     },
+  },
+  {
+    // Vendored AnimateIcons components (copied in via `npx animateicons add`).
+    // Generated code casts synthetic events with `any`; don't hand-edit it.
+    files: ['src/components/icons/**/*.tsx'],
+    rules: {
+      '@typescript-eslint/no-explicit-any': 'off',
+    },
   }
 );

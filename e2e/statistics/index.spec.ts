@@ -24,7 +24,11 @@ test.describe('Statistics Pages', () => {
 
   test('statistics layout has PageHeader and Sidebar', async ({ page }) => {
     // Check PageHeader with centered variant
-    const pageHeader = page.locator('header');
+    // The module header is the first <header> after the navbar
+    const pageHeader = page
+      .locator('header')
+      .filter({ has: page.locator('h1') })
+      .first();
     await expect(pageHeader).toBeVisible();
     await expect(
       pageHeader.locator('h1:has-text("Municipal Statistics")')
@@ -36,9 +40,8 @@ test.describe('Statistics Pages', () => {
     ).toBeVisible();
 
     // Check StatisticsSidebar is present
-    const sidebar = page
-      .locator('aside')
-      .or(page.locator('[data-testid="sidebar"]'));
+    // The layout's <aside> wraps the module sidebar's own <aside>
+    const sidebar = page.locator('aside').first();
     await expect(sidebar).toBeVisible();
   });
 
@@ -209,7 +212,7 @@ test.describe('Statistics Pages', () => {
     }
 
     // Check main content area
-    const main = page.locator('main').or(page.locator('[role="main"]'));
+    const main = page.locator('main').first();
     await expect(main).toBeVisible();
 
     // Check proper heading hierarchy
@@ -230,14 +233,11 @@ test.describe('Statistics Pages', () => {
     ).toBeVisible();
 
     // Check sidebar is collapsible on mobile
-    const sidebar = page
-      .locator('aside')
-      .or(page.locator('[data-testid="sidebar"]'));
+    // The layout's <aside> wraps the module sidebar's own <aside>
+    const sidebar = page.locator('aside').first();
 
     // Check for mobile menu button
-    const menuButton = page
-      .locator('button[aria-label*="menu" i]')
-      .or(page.locator('[data-testid="mobile-menu-button"]'));
+    const menuButton = page.getByRole('button', { name: 'Menu', exact: true });
 
     const menuButtonCount = await menuButton.count();
     if (menuButtonCount > 0) {
@@ -257,9 +257,8 @@ test.describe('Statistics Pages', () => {
     await page.waitForLoadState('networkidle');
 
     // Check sidebar is visible
-    const sidebar = page
-      .locator('aside')
-      .or(page.locator('[data-testid="sidebar"]'));
+    // The layout's <aside> wraps the module sidebar's own <aside>
+    const sidebar = page.locator('aside').first();
     await expect(sidebar).toBeVisible();
 
     // Look for collapse button
@@ -274,10 +273,7 @@ test.describe('Statistics Pages', () => {
       await page.waitForTimeout(300);
 
       // Main content should still be visible
-      const mainContent = page
-        .locator('main')
-        .or(page.locator('[role="main"]'));
-      await expect(mainContent).toBeVisible();
+      await expect(page.locator('main').first()).toBeVisible();
     }
   });
 

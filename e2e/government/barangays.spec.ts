@@ -16,15 +16,14 @@ test.describe('Barangays Pages', () => {
     const cards = page.locator('a[href*="/government/barangays/"]');
     const count = await cards.count();
 
-    // Should have multiple barangays (Los Baños has 14 barangays)
+    // Should have multiple barangays
     expect(count).toBeGreaterThan(10);
 
-    // Check first card has proper structure
-    const firstCard = cards.first();
-    await expect(firstCard).toBeVisible();
-    await expect(firstCard.locator('[aria-label*="View profile"]')).toHaveCount(
-      count
-    );
+    // Every card link carries an accessible label
+    await expect(cards.first()).toBeVisible();
+    await expect(
+      cards.and(page.locator('[aria-label*="View profile"]'))
+    ).toHaveCount(count);
   });
 
   test('barangays search functionality works', async ({ page }) => {
@@ -89,10 +88,9 @@ test.describe('Barangays Pages', () => {
     await expect(officialCards.first()).toBeVisible();
 
     // Check for Punong Barangay section
-    const punongSection = page
-      .locator('p')
-      .filter({ hasText: 'Chief Executive' });
-    await expect(punongSection).toBeVisible();
+    await expect(
+      page.getByRole('group', { name: 'Chief Executive' })
+    ).toBeVisible();
   });
 
   test('barangay detail page has breadcrumbs', async ({ page }) => {
@@ -104,13 +102,11 @@ test.describe('Barangays Pages', () => {
     await page.waitForURL(/\/government\/barangays\/.+/);
 
     // Check breadcrumb navigation
-    const breadcrumb = page.locator('nav[aria-label="Breadcrumb"]');
+    const breadcrumb = page.locator('nav[aria-label="breadcrumb" i]');
     await expect(breadcrumb).toBeVisible();
 
-    // Check breadcrumb links
-    await expect(
-      breadcrumb.locator('a[href="/"]').filter({ hasText: 'Home' })
-    ).toBeVisible();
+    // Check breadcrumb links (home is an icon-only link)
+    await expect(breadcrumb.locator('a[href="/"]')).toBeVisible();
     await expect(
       breadcrumb.locator('a[href="/government/barangays"]')
     ).toBeVisible();
@@ -124,8 +120,9 @@ test.describe('Barangays Pages', () => {
     // Wait for navigation
     await page.waitForURL(/\/government\/barangays\/.+/);
 
-    // Check for skip link (should be hidden until focused)
-    const skipLink = page.locator('a[href="#main-content"]');
+    // Check for the page's skip link (should be hidden until focused).
+    // The app shell renders a global one too, so take the page-level link.
+    const skipLink = page.locator('a[href="#main-content"]').last();
     await expect(skipLink).toHaveAttribute('class', /sr-only/);
   });
 
@@ -178,12 +175,17 @@ test.describe('Barangays Pages', () => {
     // Wait for navigation
     await page.waitForURL(/\/government\/barangays\/.+/);
 
-    // Check sidebar exists on mobile (should be collapsed)
-    const sidebar = page.locator('aside');
-    await expect(sidebar).toBeVisible();
+    // Detail pages start with the sidebar collapsed; it is still in the DOM
+    // and the expand control is offered instead.
+    const sidebar = page.locator('aside').first();
+    await expect(sidebar).toBeAttached();
+    await expect(page.getByTitle('Expand Menu')).toBeVisible();
 
     // On mobile, sidebar should have mobile menu button
-    const mobileMenuButton = page.locator('button').filter({ hasText: 'Menu' });
+    const mobileMenuButton = page.getByRole('button', {
+      name: 'Menu',
+      exact: true,
+    });
     const hasMobileMenu = (await mobileMenuButton.count()) > 0;
 
     if (hasMobileMenu) {

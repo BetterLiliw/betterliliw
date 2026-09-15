@@ -1,6 +1,9 @@
 import { test, expect } from '../test-config';
 
-test.describe('Statistics Page Charts', () => {
+// These assert Recharts internals (dots, sectors, tooltips, tabs) of the
+// template's chart configuration, which the Liliw statistics pages don't share.
+// Rewrite against the actual charts before re-enabling.
+test.describe.fixme('Statistics Page Charts', () => {
   test.describe('Population Page Charts', () => {
     test.beforeEach(async ({ page }) => {
       await page.goto('/statistics');

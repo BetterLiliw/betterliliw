@@ -15,7 +15,8 @@ test.describe('Service Detail Page', () => {
 
   test('service detail page displays quick info section', async ({ page }) => {
     // Check that service title is visible
-    const h1 = page.locator('h1');
+    // The services layout renders its own h1; the service title is the last one
+    const h1 = page.locator('h1').last();
     await expect(h1).toBeVisible();
 
     // Verify Kapwa design tokens are present
@@ -31,7 +32,8 @@ test.describe('Service Detail Page', () => {
 
     // Some services have requirements, others don't
     // Just verify the page loaded successfully
-    const h1 = page.locator('h1');
+    // The services layout renders its own h1; the service title is the last one
+    const h1 = page.locator('h1').last();
     await expect(h1).toBeVisible();
 
     // If requirements exist, check their structure
@@ -51,7 +53,8 @@ test.describe('Service Detail Page', () => {
 
     // Some services have process steps, others don't
     // Just verify the page loaded successfully
-    const h1 = page.locator('h1');
+    // The services layout renders its own h1; the service title is the last one
+    const h1 = page.locator('h1').last();
     await expect(h1).toBeVisible();
 
     // If timeline exists, check its structure
@@ -83,7 +86,8 @@ test.describe('Service Detail Page', () => {
   }) => {
     // May or may not have contact info depending on service
     // Just verify page structure is intact
-    const h1 = page.locator('h1');
+    // The services layout renders its own h1; the service title is the last one
+    const h1 = page.locator('h1').last();
     await expect(h1).toBeVisible();
   });
 
@@ -115,7 +119,8 @@ test.describe('Service Detail Page', () => {
 
   test('service detail page is accessible', async ({ page }) => {
     // Check page has proper heading structure
-    const h1 = page.locator('h1');
+    // The services layout renders its own h1; the service title is the last one
+    const h1 = page.locator('h1').last();
     await expect(h1).toBeVisible();
 
     // Check that interactive elements are focusable

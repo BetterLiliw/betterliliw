@@ -282,9 +282,9 @@ export default function AuditLog() {
         </Card>
       ) : logs.length === 0 ? (
         <EmptyState
-          icon={<FileText className='h-12 w-12' />}
+          icon={FileText}
           title='No audit logs found'
-          description={
+          message={
             Object.keys(filters).length > 0
               ? 'Try adjusting your filters to see more results'
               : 'Audit logs will appear here when administrative actions are performed'

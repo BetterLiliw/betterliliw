@@ -322,7 +322,7 @@ const SitemapPage: FC = () => {
   ];
 
   return (
-    <div className='py-12 min-h-screen bg-kapwa-bg-surface-raised'>
+    <div className='py-12 min-h-screen bg-tsinelas-bg-surface-raised'>
       <SEO
         title='Sitemap'
         description='Complete sitemap — find all pages and services available on this portal.'
@@ -337,12 +337,12 @@ const SitemapPage: FC = () => {
 
       <div className='container mx-auto px-4 py-8 md:py-12'>
         <div className='mx-auto max-w-5xl'>
-          <div className='overflow-hidden rounded-xl bg-kapwa-bg-surface shadow-xs'>
-            <div className='p-6 border-b border-kapwa-border-weak md:p-8'>
-              <h1 className='text-kapwa-text-strong kapwa-heading-xl font-extrabold'>
+          <div className='overflow-hidden rounded-xl bg-tsinelas-bg-surface shadow-xs'>
+            <div className='p-6 border-b border-tsinelas-border-weak md:p-8'>
+              <h1 className='text-tsinelas-text-strong tsinelas-heading-xl font-extrabold'>
                 Sitemap
               </h1>
-              <p className='mt-2 text-kapwa-text-support'>
+              <p className='mt-2 text-tsinelas-text-support'>
                 A complete guide to all pages and services available on
                 {config.portal.name}
               </p>
@@ -353,10 +353,10 @@ const SitemapPage: FC = () => {
                 {sitemapSections.map((section, index) => (
                   <div key={index}>
                     <div className='flex items-center mb-4'>
-                      <div className='p-2 mr-3 rounded-md bg-kapwa-bg-surface text-kapwa-text-brand'>
+                      <div className='p-2 mr-3 rounded-md bg-tsinelas-bg-surface text-tsinelas-text-brand'>
                         {section.icon}
                       </div>
-                      <h2 className='text-xl font-bold text-kapwa-text-strong'>
+                      <h2 className='text-xl font-bold text-tsinelas-text-strong'>
                         {section.title}
                       </h2>
                     </div>
@@ -366,16 +366,16 @@ const SitemapPage: FC = () => {
                         <Link
                           key={linkIndex}
                           to={link.url}
-                          className='flex flex-col p-4 rounded-lg border transition-colors group hover:border-kapwa-border-brand hover:bg-kapwa-bg-surface-brand border-kapwa-border-weak'
+                          className='flex flex-col p-4 rounded-lg border transition-colors group hover:border-tsinelas-border-brand hover:bg-tsinelas-bg-surface-brand border-tsinelas-border-weak'
                         >
                           <div className='flex justify-between items-center mb-2'>
-                            <h3 className='font-medium group-hover:text-kapwa-text-brand text-kapwa-text-strong'>
+                            <h3 className='font-medium group-hover:text-tsinelas-text-brand text-tsinelas-text-strong'>
                               {link.title}
                             </h3>
-                            <ChevronRight className='w-4 h-4 group-hover:text-kapwa-text-link text-kapwa-text-disabled' />
+                            <ChevronRight className='w-4 h-4 group-hover:text-tsinelas-text-link text-tsinelas-text-disabled' />
                           </div>
                           {link.description && (
-                            <p className='text-sm text-kapwa-text-support'>
+                            <p className='text-sm text-tsinelas-text-support'>
                               {link.description}
                             </p>
                           )}
@@ -388,12 +388,12 @@ const SitemapPage: FC = () => {
             </div>
           </div>
 
-          <div className='mt-8 text-sm text-center text-kapwa-text-support'>
+          <div className='mt-8 text-sm text-center text-tsinelas-text-support'>
             <p>
               Can&apos;t find what you&apos;re looking for? Try using our{' '}
               <Link
                 to='/search'
-                className='text-kapwa-text-brand hover:underline'
+                className='text-tsinelas-text-brand hover:underline'
               >
                 search feature
               </Link>

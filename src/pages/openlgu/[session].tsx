@@ -118,7 +118,7 @@ export default function SessionDetail() {
       </Breadcrumb>
 
       <header
-        className={`border-kapwa-border-weak bg-kapwa-bg-surface rounded-2xl border border-l-8 p-6 shadow-sm md:p-10 ${isRegular ? 'border-l-kapwa-border-brand' : 'border-l-kapwa-border-accent-orange'}`}
+        className={`border-tsinelas-border-weak bg-tsinelas-bg-surface rounded-2xl border border-l-8 p-6 shadow-sm md:p-10 ${isRegular ? 'border-l-tsinelas-border-brand' : 'border-l-tsinelas-border-accent-orange'}`}
       >
         <div className='flex flex-col justify-between gap-6 md:flex-row md:items-center'>
           <div className='space-y-4'>
@@ -126,21 +126,21 @@ export default function SessionDetail() {
               <Badge variant={isRegular ? 'primary' : 'secondary'} dot>
                 {session.type} Session
               </Badge>
-              <span className='text-kapwa-text-disabled font-mono text-[10px] font-bold tracking-widest uppercase'>
+              <span className='text-tsinelas-text-disabled font-mono text-[10px] font-bold tracking-widest uppercase'>
                 ID: {session.id}
               </span>
             </div>
-            <h1 className='text-kapwa-text-strong kapwa-heading-xl font-extrabold'>
+            <h1 className='text-tsinelas-text-strong tsinelas-heading-xl font-extrabold'>
               {session.ordinal_number} {session.type} Session
             </h1>
           </div>
-          <div className='border-kapwa-border-weak bg-kapwa-bg-surface-raised flex items-center gap-4 rounded-xl border p-4'>
-            <Calendar className='text-kapwa-text-brand h-5 w-5' />
+          <div className='border-tsinelas-border-weak bg-tsinelas-bg-surface-raised flex items-center gap-4 rounded-xl border p-4'>
+            <Calendar className='text-tsinelas-text-brand h-5 w-5' />
             <div>
-              <p className='text-kapwa-text-disabled text-[10px] font-bold tracking-widest uppercase'>
+              <p className='text-tsinelas-text-disabled text-[10px] font-bold tracking-widest uppercase'>
                 Date Held
               </p>
-              <p className='text-kapwa-text-support text-sm font-bold'>
+              <p className='text-tsinelas-text-support text-sm font-bold'>
                 {session.date}
               </p>
             </div>
@@ -160,7 +160,7 @@ export default function SessionDetail() {
             ) : (
               <div className='space-y-6'>
                 <div>
-                  <h3 className='mb-3 flex items-center gap-2 text-[10px] font-bold tracking-widest text-kapwa-text-success uppercase'>
+                  <h3 className='mb-3 flex items-center gap-2 text-[10px] font-bold tracking-widest text-tsinelas-text-success uppercase'>
                     <CheckCircle2 className='h-3.5 w-3.5' /> Present (
                     {presentMembers.length})
                   </h3>
@@ -169,7 +169,7 @@ export default function SessionDetail() {
                       <li key={p.id}>
                         <Link
                           to={`/openlgu/person/${p.id}`}
-                          className='hover:text-kapwa-text-brand text-kapwa-text-support block py-1 text-sm font-medium transition-colors'
+                          className='hover:text-tsinelas-text-brand text-tsinelas-text-support block py-1 text-sm font-medium transition-colors'
                         >
                           {getPersonName(p)}
                         </Link>
@@ -179,8 +179,8 @@ export default function SessionDetail() {
                 </div>
 
                 {absentMembers.length > 0 && (
-                  <div className='border-kapwa-border-weak border-t pt-4'>
-                    <h3 className='text-kapwa-text-accent-orange mb-3 flex items-center gap-2 text-[10px] font-bold tracking-widest uppercase'>
+                  <div className='border-tsinelas-border-weak border-t pt-4'>
+                    <h3 className='text-tsinelas-text-accent-orange mb-3 flex items-center gap-2 text-[10px] font-bold tracking-widest uppercase'>
                       <XCircle className='h-3.5 w-3.5' /> Absent (
                       {absentMembers.length})
                     </h3>
@@ -188,7 +188,7 @@ export default function SessionDetail() {
                       {absentMembers.map((p: Person) => (
                         <li
                           key={p.id}
-                          className='text-kapwa-text-disabled block py-1 text-sm font-medium'
+                          className='text-tsinelas-text-disabled block py-1 text-sm font-medium'
                         >
                           {getPersonName(p)}
                         </li>
@@ -215,17 +215,17 @@ export default function SessionDetail() {
                   <Link
                     key={doc.id}
                     to={`/openlgu/documents/${doc.id}`}
-                    className='group hover:bg-kapwa-bg-surface-raised -mx-2 block min-h-[44px] rounded-lg px-2 py-4 transition-all'
+                    className='group hover:bg-tsinelas-bg-surface-raised -mx-2 block min-h-[44px] rounded-lg px-2 py-4 transition-all'
                   >
                     <div className='mb-1 flex items-center gap-3'>
                       <Badge variant={getDocTypeBadgeVariant(doc.type)}>
                         {doc.type}
                       </Badge>
-                      <span className='text-kapwa-text-disabled font-mono text-[10px] font-bold uppercase'>
+                      <span className='text-tsinelas-text-disabled font-mono text-[10px] font-bold uppercase'>
                         {doc.number}
                       </span>
                     </div>
-                    <p className='group-hover:text-kapwa-text-brand text-kapwa-text-strong text-sm leading-relaxed font-bold'>
+                    <p className='group-hover:text-tsinelas-text-brand text-tsinelas-text-strong text-sm leading-relaxed font-bold'>
                       {doc.title}
                     </p>
                   </Link>

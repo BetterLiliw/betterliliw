@@ -62,49 +62,49 @@ export function FeesCard({ fees }: FeesCardProps) {
     <div>
       <button
         onClick={() => setIsExpanded(!isExpanded)}
-        className='border-kapwa-border-weak hover:border-kapwa-border-brand bg-kapwa-bg-surface flex w-full items-start gap-3 rounded-2xl border p-4 shadow-xs transition-all'
+        className='border-tsinelas-border-weak hover:border-tsinelas-border-brand bg-tsinelas-bg-surface flex w-full items-start gap-3 rounded-2xl border p-4 shadow-xs transition-all'
         aria-expanded={isExpanded}
       >
-        <div className='text-kapwa-text-brand bg-kapwa-bg-surface-raised shrink-0 rounded-lg p-2'>
+        <div className='text-tsinelas-text-brand bg-tsinelas-bg-surface-raised shrink-0 rounded-lg p-2'>
           <Banknote className='h-4 w-4' />
         </div>
         <div className='flex flex-1 items-center justify-between'>
           <div className='text-left'>
-            <p className='text-kapwa-text-disabled mb-1 text-[10px] font-bold tracking-widest uppercase'>
+            <p className='text-tsinelas-text-disabled mb-1 text-[10px] font-bold tracking-widest uppercase'>
               Fees
             </p>
-            <p className='text-kapwa-text-strong text-xs font-bold'>
+            <p className='text-tsinelas-text-strong text-xs font-bold'>
               {feeDisplay}
             </p>
           </div>
           {isExpanded ? (
-            <ChevronUp className='text-kapwa-text-support h-4 w-4 shrink-0' />
+            <ChevronUp className='text-tsinelas-text-support h-4 w-4 shrink-0' />
           ) : (
-            <ChevronDown className='text-kapwa-text-support h-4 w-4 shrink-0' />
+            <ChevronDown className='text-tsinelas-text-support h-4 w-4 shrink-0' />
           )}
         </div>
       </button>
 
       {isExpanded && (
-        <div className='border-kapwa-border-weak bg-kapwa-bg-surface-raised/50 mt-2 rounded-xl border p-4'>
+        <div className='border-tsinelas-border-weak bg-tsinelas-bg-surface-raised/50 mt-2 rounded-xl border p-4'>
           {/* Required Fees */}
           {requiredFees.length > 0 && (
             <div className='mb-4'>
-              <h4 className='text-kapwa-text-strong mb-2 text-xs font-semibold uppercase tracking-wider'>
+              <h4 className='text-tsinelas-text-strong mb-2 text-xs font-semibold uppercase tracking-wider'>
                 Required Fees
               </h4>
               <div className='space-y-2'>
                 {requiredFees.map((fee, idx) => (
                   <div
                     key={idx}
-                    className='flex items-center justify-between rounded-lg border border-kapwa-border-weak bg-kapwa-bg-surface p-3'
+                    className='flex items-center justify-between rounded-lg border border-tsinelas-border-weak bg-tsinelas-bg-surface p-3'
                   >
                     <div className='flex-1'>
-                      <p className='text-kapwa-text-strong text-xs font-medium'>
+                      <p className='text-tsinelas-text-strong text-xs font-medium'>
                         {fee.description}
                       </p>
                     </div>
-                    <p className='text-kapwa-text-brand ml-3 text-xs font-bold'>
+                    <p className='text-tsinelas-text-brand ml-3 text-xs font-bold'>
                       {fee.amount}
                     </p>
                   </div>
@@ -116,21 +116,21 @@ export function FeesCard({ fees }: FeesCardProps) {
           {/* Optional Fees */}
           {optionalFees.length > 0 && (
             <div>
-              <h4 className='text-kapwa-text-support mb-2 text-xs font-semibold uppercase tracking-wider'>
+              <h4 className='text-tsinelas-text-support mb-2 text-xs font-semibold uppercase tracking-wider'>
                 Additional Fees (if applicable)
               </h4>
               <div className='space-y-2'>
                 {optionalFees.map((fee, idx) => (
                   <div
                     key={idx}
-                    className='flex items-center justify-between rounded-lg border border-dashed border-kapwa-border-weak bg-kapwa-bg-surface p-3'
+                    className='flex items-center justify-between rounded-lg border border-dashed border-tsinelas-border-weak bg-tsinelas-bg-surface p-3'
                   >
                     <div className='flex-1'>
-                      <p className='text-kapwa-text-support text-xs font-medium'>
+                      <p className='text-tsinelas-text-support text-xs font-medium'>
                         {fee.description}
                       </p>
                     </div>
-                    <p className='text-kapwa-text-disabled ml-3 text-xs font-bold'>
+                    <p className='text-tsinelas-text-disabled ml-3 text-xs font-bold'>
                       {fee.amount}
                     </p>
                   </div>
@@ -142,11 +142,11 @@ export function FeesCard({ fees }: FeesCardProps) {
           {/* Fee Summary */}
           {(requiredFees.length > 0 && optionalFees.length > 0) ||
           (requiredFees.length > 1 && minFee !== maxFee) ? (
-            <div className='border-kapwa-border-brand bg-kapwa-bg-brand-weak/20 mt-4 flex items-center justify-between rounded-lg border p-3'>
-              <span className='text-kapwa-text-support text-xs font-medium'>
+            <div className='border-tsinelas-border-brand bg-tsinelas-bg-brand-weak/20 mt-4 flex items-center justify-between rounded-lg border p-3'>
+              <span className='text-tsinelas-text-support text-xs font-medium'>
                 Total Range
               </span>
-              <span className='text-kapwa-text-brand text-xs font-bold'>
+              <span className='text-tsinelas-text-brand text-xs font-bold'>
                 {feeDisplay}
               </span>
             </div>

@@ -143,14 +143,14 @@ const SelectPicker = ({
         ref={triggerRef}
         type='button'
         className={cn(
-          'bg-kapwa-bg-surface flex w-full items-center justify-between rounded-lg border text-left transition-all',
-          'focus:ring-kapwa-border-brand/20 focus:border-kapwa-border-brand focus:ring-2',
+          'bg-tsinelas-bg-surface flex w-full items-center justify-between rounded-lg border text-left transition-all',
+          'focus:ring-tsinelas-border-brand/20 focus:border-tsinelas-border-brand focus:ring-2',
           sizes[size],
           disabled
-            ? 'bg-kapwa-bg-surface cursor-not-allowed opacity-60'
-            : 'hover:border-kapwa-border-strong',
+            ? 'bg-tsinelas-bg-surface cursor-not-allowed opacity-60'
+            : 'hover:border-tsinelas-border-strong',
           isOpen &&
-            'border-kapwa-border-brand ring-kapwa-border-brand/20 ring-2',
+            'border-tsinelas-border-brand ring-tsinelas-border-brand/20 ring-2',
           'px-3'
         )}
         onClick={handleToggle}
@@ -162,8 +162,8 @@ const SelectPicker = ({
           className={cn(
             'truncate',
             selectedOptions.length > 0
-              ? 'text-kapwa-text-strong'
-              : 'text-kapwa-text-disabled'
+              ? 'text-tsinelas-text-strong'
+              : 'text-tsinelas-text-disabled'
           )}
         >
           {selectedOptions.length > 0
@@ -174,16 +174,16 @@ const SelectPicker = ({
           {clearable && selectedOptions.length > 0 && !disabled && (
             <button
               type='button'
-              className='hover:bg-kapwa-bg-hover rounded-full p-1 transition-colors'
+              className='hover:bg-tsinelas-bg-hover rounded-full p-1 transition-colors'
               onClick={handleClear}
               aria-label='Clear selection'
             >
-              <XIcon className='text-kapwa-text-disabled h-4 w-4' />
+              <XIcon className='text-tsinelas-text-disabled h-4 w-4' />
             </button>
           )}
           <ChevronDownIcon
             className={cn(
-              'text-kapwa-text-disabled h-4 w-4 transition-transform duration-200',
+              'text-tsinelas-text-disabled h-4 w-4 transition-transform duration-200',
               isOpen && 'rotate-180'
             )}
           />
@@ -193,18 +193,18 @@ const SelectPicker = ({
       {isOpen && (
         <div
           className={cn(
-            'bg-kapwa-bg-surface absolute z-50 max-h-60 w-full overflow-hidden rounded-lg border shadow-lg',
+            'bg-tsinelas-bg-surface absolute z-50 max-h-60 w-full overflow-hidden rounded-lg border shadow-lg',
             dropdownPosition === 'top' ? 'bottom-full mb-1' : 'top-full mt-1'
           )}
         >
           {searchable && (
-            <div className='border-kapwa-border-weak border-b p-2'>
+            <div className='border-tsinelas-border-weak border-b p-2'>
               <div className='relative'>
-                <SearchIcon className='text-kapwa-text-disabled absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2' />
+                <SearchIcon className='text-tsinelas-text-disabled absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2' />
                 <input
                   ref={searchInputRef}
                   type='text'
-                  className='focus:ring-kapwa-border-brand focus:border-kapwa-border-brand border-kapwa-border-weak w-full rounded-md border py-2 pr-3 pl-9 text-sm focus:ring-2 focus:outline-none'
+                  className='focus:ring-tsinelas-border-brand focus:border-tsinelas-border-brand border-tsinelas-border-weak w-full rounded-md border py-2 pr-3 pl-9 text-sm focus:ring-2 focus:outline-none'
                   placeholder='Search options...'
                   value={searchTerm}
                   onChange={handleSearchChange}
@@ -221,9 +221,9 @@ const SelectPicker = ({
                     key={option.value}
                     className={cn(
                       'cursor-pointer px-3 py-2 text-sm transition-colors',
-                      'hover:bg-kapwa-bg-surface-brand hover:text-kapwa-text-brand',
+                      'hover:bg-tsinelas-bg-surface-brand hover:text-tsinelas-text-brand',
                       selectedOptions.some(o => o.value === option.value) &&
-                        'bg-kapwa-bg-brand-weak text-kapwa-text-brand-bold'
+                        'bg-tsinelas-bg-brand-weak text-tsinelas-text-brand-bold'
                     )}
                     onClick={() => handleSelect(option)}
                     role='option'
@@ -236,7 +236,7 @@ const SelectPicker = ({
                 ))}
               </ul>
             ) : (
-              <div className='text-kapwa-text-disabled px-3 py-2 text-center text-sm'>
+              <div className='text-tsinelas-text-disabled px-3 py-2 text-center text-sm'>
                 No options found
               </div>
             )}

@@ -1,5 +1,5 @@
 import { test, expect } from '../test-config';
-import { assertKapwaTokens } from '../utils/kapwa';
+import { assertTsinelasTokens } from '../utils/tsinelas';
 
 // /transparency/bids is not a route in this portal (it 404s); the section is
 // kept so the tests are ready when bids & awards land.
@@ -9,14 +9,14 @@ test.describe.fixme('Bids Transparency Page', () => {
     await page.goto('/transparency/bids');
   });
 
-  test('bids page uses Kapwa semantic tokens', async ({ page }) => {
+  test('bids page uses Tsinelas semantic tokens', async ({ page }) => {
     // Check page title is visible
     await expect(
       page.locator('h1').filter({ hasText: /Bids|Invitation/i })
     ).toBeVisible();
 
-    // Verify Kapwa semantic tokens are used
-    await assertKapwaTokens(page);
+    // Verify Tsinelas semantic tokens are used
+    await assertTsinelasTokens(page);
   });
 
   test('bids page has accessible skip link', async ({ page }) => {
@@ -86,7 +86,7 @@ test.describe('Transparency Index Page', () => {
     await page.goto('/transparency');
   });
 
-  test('transparency index page uses Kapwa semantic tokens', async ({
+  test('transparency index page uses Tsinelas semantic tokens', async ({
     page,
   }) => {
     // Check page title is visible
@@ -94,8 +94,8 @@ test.describe('Transparency Index Page', () => {
       page.locator('h1').filter({ hasText: /Transparency/i })
     ).toBeVisible();
 
-    // Verify Kapwa semantic tokens are used
-    await assertKapwaTokens(page);
+    // Verify Tsinelas semantic tokens are used
+    await assertTsinelasTokens(page);
   });
 
   test('transparency index has navigation to subpages', async ({ page }) => {
@@ -156,8 +156,8 @@ test.describe('Transparency Index Page', () => {
     // Verify navigation occurred
     await expect(page).toHaveURL(/\/transparency\/.+/);
 
-    // Verify new page uses Kapwa tokens
-    await assertKapwaTokens(page);
+    // Verify new page uses Tsinelas tokens
+    await assertTsinelasTokens(page);
   });
 
   test('bids and awards page visual snapshot @visual', async ({ page }) => {

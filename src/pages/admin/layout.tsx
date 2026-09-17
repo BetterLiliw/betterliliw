@@ -72,15 +72,15 @@ function AdminContent() {
         <div className='mb-8 flex items-center justify-between'>
           <div>
             <div className='mb-2 flex items-center gap-3'>
-              <Shield className='text-kapwa-text-brand h-8 w-8' />
-              <h1 className='text-kapwa-text-strong kapwa-heading-xl font-extrabold'>
+              <Shield className='text-tsinelas-text-brand h-8 w-8' />
+              <h1 className='text-tsinelas-text-strong tsinelas-heading-xl font-extrabold'>
                 Admin Dashboard
               </h1>
               <Badge variant={USE_MOCK_AUTH ? 'info' : 'warning'}>
                 {USE_MOCK_AUTH ? 'Mock Mode' : 'Admin Only'}
               </Badge>
             </div>
-            <p className='text-kapwa-text-support'>
+            <p className='text-tsinelas-text-support'>
               Review and manage legislative data pipeline issues
             </p>
           </div>

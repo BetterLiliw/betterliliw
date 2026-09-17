@@ -240,27 +240,27 @@ export default function LegislationIndex() {
             className='group block'
             aria-label={`${doc.type} ${doc.number}: ${doc.title}`}
           >
-            <article className='hover:border-kapwa-border-brand border-kapwa-border-weak bg-kapwa-bg-surface relative flex min-h-[100px] flex-col gap-4 rounded-2xl border p-5 shadow-xs transition-all hover:shadow-md md:flex-row md:items-start md:justify-between'>
+            <article className='hover:border-tsinelas-border-brand border-tsinelas-border-weak bg-tsinelas-bg-surface relative flex min-h-[100px] flex-col gap-4 rounded-2xl border p-5 shadow-xs transition-all hover:shadow-md md:flex-row md:items-start md:justify-between'>
               <div className='flex-1 space-y-2'>
                 <header className='flex items-center gap-3'>
                   <Badge variant={getDocTypeBadgeVariant(doc.type)}>
                     {doc.type}
                   </Badge>
                   <span
-                    className='text-kapwa-text-disabled text-[10px] font-bold tracking-widest uppercase'
+                    className='text-tsinelas-text-disabled text-[10px] font-bold tracking-widest uppercase'
                     aria-label={`Enacted on ${doc.date_enacted}`}
                   >
                     {doc.date_enacted}
                   </span>
                 </header>
-                <h3 className='group-hover:text-kapwa-text-brand text-kapwa-text-strong line-clamp-2 text-base leading-snug font-bold transition-colors'>
+                <h3 className='group-hover:text-tsinelas-text-brand text-tsinelas-text-strong line-clamp-2 text-base leading-snug font-bold transition-colors'>
                   {doc.title}
                 </h3>
-                <div className='text-kapwa-text-disabled flex items-center gap-2 text-[11px] font-medium'>
-                  <span className='bg-kapwa-bg-hover text-kapwa-text-support rounded px-1.5 py-0.5 font-mono font-bold'>
+                <div className='text-tsinelas-text-disabled flex items-center gap-2 text-[11px] font-medium'>
+                  <span className='bg-tsinelas-bg-hover text-tsinelas-text-support rounded px-1.5 py-0.5 font-mono font-bold'>
                     {doc.number}
                   </span>
-                  <span className='text-kapwa-text-support'>|</span>
+                  <span className='text-tsinelas-text-support'>|</span>
                   <span className='truncate'>
                     Authors:{' '}
                     {displayAuthors.length > 0
@@ -276,8 +276,8 @@ export default function LegislationIndex() {
 
       {/* Bottom Pagination */}
       {totalPages > 1 && (
-        <div className='border-kapwa-border-weak bg-kapwa-bg-surface-raised flex flex-wrap items-center justify-between gap-4 rounded-xl border-t p-4'>
-          <span className='text-kapwa-text-disabled text-xs font-medium'>
+        <div className='border-tsinelas-border-weak bg-tsinelas-bg-surface-raised flex flex-wrap items-center justify-between gap-4 rounded-xl border-t p-4'>
+          <span className='text-tsinelas-text-disabled text-xs font-medium'>
             Showing {(currentPage - 1) * itemsPerPage + 1}—
             {Math.min(currentPage * itemsPerPage, filteredDocs.length)} of{' '}
             {filteredDocs.length}
@@ -286,11 +286,11 @@ export default function LegislationIndex() {
             <button
               onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
               disabled={currentPage === 1}
-              className='border-kapwa-border-weak bg-kapwa-bg-surface text-kapwa-text-strong hover:bg-kapwa-bg-surface-raised disabled:text-kapwa-text-disabled rounded-lg border px-3 py-1.5 text-xs font-bold transition-colors disabled:cursor-not-allowed disabled:opacity-50'
+              className='border-tsinelas-border-weak bg-tsinelas-bg-surface text-tsinelas-text-strong hover:bg-tsinelas-bg-surface-raised disabled:text-tsinelas-text-disabled rounded-lg border px-3 py-1.5 text-xs font-bold transition-colors disabled:cursor-not-allowed disabled:opacity-50'
             >
               ← Previous
             </button>
-            <span className='text-kapwa-text-disabled text-xs font-medium'>
+            <span className='text-tsinelas-text-disabled text-xs font-medium'>
               Page {currentPage} of {totalPages}
             </span>
             <button
@@ -298,7 +298,7 @@ export default function LegislationIndex() {
                 setCurrentPage(Math.min(totalPages, currentPage + 1))
               }
               disabled={currentPage === totalPages}
-              className='border-kapwa-border-weak bg-kapwa-bg-surface text-kapwa-text-strong hover:bg-kapwa-bg-surface-raised disabled:text-kapwa-text-disabled rounded-lg border px-3 py-1.5 text-xs font-bold transition-colors disabled:cursor-not-allowed disabled:opacity-50'
+              className='border-tsinelas-border-weak bg-tsinelas-bg-surface text-tsinelas-text-strong hover:bg-tsinelas-bg-surface-raised disabled:text-tsinelas-text-disabled rounded-lg border px-3 py-1.5 text-xs font-bold transition-colors disabled:cursor-not-allowed disabled:opacity-50'
             >
               Next →
             </button>

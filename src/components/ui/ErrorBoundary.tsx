@@ -36,14 +36,14 @@ export class ErrorBoundary extends Component<
   render(): ReactNode {
     if (this.state.hasError) {
       return (
-        <div className='rounded-lg border border-kapwa-border-danger bg-kapwa-bg-danger-weak p-6 text-center'>
-          <p className='text-kapwa-text-danger text-sm font-medium'>
+        <div className='rounded-lg border border-tsinelas-border-danger bg-tsinelas-bg-danger-weak p-6 text-center'>
+          <p className='text-tsinelas-text-danger text-sm font-medium'>
             Something went wrong loading this section.
           </p>
           <button
             type='button'
             onClick={() => this.setState({ hasError: false, error: null })}
-            className='mt-2 text-xs text-kapwa-text-link hover:underline'
+            className='mt-2 text-xs text-tsinelas-text-link hover:underline'
           >
             Try again
           </button>

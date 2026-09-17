@@ -109,7 +109,7 @@ export default function PopulationPage() {
       </PageHero>
 
       {/* KPI Cards - using new StatCard component */}
-      <div className='grid grid-cols-1 gap-4 md:grid-cols-3 mb-kapwa-lg'>
+      <div className='grid grid-cols-1 gap-4 md:grid-cols-3 mb-tsinelas-lg'>
         <StatCard
           label='Total Population'
           value={latestMuni.population.toLocaleString()}
@@ -133,14 +133,14 @@ export default function PopulationPage() {
       </div>
 
       {/* Unified Tab Switcher */}
-      <div className='mb-kapwa-lg bg-kapwa-bg-hover flex gap-1.5 rounded-2xl p-1.5'>
+      <div className='mb-tsinelas-lg bg-tsinelas-bg-hover flex gap-1.5 rounded-2xl p-1.5'>
         <button
           onClick={() => setActiveTab('municipality')}
           className={cn(
             'flex min-h-[48px] flex-1 items-center justify-center gap-2 rounded-xl py-3 text-xs font-bold tracking-widest uppercase transition-all',
             activeTab === 'municipality'
-              ? 'text-kapwa-text-brand-bold bg-kapwa-bg-surface shadow-md'
-              : 'hover:text-kapwa-text-support text-kapwa-text-strong0'
+              ? 'text-tsinelas-text-brand-bold bg-tsinelas-bg-surface shadow-md'
+              : 'hover:text-tsinelas-text-support text-tsinelas-text-strong'
           )}
         >
           <TrendingUp className='w-4 h-4' /> Municipal Growth
@@ -150,8 +150,8 @@ export default function PopulationPage() {
           className={cn(
             'flex min-h-[48px] flex-1 items-center justify-center gap-2 rounded-xl py-3 text-xs font-bold tracking-widest uppercase transition-all',
             activeTab === 'barangays'
-              ? 'text-kapwa-text-brand-bold bg-kapwa-bg-surface shadow-md'
-              : 'hover:text-kapwa-text-support text-kapwa-text-strong0'
+              ? 'text-tsinelas-text-brand-bold bg-tsinelas-bg-surface shadow-md'
+              : 'hover:text-tsinelas-text-support text-tsinelas-text-strong'
           )}
         >
           <LineIcon className='w-4 h-4' /> Barangay Comparison
@@ -190,10 +190,10 @@ export default function PopulationPage() {
                 type='monotone'
                 dataKey='population'
                 name='Total Residents'
-                stroke='var(--color-kapwa-blue-600)'
+                stroke='var(--color-tsinelas-blue-600)'
                 strokeWidth={5}
                 dot={{
-                  fill: 'var(--color-kapwa-blue-600)',
+                  fill: 'var(--color-tsinelas-blue-600)',
                   r: 4,
                   strokeWidth: 2,
                   stroke: '#fff',
@@ -254,7 +254,7 @@ export default function PopulationPage() {
 
       {/* Info box using DetailSection for consistency */}
       <DetailSection title='How to read this data' icon={Info}>
-        <p className='text-xs italic leading-relaxed text-kapwa-text-disabled'>
+        <p className='text-xs italic leading-relaxed text-tsinelas-text-disabled'>
           {activeTab === 'municipality'
             ? 'The municipal growth chart tracks long-term population expansion from 1960 to current estimates.'
             : 'The comparison chart allows you to track which barangays are experiencing the fastest urban growth relative to their 2010 baseline.'}
@@ -262,8 +262,8 @@ export default function PopulationPage() {
       </DetailSection>
 
       {/* Footer using documented footer pattern */}
-      <footer className='pt-10 space-y-4 text-center border-t border-kapwa-border-weak'>
-        <div className='flex justify-center items-center mx-auto w-6 h-6 rounded-full bg-kapwa-bg-success-weak text-kapwa-text-success'>
+      <footer className='pt-10 space-y-4 text-center border-t border-tsinelas-border-weak'>
+        <div className='flex justify-center items-center mx-auto w-6 h-6 rounded-full bg-tsinelas-bg-success-weak text-tsinelas-text-success'>
           <svg
             className='w-4 h-4'
             fill='none'
@@ -279,10 +279,10 @@ export default function PopulationPage() {
           </svg>
         </div>
         <div className='space-y-1'>
-          <p className='text-kapwa-text-strong text-[10px] font-bold tracking-widest uppercase'>
+          <p className='text-tsinelas-text-strong text-[10px] font-bold tracking-widest uppercase'>
             Verified Data Audit
           </p>
-          <p className='text-kapwa-text-disabled text-[10px] font-bold tracking-widest uppercase'>
+          <p className='text-tsinelas-text-disabled text-[10px] font-bold tracking-widest uppercase'>
             Source: {meta.source}
           </p>
         </div>

@@ -24,7 +24,7 @@ import { Card, CardContent } from '@/components/ui/Card';
 const AboutPage: FC = () => {
   const { t } = useTranslation('about');
   return (
-    <div className='bg-kapwa-bg-surface-raised min-h-screen'>
+    <div className='bg-tsinelas-bg-surface-raised min-h-screen'>
       <SEO
         title='About'
         description='A volunteer-led tech initiative committed to creating #civictech projects aimed at making government more transparent, efficient, and accessible to citizens.'
@@ -37,31 +37,31 @@ const AboutPage: FC = () => {
         ]}
       />
       <div className='container mx-auto px-4 py-8 md:py-12'>
-        <div className='bg-kapwa-bg-surface mt-4 rounded-lg border p-6 shadow-xs md:p-8 md:py-24'>
+        <div className='bg-tsinelas-bg-surface mt-4 rounded-lg border p-6 shadow-xs md:p-8 md:py-24'>
           <div className='mx-auto max-w-3xl'>
-            <h1 className='text-kapwa-text-strong kapwa-heading-xl font-extrabold'>
+            <h1 className='text-tsinelas-text-strong tsinelas-heading-xl font-extrabold'>
               {t('title')}
             </h1>
 
             <div className='prose prose-lg max-w-none'>
               <section className='mb-10'>
-                <h2 className='text-kapwa-text-support mb-4 flex items-center text-2xl font-bold'>
-                  <TargetIcon className='text-kapwa-text-brand mr-2 h-6 w-6' />
+                <h2 className='text-tsinelas-text-support mb-4 flex items-center text-2xl font-bold'>
+                  <TargetIcon className='text-tsinelas-text-brand mr-2 h-6 w-6' />
                   {t('mission.title')}
                 </h2>
-                <div className='bg-kapwa-bg-surface-brand/30 mb-6 rounded-xl p-6 md:p-8'>
-                  <p className='text-kapwa-text-support mb-4 text-lg leading-relaxed'>
+                <div className='bg-tsinelas-bg-surface-brand/30 mb-6 rounded-xl p-6 md:p-8'>
+                  <p className='text-tsinelas-text-support mb-4 text-lg leading-relaxed'>
                     BetterGov is a{' '}
                     <strong>volunteer-led tech initiative</strong> committed to
                     creating
-                    <span className='bg-kapwa-bg-brand-default text-kapwa-text-inverse mx-2 inline-flex items-center rounded-full px-3 py-1 text-sm font-semibold'>
+                    <span className='bg-tsinelas-bg-brand-default text-tsinelas-text-inverse mx-2 inline-flex items-center rounded-full px-3 py-1 text-sm font-semibold'>
                       <ZapIcon className='mr-1 h-4 w-4' />
                       #civictech
                     </span>
                     projects aimed at making government more transparent,
                     efficient, and accessible to citizens.
                   </p>
-                  <p className='text-kapwa-text-support mb-4 text-lg leading-relaxed'>
+                  <p className='text-tsinelas-text-support mb-4 text-lg leading-relaxed'>
                     Our goal is to{' '}
                     <strong>support, promote, consolidate, and empower</strong>{' '}
                     citizen builders!
@@ -70,12 +70,12 @@ const AboutPage: FC = () => {
               </section>
 
               <section className='mb-10'>
-                <h2 className='text-kapwa-text-support mb-4 flex items-center text-2xl font-bold'>
-                  <RocketIcon className='text-kapwa-text-brand mr-2 h-6 w-6' />
+                <h2 className='text-tsinelas-text-support mb-4 flex items-center text-2xl font-bold'>
+                  <RocketIcon className='text-tsinelas-text-brand mr-2 h-6 w-6' />
                   {t('mission.goalsIntro')}
                 </h2>
 
-                <ul className='text-kapwa-text-support mb-6 list-disc pl-6'>
+                <ul className='text-tsinelas-text-support mb-6 list-disc pl-6'>
                   {(
                     t('mission.goalsList', { returnObjects: true }) as string[]
                   ).map((goal: string, index: number) => (
@@ -88,11 +88,11 @@ const AboutPage: FC = () => {
 
               {/* What We Provide Section */}
               <section className='mb-10'>
-                <h2 className='text-kapwa-text-support mb-4 flex items-center text-2xl font-bold'>
-                  <RocketIcon className='text-kapwa-text-brand mr-2 h-6 w-6' />
+                <h2 className='text-tsinelas-text-support mb-4 flex items-center text-2xl font-bold'>
+                  <RocketIcon className='text-tsinelas-text-brand mr-2 h-6 w-6' />
                   What We Provide
                 </h2>
-                <p className='text-kapwa-text-support mb-6'>
+                <p className='text-tsinelas-text-support mb-6'>
                   To support citizen builders in building impactful civic tech
                   projects:
                 </p>
@@ -129,15 +129,15 @@ const AboutPage: FC = () => {
                       desc: 'Physical workspace for collaboration and meetings',
                     },
                   ].map((item, index) => (
-                    <Card key={index} hover className='bg-kapwa-bg-surface'>
+                    <Card key={index} hover className='bg-tsinelas-bg-surface'>
                       <CardContent className='p-5'>
-                        <div className='bg-kapwa-bg-surface-brand-weak mb-3 flex h-12 w-12 items-center justify-center rounded-lg'>
-                          <item.icon className='text-kapwa-text-brand h-6 w-6' />
+                        <div className='bg-tsinelas-bg-surface-brand-weak mb-3 flex h-12 w-12 items-center justify-center rounded-lg'>
+                          <item.icon className='text-tsinelas-text-brand h-6 w-6' />
                         </div>
-                        <h3 className='text-kapwa-text-strong mb-2 text-base font-semibold'>
+                        <h3 className='text-tsinelas-text-strong mb-2 text-base font-semibold'>
                           {item.title}
                         </h3>
-                        <p className='text-kapwa-text-on-disabled text-sm'>
+                        <p className='text-tsinelas-text-on-disabled text-sm'>
                           {item.desc}
                         </p>
                       </CardContent>
@@ -147,20 +147,20 @@ const AboutPage: FC = () => {
               </section>
 
               <section className='mb-10'>
-                <h2 className='text-kapwa-text-support mb-4 text-2xl font-bold'>
+                <h2 className='text-tsinelas-text-support mb-4 text-2xl font-bold'>
                   {t('whyBuilding.title')}
                 </h2>
-                <p className='text-kapwa-text-support mb-4'>
+                <p className='text-tsinelas-text-support mb-4'>
                   {t('whyBuilding.intro')}
                   <a
                     href='https://www.gov.ph'
-                    className='text-kapwa-text-brand mx-1 hover:opacity-80'
+                    className='text-tsinelas-text-brand mx-1 hover:opacity-80'
                   >
                     {t('whyBuilding.govPhLink')}
                   </a>
                   {t('whyBuilding.challenges')}
                 </p>
-                <ul className='text-kapwa-text-support mb-6 list-disc pl-6 leading-relaxed'>
+                <ul className='text-tsinelas-text-support mb-6 list-disc pl-6 leading-relaxed'>
                   {(
                     t('whyBuilding.challengesList', {
                       returnObjects: true,
@@ -171,20 +171,20 @@ const AboutPage: FC = () => {
                     </li>
                   ))}
                 </ul>
-                <p className='text-kapwa-text-support'>
+                <p className='text-tsinelas-text-support'>
                   {t('whyBuilding.conclusion')}
                 </p>
               </section>
 
               {/* Our Commitment Section */}
               <section className='mb-10'>
-                <h2 className='text-kapwa-text-support mb-4 flex items-center text-2xl font-bold'>
-                  <ZapIcon className='text-kapwa-text-warning mr-2 h-6 w-6' />
+                <h2 className='text-tsinelas-text-support mb-4 flex items-center text-2xl font-bold'>
+                  <ZapIcon className='text-tsinelas-text-warning mr-2 h-6 w-6' />
                   Our Commitment
                 </h2>
-                <div className='border-kapwa-border-brand bg-gradient-to-r from-kapwa-bg-danger-weak via-kapwa-bg-accent-orange-weak to-kapwa-bg-warning-weak rounded-xl border-l-4 p-6 md:p-8'>
-                  <div className='text-kapwa-text-support space-y-4'>
-                    <p className='text-kapwa-text-brand text-lg font-bold'>
+                <div className='border-tsinelas-border-brand bg-gradient-to-r from-tsinelas-bg-danger-weak via-tsinelas-bg-accent-orange-weak to-tsinelas-bg-warning-weak rounded-xl border-l-4 p-6 md:p-8'>
+                  <div className='text-tsinelas-text-support space-y-4'>
+                    <p className='text-tsinelas-text-brand text-lg font-bold'>
                       WE&apos;RE DONE WAITING.
                     </p>
                     <p className='text-base leading-relaxed'>
@@ -194,7 +194,7 @@ const AboutPage: FC = () => {
                     </p>
                     <p className='text-base leading-relaxed'>
                       We can do <strong>amazing things</strong> together.{' '}
-                      <span className='text-kapwa-text-brand font-semibold'>
+                      <span className='text-tsinelas-text-brand font-semibold'>
                         Grassroots style. Open source. No permission needed.
                       </span>
                     </p>
@@ -206,8 +206,8 @@ const AboutPage: FC = () => {
                       permission. Open source, public,{' '}
                       <strong>high quality</strong> sites.
                     </p>
-                    <div className='border-kapwa-border-brand mt-6 border-t-2 pt-4'>
-                      <p className='text-kapwa-text-brand text-lg font-bold'>
+                    <div className='border-tsinelas-border-brand mt-6 border-t-2 pt-4'>
+                      <p className='text-tsinelas-text-brand text-lg font-bold'>
                         WE&apos;RE LOOKING FOR PEOPLE SMARTER THAN US!
                       </p>
                     </div>
@@ -215,14 +215,14 @@ const AboutPage: FC = () => {
                 </div>
               </section>
               <section>
-                <h2 className='text-kapwa-text-support mb-4 text-2xl font-bold'>
+                <h2 className='text-tsinelas-text-support mb-4 text-2xl font-bold'>
                   {t('license.title')}
                 </h2>
-                <p className='text-kapwa-text-support mb-4'>
+                <p className='text-tsinelas-text-support mb-4'>
                   {t('license.description')}
                   <a
                     href='https://creativecommons.org/publicdomain/zero/1.0/'
-                    className='text-kapwa-text-brand mx-1 hover:opacity-80'
+                    className='text-tsinelas-text-brand mx-1 hover:opacity-80'
                   >
                     {t('license.ccLink')}
                   </a>
@@ -232,29 +232,29 @@ const AboutPage: FC = () => {
             </div>
 
             {/* Call to Action */}
-            <div className='bg-kapwa-bg-brand-default mt-8 rounded-lg p-8 text-center'>
-              <h3 className='text-kapwa-text-inverse mb-4 text-2xl font-bold'>
+            <div className='bg-tsinelas-bg-brand-default mt-8 rounded-lg p-8 text-center'>
+              <h3 className='text-tsinelas-text-inverse mb-4 text-2xl font-bold'>
                 Ready to Make a Difference?
               </h3>
-              <p className='text-kapwa-text-inverse mx-auto mb-6 max-w-2xl opacity-90'>
+              <p className='text-tsinelas-text-inverse mx-auto mb-6 max-w-2xl opacity-90'>
                 Join our community of builders, dreamers, and changemakers.
               </p>
               <div className='flex flex-col justify-center gap-4 sm:flex-row'>
                 <Link to='/contact'>
                   <Button
-                    className='bg-kapwa-bg-accent-yellow-default hover:bg-kapwa-accent-yellow-hover text-kapwa-text-brand hover:opacity-90'
+                    className='bg-tsinelas-bg-accent-yellow-default hover:bg-tsinelas-accent-yellow-hover text-tsinelas-text-brand hover:opacity-90'
                     size='lg'
                     leftIcon={<MessageCircleIcon className='h-5 w-5' />}
                   >
                     Contacts
                   </Button>
                 </Link>
-                <span className='text-kapwa-text-inverse flex items-center justify-center'>
+                <span className='text-tsinelas-text-inverse flex items-center justify-center'>
                   or
                 </span>
                 <Link to='/join-us'>
                   <Button
-                    className='text-kapwa-text-inverse border-kapwa-border-inverse hover:bg-kapwa-bg-surface hover:border-kapwa-border-weak hover:text-kapwa-text-brand hover:opacity-80'
+                    className='text-tsinelas-text-inverse border-tsinelas-border-inverse hover:bg-tsinelas-bg-surface hover:border-tsinelas-border-weak hover:text-tsinelas-text-brand hover:opacity-80'
                     size='lg'
                     variant='outline'
                     leftIcon={<LightbulbIcon className='h-5 w-5' />}

@@ -80,13 +80,17 @@ docs: update setup instructions
 - **ESLint** enforces rules (max warnings = 0)
 - **TypeScript** strict mode enabled
 
-### Design System (Kapwa)
+### Design System (Tsinelas)
+
+Tsinelas is the BetterLiliw brand layer (`src/styles/tsinelas.css`) over
+`@bettergov/kapwa`. Headings are Poppins, body and interface are Source Sans 3;
+the palette is the five brand colors from `public/BetterLiliw_Brand_Guidelines.pdf`.
 
 **Always use semantic tokens, never raw colors:**
 
 ```tsx
 // ✅ Correct
-<div className="bg-kapwa-surface text-kapwa-text-strong">
+<div className="bg-tsinelas-bg-surface text-tsinelas-text-strong">
 
 // ❌ Wrong
 <div className="bg-blue-500 text-white">
@@ -151,14 +155,14 @@ npm run format
 Husky runs automatically:
 - **Prettier** formats code
 - **ESLint** checks quality
-- **Kapwa token check** prevents raw colors in component files
+- **Tsinelas token check** prevents raw colors in component files
 
 ### Testing Utilities
 
 The project includes shared E2E testing utilities in `e2e/utils/`:
 
-- **`kapwa.ts`** - Semantic token validation helper that enforces Kapwa design token usage
-  - `assertKapwaTokens()` - Validates no raw Tailwind colors are used
+- **`tsinelas.ts`** - Semantic token validation helper that enforces Tsinelas design token usage
+  - `assertTsinelasTokens()` - Validates no raw Tailwind colors are used
   - Automatically excludes code examples from validation
 
 These utilities help maintain design system consistency across the application.

@@ -73,24 +73,24 @@ function ElectedLeaderCard({ leader }: { leader: ExecutiveOfficial }) {
           <div
             className={`flex h-20 w-20 items-center justify-center rounded-full border-4 shadow-sm ${
               isMayor
-                ? 'bg-kapwa-bg-surface border-kapwa-border-brand text-kapwa-text-brand'
-                : 'bg-kapwa-bg-surface text-kapwa-text-disabled border-kapwa-bg-accent-orange-default'
+                ? 'bg-tsinelas-bg-surface border-tsinelas-border-brand text-tsinelas-text-brand'
+                : 'bg-tsinelas-bg-surface text-tsinelas-text-disabled border-tsinelas-bg-accent-orange-default'
             }`}
           >
             <Icon className='h-10 w-10' />
           </div>
           {isMayor && (
-            <div className='bg-kapwa-bg-brand-default text-kapwa-text-inverse absolute -right-1 -bottom-1 rounded-full border-2 border-white p-1.5 shadow-md'>
+            <div className='bg-tsinelas-bg-brand-default text-tsinelas-text-inverse absolute -right-1 -bottom-1 rounded-full border-2 border-white p-1.5 shadow-md'>
               <ShieldCheck className='h-3.5 w-3.5' />
             </div>
           )}
         </div>
 
         <div className='min-w-0 flex-1'>
-          <p className='text-kapwa-text-brand text-[10px] font-bold tracking-widest uppercase mb-1'>
+          <p className='text-tsinelas-text-brand text-[10px] font-bold tracking-widest uppercase mb-1'>
             {leader.office || 'Elected Official'}
           </p>
-          <h2 className='text-kapwa-text-strong text-2xl leading-tight font-black'>
+          <h2 className='text-tsinelas-text-strong text-2xl leading-tight font-black'>
             Hon. {toTitleCase(leader.name)}
           </h2>
           <Badge variant={isMayor ? 'primary' : 'secondary'} className='mt-2'>
@@ -99,7 +99,7 @@ function ElectedLeaderCard({ leader }: { leader: ExecutiveOfficial }) {
         </div>
 
         {(leader.email || leader.phone) && (
-          <div className='border-kapwa-border-weak w-full border-t pt-4'>
+          <div className='border-tsinelas-border-weak w-full border-t pt-4'>
             <ContactContainer variant='stack' className='text-left'>
               <ContactItem
                 icon={Briefcase}
@@ -117,8 +117,8 @@ function ElectedLeaderCard({ leader }: { leader: ExecutiveOfficial }) {
         )}
 
         {leader.personId && (
-          <div className='border-kapwa-border-weak w-full border-t pt-4'>
-            <span className='text-kapwa-text-brand text-sm font-bold'>
+          <div className='border-tsinelas-border-weak w-full border-t pt-4'>
+            <span className='text-tsinelas-text-brand text-sm font-bold'>
               View Full Profile →
             </span>
           </div>
@@ -151,25 +151,25 @@ function CouncilMemberCard({
       hover={!!member.personId}
       className={`group flex h-full flex-col shadow-xs ${
         member.personId
-          ? 'border-kapwa-border-weak cursor-pointer'
-          : 'border-kapwa-border-weak'
+          ? 'border-tsinelas-border-weak cursor-pointer'
+          : 'border-tsinelas-border-weak'
       }`}
     >
       <CardContent className='flex h-full flex-col space-y-4 p-4'>
         {/* Row 1: Icon, Role, Name */}
         <div className='flex items-start gap-3'>
-          <div className='border-kapwa-border-brand bg-kapwa-bg-surface text-kapwa-text-brand group-hover:bg-kapwa-bg-brand-default group-hover:text-kapwa-text-inverse shrink-0 rounded-lg border p-2 shadow-sm transition-colors'>
+          <div className='border-tsinelas-border-brand bg-tsinelas-bg-surface text-tsinelas-text-brand group-hover:bg-tsinelas-bg-brand-default group-hover:text-tsinelas-text-inverse shrink-0 rounded-lg border p-2 shadow-sm transition-colors'>
             <UserIcon className='h-5 w-5' />
           </div>
           <div className='min-w-0 flex-1'>
-            <p className='text-kapwa-text-brand mb-0.5 text-[10px] font-bold tracking-widest uppercase'>
+            <p className='text-tsinelas-text-brand mb-0.5 text-[10px] font-bold tracking-widest uppercase'>
               {member.role}
             </p>
-            <h4 className='text-kapwa-text-strong text-base font-bold leading-tight'>
+            <h4 className='text-tsinelas-text-strong text-base font-bold leading-tight'>
               {toTitleCase(member.name)}
             </h4>
             {member.personId && (
-              <p className='text-kapwa-text-brand mt-1 text-[10px] font-medium tracking-wide uppercase'>
+              <p className='text-tsinelas-text-brand mt-1 text-[10px] font-medium tracking-wide uppercase'>
                 View Profile
               </p>
             )}
@@ -178,10 +178,10 @@ function CouncilMemberCard({
 
         {/* Row 2: Committee Chair box */}
         {chairedCommittees.length > 0 ? (
-          <div className='border-kapwa-border-weak bg-kapwa-bg-surface-raised/50 flex flex-col gap-2 rounded-xl border p-3'>
+          <div className='border-tsinelas-border-weak bg-tsinelas-bg-surface-raised/50 flex flex-col gap-2 rounded-xl border p-3'>
             <div className='mb-1 flex items-center gap-2'>
-              <BookOpenIcon className='text-kapwa-text-disabled h-3 w-3' />
-              <span className='text-kapwa-text-disabled text-[10px] font-bold tracking-widest uppercase'>
+              <BookOpenIcon className='text-tsinelas-text-disabled h-3 w-3' />
+              <span className='text-tsinelas-text-disabled text-[10px] font-bold tracking-widest uppercase'>
                 Committee Chair
               </span>
             </div>
@@ -189,10 +189,10 @@ function CouncilMemberCard({
               {chairedCommittees.map(c => (
                 <li
                   key={c.committee}
-                  className='border-kapwa-border-weak bg-kapwa-bg-surface flex items-start gap-2 rounded-lg border px-2.5 py-2 shadow-sm'
+                  className='border-tsinelas-border-weak bg-tsinelas-bg-surface flex items-start gap-2 rounded-lg border px-2.5 py-2 shadow-sm'
                 >
-                  <div className='bg-kapwa-orange-600 mt-0.5 h-8 w-1 shrink-0 rounded-full opacity-80' />
-                  <span className='text-kapwa-text-strong wrap-break-word text-xs font-bold leading-snug'>
+                  <div className='bg-tsinelas-orange-600 mt-0.5 h-8 w-1 shrink-0 rounded-full opacity-80' />
+                  <span className='text-tsinelas-text-strong wrap-break-word text-xs font-bold leading-snug'>
                     {toTitleCase(c.committee)}
                   </span>
                 </li>
@@ -205,8 +205,8 @@ function CouncilMemberCard({
 
         {/* Row 3: Social footer */}
         {member.website && (
-          <div className='border-kapwa-border-weak mt-auto flex items-center justify-between border-t pt-3'>
-            <span className='text-kapwa-text-disabled text-[10px] font-medium tracking-wide uppercase'>
+          <div className='border-tsinelas-border-weak mt-auto flex items-center justify-between border-t pt-3'>
+            <span className='text-tsinelas-text-disabled text-[10px] font-medium tracking-wide uppercase'>
               Social Profile
             </span>
             <a
@@ -214,7 +214,7 @@ function CouncilMemberCard({
               target='_blank'
               rel='noreferrer'
               onClick={e => member.personId && e.stopPropagation()}
-              className='hover:border-kapwa-border-brand hover:text-kapwa-text-brand border-kapwa-border-weak bg-kapwa-bg-surface flex items-center gap-2 rounded-lg border px-3 py-1.5 shadow-sm transition-all'
+              className='hover:border-tsinelas-border-brand hover:text-tsinelas-text-brand border-tsinelas-border-weak bg-tsinelas-bg-surface flex items-center gap-2 rounded-lg border px-3 py-1.5 shadow-sm transition-all'
             >
               <span className='text-[10px] font-bold tracking-wider uppercase'>
                 Visit Page
@@ -308,17 +308,17 @@ export default function ElectedOfficialsPage() {
             {supportStaff.map(official => (
               <Card
                 key={official.slug}
-                className='bg-kapwa-bg-surface border-kapwa-border-weak shadow-xs'
+                className='bg-tsinelas-bg-surface border-tsinelas-border-weak shadow-xs'
               >
                 <CardContent className='flex items-start gap-3 p-4'>
-                  <div className='border-kapwa-border-weak bg-kapwa-bg-surface-raised text-kapwa-text-disabled shrink-0 rounded-lg border p-2'>
+                  <div className='border-tsinelas-border-weak bg-tsinelas-bg-surface-raised text-tsinelas-text-disabled shrink-0 rounded-lg border p-2'>
                     <User2 className='h-5 w-5' />
                   </div>
                   <div className='min-w-0 flex-1'>
-                    <h4 className='text-kapwa-text-strong text-sm leading-snug font-bold'>
+                    <h4 className='text-tsinelas-text-strong text-sm leading-snug font-bold'>
                       {toTitleCase(official.name)}
                     </h4>
-                    <p className='text-kapwa-text-brand mt-0.5 truncate text-[10px] font-bold tracking-widest uppercase'>
+                    <p className='text-tsinelas-text-brand mt-0.5 truncate text-[10px] font-bold tracking-widest uppercase'>
                       {official.role}
                     </p>
                   </div>
@@ -372,14 +372,14 @@ export default function ElectedOfficialsPage() {
           </div>
 
           {/* Link to committees */}
-          <div className='border-kapwa-border-weak mt-6 flex flex-col items-center justify-between gap-4 border-t pt-6 sm:flex-row'>
+          <div className='border-tsinelas-border-weak mt-6 flex flex-col items-center justify-between gap-4 border-t pt-6 sm:flex-row'>
             <div className='flex items-center gap-3'>
-              <BookOpenIcon className='text-kapwa-text-disabled h-5 w-5 shrink-0' />
+              <BookOpenIcon className='text-tsinelas-text-disabled h-5 w-5 shrink-0' />
               <div>
-                <p className='text-kapwa-text-strong text-sm font-bold'>
+                <p className='text-tsinelas-text-strong text-sm font-bold'>
                   Standing Committees
                 </p>
-                <p className='text-kapwa-text-disabled text-xs'>
+                <p className='text-tsinelas-text-disabled text-xs'>
                   {sbData.permanent_committees?.length ?? 0} active committees
                   with full member listings
                 </p>
@@ -400,14 +400,14 @@ export default function ElectedOfficialsPage() {
       )}
 
       {/* ── SECTION 4: DEPARTMENTS BRIDGE ── */}
-      <div className='border-kapwa-border-weak bg-kapwa-bg-surface-raised flex flex-col items-center justify-between gap-4 rounded-2xl border p-6 md:flex-row'>
+      <div className='border-tsinelas-border-weak bg-tsinelas-bg-surface-raised flex flex-col items-center justify-between gap-4 rounded-2xl border p-6 md:flex-row'>
         <div className='flex items-center gap-4'>
-          <Briefcase className='text-kapwa-text-support h-8 w-8 shrink-0' />
+          <Briefcase className='text-tsinelas-text-support h-8 w-8 shrink-0' />
           <div>
-            <h4 className='text-kapwa-text-strong font-bold'>
+            <h4 className='text-tsinelas-text-strong font-bold'>
               Looking for Department Heads?
             </h4>
-            <p className='text-kapwa-text-disabled text-sm'>
+            <p className='text-tsinelas-text-disabled text-sm'>
               Municipal Treasurer, Assessor, Engineer, and other service heads
               are listed in the directory.
             </p>

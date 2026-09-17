@@ -5,45 +5,10 @@
 @source '../node_modules/@bettergov/kapwa/dist';
 @import '@bettergov/kapwa/styles';
 
-/* BetterLiliw brand override.
- *
- * Kapwa's default `brand` scale is a generic BetterGov blue. This portal's
- * actual identity color is the navy used in the logo and splash screen
- * (#1c3a5b — see index.html and config/lgu.config.json `portal.brandColor`).
- * Every `bg-kapwa-bg-brand-*`, `text-kapwa-text-brand*` and
- * `border-kapwa-border-brand` token resolves from this scale (see
- * node_modules/@bettergov/kapwa/dist/kapwa.css), so redeclaring it here is
- * enough to recolor every brand-tinted surface in the app — no per-component
- * changes needed. Tailwind v4 merges repeated `@theme` declarations for the
- * same variable, with the later one (this file, imported after the kapwa
- * package) winning.
- *
- * Ramp generated from the anchor at 600 (the "default" step every semantic
- * brand token points to) by holding hue/saturation constant and varying
- * lightness — not a proportional rescale of Kapwa's original ramp, since
- * this navy is already about as dark as Kapwa's darkest default step.
- */
-@theme {
-  --color-kapwa-brand-50: #f4f7fb;
-  --color-kapwa-brand-100: #e5edf5;
-  --color-kapwa-brand-200: #c6d8eb;
-  --color-kapwa-brand-300: #9cbbde;
-  --color-kapwa-brand-400: #6597cd;
-  --color-kapwa-brand-500: #366dab;
-  --color-kapwa-brand-600: #1c3a5b;
-  --color-kapwa-brand-700: #162f4b;
-  --color-kapwa-brand-800: #11253b;
-  --color-kapwa-brand-900: #0c1b2c;
-  --color-kapwa-brand-950: #07101a;
-}
-
-:root {
-  --font-kapwa-sans:
-    'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-    sans-serif;
-  --font-kapwa-mono:
-    'Roboto Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
-}
+/* Tsinelas design system — the BetterLiliw brand layer (fonts, palette,
+ * semantic tokens, type scale). Imported after Kapwa so its @theme
+ * declarations win; see src/styles/tsinelas.css for the full spec. */
+@import './styles/tsinelas.css';
 
 @layer base {
   *,
@@ -51,7 +16,7 @@
   ::before,
   ::backdrop,
   ::file-selector-button {
-    border-color: var(--color-border-kapwa-border-weak, currentcolor);
+    border-color: var(--color-border-tsinelas-border-weak, currentcolor);
   }
 }
 
@@ -71,7 +36,7 @@
  */
 @layer base {
   html {
-    scrollbar-color: var(--color-kapwa-gray-300) transparent;
+    scrollbar-color: var(--color-tsinelas-gray-300) transparent;
   }
 
   *,
@@ -98,18 +63,18 @@
   /* Transparent border + padding-box clip insets the thumb, so a 10px track
    * reads as a 6px bar while keeping the full-width hit target. */
   ::-webkit-scrollbar-thumb {
-    background-color: var(--color-kapwa-gray-300);
+    background-color: var(--color-tsinelas-gray-300);
     background-clip: padding-box;
     border: 2px solid transparent;
     border-radius: 9999px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background-color: var(--color-kapwa-gray-400);
+    background-color: var(--color-tsinelas-gray-400);
   }
 
   ::-webkit-scrollbar-thumb:active {
-    background-color: var(--color-kapwa-gray-500);
+    background-color: var(--color-tsinelas-gray-500);
   }
 
   /* Where both axes scroll, keep the junction invisible rather than grey. */
@@ -138,14 +103,14 @@
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: var(--color-kapwa-gray-300);
+    background-color: var(--color-tsinelas-gray-300);
     background-clip: padding-box;
     border: 1px solid transparent;
     border-radius: 9999px;
   }
 
   &::-webkit-scrollbar-thumb:hover {
-    background-color: var(--color-kapwa-gray-400);
+    background-color: var(--color-tsinelas-gray-400);
   }
 }
 
@@ -162,7 +127,7 @@
   line-height: 1.5 !important;
   font-family: var(--font-sans) !important;
   font-size: 14px !important;
-  color: var(--color-text-kapwa-text-support) !important;
+  color: var(--color-text-tsinelas-text-support) !important;
   padding: 16px;
   min-width: 280px;
 }
@@ -173,7 +138,7 @@
 }
 
 .leaflet-popup-close-button {
-  color: var(--color-text-kapwa-text-disabled) !important;
+  color: var(--color-text-tsinelas-text-disabled) !important;
   padding: 8px !important;
 }
 
@@ -211,9 +176,9 @@
 
 @layer components {
   .sidebar-active {
-    background-color: var(--color-bg-kapwa-bg-brand-weak);
-    color: var(--color-text-kapwa-text-brand);
-    border-color: var(--color-border-kapwa-border-brand);
+    background-color: var(--color-bg-tsinelas-bg-brand-weak);
+    color: var(--color-text-tsinelas-text-brand);
+    border-color: var(--color-border-tsinelas-border-brand);
     border-left-width: 2px;
     font-weight: 600;
   }

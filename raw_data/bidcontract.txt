@@ -1420,7 +1420,7 @@
                   </td>
                 </tr><tr role="row" class="even">
                   <td style="width: 15%" class="sorting_1"><a href="#">24-GOODS-93</a></td>
-                  <td style="width: 25%">Supply and Delivery of Grocery Items for Damayan sa Kapwa (Office of the Mayor), Los Baños, Laguna</td>
+                  <td style="width: 25%">Supply and Delivery of Grocery Items for Damayan sa Tsinelas (Office of the Mayor), Los Baños, Laguna</td>
                   <td style="width:20%">LOS BAÑOS EMPLOYEES MULTI-PURPOSE COOPERATIVE</td>
                   <td style="width: 15%">684,000.00</td>
                   <td style="width: 15%">664,000.00</td>
@@ -1428,7 +1428,7 @@
                   </td>
                 </tr><tr role="row" class="odd">
                   <td style="width: 15%" class="sorting_1"><a href="#">24-GOODS-94</a></td>
-                  <td style="width: 25%">Supply and Delivery of Grocery Items for Damayan sa Kapwa (Office of the Vice Mayor &amp; Sangguniang Bayan), Los Baños, Laguna</td>
+                  <td style="width: 25%">Supply and Delivery of Grocery Items for Damayan sa Tsinelas (Office of the Vice Mayor &amp; Sangguniang Bayan), Los Baños, Laguna</td>
                   <td style="width:20%">LOS BAÑOS EMPLOYEES MULTI-PURPOSE COOPERATIVE</td>
                   <td style="width: 15%">919,700.00</td>
                   <td style="width: 15%">789,150.00</td>
@@ -3196,7 +3196,7 @@
                   </td>
                 </tr><tr role="row" class="even">
                   <td style="width: 15%" class="sorting_1"><a href="#">25-GOODS-77</a></td>
-                  <td style="width: 25%">SUPPLY AND DELIVERY OF SPAGHETTI PACKS FOR DAMAYAN SA KAPWA, LOS BAÑOS, LAGUNA</td>
+                  <td style="width: 25%">SUPPLY AND DELIVERY OF SPAGHETTI PACKS FOR DAMAYAN SA TSINELAS, LOS BAÑOS, LAGUNA</td>
                   <td style="width:20%">2428 FROCER'S CORPORATION</td>
                   <td style="width: 15%">695,617.50</td>
                   <td style="width: 15%">643,900.00</td>
@@ -3692,7 +3692,7 @@
                   </td>
                 </tr><tr role="row" class="even">
                   <td style="width: 15%" class="sorting_1"><a href="#">8495032</a></td>
-                  <td style="width: 25%">Supply and Delivery of Rice for Damayan sa Kapwa Laban sa COVID-19, Los Baños, Laguna</td>
+                  <td style="width: 25%">Supply and Delivery of Rice for Damayan sa Tsinelas Laban sa COVID-19, Los Baños, Laguna</td>
                   <td style="width:20%">2428 Grocers Corporation</td>
                   <td style="width: 15%">918,000.00</td>
                   <td style="width: 15%">796,100.00</td>
@@ -4020,7 +4020,7 @@
                   </td>
                 </tr><tr role="row" class="odd">
                   <td style="width: 15%" class="sorting_1"><a href="#">9320398</a></td>
-                  <td style="width: 25%">Supply and Delivery of Apples for the Damayan sa Kapwa Program 2022 (Office of the Mayor), Los Baños, Laguna</td>
+                  <td style="width: 25%">Supply and Delivery of Apples for the Damayan sa Tsinelas Program 2022 (Office of the Mayor), Los Baños, Laguna</td>
                   <td style="width:20%">AA-3S General Merchandise</td>
                   <td style="width: 15%">2,640,000.00</td>
                   <td style="width: 15%">2,634,000.00</td>
@@ -4044,7 +4044,7 @@
                   </td>
                 </tr><tr role="row" class="even">
                   <td style="width: 15%" class="sorting_1"><a href="#">9352802</a></td>
-                  <td style="width: 25%">Supply and Delivery of Customized Boxes for the Damayan sa Kapwa Program 2022 (Office of the Mayor), Los Baños, Laguna</td>
+                  <td style="width: 25%">Supply and Delivery of Customized Boxes for the Damayan sa Tsinelas Program 2022 (Office of the Mayor), Los Baños, Laguna</td>
                   <td style="width:20%">AA-3S General Merchandise</td>
                   <td style="width: 15%">960,000.00</td>
                   <td style="width: 15%">954,000.00</td>

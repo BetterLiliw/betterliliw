@@ -107,7 +107,7 @@ for your own LGU, start from [BetterLB](https://github.com/BetterLosBanos/better
 ## Technical Stack
 *   **Frontend**: React 19, Vite, TypeScript (Strict mode)
 *   **Styling**: Tailwind CSS v4 (CSS variables, high-contrast tokens)
-*   **Design System**: @bettergov/kapwa (semantic tokens, component library)
+*   **Design System**: Tsinelas (`src/styles/tsinelas.css`) — BetterLiliw's brand layer (Poppins + Source Sans 3, the five brand colors, semantic tokens) built over @bettergov/kapwa
 *   **Backend**: Cloudflare Pages Functions (TypeScript)
 *   **Deployment**: Wrangler 4.70.0 (pinned for compatibility)
 *   **Data**: Structured JSON (Modular category-based architecture)
@@ -392,7 +392,7 @@ BetterLiliw stands on work done by others:
 - **[BetterGov.ph](https://bettergov.ph)** ([bettergovph/bettergov](https://github.com/bettergovph/bettergov))
   — the parent civic-tech project this movement grew out of.
 - **[@bettergov/kapwa](https://www.npmjs.com/package/@bettergov/kapwa)** — the design
-  system and component library the portal is built on.
+  system and component library the Tsinelas design system is built on.
 - **[BetterSolano](https://github.com/BetterSolano/bettersolano)** and
   **[Betterlocalgov](https://github.com/iyanski/betterlocalgov)** — earlier LGU
   portals that shaped the approach.

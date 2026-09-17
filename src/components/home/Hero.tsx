@@ -142,14 +142,14 @@ const Hero: FC = () => {
   ];
 
   return (
-    <div className='py-12 from-kapwa-brand-600 to-kapwa-brand-700 bg-linear-to-r text-kapwa-text-inverse md:py-24'>
+    <div className='py-12 from-tsinelas-brand-600 to-tsinelas-brand-700 bg-linear-to-r text-tsinelas-text-inverse md:py-24'>
       <div className='container px-4 mx-auto'>
         <div className='grid grid-cols-1 gap-8 items-center lg:grid-cols-2'>
           <div className='animate-fade-in'>
-            <h1 className='mb-4 text-kapwa-text-inverse kapwa-heading-xl'>
+            <h1 className='mb-4 text-tsinelas-text-inverse tsinelas-heading-xl'>
               {t('hero.title')}
             </h1>
-            <p className='mb-8 max-w-lg opacity-80 text-kapwa-text-inverse kapwa-body-md-default'>
+            <p className='mb-8 max-w-lg opacity-80 text-tsinelas-text-inverse tsinelas-body-md-default'>
               {t('hero.subtitle')}
             </p>
 
@@ -173,7 +173,7 @@ const Hero: FC = () => {
                     : undefined
                 }
                 placeholder={t('hero.searchPlaceholder')}
-                className='bg-kapwa-bg-surface/80'
+                className='bg-tsinelas-bg-surface/80'
               />
             </div>
 
@@ -192,7 +192,7 @@ const Hero: FC = () => {
               <ul
                 role='listbox'
                 aria-label='Matching services'
-                className='overflow-y-auto max-h-80 rounded-lg shadow-md bg-kapwa-bg-surface/90 text-kapwa-text-strong'
+                className='overflow-y-auto max-h-80 rounded-lg shadow-md bg-tsinelas-bg-surface/90 text-tsinelas-text-strong'
               >
                 {visibleResults.map((hit, index) => (
                   <li
@@ -203,15 +203,15 @@ const Hero: FC = () => {
                   >
                     <Link
                       to={`/services/${hit.slug}`}
-                      className={`block p-3 border-b border-kapwa-border-weak hover:bg-kapwa-bg-hover focus-visible:bg-kapwa-bg-hover focus-visible:outline-none last:border-none ${
-                        index === activeIndex ? 'bg-kapwa-bg-hover' : ''
+                      className={`block p-3 border-b border-tsinelas-border-weak hover:bg-tsinelas-bg-hover focus-visible:bg-tsinelas-bg-hover focus-visible:outline-none last:border-none ${
+                        index === activeIndex ? 'bg-tsinelas-bg-hover' : ''
                       }`}
                     >
                       <strong>
                         {hit.service || hit.office_name || hit.office}
                       </strong>
                       {hit.description && (
-                        <p className='text-kapwa-text-support kapwa-body-sm-default'>
+                        <p className='text-tsinelas-text-support tsinelas-body-sm-default'>
                           {hit.description}
                         </p>
                       )}
@@ -224,7 +224,7 @@ const Hero: FC = () => {
             {showResults && results.length === 0 && (
               <p
                 role='status'
-                className='px-4 py-3 text-sm rounded-lg bg-kapwa-bg-surface/90 text-kapwa-text-strong'
+                className='px-4 py-3 text-sm rounded-lg bg-tsinelas-bg-surface/90 text-tsinelas-text-strong'
               >
                 {t('hero.noResults')}
               </p>
@@ -235,7 +235,7 @@ const Hero: FC = () => {
                 <Link key={service.slug} to={`/services/${service.slug}`}>
                   <Badge
                     variant='outline'
-                    className='cursor-pointer border-white/20 text-kapwa-text-inverse hover:bg-kapwa-bg-surface/20'
+                    className='cursor-pointer border-white/20 text-tsinelas-text-inverse hover:bg-tsinelas-bg-surface/20'
                   >
                     <FileTextIcon className='w-4 h-4' />
                     <span className='ml-1'>
@@ -247,8 +247,8 @@ const Hero: FC = () => {
             </div>
           </div>
 
-          <div className='p-6 rounded-xl shadow-lg backdrop-blur-sm animate-slide-in bg-kapwa-bg-surface/10'>
-            <h2 className='mb-4 text-kapwa-text-inverse kapwa-heading-lg'>
+          <div className='p-6 rounded-xl shadow-lg backdrop-blur-sm animate-slide-in bg-tsinelas-bg-surface/10'>
+            <h2 className='mb-4 text-tsinelas-text-inverse tsinelas-heading-lg'>
               {t('hero.quickAccess')}
             </h2>
             <div className='grid grid-cols-2 gap-4'>
@@ -256,17 +256,17 @@ const Hero: FC = () => {
                 <Link
                   key={card.to}
                   to={card.to}
-                  className='flex flex-col items-center p-4 text-center rounded-lg transition-all duration-200 bg-kapwa-bg-surface/10 hover:bg-kapwa-bg-surface/20 focus-visible:ring-2 focus-visible:ring-kapwa-text-inverse focus-visible:outline-none'
+                  className='flex flex-col items-center p-4 text-center rounded-lg transition-all duration-200 bg-tsinelas-bg-surface/10 hover:bg-tsinelas-bg-surface/20 focus-visible:ring-2 focus-visible:ring-tsinelas-text-inverse focus-visible:outline-none'
                 >
-                  <div className='p-3 mb-3 rounded-full bg-kapwa-brand-500'>
-                    <div className='w-6 h-6 text-kapwa-text-inverse'>
+                  <div className='p-3 mb-3 rounded-full bg-tsinelas-brand-500'>
+                    <div className='w-6 h-6 text-tsinelas-text-inverse'>
                       {card.icon}
                     </div>
                   </div>
-                  <span className='text-kapwa-text-inverse kapwa-body-md-strong'>
+                  <span className='text-tsinelas-text-inverse tsinelas-body-md-strong'>
                     {card.title}
                   </span>
-                  <span className='text-kapwa-text-inverse/70 kapwa-body-sm-default'>
+                  <span className='text-tsinelas-text-inverse/70 tsinelas-body-sm-default'>
                     {card.description}
                   </span>
                 </Link>

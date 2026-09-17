@@ -1,4 +1,4 @@
-// Extended components based on Kapwa
+// Extended components based on Tsinelas
 export {
   Card,
   CardHeader,
@@ -14,7 +14,7 @@ export {
   CardDivider,
 } from './Card';
 
-// Kapwa components available for direct import
+// Tsinelas components available for direct import
 export { Input } from '@bettergov/kapwa/input';
 export { Label } from '@bettergov/kapwa/label';
 export { Banner } from '@bettergov/kapwa/banner';

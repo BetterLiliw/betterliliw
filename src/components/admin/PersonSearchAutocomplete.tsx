@@ -194,11 +194,11 @@ export default function PersonSearchAutocomplete({
             }
           }}
           placeholder={placeholder}
-          className='focus:border-kapwa-border-brand focus:ring-kapwa-border-brand/20 border-kapwa-border-weak w-full rounded-md border px-3 py-2 pr-10 text-sm focus:ring-2 focus:outline-none'
+          className='focus:border-tsinelas-border-brand focus:ring-tsinelas-border-brand/20 border-tsinelas-border-weak w-full rounded-md border px-3 py-2 pr-10 text-sm focus:ring-2 focus:outline-none'
         />
-        <div className='text-kapwa-text-disabled absolute top-1/2 right-3 -translate-y-1/2'>
+        <div className='text-tsinelas-text-disabled absolute top-1/2 right-3 -translate-y-1/2'>
           {loading ? (
-            <div className='border-t-primary-500 border-kapwa-border-weak h-4 w-4 animate-spin rounded-full border-2' />
+            <div className='border-t-primary-500 border-tsinelas-border-weak h-4 w-4 animate-spin rounded-full border-2' />
           ) : (
             <Search className='h-4 w-4' />
           )}
@@ -208,7 +208,7 @@ export default function PersonSearchAutocomplete({
       {showDropdown && (
         <div
           ref={dropdownRef}
-          className='border-kapwa-border-weak bg-kapwa-bg-surface absolute z-50 mt-1 max-h-60 w-full rounded-md border shadow-lg'
+          className='border-tsinelas-border-weak bg-tsinelas-bg-surface absolute z-50 mt-1 max-h-60 w-full rounded-md border shadow-lg'
         >
           {results.length > 0 ? (
             <ul className='max-h-60 overflow-y-auto py-1'>
@@ -218,15 +218,15 @@ export default function PersonSearchAutocomplete({
                   onClick={() => handleSelect(person)}
                   className={`cursor-pointer px-3 py-2 text-sm transition-colors ${
                     index === selectedIndex
-                      ? 'bg-kapwa-bg-brand-weak text-kapwa-text-brand-bold'
-                      : 'hover:bg-kapwa-bg-surface-raised'
+                      ? 'bg-tsinelas-bg-brand-weak text-tsinelas-text-brand-bold'
+                      : 'hover:bg-tsinelas-bg-surface-raised'
                   }`}
                 >
                   <div className='flex items-center gap-2'>
-                    <User className='text-kapwa-text-disabled h-4 w-4' />
+                    <User className='text-tsinelas-text-disabled h-4 w-4' />
                     <span>{person.full_name}</span>
                   </div>
-                  <div className='text-kapwa-text-disabled ml-6 text-xs'>
+                  <div className='text-tsinelas-text-disabled ml-6 text-xs'>
                     {person.first_name} {person.middle_name} {person.last_name}
                     {person.suffix && `, ${person.suffix}`}
                   </div>
@@ -235,19 +235,19 @@ export default function PersonSearchAutocomplete({
             </ul>
           ) : hasNoResults ? (
             <div className='py-1'>
-              <div className='text-kapwa-text-disabled px-3 py-2 text-sm'>
+              <div className='text-tsinelas-text-disabled px-3 py-2 text-sm'>
                 No existing persons found
               </div>
               <button
                 onClick={handleCreateNew}
-                className='text-kapwa-text-brand hover:bg-kapwa-bg-surface-brand flex w-full items-center gap-2 px-3 py-2 text-sm transition-colors'
+                className='text-tsinelas-text-brand hover:bg-tsinelas-bg-surface-brand flex w-full items-center gap-2 px-3 py-2 text-sm transition-colors'
               >
                 <Plus className='h-4 w-4' />
                 <span>Create new person: &quot;{query}&quot;</span>
               </button>
             </div>
           ) : (
-            <div className='text-kapwa-text-disabled px-3 py-2 text-center text-sm'>
+            <div className='text-tsinelas-text-disabled px-3 py-2 text-center text-sm'>
               {query.length < 2
                 ? 'Type at least 2 characters to search'
                 : 'No results'}

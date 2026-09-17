@@ -557,7 +557,7 @@
               <td style="width: 15%" class="sorting_1"><a href="#">Supply and Delivery of Pneumo Vaccine for Municipal Employees, Los Baños, Laguna</a></td>
               <td style="width: 3%"><a class="button" href="https://losbanos.gov.ph/public/storage/resolutions//BAC%20RESO%202022-102_1667626567.pdf" download=""><i class="fa fa-download"></i>&nbsp;PDF File/Download</a></td>
             </tr><tr role="row" class="even">
-              <td style="width: 15%" class="sorting_1"><a href="#">Supply and Delivery of Rice for Damayan sa Kapwa Laban sa COVID-19, Los Baños, Laguna</a></td>
+              <td style="width: 15%" class="sorting_1"><a href="#">Supply and Delivery of Rice for Damayan sa Tsinelas Laban sa COVID-19, Los Baños, Laguna</a></td>
               <td style="width: 3%"><a class="button" href="https://losbanos.gov.ph/public/storage/resolutions//BAC%20RESOLUTION%202022-020_1653534020.pdf" download=""><i class="fa fa-download"></i>&nbsp;PDF File/Download</a></td>
             </tr><tr role="row" class="odd">
               <td style="width: 15%" class="sorting_1"><a href="#">Supply and Delivery of Rice for Stockpiling, Los Baños, Laguna</a></td>

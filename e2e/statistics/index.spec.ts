@@ -1,5 +1,5 @@
 import { test, expect } from '../test-config';
-import { assertKapwaTokens } from '../utils/kapwa';
+import { assertTsinelasTokens } from '../utils/tsinelas';
 
 test.describe('Statistics Pages', () => {
   test.beforeEach(async ({ page }) => {
@@ -7,7 +7,7 @@ test.describe('Statistics Pages', () => {
     await page.goto('/statistics');
   });
 
-  test('statistics index page uses Kapwa semantic tokens', async ({ page }) => {
+  test('statistics index page uses Tsinelas semantic tokens', async ({ page }) => {
     // Check page title is visible (should show PopulationPage by default)
     await expect(
       page.locator('h1').filter({ hasText: 'Population Profile' })
@@ -18,8 +18,8 @@ test.describe('Statistics Pages', () => {
       page.locator('h1').filter({ hasText: 'Municipal Statistics' })
     ).toBeVisible();
 
-    // Verify Kapwa semantic tokens are used
-    await assertKapwaTokens(page);
+    // Verify Tsinelas semantic tokens are used
+    await assertTsinelasTokens(page);
   });
 
   test('statistics layout has PageHeader and Sidebar', async ({ page }) => {

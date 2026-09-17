@@ -59,12 +59,12 @@ function ModuleItem({
 
   return (
     <li className='flex gap-3' {...hoverProps}>
-      <span className='bg-kapwa-bg-brand-weak text-kapwa-text-brand mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg'>
+      <span className='bg-tsinelas-bg-brand-weak text-tsinelas-text-brand mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg'>
         <Icon ref={iconRef} size={18} aria-hidden />
       </span>
       <div>
-        <h2 className='text-kapwa-text-strong font-semibold'>{title}</h2>
-        <p className='text-kapwa-text-support mt-1 text-sm leading-relaxed'>
+        <h2 className='text-tsinelas-text-strong font-semibold'>{title}</h2>
+        <p className='text-tsinelas-text-support mt-1 text-sm leading-relaxed'>
           {description}
         </p>
       </div>
@@ -115,7 +115,7 @@ export default function ComingSoon() {
   ];
 
   return (
-    <div className='bg-kapwa-bg-surface min-h-screen'>
+    <div className='bg-tsinelas-bg-surface min-h-screen'>
       <SEO
         title={`${portal.name} — Coming soon`}
         description={`${portal.description} Currently in development.`}
@@ -123,7 +123,7 @@ export default function ComingSoon() {
       />
 
       {/* Brand rule across the top */}
-      <div className='bg-kapwa-bg-brand-default h-1.5 w-full' aria-hidden />
+      <div className='bg-tsinelas-bg-brand-default h-1.5 w-full' aria-hidden />
 
       <div className='mx-auto flex min-h-[calc(100vh-0.375rem)] max-w-3xl flex-col justify-center px-6 py-16 sm:px-8'>
         <main>
@@ -135,26 +135,26 @@ export default function ComingSoon() {
             className='mb-10 h-16 w-auto sm:h-20'
           />
 
-          <span className='bg-kapwa-bg-brand-weak text-kapwa-text-brand ring-kapwa-border-brand/30 inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-semibold tracking-wide uppercase ring-1 ring-inset'>
+          <span className='bg-tsinelas-bg-brand-weak text-tsinelas-text-brand ring-tsinelas-border-brand/30 inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-semibold tracking-wide uppercase ring-1 ring-inset'>
             <span
-              className='bg-kapwa-bg-brand-default h-1.5 w-1.5 rounded-full'
+              className='bg-tsinelas-bg-brand-default h-1.5 w-1.5 rounded-full'
               aria-hidden
             />
             In development
           </span>
 
-          <h1 className='text-kapwa-text-strong mt-6 text-4xl font-bold tracking-tight text-balance sm:text-5xl'>
+          <h1 className='text-tsinelas-text-strong mt-6 text-4xl font-bold tracking-tight text-balance sm:text-5xl'>
             A better {lgu.name} is being built.
           </h1>
 
-          <p className='text-kapwa-text-support mt-5 max-w-2xl text-lg leading-relaxed'>
+          <p className='text-tsinelas-text-support mt-5 max-w-2xl text-lg leading-relaxed'>
             {portal.name} is a community-powered civic portal for the{' '}
             {lgu.fullName}, {lgu.province}. We are gathering and organising
             public information so that residents can find what they need without
             hunting through scattered pages and posts.
           </p>
 
-          <p className='text-kapwa-text-support mt-4 max-w-2xl leading-relaxed'>
+          <p className='text-tsinelas-text-support mt-4 max-w-2xl leading-relaxed'>
             The site is not open to the public yet. Here is what we are
             preparing.
           </p>
@@ -172,13 +172,13 @@ export default function ComingSoon() {
               ))}
           </ul>
 
-          <div className='border-kapwa-border-weak mt-12 flex flex-col gap-3 border-t pt-8 sm:flex-row sm:items-center sm:gap-4'>
+          <div className='border-tsinelas-border-weak mt-12 flex flex-col gap-3 border-t pt-8 sm:flex-row sm:items-center sm:gap-4'>
             {portal.githubUrl && (
               <a
                 href={portal.githubUrl}
                 target='_blank'
                 rel='noopener noreferrer'
-                className='bg-kapwa-bg-brand-default hover:bg-kapwa-bg-brand-hover text-kapwa-text-inverse focus-visible:outline-kapwa-border-focus inline-flex items-center justify-center gap-2 rounded-lg px-5 py-2.5 text-sm font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2'
+                className='bg-tsinelas-bg-brand-default hover:bg-tsinelas-bg-brand-hover text-tsinelas-text-inverse focus-visible:outline-tsinelas-border-focus inline-flex items-center justify-center gap-2 rounded-lg px-5 py-2.5 text-sm font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2'
                 {...github.hoverProps}
               >
                 <GithubIcon ref={github.iconRef} size={16} aria-hidden />
@@ -188,7 +188,7 @@ export default function ComingSoon() {
             {portal.contactEmail && (
               <a
                 href={`mailto:${portal.contactEmail}`}
-                className='border-kapwa-border-strong text-kapwa-text-strong hover:bg-kapwa-bg-brand-weak focus-visible:outline-kapwa-border-focus inline-flex items-center justify-center gap-2 rounded-lg border px-5 py-2.5 text-sm font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2'
+                className='border-tsinelas-border-strong text-tsinelas-text-strong hover:bg-tsinelas-bg-brand-weak focus-visible:outline-tsinelas-border-focus inline-flex items-center justify-center gap-2 rounded-lg border px-5 py-2.5 text-sm font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2'
                 {...mail.hoverProps}
               >
                 <MailIcon ref={mail.iconRef} size={16} aria-hidden />
@@ -198,7 +198,7 @@ export default function ComingSoon() {
           </div>
         </main>
 
-        <footer className='text-kapwa-text-support mt-12 space-y-2 text-xs leading-relaxed'>
+        <footer className='text-tsinelas-text-support mt-12 space-y-2 text-xs leading-relaxed'>
           <p>
             {portal.name} is an independent, volunteer-run project. It is not an
             official website of the {lgu.fullName} and is not affiliated with or

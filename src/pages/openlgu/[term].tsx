@@ -129,7 +129,7 @@ export default function TermDetail() {
 
   if (!term) {
     return (
-      <div className='text-kapwa-text-disabled p-20 text-center font-bold uppercase'>
+      <div className='text-tsinelas-text-disabled p-20 text-center font-bold uppercase'>
         <SEO title='Term Not Found' noIndex />
         Term data not found
       </div>
@@ -213,17 +213,17 @@ export default function TermDetail() {
       </Breadcrumb>
 
       {/* New header pattern - light with left border accent */}
-      <header className='border-l-kapwa-border-brand border-kapwa-border-weak bg-kapwa-bg-surface rounded-2xl border-l-8 p-6 shadow-sm md:p-10'>
+      <header className='border-l-tsinelas-border-brand border-tsinelas-border-weak bg-tsinelas-bg-surface rounded-2xl border-l-8 p-6 shadow-sm md:p-10'>
         <div className='flex flex-wrap items-center gap-3'>
           <Badge variant='primary' dot>
             {term.ordinal} Term
           </Badge>
           <Badge variant='slate'>{term.year_range}</Badge>
         </div>
-        <h1 className='text-kapwa-text-strong mt-3 kapwa-heading-xl font-extrabold'>
+        <h1 className='text-tsinelas-text-strong mt-3 tsinelas-heading-xl font-extrabold'>
           {term.name}
         </h1>
-        <p className='text-kapwa-text-disabled mt-2 flex items-center gap-2 text-xs font-bold'>
+        <p className='text-tsinelas-text-disabled mt-2 flex items-center gap-2 text-xs font-bold'>
           <Calendar className='h-4 w-4' /> {term.start_date} — {term.end_date}
         </p>
       </header>
@@ -240,21 +240,21 @@ export default function TermDetail() {
                 <Link
                   key={person.id}
                   to={`/openlgu/person/${person.id}`}
-                  className='group from-kapwa-brand-50 border-kapwa-border-brand hover:border-kapwa-border-brand flex items-center gap-4 rounded-xl border bg-linear-to-r to-kapwa-bg-surface p-4 transition-all hover:shadow-sm'
+                  className='group from-tsinelas-brand-50 border-tsinelas-border-brand hover:border-tsinelas-border-brand flex items-center gap-4 rounded-xl border bg-linear-to-r to-tsinelas-bg-surface p-4 transition-all hover:shadow-sm'
                 >
-                  <div className='from-kapwa-brand-500 to-kapwa-brand-600 text-kapwa-text-inverse flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-linear-to-br text-lg font-bold shadow-sm'>
+                  <div className='from-tsinelas-brand-500 to-tsinelas-brand-600 text-tsinelas-text-inverse flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-linear-to-br text-lg font-bold shadow-sm'>
                     {person.first_name[0]}
                     {person.last_name[0]}
                   </div>
                   <div className='flex-1'>
-                    <p className='text-kapwa-text-strong text-sm font-bold'>
+                    <p className='text-tsinelas-text-strong text-sm font-bold'>
                       {getPersonName(person)}
                     </p>
-                    <p className='text-kapwa-text-brand text-xs font-medium tracking-wide uppercase'>
+                    <p className='text-tsinelas-text-brand text-xs font-medium tracking-wide uppercase'>
                       {membership?.role || 'Executive Official'}
                     </p>
                   </div>
-                  <ChevronRight className='group-hover:text-kapwa-text-brand text-kapwa-text-support h-5 w-5 transition-colors' />
+                  <ChevronRight className='group-hover:text-tsinelas-text-brand text-tsinelas-text-support h-5 w-5 transition-colors' />
                 </Link>
               );
             })}
@@ -324,23 +324,23 @@ export default function TermDetail() {
                   return (
                     <div
                       key={person.id}
-                      className='group border-kapwa-border-weak bg-kapwa-bg-surface-raised/50 hover:border-kapwa-border-weak hover:bg-kapwa-bg-surface rounded-xl border p-4 transition-all'
+                      className='group border-tsinelas-border-weak bg-tsinelas-bg-surface-raised/50 hover:border-tsinelas-border-weak hover:bg-tsinelas-bg-surface rounded-xl border p-4 transition-all'
                     >
                       <Link
                         to={`/openlgu/person/${person.id}`}
                         className='flex items-center gap-3'
                       >
                         <div
-                          className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-lg text-sm font-bold ${isVM ? 'bg-kapwa-bg-brand-default text-white' : 'bg-kapwa-bg-surface text-kapwa-text-support'}`}
+                          className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-lg text-sm font-bold ${isVM ? 'bg-tsinelas-bg-brand-default text-white' : 'bg-tsinelas-bg-surface text-tsinelas-text-support'}`}
                         >
                           {person.first_name[0]}
                           {person.last_name[0]}
                         </div>
                         <div className='min-w-0 flex-1'>
-                          <p className='text-kapwa-text-strong text-sm font-bold'>
+                          <p className='text-tsinelas-text-strong text-sm font-bold'>
                             {getPersonName(person)}
                           </p>
-                          <p className='text-kapwa-text-disabled text-xs font-medium'>
+                          <p className='text-tsinelas-text-disabled text-xs font-medium'>
                             {membership?.role}
                           </p>
                         </div>
@@ -349,9 +349,9 @@ export default function TermDetail() {
                       {/* Committee cards - modern pattern */}
                       {totalCommittees > 0 && (
                         <div className='mt-3 space-y-2'>
-                          <div className='border-kapwa-border-weak flex items-center gap-2 border-t pt-2'>
-                            <Users className='text-kapwa-text-disabled h-3 w-3' />
-                            <span className='text-kapwa-text-disabled text-[10px] font-bold tracking-widest uppercase'>
+                          <div className='border-tsinelas-border-weak flex items-center gap-2 border-t pt-2'>
+                            <Users className='text-tsinelas-text-disabled h-3 w-3' />
+                            <span className='text-tsinelas-text-disabled text-[10px] font-bold tracking-widest uppercase'>
                               {totalCommittees} committee
                               {totalCommittees > 1 ? 's' : ''}
                             </span>
@@ -361,10 +361,10 @@ export default function TermDetail() {
                             {committeesByRole.chairperson.map(c => (
                               <div
                                 key={`chair-${c.id}`}
-                                className='flex items-center gap-1.5 rounded-md border border-kapwa-border-warning/50 bg-linear-to-r from-kapwa-warning-weak to-kapwa-warning-weak/50 px-2 py-1'
+                                className='flex items-center gap-1.5 rounded-md border border-tsinelas-border-warning/50 bg-linear-to-r from-tsinelas-warning-weak to-tsinelas-warning-weak/50 px-2 py-1'
                               >
-                                <Crown className='h-3 w-3 text-kapwa-text-warning' />
-                                <span className='max-w-[120px] truncate text-[10px] font-medium text-kapwa-text-warning'>
+                                <Crown className='h-3 w-3 text-tsinelas-text-warning' />
+                                <span className='max-w-[120px] truncate text-[10px] font-medium text-tsinelas-text-warning'>
                                   {c.name}
                                 </span>
                               </div>
@@ -373,10 +373,10 @@ export default function TermDetail() {
                             {committeesByRole.viceChairperson.map(c => (
                               <div
                                 key={`vice-${c.id}`}
-                                className='flex items-center gap-1.5 rounded-md border border-kapwa-border-info/50 bg-linear-to-r from-kapwa-info-weak to-kapwa-info-weak/50 px-2 py-1'
+                                className='flex items-center gap-1.5 rounded-md border border-tsinelas-border-info/50 bg-linear-to-r from-tsinelas-info-weak to-tsinelas-info-weak/50 px-2 py-1'
                               >
-                                <Shield className='text-kapwa-text-info h-3 w-3' />
-                                <span className='text-kapwa-text-info max-w-[120px] truncate text-[10px] font-medium'>
+                                <Shield className='text-tsinelas-text-info h-3 w-3' />
+                                <span className='text-tsinelas-text-info max-w-[120px] truncate text-[10px] font-medium'>
                                   {c.name}
                                 </span>
                               </div>
@@ -387,10 +387,10 @@ export default function TermDetail() {
                               committeesByRole.member.map(c => (
                                 <div
                                   key={`member-${c.id}`}
-                                  className='border-kapwa-border-weak bg-kapwa-bg-hover flex items-center gap-1.5 rounded-md border px-2 py-1'
+                                  className='border-tsinelas-border-weak bg-tsinelas-bg-hover flex items-center gap-1.5 rounded-md border px-2 py-1'
                                 >
-                                  <User className='text-kapwa-text-disabled h-3 w-3' />
-                                  <span className='text-kapwa-text-support max-w-[120px] truncate text-[10px] font-medium'>
+                                  <User className='text-tsinelas-text-disabled h-3 w-3' />
+                                  <span className='text-tsinelas-text-support max-w-[120px] truncate text-[10px] font-medium'>
                                     {c.name}
                                   </span>
                                 </div>
@@ -411,36 +411,36 @@ export default function TermDetail() {
           className={`space-y-6 ${legislativeMembers.length > 0 ? 'lg:col-span-2' : 'lg:col-span-3'}`}
         >
           <div className='grid grid-cols-2 gap-4'>
-            <div className='bg-kapwa-bg-surface border-kapwa-border-brand flex items-center gap-4 rounded-2xl border p-4'>
-              <FileText className='text-kapwa-text-brand h-6 w-6' />
+            <div className='bg-tsinelas-bg-surface border-tsinelas-border-brand flex items-center gap-4 rounded-2xl border p-4'>
+              <FileText className='text-tsinelas-text-brand h-6 w-6' />
               <div>
-                <span className='text-kapwa-text-brand-bold block text-2xl leading-none font-black'>
+                <span className='text-tsinelas-text-brand-bold block text-2xl leading-none font-black'>
                   {ordCount}
                 </span>
-                <span className='text-kapwa-text-brand text-[10px] font-bold tracking-widest uppercase'>
+                <span className='text-tsinelas-text-brand text-[10px] font-bold tracking-widest uppercase'>
                   Ordinances
                 </span>
               </div>
             </div>
-            <div className='bg-kapwa-bg-accent-orange-weak border-kapwa-border-weak flex items-center gap-4 rounded-2xl border p-4'>
-              <BookOpen className='text-kapwa-text-accent-orange h-6 w-6' />
+            <div className='bg-tsinelas-bg-accent-orange-weak border-tsinelas-border-weak flex items-center gap-4 rounded-2xl border p-4'>
+              <BookOpen className='text-tsinelas-text-accent-orange h-6 w-6' />
               <div>
-                <span className='text-kapwa-text-accent-orange block text-2xl leading-none font-black'>
+                <span className='text-tsinelas-text-accent-orange block text-2xl leading-none font-black'>
                   {resCount}
                 </span>
-                <span className='text-kapwa-text-accent-orange text-[10px] font-bold tracking-widest uppercase'>
+                <span className='text-tsinelas-text-accent-orange text-[10px] font-bold tracking-widest uppercase'>
                   Resolutions
                 </span>
               </div>
             </div>
             {eoCount > 0 && (
-              <div className='border-kapwa-border-warning bg-kapwa-bg-warning-weak flex items-center gap-4 rounded-2xl border p-4'>
-                <ScrollText className='text-kapwa-text-warning h-6 w-6' />
+              <div className='border-tsinelas-border-warning bg-tsinelas-bg-warning-weak flex items-center gap-4 rounded-2xl border p-4'>
+                <ScrollText className='text-tsinelas-text-warning h-6 w-6' />
                 <div>
-                  <span className='text-kapwa-text-warning block text-2xl leading-none font-black'>
+                  <span className='text-tsinelas-text-warning block text-2xl leading-none font-black'>
                     {eoCount}
                   </span>
-                  <span className='text-[10px] font-bold tracking-widest text-kapwa-text-warning uppercase'>
+                  <span className='text-[10px] font-bold tracking-widest text-tsinelas-text-warning uppercase'>
                     Exec. Orders
                   </span>
                 </div>
@@ -460,7 +460,7 @@ export default function TermDetail() {
                     <Link
                       key={session.id}
                       to={`/openlgu/session/${session.id}`}
-                      className='group hover:border-kapwa-border-brand border-kapwa-border-weak bg-kapwa-bg-surface-raised/50 hover:bg-kapwa-bg-surface flex items-center justify-between rounded-xl border p-4 transition-all hover:shadow-sm'
+                      className='group hover:border-tsinelas-border-brand border-tsinelas-border-weak bg-tsinelas-bg-surface-raised/50 hover:bg-tsinelas-bg-surface flex items-center justify-between rounded-xl border p-4 transition-all hover:shadow-sm'
                     >
                       <div className='flex items-center gap-4'>
                         <Badge
@@ -471,22 +471,22 @@ export default function TermDetail() {
                           {session.type}
                         </Badge>
                         <div>
-                          <p className='text-kapwa-text-strong font-semibold'>
+                          <p className='text-tsinelas-text-strong font-semibold'>
                             {session.ordinal_number} {session.type} Session
                           </p>
-                          <p className='text-kapwa-text-disabled text-sm'>
+                          <p className='text-tsinelas-text-disabled text-sm'>
                             {session.date}
                           </p>
                         </div>
                       </div>
                       <div className='flex items-center gap-4 text-sm'>
-                        <span className='text-kapwa-text-strong0'>
-                          <span className='text-kapwa-text-brand font-semibold'>
+                        <span className='text-tsinelas-text-strong'>
+                          <span className='text-tsinelas-text-brand font-semibold'>
                             {sessionDocs.length}
                           </span>{' '}
                           docs
                         </span>
-                        <ChevronRight className='group-hover:text-kapwa-text-brand text-kapwa-text-support h-5 w-5' />
+                        <ChevronRight className='group-hover:text-tsinelas-text-brand text-tsinelas-text-support h-5 w-5' />
                       </div>
                     </Link>
                   );
@@ -510,17 +510,17 @@ export default function TermDetail() {
                     <Link
                       key={doc.id}
                       to={`/openlgu/documents/${doc.id}`}
-                      className='hover:bg-kapwa-bg-surface-raised block min-h-[44px] py-4 transition-all'
+                      className='hover:bg-tsinelas-bg-surface-raised block min-h-[44px] py-4 transition-all'
                     >
                       <div className='mb-1 flex items-center gap-3'>
                         <Badge variant={getDocTypeBadgeVariant(doc.type)}>
                           {doc.type}
                         </Badge>
-                        <span className='text-kapwa-text-disabled font-mono text-[10px] font-bold uppercase'>
+                        <span className='text-tsinelas-text-disabled font-mono text-[10px] font-bold uppercase'>
                           {doc.date_enacted}
                         </span>
                       </div>
-                      <p className='text-kapwa-text-strong line-clamp-2 text-sm leading-relaxed font-bold'>
+                      <p className='text-tsinelas-text-strong line-clamp-2 text-sm leading-relaxed font-bold'>
                         {doc.title}
                       </p>
                     </Link>
@@ -528,7 +528,7 @@ export default function TermDetail() {
                 {visibleDocs < termDocuments.length && (
                   <button
                     onClick={() => setVisibleDocs(prev => prev + 15)}
-                    className='text-kapwa-text-brand hover:text-kapwa-text-brand flex min-h-[48px] w-full items-center justify-center gap-2 py-4 text-xs font-bold tracking-widest uppercase'
+                    className='text-tsinelas-text-brand hover:text-tsinelas-text-brand flex min-h-[48px] w-full items-center justify-center gap-2 py-4 text-xs font-bold tracking-widest uppercase'
                   >
                     Load More <ChevronDown className='h-4 w-4' />
                   </button>

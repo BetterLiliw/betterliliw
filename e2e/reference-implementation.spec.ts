@@ -1,5 +1,5 @@
 import { test, expect } from './test-config';
-import { assertKapwaTokens } from './utils/kapwa';
+import { assertTsinelasTokens } from './utils/tsinelas';
 
 test('reference page uses semantic tokens', async ({ page }) => {
   await page.goto('/government/reference-implementation');
@@ -8,23 +8,23 @@ test('reference page uses semantic tokens', async ({ page }) => {
   const title = page.locator('h1').last();
   await expect(title).toContainText('Reference Implementation');
 
-  // Check Kapwa semantic classes are used
-  const hero = page.locator('[class*="bg-kapwa-bg-surface-bold"]').first();
+  // Check Tsinelas semantic classes are used
+  const hero = page.locator('[class*="bg-tsinelas-bg-surface-bold"]').first();
   await expect(hero).toBeVisible();
 
-  const heading = page.locator('.kapwa-heading-md').first();
+  const heading = page.locator('.tsinelas-heading-md').first();
   await expect(heading).toBeVisible();
   await expect(heading).toContainText('Basic Card');
 
-  // Verify Kapwa semantic tokens are used (positive + negative checks)
-  await assertKapwaTokens(page);
+  // Verify Tsinelas semantic tokens are used (positive + negative checks)
+  await assertTsinelasTokens(page);
 
   // Additional reference-page-specific tokens
   const bodyHTML = await page.locator('body').innerHTML();
-  expect(bodyHTML).toMatch(/kapwa-heading-/);
-  expect(bodyHTML).toMatch(/kapwa-body-/);
-  expect(bodyHTML).toMatch(/p-kapwa-/);
-  expect(bodyHTML).toMatch(/gap-kapwa-/);
+  expect(bodyHTML).toMatch(/tsinelas-heading-/);
+  expect(bodyHTML).toMatch(/tsinelas-body-/);
+  expect(bodyHTML).toMatch(/p-tsinelas-/);
+  expect(bodyHTML).toMatch(/gap-tsinelas-/);
 });
 
 test('reference page displays all example cards', async ({ page }) => {
@@ -32,7 +32,7 @@ test('reference page displays all example cards', async ({ page }) => {
 
   // Check that all example cards are visible (article elements with Card classes)
   const cards = page.locator(
-    'article.bg-kapwa-bg-surface.border-kapwa-border-weak'
+    'article.bg-tsinelas-bg-surface.border-tsinelas-border-weak'
   );
   await expect(cards).toHaveCount(8);
 
@@ -62,7 +62,7 @@ test('reference page shows semantic status colors', async ({ page }) => {
 
   // Verify semantic status classes
   const statusHTML = await statusCard.innerHTML();
-  expect(statusHTML).toMatch(/text-kapwa-text-(success|warning|danger|info)/);
+  expect(statusHTML).toMatch(/text-tsinelas-text-(success|warning|danger|info)/);
 });
 
 test('reference page typography scale is correct', async ({ page }) => {
@@ -82,8 +82,8 @@ test('reference page typography scale is correct', async ({ page }) => {
 
   // Verify semantic typography classes
   const typographyHTML = await typographyCard.innerHTML();
-  expect(typographyHTML).toMatch(/kapwa-heading-(lg|md)/);
-  expect(typographyHTML).toMatch(/kapwa-body-(lg|md|sm)/);
+  expect(typographyHTML).toMatch(/tsinelas-heading-(lg|md)/);
+  expect(typographyHTML).toMatch(/tsinelas-body-(lg|md|sm)/);
 });
 
 test('reference page code examples are visible', async ({ page }) => {
@@ -99,8 +99,8 @@ test('reference page code examples are visible', async ({ page }) => {
   // Verify DO example contains semantic tokens
   const doExample = codeBlocks.nth(0);
   const doCode = await doExample.textContent();
-  expect(doCode).toContain('kapwa-bg-surface');
-  expect(doCode).toContain('text-kapwa-text-strong');
+  expect(doCode).toContain('tsinelas-bg-surface');
+  expect(doCode).toContain('text-tsinelas-text-strong');
 
   // Verify DON'T example shows raw colors (as anti-pattern)
   const dontExample = codeBlocks.nth(1);

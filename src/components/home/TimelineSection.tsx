@@ -42,11 +42,11 @@ export default function TimelineSection() {
     : highlightsData.slice(0, COLLAPSE_LIMIT);
 
   return (
-    <section className='border-kapwa-border-weak border-t py-12 bg-kapwa-bg-surface-raised'>
+    <section className='border-tsinelas-border-weak border-t py-12 bg-tsinelas-bg-surface-raised'>
       <div className='container px-4 mx-auto'>
         {/* Header - restored */}
         <div className='mb-12 text-center'>
-          <h2 className='text-2xl font-bold md:text-3xl text-kapwa-text-strong'>
+          <h2 className='text-2xl font-bold md:text-3xl text-tsinelas-text-strong'>
             History of {config.lgu.name}
           </h2>
         </div>
@@ -54,7 +54,7 @@ export default function TimelineSection() {
         <div className='grid grid-cols-1 gap-6 lg:grid-cols-[1fr_320px]'>
           {/* --- LEFT: Timeline --- */}
           <div className='relative'>
-            <div className='border-l-2 border-kapwa-border-brand absolute top-2 bottom-0 left-4 w-0.5' />
+            <div className='border-l-2 border-tsinelas-border-brand absolute top-2 bottom-0 left-4 w-0.5' />
             <div className='space-y-6'>
               {visibleHistory.map((event, idx) => (
                 <div
@@ -64,19 +64,19 @@ export default function TimelineSection() {
                 >
                   {/* Dot Marker */}
                   <div className='flex absolute left-0 top-3 justify-center items-center w-8 h-8'>
-                    <div className='w-3 h-3 rounded-full border-2 shadow-sm transition-all duration-300 border-kapwa-border-brand group-hover:bg-kapwa-bg-brand-default bg-kapwa-bg-surface group-hover:scale-125' />
+                    <div className='w-3 h-3 rounded-full border-2 shadow-sm transition-all duration-300 border-tsinelas-border-brand group-hover:bg-tsinelas-bg-brand-default bg-tsinelas-bg-surface group-hover:scale-125' />
                   </div>
 
-                  <Card className='shadow-sm transition-all hover:border-kapwa-border-brand border-kapwa-border-weak hover:shadow-md'>
+                  <Card className='shadow-sm transition-all hover:border-tsinelas-border-brand border-tsinelas-border-weak hover:shadow-md'>
                     <CardContent className='flex flex-col gap-4 items-start p-4 sm:flex-row sm:p-5'>
-                      <span className='inline-flex justify-center items-center px-3 py-1 text-xs font-bold rounded-lg shadow-sm bg-kapwa-bg-brand-default text-kapwa-text-inverse shrink-0'>
+                      <span className='inline-flex justify-center items-center px-3 py-1 text-xs font-bold rounded-lg shadow-sm bg-tsinelas-bg-brand-default text-tsinelas-text-inverse shrink-0'>
                         {event.year}
                       </span>
                       <div>
-                        <h3 className='mb-1 text-base font-bold leading-tight text-kapwa-text-strong'>
+                        <h3 className='mb-1 text-base font-bold leading-tight text-tsinelas-text-strong'>
                           {event.title}
                         </h3>
-                        <p className='text-xs leading-relaxed text-kapwa-text-support sm:text-sm'>
+                        <p className='text-xs leading-relaxed text-tsinelas-text-support sm:text-sm'>
                           {event.description}
                         </p>
                       </div>
@@ -99,18 +99,18 @@ export default function TimelineSection() {
                 >
                   <Card
                     hover
-                    className='shadow-sm transition-all bg-kapwa-bg-surface border-kapwa-border-weak hover:shadow-md'
+                    className='shadow-sm transition-all bg-tsinelas-bg-surface border-tsinelas-border-weak hover:shadow-md'
                   >
                     <CardContent className='p-5'>
                       <div className='flex gap-3 items-center mb-3'>
-                        <div className='flex justify-center items-center w-10 h-10 rounded-xl shadow-sm bg-kapwa-bg-brand-default text-kapwa-text-inverse'>
+                        <div className='flex justify-center items-center w-10 h-10 rounded-xl shadow-sm bg-tsinelas-bg-brand-default text-tsinelas-text-inverse'>
                           <Icon className='w-5 h-5' />
                         </div>
-                        <h4 className='text-sm font-bold leading-tight text-kapwa-text-strong'>
+                        <h4 className='text-sm font-bold leading-tight text-tsinelas-text-strong'>
                           {item.title}
                         </h4>
                       </div>
-                      <p className='text-xs leading-relaxed text-kapwa-text-disabled'>
+                      <p className='text-xs leading-relaxed text-tsinelas-text-disabled'>
                         {item.description}
                       </p>
                     </CardContent>
@@ -128,7 +128,7 @@ export default function TimelineSection() {
             <Button
               variant='primary'
               onClick={() => setShowAll(!showAll)}
-              className='bg-kapwa-bg-surface text-kapwa-text-brand hover:bg-kapwa-bg-surface-brand'
+              className='bg-tsinelas-bg-surface text-tsinelas-text-brand hover:bg-tsinelas-bg-surface-brand'
               rightIcon={
                 <ChevronDown
                   className={`h-4 w-4 transition-transform duration-300 ${showAll ? 'rotate-180' : ''}`}

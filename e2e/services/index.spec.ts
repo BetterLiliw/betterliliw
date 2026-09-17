@@ -1,5 +1,5 @@
 import { test, expect } from '../test-config';
-import { assertKapwaTokens } from '../utils/kapwa';
+import { assertTsinelasTokens } from '../utils/tsinelas';
 
 test.describe('Services Index Page', () => {
   test.beforeEach(async ({ page }) => {
@@ -7,14 +7,14 @@ test.describe('Services Index Page', () => {
     await page.goto('/services');
   });
 
-  test('services page uses Kapwa semantic tokens', async ({ page }) => {
+  test('services page uses Tsinelas semantic tokens', async ({ page }) => {
     // Check page title is visible
     await expect(
       page.locator('h1').filter({ hasText: /Services/i })
     ).toBeVisible();
 
-    // Verify Kapwa semantic tokens are used
-    await assertKapwaTokens(page);
+    // Verify Tsinelas semantic tokens are used
+    await assertTsinelasTokens(page);
   });
 
   test('services index displays service cards', async ({ page }) => {
@@ -192,8 +192,8 @@ test.describe('Services Index Page', () => {
     await page.waitForURL(/\/services\/.+/);
     expect(page.url()).toMatch(/\/services\/.+/);
 
-    // Verify Kapwa design tokens are present on detail page
-    await assertKapwaTokens(page);
+    // Verify Tsinelas design tokens are present on detail page
+    await assertTsinelasTokens(page);
   });
 
   test('empty state shows when no results', async ({ page }) => {

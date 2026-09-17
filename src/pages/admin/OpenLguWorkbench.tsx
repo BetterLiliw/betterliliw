@@ -187,13 +187,13 @@ export default function OpenLguWorkbench() {
       <section className='flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between'>
         <div>
           <div className='flex items-center gap-3'>
-            <FileSearch className='text-kapwa-text-brand h-7 w-7' />
-            <h2 className='text-kapwa-text-strong text-2xl font-bold'>
+            <FileSearch className='text-tsinelas-text-brand h-7 w-7' />
+            <h2 className='text-tsinelas-text-strong text-2xl font-bold'>
               OpenLGU Review Workbench
             </h2>
             {import.meta.env.DEV && <Badge variant='warning'>Local Only</Badge>}
           </div>
-          <p className='text-kapwa-text-support mt-2 max-w-3xl text-sm'>
+          <p className='text-tsinelas-text-support mt-2 max-w-3xl text-sm'>
             Review staged source records and write append-only local decisions.
             Canonical D1 records are untouched.
           </p>
@@ -209,7 +209,7 @@ export default function OpenLguWorkbench() {
       </section>
 
       {serverError && (
-        <div className='border-kapwa-border-danger bg-kapwa-bg-danger-weak text-kapwa-text-danger flex items-start gap-3 rounded-lg border p-4 text-sm'>
+        <div className='border-tsinelas-border-danger bg-tsinelas-bg-danger-weak text-tsinelas-text-danger flex items-start gap-3 rounded-lg border p-4 text-sm'>
           <AlertTriangle className='mt-0.5 h-4 w-4 shrink-0' />
           <div>
             <p className='font-semibold'>Workbench server is not reachable</p>
@@ -224,7 +224,7 @@ export default function OpenLguWorkbench() {
 
       <StatsStrip stats={stats} />
 
-      <div className='flex flex-wrap items-center gap-2 border-b border-kapwa-border-weak pb-3'>
+      <div className='flex flex-wrap items-center gap-2 border-b border-tsinelas-border-weak pb-3'>
         {tabs.map(candidate => {
           const tabStats = stats?.[candidate.id];
           return (
@@ -238,8 +238,8 @@ export default function OpenLguWorkbench() {
               }}
               className={`rounded-md border px-3 py-2 text-sm font-semibold ${
                 tab === candidate.id
-                  ? 'border-kapwa-border-brand bg-kapwa-bg-brand-weak text-kapwa-text-brand'
-                  : 'border-kapwa-border-weak bg-kapwa-bg-surface text-kapwa-text-support'
+                  ? 'border-tsinelas-border-brand bg-tsinelas-bg-brand-weak text-tsinelas-text-brand'
+                  : 'border-tsinelas-border-weak bg-tsinelas-bg-surface text-tsinelas-text-support'
               }`}
             >
               {candidate.label}
@@ -253,11 +253,11 @@ export default function OpenLguWorkbench() {
         <section className='space-y-4'>
           <div className='flex flex-col gap-3 md:flex-row md:items-center md:justify-between'>
             <div className='relative md:w-80'>
-              <Search className='text-kapwa-text-muted absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2' />
+              <Search className='text-tsinelas-text-muted absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2' />
               <input
                 value={search}
                 onChange={event => setSearch(event.target.value)}
-                className='kapwa-input w-full pl-9'
+                className='tsinelas-input w-full pl-9'
                 placeholder='Search number, title, source id'
               />
             </div>
@@ -272,8 +272,8 @@ export default function OpenLguWorkbench() {
                   }}
                   className={`rounded-md border px-3 py-2 text-xs font-bold uppercase ${
                     status === candidate
-                      ? 'border-kapwa-border-brand bg-kapwa-bg-brand-weak text-kapwa-text-brand'
-                      : 'border-kapwa-border-weak text-kapwa-text-support'
+                      ? 'border-tsinelas-border-brand bg-tsinelas-bg-brand-weak text-tsinelas-text-brand'
+                      : 'border-tsinelas-border-weak text-tsinelas-text-support'
                   }`}
                 >
                   {candidate}
@@ -286,7 +286,7 @@ export default function OpenLguWorkbench() {
             {loading && (
               <Card>
                 <CardContent>
-                  <p className='text-kapwa-text-support text-sm'>
+                  <p className='text-tsinelas-text-support text-sm'>
                     Loading staged records…
                   </p>
                 </CardContent>
@@ -295,7 +295,7 @@ export default function OpenLguWorkbench() {
             {!loading && items.length === 0 && (
               <Card>
                 <CardContent>
-                  <p className='text-kapwa-text-support text-sm'>
+                  <p className='text-tsinelas-text-support text-sm'>
                     No records in this view.
                   </p>
                 </CardContent>
@@ -313,7 +313,7 @@ export default function OpenLguWorkbench() {
           </div>
 
           <div className='flex items-center justify-between pt-2 text-sm'>
-            <span className='text-kapwa-text-support'>
+            <span className='text-tsinelas-text-support'>
               Page {page} · {total.toLocaleString()} total
             </span>
             <div className='flex gap-2'>
@@ -365,12 +365,12 @@ function StatsStrip({ stats }: { stats: WorkbenchStats | null }) {
       {cards.map(([label, value]) => (
         <div
           key={label}
-          className='border-kapwa-border-weak bg-kapwa-bg-surface rounded-lg border p-4'
+          className='border-tsinelas-border-weak bg-tsinelas-bg-surface rounded-lg border p-4'
         >
-          <p className='text-kapwa-text-muted text-xs font-bold uppercase'>
+          <p className='text-tsinelas-text-muted text-xs font-bold uppercase'>
             {label}
           </p>
-          <p className='text-kapwa-text-strong mt-1 text-2xl font-bold'>
+          <p className='text-tsinelas-text-strong mt-1 text-2xl font-bold'>
             {typeof value === 'number' ? value.toLocaleString() : '--'}
           </p>
         </div>
@@ -398,8 +398,8 @@ function DocumentRow({
       onClick={onSelect}
       className={`block w-full rounded-lg border p-4 text-left transition ${
         selected
-          ? 'border-kapwa-border-brand bg-kapwa-bg-brand-weak'
-          : 'border-kapwa-border-weak bg-kapwa-bg-surface hover:border-kapwa-border-brand'
+          ? 'border-tsinelas-border-brand bg-tsinelas-bg-brand-weak'
+          : 'border-tsinelas-border-weak bg-tsinelas-bg-surface hover:border-tsinelas-border-brand'
       }`}
     >
       <div className='flex flex-wrap items-center gap-2'>
@@ -415,10 +415,10 @@ function DocumentRow({
           </Badge>
         ))}
       </div>
-      <h3 className='text-kapwa-text-strong mt-3 line-clamp-2 text-sm font-semibold'>
+      <h3 className='text-tsinelas-text-strong mt-3 line-clamp-2 text-sm font-semibold'>
         {item.title || 'Missing title'}
       </h3>
-      <p className='text-kapwa-text-muted mt-2 text-xs'>
+      <p className='text-tsinelas-text-muted mt-2 text-xs'>
         {item.source_record_id}
       </p>
     </button>
@@ -500,7 +500,7 @@ function ReviewPanel({
     return (
       <Card className='xl:sticky xl:top-4'>
         <CardContent>
-          <p className='text-kapwa-text-support text-sm'>
+          <p className='text-tsinelas-text-support text-sm'>
             Select a staged record to review.
           </p>
         </CardContent>
@@ -514,7 +514,7 @@ function ReviewPanel({
         <div className='flex items-start justify-between gap-4'>
           <div>
             <CardTitle level='h3'>Review Evidence</CardTitle>
-            <p className='text-kapwa-text-muted mt-1 text-xs'>
+            <p className='text-tsinelas-text-muted mt-1 text-xs'>
               {item.source_record_id}
             </p>
           </div>
@@ -530,7 +530,7 @@ function ReviewPanel({
             <Badge variant='slate'>{item.number || 'no number'}</Badge>
             {item.term_id && <Badge variant='success'>{item.term_id}</Badge>}
           </div>
-          <h3 className='text-kapwa-text-strong text-base font-semibold'>
+          <h3 className='text-tsinelas-text-strong text-base font-semibold'>
             {item.title || 'Missing title'}
           </h3>
         </div>
@@ -542,17 +542,17 @@ function ReviewPanel({
             href={item.source_record?.source_url || ''}
           />
           {item.local_mirror_path && (
-            <p className='text-kapwa-text-support break-all text-xs'>
+            <p className='text-tsinelas-text-support break-all text-xs'>
               Local mirror: {item.local_mirror_path}
             </p>
           )}
         </div>
 
         <div>
-          <h4 className='text-kapwa-text-strong mb-2 text-sm font-bold'>
+          <h4 className='text-tsinelas-text-strong mb-2 text-sm font-bold'>
             Raw Payload
           </h4>
-          <pre className='border-kapwa-border-weak bg-kapwa-bg-subtle max-h-56 overflow-auto rounded-lg border p-3 text-xs whitespace-pre-wrap'>
+          <pre className='border-tsinelas-border-weak bg-tsinelas-bg-subtle max-h-56 overflow-auto rounded-lg border p-3 text-xs whitespace-pre-wrap'>
             {JSON.stringify(
               item.source_record?.raw_payload_json || {},
               null,
@@ -561,11 +561,11 @@ function ReviewPanel({
           </pre>
         </div>
 
-        <div className='border-kapwa-border-weak space-y-3 border-t pt-4'>
-          <label className='block text-sm font-semibold text-kapwa-text-strong'>
+        <div className='border-tsinelas-border-weak space-y-3 border-t pt-4'>
+          <label className='block text-sm font-semibold text-tsinelas-text-strong'>
             {fieldLabel(field)}
           </label>
-          <p className='text-kapwa-text-support text-sm'>
+          <p className='text-tsinelas-text-support text-sm'>
             {fieldInstruction(field)}
           </p>
           {field === 'date_enacted' ? (
@@ -573,13 +573,13 @@ function ReviewPanel({
               type='date'
               value={value}
               onChange={event => setValue(event.target.value)}
-              className='kapwa-input w-full'
+              className='tsinelas-input w-full'
             />
           ) : field === 'turnover_marker' || field === 'term_id' ? (
             <select
               value={value}
               onChange={event => setValue(event.target.value)}
-              className='kapwa-input w-full'
+              className='tsinelas-input w-full'
             >
               <option value=''>
                 {field === 'turnover_marker'
@@ -596,7 +596,7 @@ function ReviewPanel({
             <input
               value={value}
               onChange={event => setValue(event.target.value)}
-              className='kapwa-input w-full'
+              className='tsinelas-input w-full'
               placeholder='Resolved title'
             />
           )}
@@ -604,7 +604,7 @@ function ReviewPanel({
             <button
               type='button'
               onClick={() => setValue(turnoverSuggestion.id)}
-              className='border-kapwa-border-warning bg-kapwa-bg-warning-weak text-kapwa-text-warning rounded-md border px-3 py-2 text-left text-sm font-semibold'
+              className='border-tsinelas-border-warning bg-tsinelas-bg-warning-weak text-tsinelas-text-warning rounded-md border px-3 py-2 text-left text-sm font-semibold'
             >
               Suggested: {turnoverSuggestion.id} from OLD/NEW marker and
               document year
@@ -612,8 +612,8 @@ function ReviewPanel({
           )}
           {field === 'date_enacted' && value && (
             <div className='flex items-center gap-2 text-sm'>
-              <Calendar className='text-kapwa-text-muted h-4 w-4' />
-              <span className='text-kapwa-text-support'>
+              <Calendar className='text-tsinelas-text-muted h-4 w-4' />
+              <span className='text-tsinelas-text-support'>
                 Inferred term:{' '}
                 <strong>{inferredTerm ? inferredTerm.id : 'unmatched'}</strong>
               </span>
@@ -625,7 +625,7 @@ function ReviewPanel({
             onChange={event =>
               setEvidenceKind(event.target.value as ReviewEvidence['kind'])
             }
-            className='kapwa-input w-full'
+            className='tsinelas-input w-full'
           >
             <option value='manual_inspection'>Manual inspection</option>
             <option value='pdf_text'>PDF text</option>
@@ -636,11 +636,11 @@ function ReviewPanel({
           <textarea
             value={note}
             onChange={event => setNote(event.target.value)}
-            className='kapwa-input min-h-24 w-full'
+            className='tsinelas-input min-h-24 w-full'
             placeholder='Evidence note'
           />
 
-          {error && <p className='text-kapwa-text-danger text-sm'>{error}</p>}
+          {error && <p className='text-tsinelas-text-danger text-sm'>{error}</p>}
 
           <div className='flex flex-wrap gap-2'>
             <Button
@@ -671,21 +671,21 @@ function ReviewPanel({
           </div>
         </div>
 
-        <div className='border-kapwa-border-weak border-t pt-4'>
+        <div className='border-tsinelas-border-weak border-t pt-4'>
           <div className='mb-2 flex items-center gap-2'>
-            <History className='text-kapwa-text-muted h-4 w-4' />
-            <h4 className='text-kapwa-text-strong text-sm font-bold'>
+            <History className='text-tsinelas-text-muted h-4 w-4' />
+            <h4 className='text-tsinelas-text-strong text-sm font-bold'>
               History
             </h4>
           </div>
           {item.review_decisions.length === 0 ? (
-            <p className='text-kapwa-text-support text-sm'>No decisions yet.</p>
+            <p className='text-tsinelas-text-support text-sm'>No decisions yet.</p>
           ) : (
             <div className='space-y-2'>
               {item.review_decisions.map(decision => (
                 <div
                   key={decision.id}
-                  className='border-kapwa-border-weak rounded-lg border p-3 text-xs'
+                  className='border-tsinelas-border-weak rounded-lg border p-3 text-xs'
                 >
                   <div className='flex flex-wrap items-center gap-2'>
                     <Badge
@@ -697,20 +697,20 @@ function ReviewPanel({
                     >
                       {decision.decision_type}
                     </Badge>
-                    <span className='text-kapwa-text-support'>
+                    <span className='text-tsinelas-text-support'>
                       {decision.field}
                     </span>
-                    <span className='text-kapwa-text-muted'>
+                    <span className='text-tsinelas-text-muted'>
                       {new Date(decision.created_at).toLocaleString()}
                     </span>
                   </div>
                   {decision.value && (
-                    <p className='text-kapwa-text-strong mt-2 font-semibold'>
+                    <p className='text-tsinelas-text-strong mt-2 font-semibold'>
                       {decision.value}
                     </p>
                   )}
                   {decision.derived?.term_id && (
-                    <p className='text-kapwa-text-support mt-1'>
+                    <p className='text-tsinelas-text-support mt-1'>
                       Term: {decision.derived.term_id}
                     </p>
                   )}
@@ -727,7 +727,7 @@ function ReviewPanel({
 function EvidenceLink({ label, href }: { label: string; href: string }) {
   if (!href) {
     return (
-      <p className='text-kapwa-text-muted text-xs'>{label}: unavailable</p>
+      <p className='text-tsinelas-text-muted text-xs'>{label}: unavailable</p>
     );
   }
   return (
@@ -735,7 +735,7 @@ function EvidenceLink({ label, href }: { label: string; href: string }) {
       href={href}
       target='_blank'
       rel='noreferrer'
-      className='text-kapwa-text-brand inline-flex items-center gap-1 break-all text-xs font-semibold'
+      className='text-tsinelas-text-brand inline-flex items-center gap-1 break-all text-xs font-semibold'
     >
       <ExternalLink className='h-3.5 w-3.5 shrink-0' />
       {label}

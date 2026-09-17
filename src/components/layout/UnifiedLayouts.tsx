@@ -232,9 +232,9 @@ export function SectionBlock({
   }, [explicitVariant, increment]);
 
   const variants = {
-    default: 'bg-kapwa-bg-surface',
-    raised: 'bg-kapwa-bg-surface-raised/30',
-    brand: 'bg-kapwa-bg-surface-brand/50',
+    default: 'bg-tsinelas-bg-surface',
+    raised: 'bg-tsinelas-bg-surface-raised/30',
+    brand: 'bg-tsinelas-bg-surface-brand/50',
   };
 
   return (
@@ -260,12 +260,12 @@ export function SectionBlock({
           >
             <div className='flex gap-3 items-center'>
               {Icon && (
-                <div className='bg-kapwa-bg-surface rounded-xl p-2.5 shadow-sm ring-1 ring-kapwa-border-weak'>
-                  <Icon className='w-5 h-5 text-kapwa-text-brand' />
+                <div className='bg-tsinelas-bg-surface rounded-xl p-2.5 shadow-sm ring-1 ring-tsinelas-border-weak'>
+                  <Icon className='w-5 h-5 text-tsinelas-text-brand' />
                 </div>
               )}
               {title && (
-                <h2 className='font-extrabold tracking-tight text-kapwa-text-strong kapwa-heading-lg'>
+                <h2 className='font-extrabold tracking-tight text-tsinelas-text-strong tsinelas-heading-lg'>
                   {title}
                 </h2>
               )}
@@ -390,18 +390,18 @@ export function PageHeader({
     return (
       <header
         className={cn(
-          'py-12 bg-linear-to-b from-kapwa-bg-surface-raised to-kapwa-bg-surface md:py-16',
+          'py-12 bg-linear-to-b from-tsinelas-bg-surface-raised to-tsinelas-bg-surface md:py-16',
           'duration-700 animate-in fade-in',
           className
         )}
       >
         <div className='container px-4 mx-auto'>
           <div className='flex flex-col items-center text-center'>
-            <h1 className='mb-4 font-bold tracking-tight text-kapwa-text-strong kapwa-heading-xl'>
+            <h1 className='mb-4 font-bold tracking-tight text-tsinelas-text-strong tsinelas-heading-xl'>
               {title}
             </h1>
             {description && (
-              <p className='mx-auto max-w-2xl text-sm leading-relaxed text-kapwa-text-disabled md:text-base'>
+              <p className='mx-auto max-w-2xl text-sm leading-relaxed text-tsinelas-text-disabled md:text-base'>
                 {description}
               </p>
             )}
@@ -425,11 +425,11 @@ export function PageHeader({
         <div className='container px-4 mx-auto'>
           <div className='flex flex-col items-center text-center'>
             {breadcrumbContent}
-            <h1 className='mb-4 font-bold tracking-tight text-kapwa-text-strong kapwa-heading-xl'>
+            <h1 className='mb-4 font-bold tracking-tight text-tsinelas-text-strong tsinelas-heading-xl'>
               {title}
             </h1>
             {description && (
-              <p className='mx-auto max-w-2xl text-sm leading-relaxed text-kapwa-text-disabled md:text-base'>
+              <p className='mx-auto max-w-2xl text-sm leading-relaxed text-tsinelas-text-disabled md:text-base'>
                 {description}
               </p>
             )}
@@ -444,7 +444,7 @@ export function PageHeader({
   return (
     <header
       className={cn(
-        'py-6 border-b border-kapwa-border-weak md:py-8',
+        'py-6 border-b border-tsinelas-border-weak md:py-8',
         'duration-700 animate-in fade-in',
         className
       )}
@@ -453,11 +453,11 @@ export function PageHeader({
         {breadcrumbContent}
         <div className='flex flex-col gap-4 justify-between md:flex-row md:items-start'>
           <div className='max-w-2xl'>
-            <h1 className='font-extrabold tracking-tight text-kapwa-text-strong kapwa-heading-xl'>
+            <h1 className='font-extrabold tracking-tight text-tsinelas-text-strong tsinelas-heading-xl'>
               {title}
             </h1>
             {description && (
-              <p className='mt-1 text-sm text-kapwa-text-disabled md:text-base'>
+              <p className='mt-1 text-sm text-tsinelas-text-disabled md:text-base'>
                 {description}
               </p>
             )}

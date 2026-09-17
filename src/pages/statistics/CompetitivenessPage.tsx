@@ -102,7 +102,7 @@ export default function CompetitivenessPage() {
       </PageHero>
 
       {/* KPI Cards - using new StatCard component */}
-      <div className='grid grid-cols-1 gap-4 items-stretch md:grid-cols-3 mb-kapwa-lg'>
+      <div className='grid grid-cols-1 gap-4 items-stretch md:grid-cols-3 mb-tsinelas-lg'>
         <StatCard
           label='Overall Score'
           value={cmciData.overall_score[latestIdx].toFixed(2)}
@@ -115,7 +115,7 @@ export default function CompetitivenessPage() {
           subtext='1st Class Municipality'
           variant='secondary'
         >
-          <div className='flex items-center gap-0.5 rounded-full border border-kapwa-border-success bg-kapwa-bg-success-weak px-2 py-0.5 text-kapwa-text-success'>
+          <div className='flex items-center gap-0.5 rounded-full border border-tsinelas-border-success bg-tsinelas-bg-success-weak px-2 py-0.5 text-tsinelas-text-success'>
             <ArrowUp className='w-3 h-3 stroke-3' />
             <span className='text-[10px] font-black uppercase'>Up</span>
           </div>
@@ -130,7 +130,7 @@ export default function CompetitivenessPage() {
       </div>
 
       {/* Tab Switcher */}
-      <nav className='mb-kapwa-lg bg-kapwa-bg-hover flex gap-1.5 rounded-2xl p-1.5'>
+      <nav className='mb-tsinelas-lg bg-tsinelas-bg-hover flex gap-1.5 rounded-2xl p-1.5'>
         {(['trends', 'pillars'] as const).map(tab => (
           <button
             key={tab}
@@ -138,8 +138,8 @@ export default function CompetitivenessPage() {
             className={cn(
               'min-h-[48px] flex-1 rounded-xl py-3 text-xs font-bold tracking-widest uppercase transition-all',
               activeTab === tab
-                ? 'text-kapwa-text-brand-bold bg-kapwa-bg-surface shadow-md'
-                : 'hover:text-kapwa-text-support text-kapwa-text-strong0'
+                ? 'text-tsinelas-text-brand-bold bg-tsinelas-bg-surface shadow-md'
+                : 'hover:text-tsinelas-text-support text-tsinelas-text-strong'
             )}
           >
             {tab === 'trends' ? (
@@ -209,16 +209,16 @@ export default function CompetitivenessPage() {
                 className={cn(
                   'flex min-h-[56px] w-full items-center justify-between rounded-2xl border p-4 text-left transition-all',
                   selectedPillar === p.name
-                    ? 'bg-kapwa-bg-surface border-kapwa-border-brand shadow-sm'
-                    : 'border-kapwa-border-weak bg-kapwa-bg-surface'
+                    ? 'bg-tsinelas-bg-surface border-tsinelas-border-brand shadow-sm'
+                    : 'border-tsinelas-border-weak bg-tsinelas-bg-surface'
                 )}
               >
                 <span
                   className={cn(
                     'text-sm font-bold',
                     selectedPillar === p.name
-                      ? 'text-kapwa-text-brand-bold'
-                      : 'text-kapwa-text-support'
+                      ? 'text-tsinelas-text-brand-bold'
+                      : 'text-tsinelas-text-support'
                   )}
                 >
                   {p.name}
@@ -233,18 +233,18 @@ export default function CompetitivenessPage() {
             <DetailSection
               title={`${selectedPillar} Indicators`}
               icon={Target}
-              className='bg-kapwa-bg-surface/30'
+              className='bg-tsinelas-bg-surface/30'
             >
               <div className='grid grid-cols-1 gap-3 sm:grid-cols-2'>
                 {currentPillar?.indicators.map((ind, idx) => (
                   <div
                     key={idx}
-                    className='border-kapwa-border-weak bg-kapwa-bg-surface flex min-h-[100px] flex-col justify-between rounded-xl border p-4 shadow-xs'
+                    className='border-tsinelas-border-weak bg-tsinelas-bg-surface flex min-h-[100px] flex-col justify-between rounded-xl border p-4 shadow-xs'
                   >
-                    <span className='text-kapwa-text-disabled text-[10px] leading-tight font-bold tracking-widest uppercase'>
+                    <span className='text-tsinelas-text-disabled text-[10px] leading-tight font-bold tracking-widest uppercase'>
                       {ind.name}
                     </span>
-                    <span className='mt-2 text-xl font-black text-kapwa-text-strong'>
+                    <span className='mt-2 text-xl font-black text-tsinelas-text-strong'>
                       {ind.values[latestIdx]?.toFixed(4) || '0.0000'}
                     </span>
                   </div>
@@ -256,8 +256,8 @@ export default function CompetitivenessPage() {
       )}
 
       {/* Footer */}
-      <footer className='pt-10 space-y-4 text-center border-t border-kapwa-border-weak'>
-        <div className='flex justify-center items-center mx-auto w-6 h-6 rounded-full bg-kapwa-bg-success-weak text-kapwa-text-success'>
+      <footer className='pt-10 space-y-4 text-center border-t border-tsinelas-border-weak'>
+        <div className='flex justify-center items-center mx-auto w-6 h-6 rounded-full bg-tsinelas-bg-success-weak text-tsinelas-text-success'>
           <svg
             className='w-4 h-4'
             fill='none'
@@ -273,16 +273,16 @@ export default function CompetitivenessPage() {
           </svg>
         </div>
         <div className='space-y-1'>
-          <p className='text-kapwa-text-strong text-[10px] font-bold tracking-widest uppercase'>
+          <p className='text-tsinelas-text-strong text-[10px] font-bold tracking-widest uppercase'>
             Verified Data Audit
           </p>
-          <p className='text-kapwa-text-disabled text-[10px] font-bold tracking-widest uppercase'>
+          <p className='text-tsinelas-text-disabled text-[10px] font-bold tracking-widest uppercase'>
             Source:{' '}
             <a
               href='https://cmci.dti.gov.ph/data-portal.php'
               target='_blank'
               rel='noreferrer'
-              className='underline hover:text-kapwa-text-brand'
+              className='underline hover:text-tsinelas-text-brand'
             >
               {cmciData.meta.source}
             </a>

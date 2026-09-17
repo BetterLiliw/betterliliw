@@ -1,7 +1,7 @@
 import AxeBuilder from '@axe-core/playwright';
 import serviceCategories from '../src/data/service_categories.json' with { type: 'json' };
 import { test, expect } from './test-config';
-import { assertKapwaTokens } from './utils/kapwa';
+import { assertTsinelasTokens } from './utils/tsinelas';
 
 test.describe('Home Page', () => {
   test.beforeEach(async ({ page }) => {
@@ -61,8 +61,8 @@ test.describe('Home Page', () => {
     ).toBeVisible();
   });
 
-  test('Page uses Kapwa semantic tokens', async ({ page }) => {
-    await assertKapwaTokens(page);
+  test('Page uses Tsinelas semantic tokens', async ({ page }) => {
+    await assertTsinelasTokens(page);
   });
 
   test('Navigation links work correctly', async ({ page }) => {
@@ -134,7 +134,7 @@ test.describe('Home Page - Accessibility', () => {
   test('Home page passes accessibility checks @a11y', async ({ page }) => {
     test.fixme(
       true,
-      'axe reports real violations: nested/duplicate <main> landmarks, duplicate skip links, aria-required-children, and colour contrast in Kapwa components'
+      'axe reports real violations: nested/duplicate <main> landmarks, duplicate skip links, aria-required-children, and colour contrast in Tsinelas components'
     );
     await page.goto('/');
 

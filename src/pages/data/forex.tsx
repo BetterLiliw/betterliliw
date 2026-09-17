@@ -141,30 +141,30 @@ const ForexPage: FC = () => {
     : [];
 
   return (
-    <div className='bg-kapwa-bg-surface-raised min-h-screen'>
+    <div className='bg-tsinelas-bg-surface-raised min-h-screen'>
       <div className='container mx-auto px-4 py-8 md:py-12'>
         {isLoading ? (
           <div className='flex h-64 items-center justify-center'>
-            <div className='border-kapwa-border-brand h-12 w-12 animate-spin rounded-full border-t-2 border-b-2'></div>
+            <div className='border-tsinelas-border-brand h-12 w-12 animate-spin rounded-full border-t-2 border-b-2'></div>
           </div>
         ) : error ? (
-          <div className='bg-kapwa-bg-danger-weak text-kapwa-text-danger rounded-sm border-l-4 border-red-500 p-4 shadow-md'>
+          <div className='bg-tsinelas-bg-danger-weak text-tsinelas-text-danger rounded-sm border-l-4 border-red-500 p-4 shadow-md'>
             <p className='font-bold'>Error</p>
             <p>{error}</p>
           </div>
         ) : (
           <div className='grid grid-cols-1 gap-8 lg:grid-cols-4'>
             {/* Currency Selection Panel */}
-            <div className='bg-kapwa-bg-surface overflow-hidden rounded-lg shadow-md'>
-              <div className='border-kapwa-border-weak bg-kapwa-bg-surface sticky top-0 z-10 border-b p-6 pb-4'>
+            <div className='bg-tsinelas-bg-surface overflow-hidden rounded-lg shadow-md'>
+              <div className='border-tsinelas-border-weak bg-tsinelas-bg-surface sticky top-0 z-10 border-b p-6 pb-4'>
                 {!isSearchOpen ? (
                   <div className='flex items-center justify-between'>
-                    <h2 className='text-kapwa-text-support text-xl font-bold'>
+                    <h2 className='text-tsinelas-text-support text-xl font-bold'>
                       Currencies
                     </h2>
                     <button
                       onClick={() => setIsSearchOpen(true)}
-                      className='text-kapwa-text-disabled hover:bg-kapwa-bg-hover hover:text-kapwa-text-support rounded-md p-2 transition-colors'
+                      className='text-tsinelas-text-disabled hover:bg-tsinelas-bg-hover hover:text-tsinelas-text-support rounded-md p-2 transition-colors'
                     >
                       <LucideIcons.Search className='h-5 w-5' />
                     </button>
@@ -172,7 +172,7 @@ const ForexPage: FC = () => {
                 ) : (
                   <div className='relative'>
                     <div className='pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3'>
-                      <LucideIcons.Search className='text-kapwa-text-disabled h-5 w-5' />
+                      <LucideIcons.Search className='text-tsinelas-text-disabled h-5 w-5' />
                     </div>
                     <input
                       type='text'
@@ -185,7 +185,7 @@ const ForexPage: FC = () => {
                         }
                       }}
                       autoFocus
-                      className='focus:ring-kapwa-border-brand focus:border-kapwa-border-brand border-kapwa-border-weak bg-kapwa-bg-surface block w-full rounded-md border py-2 pr-10 pl-10 leading-5 placeholder-gray-500 focus:placeholder-gray-400 focus:ring-1 focus:outline-none sm:text-sm'
+                      className='focus:ring-tsinelas-border-brand focus:border-tsinelas-border-brand border-tsinelas-border-weak bg-tsinelas-bg-surface block w-full rounded-md border py-2 pr-10 pl-10 leading-5 placeholder-gray-500 focus:placeholder-gray-400 focus:ring-1 focus:outline-none sm:text-sm'
                     />
                     <div className='absolute inset-y-0 right-0 flex items-center pr-3'>
                       <button
@@ -193,7 +193,7 @@ const ForexPage: FC = () => {
                           setSearchTerm('');
                           setIsSearchOpen(false);
                         }}
-                        className='hover:text-kapwa-text-support text-kapwa-text-disabled'
+                        className='hover:text-tsinelas-text-support text-tsinelas-text-disabled'
                       >
                         <LucideIcons.X className='h-4 w-4' />
                       </button>
@@ -210,8 +210,8 @@ const ForexPage: FC = () => {
                         onClick={() => setSelectedCurrency(rate.code)}
                         className={`flex w-full cursor-pointer items-center justify-between rounded-md px-4 py-3 text-left transition-all ${
                           selectedCurrency === rate.code
-                            ? 'bg-kapwa-bg-brand-weak text-kapwa-text-brand-bold'
-                            : 'hover:bg-kapwa-bg-hover'
+                            ? 'bg-tsinelas-bg-brand-weak text-tsinelas-text-brand-bold'
+                            : 'hover:bg-tsinelas-bg-hover'
                         }`}
                       >
                         <div className='flex items-center gap-3'>
@@ -220,7 +220,7 @@ const ForexPage: FC = () => {
                           </span>
                           <div>
                             <div className='font-medium'>{rate.code}</div>
-                            <div className='text-kapwa-text-support text-xs'>
+                            <div className='text-tsinelas-text-support text-xs'>
                               {formatCurrencyName(rate.currency)}
                             </div>
                           </div>
@@ -233,11 +233,11 @@ const ForexPage: FC = () => {
                   </div>
                 ) : (
                   <div className='flex h-full flex-col items-center justify-center pt-8 text-center'>
-                    <LucideIcons.SearchX className='text-kapwa-text-disabled mb-4 h-12 w-12' />
-                    <h3 className='text-kapwa-text-support mb-2 text-lg font-medium'>
+                    <LucideIcons.SearchX className='text-tsinelas-text-disabled mb-4 h-12 w-12' />
+                    <h3 className='text-tsinelas-text-support mb-2 text-lg font-medium'>
                       No currencies found
                     </h3>
-                    <p className='text-kapwa-text-disabled mb-4 text-sm'>
+                    <p className='text-tsinelas-text-disabled mb-4 text-sm'>
                       {searchTerm
                         ? `No currencies match "${searchTerm}"`
                         : 'No currencies available'}
@@ -245,7 +245,7 @@ const ForexPage: FC = () => {
                     {searchTerm && (
                       <button
                         onClick={() => setSearchTerm('')}
-                        className='text-kapwa-text-brand hover:text-kapwa-text-brand text-sm font-medium'
+                        className='text-tsinelas-text-brand hover:text-tsinelas-text-brand text-sm font-medium'
                       >
                         Clear search
                       </button>
@@ -258,34 +258,34 @@ const ForexPage: FC = () => {
             {/* Currency Details and Chart */}
             {selectedCurrencyData && (
               <div className='lg:col-span-3'>
-                <div className='bg-kapwa-bg-surface mb-8 rounded-lg p-6 shadow-md'>
+                <div className='bg-tsinelas-bg-surface mb-8 rounded-lg p-6 shadow-md'>
                   <div className='mb-6 flex flex-col items-start justify-between md:flex-row md:items-center'>
                     <div className='mb-4 flex items-center md:mb-0'>
-                      <div className='bg-kapwa-bg-brand-weak mr-4 rounded-full p-3'>
+                      <div className='bg-tsinelas-bg-brand-weak mr-4 rounded-full p-3'>
                         {getCurrencyIcon(
                           selectedCurrencyData.code,
-                          'h-8 w-8 text-kapwa-text-brand'
+                          'h-8 w-8 text-tsinelas-text-brand'
                         )}
                       </div>
                       <div>
-                        <h2 className='text-kapwa-text-support text-2xl font-bold'>
+                        <h2 className='text-tsinelas-text-support text-2xl font-bold'>
                           {selectedCurrencyData.code}
                         </h2>
-                        <p className='text-kapwa-text-strong'>
+                        <p className='text-tsinelas-text-strong'>
                           {formatCurrencyName(selectedCurrencyData.currency)}
                         </p>
                       </div>
                     </div>
-                    <div className='bg-kapwa-bg-hover rounded-lg p-4'>
-                      <div className='text-kapwa-text-support mb-1 text-sm'>
+                    <div className='bg-tsinelas-bg-hover rounded-lg p-4'>
+                      <div className='text-tsinelas-text-support mb-1 text-sm'>
                         Current Rate
                       </div>
-                      <div className='text-kapwa-text-support text-3xl font-bold'>
+                      <div className='text-tsinelas-text-support text-3xl font-bold'>
                         {selectedCurrencyData.rate
                           ? `₱${selectedCurrencyData.rate.toFixed(4)}`
                           : 'Data Unavailable'}
                       </div>
-                      <div className='text-kapwa-text-support text-xs'>
+                      <div className='text-tsinelas-text-support text-xs'>
                         Philippine Peso
                       </div>
                     </div>
@@ -299,8 +299,8 @@ const ForexPage: FC = () => {
                         onClick={() => setTimeframe(period)}
                         className={`rounded-md px-3 py-1 text-sm ${
                           timeframe === period
-                            ? 'bg-kapwa-bg-brand-default text-white'
-                            : 'hover:bg-kapwa-bg-active bg-kapwa-bg-surface-raised text-kapwa-text-support'
+                            ? 'bg-tsinelas-bg-brand-default text-white'
+                            : 'hover:bg-tsinelas-bg-active bg-tsinelas-bg-surface-raised text-tsinelas-text-support'
                         }`}
                       >
                         {period}
@@ -363,24 +363,24 @@ const ForexPage: FC = () => {
                 </div>
 
                 {/* Conversion Calculator */}
-                <div className='bg-kapwa-bg-surface rounded-lg p-6 shadow-md'>
-                  <h3 className='text-kapwa-text-support mb-4 text-xl font-bold'>
+                <div className='bg-tsinelas-bg-surface rounded-lg p-6 shadow-md'>
+                  <h3 className='text-tsinelas-text-support mb-4 text-xl font-bold'>
                     Currency Converter
                   </h3>
                   <div className='grid grid-cols-1 gap-6 md:grid-cols-2'>
                     <div>
-                      <label className='text-kapwa-text-support mb-2 block text-sm font-medium'>
+                      <label className='text-tsinelas-text-support mb-2 block text-sm font-medium'>
                         Philippine Peso (PHP)
                       </label>
                       <div className='relative rounded-md shadow-xs'>
                         <div className='pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3'>
-                          <span className='text-kapwa-text-strong sm:text-sm'>
+                          <span className='text-tsinelas-text-strong sm:text-sm'>
                             ₱
                           </span>
                         </div>
                         <input
                           type='number'
-                          className='focus:ring-kapwa-border-brand focus:border-kapwa-border-brand border-kapwa-border-weak block w-full rounded-md py-3 pr-12 pl-7 sm:text-sm'
+                          className='focus:ring-tsinelas-border-brand focus:border-tsinelas-border-brand border-tsinelas-border-weak block w-full rounded-md py-3 pr-12 pl-7 sm:text-sm'
                           placeholder='0.00'
                           value={phpAmount}
                           onChange={e => setPhpAmount(e.target.value)}
@@ -388,13 +388,13 @@ const ForexPage: FC = () => {
                       </div>
                     </div>
                     <div>
-                      <label className='text-kapwa-text-support mb-2 block text-sm font-medium'>
+                      <label className='text-tsinelas-text-support mb-2 block text-sm font-medium'>
                         {selectedCurrencyData.code} (
                         {formatCurrencyName(selectedCurrencyData.currency)})
                       </label>
                       <div className='relative rounded-md shadow-xs'>
                         <div className='pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3'>
-                          <span className='text-kapwa-text-strong sm:text-sm'>
+                          <span className='text-tsinelas-text-strong sm:text-sm'>
                             {selectedCurrencyData.code === 'USD'
                               ? '$'
                               : selectedCurrencyData.code === 'EUR'
@@ -408,7 +408,7 @@ const ForexPage: FC = () => {
                         </div>
                         <input
                           type='text'
-                          className='focus:ring-kapwa-border-brand focus:border-kapwa-border-brand border-kapwa-border-weak bg-kapwa-bg-surface-raised block w-full rounded-md py-3 pr-12 pl-7 sm:text-sm'
+                          className='focus:ring-tsinelas-border-brand focus:border-tsinelas-border-brand border-tsinelas-border-weak bg-tsinelas-bg-surface-raised block w-full rounded-md py-3 pr-12 pl-7 sm:text-sm'
                           readOnly
                           value={
                             selectedCurrencyData.rate && phpAmount
@@ -422,7 +422,7 @@ const ForexPage: FC = () => {
                       </div>
                     </div>
                   </div>
-                  <p className='text-kapwa-text-support mt-4 text-sm'>
+                  <p className='text-tsinelas-text-support mt-4 text-sm'>
                     Exchange rates are provided by Bangko Sentral ng Pilipinas
                     (BSP). Last updated:{' '}
                     {new Date().toLocaleDateString('en-US', {
@@ -440,38 +440,38 @@ const ForexPage: FC = () => {
         )}
 
         {/* Forex Information Section */}
-        <div className='bg-kapwa-bg-surface mt-12 rounded-lg p-6 shadow-md'>
-          <h2 className='text-kapwa-text-support mb-4 text-2xl font-bold'>
+        <div className='bg-tsinelas-bg-surface mt-12 rounded-lg p-6 shadow-md'>
+          <h2 className='text-tsinelas-text-support mb-4 text-2xl font-bold'>
             About Foreign Exchange Rates
           </h2>
-          <p className='text-kapwa-text-support mb-4'>
+          <p className='text-tsinelas-text-support mb-4'>
             The foreign exchange rates displayed on this page are sourced from
             the Bangko Sentral ng Pilipinas (BSP), the central bank of the
             Philippines. These rates represent the official reference rates for
             the Philippine Peso against major world currencies.
           </p>
           <div className='mt-6 grid grid-cols-1 gap-6 md:grid-cols-2'>
-            <div className='border-kapwa-border-brand border-l-4 pl-4'>
-              <h3 className='text-kapwa-text-support mb-2 text-lg font-semibold'>
+            <div className='border-tsinelas-border-brand border-l-4 pl-4'>
+              <h3 className='text-tsinelas-text-support mb-2 text-lg font-semibold'>
                 Understanding Exchange Rates
               </h3>
-              <p className='text-kapwa-text-strong'>
+              <p className='text-tsinelas-text-strong'>
                 Exchange rates indicate how much of one currency can be
                 exchanged for another. The rates shown here represent the amount
                 of Philippine Pesos (PHP) needed to purchase one unit of the
                 foreign currency.
               </p>
             </div>
-            <div className='border-kapwa-border-brand border-l-4 pl-4'>
-              <h3 className='text-kapwa-text-support mb-2 text-lg font-semibold'>
+            <div className='border-tsinelas-border-brand border-l-4 pl-4'>
+              <h3 className='text-tsinelas-text-support mb-2 text-lg font-semibold'>
                 Official BSP Rates
               </h3>
-              <p className='text-kapwa-text-strong'>
+              <p className='text-tsinelas-text-strong'>
                 For official foreign exchange reference rates and more detailed
                 information, please visit the{' '}
                 <a
                   href='https://www.bsp.gov.ph/SitePages/Statistics/ExchangeRate.aspx'
-                  className='text-kapwa-text-brand hover:underline'
+                  className='text-tsinelas-text-brand hover:underline'
                   target='_blank'
                   rel='noopener noreferrer'
                 >

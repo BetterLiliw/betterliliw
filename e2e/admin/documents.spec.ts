@@ -1,5 +1,5 @@
 import { test, expect } from '../test-config';
-import { assertKapwaTokens } from '../utils/kapwa';
+import { assertTsinelasTokens } from '../utils/tsinelas';
 
 test.describe('Admin Documents Page', () => {
   test.beforeEach(async ({ page }) => {
@@ -7,13 +7,13 @@ test.describe('Admin Documents Page', () => {
     await page.goto('/admin/documents');
   });
 
-  test('documents page uses Kapwa semantic tokens', async ({ page }) => {
+  test('documents page uses Tsinelas semantic tokens', async ({ page }) => {
     // Check page title is visible
     await expect(
       page.locator('h1').filter({ hasText: /Documents/i })
     ).toBeVisible();
 
-    await assertKapwaTokens(page);
+    await assertTsinelasTokens(page);
   });
 
   test('documents page displays document table or cards', async ({ page }) => {

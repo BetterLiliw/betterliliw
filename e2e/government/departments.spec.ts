@@ -1,5 +1,5 @@
 import { test, expect } from '../test-config';
-import { assertKapwaTokens } from '../utils/kapwa';
+import { assertTsinelasTokens } from '../utils/tsinelas';
 
 test.describe('Departments Pages', () => {
   test.beforeEach(async ({ page }) => {
@@ -7,10 +7,10 @@ test.describe('Departments Pages', () => {
     await page.goto('/government/departments');
   });
 
-  test('departments index page uses Kapwa semantic tokens', async ({
+  test('departments index page uses Tsinelas semantic tokens', async ({
     page,
   }) => {
-    await assertKapwaTokens(page);
+    await assertTsinelasTokens(page);
   });
 
   test('departments index displays all department cards', async ({ page }) => {
@@ -68,7 +68,7 @@ test.describe('Departments Pages', () => {
     const heading = page.locator('h1, h2').first();
     await expect(heading).toBeVisible();
 
-    await assertKapwaTokens(page);
+    await assertTsinelasTokens(page);
   });
 
   test('department detail page has breadcrumbs', async ({ page }) => {

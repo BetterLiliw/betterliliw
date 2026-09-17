@@ -37,12 +37,12 @@ export default function ContributePage() {
       <div className='grid grid-cols-1 gap-8 md:grid-cols-2'>
         <div className='space-y-6'>
           <div className='space-y-3'>
-            <h3 className='text-kapwa-text-strong text-lg font-bold'>
+            <h3 className='text-tsinelas-text-strong text-lg font-bold'>
               How it works
             </h3>
-            <ol className='text-kapwa-text-support space-y-3 text-sm leading-relaxed'>
+            <ol className='text-tsinelas-text-support space-y-3 text-sm leading-relaxed'>
               <li className='flex gap-3'>
-                <span className='bg-kapwa-bg-brand-default text-kapwa-text-inverse flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-bold'>
+                <span className='bg-tsinelas-bg-brand-default text-tsinelas-text-inverse flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-bold'>
                   1
                 </span>
                 <span>
@@ -51,7 +51,7 @@ export default function ContributePage() {
                 </span>
               </li>
               <li className='flex gap-3'>
-                <span className='bg-kapwa-bg-brand-default text-kapwa-text-inverse flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-bold'>
+                <span className='bg-tsinelas-bg-brand-default text-tsinelas-text-inverse flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-bold'>
                   2
                 </span>
                 <span>
@@ -60,7 +60,7 @@ export default function ContributePage() {
                 </span>
               </li>
               <li className='flex gap-3'>
-                <span className='bg-kapwa-bg-brand-default text-kapwa-text-inverse flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-bold'>
+                <span className='bg-tsinelas-bg-brand-default text-tsinelas-text-inverse flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-bold'>
                   3
                 </span>
                 <span>
@@ -74,13 +74,13 @@ export default function ContributePage() {
             href={GITHUB_ISSUE_URL}
             target='_blank'
             rel='noopener noreferrer'
-            className='bg-kapwa-bg-brand-default hover:bg-kapwa-bg-brand-hover text-kapwa-text-inverse flex min-h-[48px] items-center justify-center gap-2 rounded-2xl px-8 py-4 font-bold shadow-xl transition-all'
+            className='bg-tsinelas-bg-brand-default hover:bg-tsinelas-bg-brand-hover text-tsinelas-text-inverse flex min-h-[48px] items-center justify-center gap-2 rounded-2xl px-8 py-4 font-bold shadow-xl transition-all'
           >
             Open Contribution Form <ExternalLink className='h-4 w-4' />
           </a>
 
-          <div className='flex gap-4 rounded-2xl border border-kapwa-border-weak bg-kapwa-bg-surface p-5'>
-            <p className='text-kapwa-text-support text-xs leading-relaxed'>
+          <div className='flex gap-4 rounded-2xl border border-tsinelas-border-weak bg-tsinelas-bg-surface p-5'>
+            <p className='text-tsinelas-text-support text-xs leading-relaxed'>
               <strong>Why GitHub?</strong> Using GitHub ensures all
               contributions are attributed to real accounts, helps prevent spam,
               and lets us track the review process transparently.
@@ -90,31 +90,31 @@ export default function ContributePage() {
 
         <aside className='space-y-6'>
           <div className='space-y-3'>
-            <h3 className='text-kapwa-text-strong text-lg font-bold'>
+            <h3 className='text-tsinelas-text-strong text-lg font-bold'>
               What you can contribute
             </h3>
-            <ul className='text-kapwa-text-support space-y-2 text-sm'>
+            <ul className='text-tsinelas-text-support space-y-2 text-sm'>
               <li className='flex gap-2'>
-                <span className='text-kapwa-text-success'>&#10003;</span>
+                <span className='text-tsinelas-text-success'>&#10003;</span>
                 New services not yet in the directory
               </li>
               <li className='flex gap-2'>
-                <span className='text-kapwa-text-success'>&#10003;</span>
+                <span className='text-tsinelas-text-success'>&#10003;</span>
                 Corrections to outdated information
               </li>
               <li className='flex gap-2'>
-                <span className='text-kapwa-text-success'>&#10003;</span>
+                <span className='text-tsinelas-text-success'>&#10003;</span>
                 Updated steps or requirements
               </li>
               <li className='flex gap-2'>
-                <span className='text-kapwa-text-success'>&#10003;</span>
+                <span className='text-tsinelas-text-success'>&#10003;</span>
                 New office or department listings
               </li>
             </ul>
           </div>
 
-          <div className='flex gap-4 rounded-2xl border border-kapwa-border-warning bg-kapwa-bg-warning-weak p-5'>
-            <p className='text-xs leading-relaxed text-kapwa-text-warning'>
+          <div className='flex gap-4 rounded-2xl border border-tsinelas-border-warning bg-tsinelas-bg-warning-weak p-5'>
+            <p className='text-xs leading-relaxed text-tsinelas-text-warning'>
               <strong>Note:</strong> All submissions are reviewed manually.
               Provide an official source link to avoid rejection.
             </p>
@@ -122,7 +122,7 @@ export default function ContributePage() {
 
           <Link
             to='/services'
-            className='text-kapwa-text-brand hover:text-kapwa-text-brand-bold flex items-center gap-1 text-sm font-bold transition-colors'
+            className='text-tsinelas-text-brand hover:text-tsinelas-text-brand-bold flex items-center gap-1 text-sm font-bold transition-colors'
           >
             &larr; Back to Services
           </Link>

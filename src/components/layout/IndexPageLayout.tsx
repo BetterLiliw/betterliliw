@@ -65,7 +65,7 @@ export function IndexPageLayout({
   const hasNoResults = children === null || children === undefined;
 
   return (
-    <div className={`bg-kapwa-bg-surface min-h-screen ${className}`}>
+    <div className={`bg-tsinelas-bg-surface min-h-screen ${className}`}>
       <ModuleHeader title={title} description={description}>
         {search && (
           <SearchInput

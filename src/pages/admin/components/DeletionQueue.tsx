@@ -255,7 +255,7 @@ export default function DeletionQueue() {
   if (loading) {
     return (
       <div className='flex items-center justify-center py-12'>
-        <RefreshCw className='text-kapwa-text-disabled h-8 w-8 animate-spin' />
+        <RefreshCw className='text-tsinelas-text-disabled h-8 w-8 animate-spin' />
       </div>
     );
   }
@@ -275,10 +275,10 @@ export default function DeletionQueue() {
       {/* Header */}
       <div className='flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between'>
         <div>
-          <h2 className='text-kapwa-text-strong text-2xl font-bold'>
+          <h2 className='text-tsinelas-text-strong text-2xl font-bold'>
             Deletion Queue
           </h2>
-          <p className='text-kapwa-text-support'>
+          <p className='text-tsinelas-text-support'>
             {persons.length} person{persons.length !== 1 ? 's' : ''} flagged for
             deletion
             {selectedIds.size > 0 && ` (${selectedIds.size} selected)`}
@@ -315,15 +315,15 @@ export default function DeletionQueue() {
 
       {/* Bulk Actions */}
       {selectedIds.size > 0 && (
-        <div className='border-kapwa-border-weak bg-kapwa-bg-surface-raised flex flex-col gap-3 rounded-md border p-4 sm:flex-row sm:items-center sm:justify-between'>
+        <div className='border-tsinelas-border-weak bg-tsinelas-bg-surface-raised flex flex-col gap-3 rounded-md border p-4 sm:flex-row sm:items-center sm:justify-between'>
           <div className='flex items-center gap-3'>
-            <span className='text-kapwa-text-strong font-medium'>
+            <span className='text-tsinelas-text-strong font-medium'>
               {selectedIds.size} item{selectedIds.size !== 1 ? 's' : ''}{' '}
               selected
             </span>
             <button
               onClick={clearSelection}
-              className='hover:text-kapwa-text-brand text-kapwa-text-support text-sm'
+              className='hover:text-tsinelas-text-brand text-tsinelas-text-support text-sm'
             >
               Clear selection
             </button>
@@ -344,7 +344,7 @@ export default function DeletionQueue() {
               leftIcon={<Trash2 className='h-4 w-4' />}
               onClick={bulkPermanentDelete}
               disabled={actionLoading}
-              className='hover:bg-kapwa-bg-danger-weak text-kapwa-text-danger hover:border-red-300'
+              className='hover:bg-tsinelas-bg-danger-weak text-tsinelas-text-danger hover:border-red-300'
             >
               Permanently Delete
             </Button>
@@ -353,16 +353,16 @@ export default function DeletionQueue() {
       )}
 
       {/* Select All Bar */}
-      <div className='text-kapwa-text-support flex items-center gap-2 text-sm'>
+      <div className='text-tsinelas-text-support flex items-center gap-2 text-sm'>
         <button
           onClick={selectAll}
-          className='hover:text-kapwa-text-brand flex items-center gap-1'
+          className='hover:text-tsinelas-text-brand flex items-center gap-1'
         >
           <input
             type='checkbox'
             checked={selectedIds.size === persons.length && persons.length > 0}
             onChange={selectAll}
-            className='text-kapwa-text-brand focus:ring-kapwa-border-brand border-kapwa-border-weak h-4 w-4 rounded'
+            className='text-tsinelas-text-brand focus:ring-tsinelas-border-brand border-tsinelas-border-weak h-4 w-4 rounded'
             readOnly
           />
           Select all ({persons.length})
@@ -370,7 +370,7 @@ export default function DeletionQueue() {
         <span>•</span>
         <button
           onClick={clearSelection}
-          className='hover:text-kapwa-text-brand'
+          className='hover:text-tsinelas-text-brand'
         >
           Clear selection
         </button>
@@ -387,7 +387,7 @@ export default function DeletionQueue() {
               variant={isSelected ? 'default' : 'default'}
               className={`transition-all ${
                 isSelected
-                  ? 'border-l-kapwa-border-brand bg-kapwa-bg-surface border-l-4'
+                  ? 'border-l-tsinelas-border-brand bg-tsinelas-bg-surface border-l-4'
                   : ''
               }`}
             >
@@ -397,13 +397,13 @@ export default function DeletionQueue() {
                     type='checkbox'
                     checked={isSelected}
                     onChange={() => toggleSelection(person.id)}
-                    className='text-kapwa-text-brand focus:ring-kapwa-border-brand border-kapwa-border-weak mt-1 h-4 w-4 rounded'
+                    className='text-tsinelas-text-brand focus:ring-tsinelas-border-brand border-tsinelas-border-weak mt-1 h-4 w-4 rounded'
                   />
                   <div>
-                    <h3 className='text-kapwa-text-strong font-medium'>
+                    <h3 className='text-tsinelas-text-strong font-medium'>
                       {person.full_name}
                     </h3>
-                    <div className='text-kapwa-text-disabled mt-1 flex flex-wrap gap-3 text-xs'>
+                    <div className='text-tsinelas-text-disabled mt-1 flex flex-wrap gap-3 text-xs'>
                       <span>ID: {person.id}</span>
                       <span>•</span>
                       <span>
@@ -436,7 +436,7 @@ export default function DeletionQueue() {
                     leftIcon={<Trash2 className='h-4 w-4' />}
                     onClick={() => permanentDelete(person.id)}
                     disabled={actionLoading}
-                    className='hover:bg-kapwa-bg-danger-weak text-kapwa-text-danger hover:border-red-300'
+                    className='hover:bg-tsinelas-bg-danger-weak text-tsinelas-text-danger hover:border-red-300'
                   >
                     Delete
                   </Button>

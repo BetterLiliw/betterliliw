@@ -1,13 +1,13 @@
 import { test, expect } from '../test-config';
-import { assertKapwaTokens } from '../utils/kapwa';
+import { assertTsinelasTokens } from '../utils/tsinelas';
 
 test.describe('Admin Dashboard', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/admin');
   });
 
-  test('admin dashboard uses Kapwa semantic tokens', async ({ page }) => {
-    await assertKapwaTokens(page);
+  test('admin dashboard uses Tsinelas semantic tokens', async ({ page }) => {
+    await assertTsinelasTokens(page);
   });
 
   test('admin dashboard displays stat cards', async ({ page }) => {

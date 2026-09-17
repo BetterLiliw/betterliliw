@@ -126,7 +126,7 @@ describe('PageLayouts Components', () => {
       );
 
       expect(screen.getByText('Highlighted Section')).toBeInTheDocument();
-      expect(container.firstChild).toHaveClass('bg-kapwa-bg-surface-brand/30');
+      expect(container.firstChild).toHaveClass('bg-tsinelas-bg-surface-brand/30');
     });
 
     it('renders with compact variant', () => {

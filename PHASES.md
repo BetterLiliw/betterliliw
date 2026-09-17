@@ -45,8 +45,8 @@ Make the portal *look* like Liliw. Cheap wins, high visible impact.
       municipal hall
 - [ ] **Weather** — set `location.weather.enabled` once coordinates are real
 - [x] **Brand color** — `portal.brandColor` is now `#1c3a5b` (the navy already
-      used in the logo and splash screen), and the Kapwa `brand` token scale in
-      `src/index.css` is overridden to match, so every `bg`/`text`/`border-kapwa-*
+      used in the logo and splash screen), and the Tsinelas `brand` token scale in
+      `src/styles/tsinelas.css` is built from it, so every `bg`/`text`/`border-tsinelas-*
       -brand*` class across the app uses it
 - [ ] **Favicon / OG image** — follow from the logo work; verify link previews
 

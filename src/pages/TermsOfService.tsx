@@ -20,22 +20,22 @@ const TermsOfService: FC = () => {
   });
 
   return (
-    <div className='bg-kapwa-bg-surface-raised min-h-screen'>
+    <div className='bg-tsinelas-bg-surface-raised min-h-screen'>
       <SEO
         title='Terms of Service'
         description='Public domain content, volunteer operation, and user responsibilities for accessing government information.'
       />
 
       {/* Header Section */}
-      <section className='from-kapwa-brand-600 text-kapwa-text-inverse bg-linear-to-r to-kapwa-blue-700 py-16'>
+      <section className='from-tsinelas-brand-600 text-tsinelas-text-inverse bg-linear-to-r to-tsinelas-blue-700 py-16'>
         <div className='container mx-auto px-4'>
           <div className='mx-auto max-w-4xl text-center'>
             <div className='mb-6 flex justify-center'>
-              <div className='bg-kapwa-bg-surface/20 rounded-full p-4 backdrop-blur-sm'>
-                <Scale className='text-kapwa-text-inverse h-12 w-12' />
+              <div className='bg-tsinelas-bg-surface/20 rounded-full p-4 backdrop-blur-sm'>
+                <Scale className='text-tsinelas-text-inverse h-12 w-12' />
               </div>
             </div>
-            <h1 className='text-kapwa-text-strong kapwa-heading-xl font-extrabold'>
+            <h1 className='text-tsinelas-text-strong tsinelas-heading-xl font-extrabold'>
               Terms of Service
             </h1>
             <p className='text-xl opacity-90'>Last Updated: {currentDate}</p>
@@ -45,16 +45,16 @@ const TermsOfService: FC = () => {
 
       {/* Main Content */}
       <div className='container mx-auto max-w-4xl px-4 py-12'>
-        <div className='bg-kapwa-bg-surface space-y-8 rounded-lg p-8 shadow-lg'>
+        <div className='bg-tsinelas-bg-surface space-y-8 rounded-lg p-8 shadow-lg'>
           {/* Acceptance of Terms */}
           <section>
             <div className='mb-4 flex items-center gap-3'>
-              <FileText className='text-kapwa-text-brand h-6 w-6' />
-              <h2 className='text-kapwa-text-strong kapwa-heading-lg font-bold'>
+              <FileText className='text-tsinelas-text-brand h-6 w-6' />
+              <h2 className='text-tsinelas-text-strong tsinelas-heading-lg font-bold'>
                 Acceptance of Terms
               </h2>
             </div>
-            <p className='text-kapwa-text-support leading-relaxed'>
+            <p className='text-tsinelas-text-support leading-relaxed'>
               By accessing and using this website, you accept and agree to be
               bound by the terms and provisions of this agreement.
             </p>
@@ -63,12 +63,12 @@ const TermsOfService: FC = () => {
           {/* Public Domain Content */}
           <section>
             <div className='mb-4 flex items-center gap-3'>
-              <Shield className='text-kapwa-text-brand h-6 w-6' />
-              <h2 className='text-kapwa-text-strong kapwa-heading-lg font-bold'>
+              <Shield className='text-tsinelas-text-brand h-6 w-6' />
+              <h2 className='text-tsinelas-text-strong tsinelas-heading-lg font-bold'>
                 Public Domain Content and Volunteer Operation
               </h2>
             </div>
-            <div className='text-kapwa-text-support space-y-4 leading-relaxed'>
+            <div className='text-tsinelas-text-support space-y-4 leading-relaxed'>
               <p>
                 This website and all its content are in the public domain and
                 operated entirely by volunteers. All information, data,
@@ -87,18 +87,18 @@ const TermsOfService: FC = () => {
           {/* "AS IS" Disclaimer */}
           <section>
             <div className='mb-4 flex items-center gap-3'>
-              <AlertTriangle className='h-6 w-6 text-kapwa-text-warning' />
-              <h2 className='text-kapwa-text-strong kapwa-heading-lg font-bold'>
+              <AlertTriangle className='h-6 w-6 text-tsinelas-text-warning' />
+              <h2 className='text-tsinelas-text-strong tsinelas-heading-lg font-bold'>
                 &quot;AS IS&quot; Disclaimer
               </h2>
             </div>
-            <div className='mb-4 border-l-4 border-kapwa-border-warning bg-kapwa-bg-warning-weak p-4'>
-              <p className='mb-2 font-semibold text-kapwa-text-warning'>
+            <div className='mb-4 border-l-4 border-tsinelas-border-warning bg-tsinelas-bg-warning-weak p-4'>
+              <p className='mb-2 font-semibold text-tsinelas-text-warning'>
                 ALL INFORMATION ON THIS WEBSITE IS PROVIDED &quot;AS IS&quot;
                 WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED,
                 INCLUDING BUT NOT LIMITED TO:
               </p>
-              <ul className='list-inside list-disc space-y-1 text-kapwa-text-warning'>
+              <ul className='list-inside list-disc space-y-1 text-tsinelas-text-warning'>
                 <li>Warranties of merchantability</li>
                 <li>Fitness for a particular purpose</li>
                 <li>Non-infringement of intellectual property rights</li>
@@ -112,10 +112,10 @@ const TermsOfService: FC = () => {
 
           {/* Limitation of Liability */}
           <section>
-            <h2 className='text-kapwa-text-strong mb-4 kapwa-heading-lg font-bold'>
+            <h2 className='text-tsinelas-text-strong mb-4 tsinelas-heading-lg font-bold'>
               Limitation of Liability
             </h2>
-            <div className='text-kapwa-text-support space-y-4 leading-relaxed'>
+            <div className='text-tsinelas-text-support space-y-4 leading-relaxed'>
               <p>
                 Under no circumstances shall the website operators,
                 contributors, or affiliated parties be liable for any direct,
@@ -142,10 +142,10 @@ const TermsOfService: FC = () => {
 
           {/* User Responsibilities */}
           <section>
-            <h2 className='text-kapwa-text-strong mb-4 kapwa-heading-lg font-bold'>
+            <h2 className='text-tsinelas-text-strong mb-4 tsinelas-heading-lg font-bold'>
               User Responsibilities and Research Guidelines
             </h2>
-            <div className='text-kapwa-text-support space-y-4 leading-relaxed'>
+            <div className='text-tsinelas-text-support space-y-4 leading-relaxed'>
               <p className='font-semibold'>Users are solely responsible for:</p>
               <ul className='ml-4 list-inside list-disc space-y-1'>
                 <li>
@@ -173,11 +173,11 @@ const TermsOfService: FC = () => {
                 </li>
               </ul>
 
-              <div className='bg-kapwa-bg-info-weak mt-4 border-l-4 border-kapwa-border-info p-4'>
-                <p className='mb-2 font-semibold text-kapwa-text-info'>
+              <div className='bg-tsinelas-bg-info-weak mt-4 border-l-4 border-tsinelas-border-info p-4'>
+                <p className='mb-2 font-semibold text-tsinelas-text-info'>
                   We strongly encourage users to:
                 </p>
-                <ul className='text-kapwa-text-info list-inside list-disc space-y-1'>
+                <ul className='text-tsinelas-text-info list-inside list-disc space-y-1'>
                   <li>
                     Use the source links and references provided on each page to
                     access primary documents and official sources
@@ -201,10 +201,10 @@ const TermsOfService: FC = () => {
 
           {/* No Professional Advice */}
           <section>
-            <h2 className='text-kapwa-text-strong mb-4 kapwa-heading-lg font-bold'>
+            <h2 className='text-tsinelas-text-strong mb-4 tsinelas-heading-lg font-bold'>
               No Professional Advice
             </h2>
-            <p className='text-kapwa-text-support leading-relaxed'>
+            <p className='text-tsinelas-text-support leading-relaxed'>
               Information on this website is not intended as professional advice
               (legal, medical, financial, or otherwise). Users should consult
               qualified professionals for specific advice related to their
@@ -215,12 +215,12 @@ const TermsOfService: FC = () => {
           {/* Source Links */}
           <section>
             <div className='mb-4 flex items-center gap-3'>
-              <ExternalLink className='text-kapwa-text-brand h-6 w-6' />
-              <h2 className='text-kapwa-text-strong kapwa-heading-lg font-bold'>
+              <ExternalLink className='text-tsinelas-text-brand h-6 w-6' />
+              <h2 className='text-tsinelas-text-strong tsinelas-heading-lg font-bold'>
                 Source Links and External References
               </h2>
             </div>
-            <div className='text-kapwa-text-support space-y-4 leading-relaxed'>
+            <div className='text-tsinelas-text-support space-y-4 leading-relaxed'>
               <p>
                 This website provides links to official sources, government
                 documents, and other authoritative materials. Users are strongly
@@ -244,10 +244,10 @@ const TermsOfService: FC = () => {
 
           {/* Website Availability */}
           <section>
-            <h2 className='text-kapwa-text-strong mb-4 kapwa-heading-lg font-bold'>
+            <h2 className='text-tsinelas-text-strong mb-4 tsinelas-heading-lg font-bold'>
               Website Availability
             </h2>
-            <div className='text-kapwa-text-support space-y-4 leading-relaxed'>
+            <div className='text-tsinelas-text-support space-y-4 leading-relaxed'>
               <p>We make no guarantee that this website will be:</p>
               <ul className='ml-4 list-inside list-disc space-y-1'>
                 <li>Available at all times</li>
@@ -260,10 +260,10 @@ const TermsOfService: FC = () => {
 
           {/* Indemnification */}
           <section>
-            <h2 className='text-kapwa-text-strong mb-4 kapwa-heading-lg font-bold'>
+            <h2 className='text-tsinelas-text-strong mb-4 tsinelas-heading-lg font-bold'>
               Indemnification
             </h2>
-            <p className='text-kapwa-text-support leading-relaxed'>
+            <p className='text-tsinelas-text-support leading-relaxed'>
               Users agree to indemnify and hold harmless the website operators
               from any claims, damages, losses, or expenses arising from their
               use of the website.
@@ -272,10 +272,10 @@ const TermsOfService: FC = () => {
 
           {/* Modifications */}
           <section>
-            <h2 className='text-kapwa-text-strong mb-4 kapwa-heading-lg font-bold'>
+            <h2 className='text-tsinelas-text-strong mb-4 tsinelas-heading-lg font-bold'>
               Modifications
             </h2>
-            <p className='text-kapwa-text-support leading-relaxed'>
+            <p className='text-tsinelas-text-support leading-relaxed'>
               These terms may be modified at any time without notice. Continued
               use of the website constitutes acceptance of any modifications.
             </p>
@@ -283,10 +283,10 @@ const TermsOfService: FC = () => {
 
           {/* Governing Law */}
           <section>
-            <h2 className='text-kapwa-text-strong mb-4 kapwa-heading-lg font-bold'>
+            <h2 className='text-tsinelas-text-strong mb-4 tsinelas-heading-lg font-bold'>
               Governing Law
             </h2>
-            <p className='text-kapwa-text-support leading-relaxed'>
+            <p className='text-tsinelas-text-support leading-relaxed'>
               These terms are governed by the laws of the Republic of the
               Philippines without regard to conflict of law principles.
             </p>
@@ -294,10 +294,10 @@ const TermsOfService: FC = () => {
 
           {/* Severability */}
           <section>
-            <h2 className='text-kapwa-text-strong mb-4 kapwa-heading-lg font-bold'>
+            <h2 className='text-tsinelas-text-strong mb-4 tsinelas-heading-lg font-bold'>
               Severability
             </h2>
-            <p className='text-kapwa-text-support leading-relaxed'>
+            <p className='text-tsinelas-text-support leading-relaxed'>
               If any provision of these terms is found to be unenforceable, the
               remaining provisions will continue in full force and effect.
             </p>
@@ -305,18 +305,18 @@ const TermsOfService: FC = () => {
 
           {/* Content Concerns */}
           <section>
-            <h2 className='text-kapwa-text-strong mb-4 kapwa-heading-lg font-bold'>
+            <h2 className='text-tsinelas-text-strong mb-4 tsinelas-heading-lg font-bold'>
               Content Concerns and Takedown Requests
             </h2>
-            <div className='text-kapwa-text-support space-y-4 leading-relaxed'>
+            <div className='text-tsinelas-text-support space-y-4 leading-relaxed'>
               <p>
                 While we strive to provide accurate public domain information,
                 we recognize that errors, outdated information, or other
                 concerns may arise.
               </p>
 
-              <div className='border-kapwa-border-weak bg-kapwa-bg-surface-raised rounded-lg border p-4'>
-                <h3 className='text-kapwa-text-strong mb-2 font-semibold'>
+              <div className='border-tsinelas-border-weak bg-tsinelas-bg-surface-raised rounded-lg border p-4'>
+                <h3 className='text-tsinelas-text-strong mb-2 font-semibold'>
                   Reporting Concerning Content:
                 </h3>
                 <p className='mb-2'>
@@ -333,12 +333,12 @@ const TermsOfService: FC = () => {
                 </ul>
 
                 <div className='mb-2 flex items-center gap-2'>
-                  <Mail className='text-kapwa-text-brand h-5 w-5' />
+                  <Mail className='text-tsinelas-text-brand h-5 w-5' />
                   <p className='font-semibold'>
                     Please contact us at:{' '}
                     <a
                       href={`mailto:${config.portal.contactEmail}`}
-                      className='text-kapwa-text-brand hover:text-kapwa-text-brand'
+                      className='text-tsinelas-text-brand hover:text-tsinelas-text-brand'
                     >
                       {config.portal.contactEmail}
                     </a>
@@ -354,11 +354,11 @@ const TermsOfService: FC = () => {
                 </ul>
               </div>
 
-              <div className='bg-kapwa-bg-success-weak rounded-lg border border-kapwa-border-success p-4'>
-                <h3 className='mb-2 font-semibold text-kapwa-text-success'>
+              <div className='bg-tsinelas-bg-success-weak rounded-lg border border-tsinelas-border-success p-4'>
+                <h3 className='mb-2 font-semibold text-tsinelas-text-success'>
                   Our Response Process:
                 </h3>
-                <ul className='list-inside list-disc space-y-1 text-kapwa-text-success'>
+                <ul className='list-inside list-disc space-y-1 text-tsinelas-text-success'>
                   <li>We will review all legitimate concerns in good faith</li>
                   <li>Response time may vary due to our volunteer nature</li>
                   <li>
@@ -376,8 +376,8 @@ const TermsOfService: FC = () => {
                 </ul>
               </div>
 
-              <div className='bg-kapwa-bg-danger-weak rounded-lg border border-kapwa-border-danger p-4'>
-                <p className='text-kapwa-text-danger'>
+              <div className='bg-tsinelas-bg-danger-weak rounded-lg border border-tsinelas-border-danger p-4'>
+                <p className='text-tsinelas-text-danger'>
                   <strong>False or Frivolous Complaints:</strong> Submitting
                   knowingly false takedown requests or complaints may result in
                   being blocked from contacting our volunteers.
@@ -389,30 +389,30 @@ const TermsOfService: FC = () => {
           {/* Contact Information */}
           <section className='border-t pt-8'>
             <div className='mb-4 flex items-center gap-3'>
-              <Mail className='text-kapwa-text-brand h-6 w-6' />
-              <h2 className='text-kapwa-text-strong kapwa-heading-lg font-bold'>
+              <Mail className='text-tsinelas-text-brand h-6 w-6' />
+              <h2 className='text-tsinelas-text-strong tsinelas-heading-lg font-bold'>
                 Contact Information
               </h2>
             </div>
-            <div className='bg-kapwa-bg-surface border-kapwa-border-brand rounded-lg border p-6'>
-              <p className='text-kapwa-text-brand-bold mb-2'>
+            <div className='bg-tsinelas-bg-surface border-tsinelas-border-brand rounded-lg border p-6'>
+              <p className='text-tsinelas-text-brand-bold mb-2'>
                 For questions about these terms or content concerns, contact:
               </p>
-              <p className='text-kapwa-text-brand-bold text-xl font-semibold'>
+              <p className='text-tsinelas-text-brand-bold text-xl font-semibold'>
                 <a
                   href='mailto:volunteers@bettergov.ph'
-                  className='hover:text-kapwa-text-brand transition-colors'
+                  className='hover:text-tsinelas-text-brand transition-colors'
                 >
                   volunteers@bettergov.ph
                 </a>
               </p>
-              <p className='text-kapwa-text-brand-bold mt-4 italic'>
+              <p className='text-tsinelas-text-brand-bold mt-4 italic'>
                 This website provides public domain information for educational
                 and informational purposes only.
               </p>
             </div>
             <div>
-              <p className='text-kapwa-text-strong mt-4 font-semibold'>
+              <p className='text-tsinelas-text-strong mt-4 font-semibold'>
                 Effective as of September 23, 2025
               </p>
             </div>

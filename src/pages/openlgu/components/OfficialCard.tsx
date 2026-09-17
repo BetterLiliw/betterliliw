@@ -68,12 +68,12 @@ export default function OfficialCard({
   const getAvatarColor = (): string => {
     const role = latestMembership.role.toLowerCase();
     if (role.includes('mayor')) {
-      return 'bg-gradient-to-br from-kapwa-brand-500 to-kapwa-brand-600';
+      return 'bg-gradient-to-br from-tsinelas-brand-500 to-tsinelas-brand-600';
     }
     if (role.includes('vice mayor')) {
-      return 'bg-gradient-to-br from-kapwa-accent-orange-500 to-kapwa-accent-orange-600';
+      return 'bg-gradient-to-br from-tsinelas-accent-orange-500 to-tsinelas-accent-orange-600';
     }
-    return 'bg-gradient-to-br from-kapwa-neutral-500 to-kapwa-neutral-600';
+    return 'bg-gradient-to-br from-tsinelas-neutral-500 to-tsinelas-neutral-600';
   };
 
   // Get role badge variant
@@ -114,7 +114,7 @@ export default function OfficialCard({
           {/* Main content */}
           <div className='min-w-0 flex-1'>
             {/* Name */}
-            <p className='text-kapwa-text-strong truncate font-semibold'>
+            <p className='text-tsinelas-text-strong truncate font-semibold'>
               {personName}
             </p>
 
@@ -126,17 +126,17 @@ export default function OfficialCard({
             </div>
 
             {/* Mini stats row */}
-            <div className='text-kapwa-text-support mt-2 flex flex-wrap items-center gap-3 text-xs'>
+            <div className='text-tsinelas-text-support mt-2 flex flex-wrap items-center gap-3 text-xs'>
               {!isExecutive && (
                 <div className='flex items-center gap-1'>
                   <Calendar className='h-3 w-3' />
                   <span
                     className={
                       attendanceRate >= 90
-                        ? 'font-semibold text-kapwa-text-success'
+                        ? 'font-semibold text-tsinelas-text-success'
                         : attendanceRate >= 70
-                          ? 'text-kapwa-text-support'
-                          : 'text-kapwa-text-warning'
+                          ? 'text-tsinelas-text-support'
+                          : 'text-tsinelas-text-warning'
                     }
                   >
                     {attendanceRate}% attendance
@@ -164,18 +164,18 @@ export default function OfficialCard({
           </div>
 
           {/* Expand/collapse indicator */}
-          <div className='text-kapwa-text-disabled flex items-center gap-2'>
+          <div className='text-tsinelas-text-disabled flex items-center gap-2'>
             {!isExpanded && (
-              <span className='text-kapwa-text-disabled hidden text-xs sm:inline'>
+              <span className='text-tsinelas-text-disabled hidden text-xs sm:inline'>
                 {totalTermsServed > 1
                   ? `served in ${totalTermsServed} term${totalTermsServed > 1 ? 's' : ''}`
                   : 'view details'}
               </span>
             )}
             {isExpanded ? (
-              <ChevronDown className='text-kapwa-text-brand h-5 w-5' />
+              <ChevronDown className='text-tsinelas-text-brand h-5 w-5' />
             ) : (
-              <ChevronRight className='group-hover:text-kapwa-text-disabled h-5 w-5 transition-colors' />
+              <ChevronRight className='group-hover:text-tsinelas-text-disabled h-5 w-5 transition-colors' />
             )}
           </div>
         </CardContent>
@@ -183,8 +183,8 @@ export default function OfficialCard({
 
       {/* Expanded Service Timeline */}
       {isExpanded && (
-        <CardContent className='animate-in fade-in slide-in-from-top-2 border-kapwa-border-weak bg-kapwa-bg-surface-raised/50 border-t p-4 duration-200'>
-          <div className='text-kapwa-text-disabled mb-3 text-xs font-semibold tracking-wide uppercase'>
+        <CardContent className='animate-in fade-in slide-in-from-top-2 border-tsinelas-border-weak bg-tsinelas-bg-surface-raised/50 border-t p-4 duration-200'>
+          <div className='text-tsinelas-text-disabled mb-3 text-xs font-semibold tracking-wide uppercase'>
             Service History
           </div>
           <ServiceTimeline

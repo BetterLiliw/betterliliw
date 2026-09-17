@@ -4,7 +4,7 @@
  * Centralized style utilities for navigation pages based on the
  * Navigation Design System Specification (T-079).
  *
- * All utilities use Kapwa semantic tokens for consistency.
+ * All utilities use Tsinelas semantic tokens for consistency.
  *
  * @see docs/navigation-design-system-spec.md
  * @see docs/plans/2026-03-01-color-background-consolidation-plan.md
@@ -23,22 +23,22 @@
  */
 export const navigationBackgrounds = {
   /** Default page background for all navigation pages */
-  page: 'bg-kapwa-bg-surface',
+  page: 'bg-tsinelas-bg-surface',
 
   /** Hero header background for index pages */
-  hero: 'bg-kapwa-bg-surface-bold',
+  hero: 'bg-tsinelas-bg-surface-bold',
 
   /** Section header background for sub-sections */
-  section: 'bg-kapwa-bg-hover-weak',
+  section: 'bg-tsinelas-bg-hover-weak',
 
   /** Sidebar container background */
-  sidebar: 'bg-kapwa-bg-surface',
+  sidebar: 'bg-tsinelas-bg-surface',
 
   /** Active navigation item background */
-  active: 'bg-kapwa-bg-selected',
+  active: 'bg-tsinelas-bg-selected',
 
   /** Hover state for interactive elements */
-  hover: 'hover:bg-kapwa-bg-hover',
+  hover: 'hover:bg-tsinelas-bg-hover',
 } as const;
 
 /**
@@ -52,16 +52,16 @@ export const navigationBackgrounds = {
  */
 export const navigationText = {
   /** Primary text for headings and important content */
-  strong: 'text-kapwa-text-strong',
+  strong: 'text-tsinelas-text-strong',
 
   /** Default body text */
-  default: 'text-kapwa-text-default',
+  default: 'text-tsinelas-text-default',
 
   /** Muted text for secondary information */
-  weak: 'text-kapwa-text-weak',
+  weak: 'text-tsinelas-text-weak',
 
   /** Inverse text for use on bold backgrounds */
-  inverse: 'text-kapwa-text-inverse',
+  inverse: 'text-tsinelas-text-inverse',
 } as const;
 
 /**
@@ -74,32 +74,32 @@ export const navigationText = {
  */
 export const navigationBorders = {
   /** Weak borders for subtle dividers */
-  weak: 'border-kapwa-border-weak',
+  weak: 'border-tsinelas-border-weak',
 
   /** Default borders */
-  default: 'border-kapwa-border-default',
+  default: 'border-tsinelas-border-default',
 
   /** Strong borders for emphasis */
-  strong: 'border-kapwa-border-strong',
+  strong: 'border-tsinelas-border-strong',
 } as const;
 
 /**
  * Spacing utilities for navigation pages
  *
- * Provides consistent spacing values based on Kapwa spacing scale:
+ * Provides consistent spacing values based on Tsinelas spacing scale:
  * - page: Page-level padding (large)
  * - section: Section-level padding (medium)
  * - compact: Compact padding for tight layouts (small)
  */
 export const navigationSpacing = {
   /** Large padding for page-level spacing */
-  page: 'p-kapwa-lg',
+  page: 'p-tsinelas-lg',
 
   /** Medium padding for section-level spacing */
-  section: 'p-kapwa-md',
+  section: 'p-tsinelas-md',
 
   /** Small padding for compact layouts */
-  compact: 'p-kapwa-sm',
+  compact: 'p-tsinelas-sm',
 } as const;
 
 /**

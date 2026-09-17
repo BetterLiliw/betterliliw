@@ -28,18 +28,18 @@ export function EmptyState({
   return (
     <div className='animate-in fade-in zoom-in-95 flex flex-col items-center justify-center py-20 text-center duration-500'>
       {/* Icon Wrapper */}
-      <div className='bg-kapwa-bg-surface-raised mb-kapwa-md rounded-full p-kapwa-md ring-8 ring-kapwa-bg-surface/50'>
+      <div className='bg-tsinelas-bg-surface-raised mb-tsinelas-md rounded-full p-tsinelas-md ring-8 ring-tsinelas-bg-surface/50'>
         <Icon
-          className='text-kapwa-text-support h-12 w-12'
+          className='text-tsinelas-text-support h-12 w-12'
           aria-hidden='true'
         />
       </div>
 
       {/* Text Content */}
-      <h3 className='text-kapwa-text-strong kapwa-heading-lg leading-tight'>
+      <h3 className='text-tsinelas-text-strong tsinelas-heading-lg leading-tight'>
         {title}
       </h3>
-      <p className='text-kapwa-text-support mx-auto mt-kapwa-xs max-w-sm kapwa-body-sm-default leading-relaxed'>
+      <p className='text-tsinelas-text-support mx-auto mt-tsinelas-xs max-w-sm tsinelas-body-sm-default leading-relaxed'>
         {message}
       </p>
 
@@ -50,24 +50,24 @@ export function EmptyState({
             href={actionHref}
             target='_blank'
             rel='noopener noreferrer'
-            className='border-kapwa-border-weak bg-kapwa-bg-surface text-kapwa-text-support hover:border-kapwa-border-weak hover:bg-kapwa-bg-surface-raised mt-8 inline-flex min-h-[48px] items-center gap-2 rounded-xl border px-6 py-3 text-sm font-bold transition-all hover:shadow-md'
+            className='border-tsinelas-border-weak bg-tsinelas-bg-surface text-tsinelas-text-support hover:border-tsinelas-border-weak hover:bg-tsinelas-bg-surface-raised mt-8 inline-flex min-h-[48px] items-center gap-2 rounded-xl border px-6 py-3 text-sm font-bold transition-all hover:shadow-md'
           >
             {isContribution ? (
-              <PlusCircle className='text-kapwa-text-brand h-4 w-4' />
+              <PlusCircle className='text-tsinelas-text-brand h-4 w-4' />
             ) : (
-              <ArrowLeft className='text-kapwa-text-disabled h-4 w-4' />
+              <ArrowLeft className='text-tsinelas-text-disabled h-4 w-4' />
             )}
             {actionLabel}
           </a>
         ) : (
           <Link
             to={actionHref}
-            className='border-kapwa-border-weak bg-kapwa-bg-surface text-kapwa-text-support hover:border-kapwa-border-weak hover:bg-kapwa-bg-surface-raised mt-8 inline-flex min-h-[48px] items-center gap-2 rounded-xl border px-6 py-3 text-sm font-bold transition-all hover:shadow-md'
+            className='border-tsinelas-border-weak bg-tsinelas-bg-surface text-tsinelas-text-support hover:border-tsinelas-border-weak hover:bg-tsinelas-bg-surface-raised mt-8 inline-flex min-h-[48px] items-center gap-2 rounded-xl border px-6 py-3 text-sm font-bold transition-all hover:shadow-md'
           >
             {isContribution ? (
-              <PlusCircle className='text-kapwa-text-brand h-4 w-4' />
+              <PlusCircle className='text-tsinelas-text-brand h-4 w-4' />
             ) : (
-              <ArrowLeft className='text-kapwa-text-disabled h-4 w-4' />
+              <ArrowLeft className='text-tsinelas-text-disabled h-4 w-4' />
             )}
             {actionLabel}
           </Link>

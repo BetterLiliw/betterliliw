@@ -26,20 +26,20 @@ const SlideToggle = <T extends string>({
   labels?: Record<T, string>;
 }) => {
   return (
-    <div className='bg-kapwa-bg-hover relative inline-flex rounded-lg p-1'>
+    <div className='bg-tsinelas-bg-hover relative inline-flex rounded-lg p-1'>
       {options.map(option => {
         const isActive = selected === option;
         return (
           <button
             key={option}
             onClick={() => onChange(option)}
-            className={`relative z-10 rounded-md px-3 py-1 text-xs font-medium transition-all duration-200 ${isActive ? 'text-kapwa-text-strong' : 'hover:text-kapwa-text-support text-kapwa-text-disabled'} `}
+            className={`relative z-10 rounded-md px-3 py-1 text-xs font-medium transition-all duration-200 ${isActive ? 'text-tsinelas-text-strong' : 'hover:text-tsinelas-text-support text-tsinelas-text-disabled'} `}
           >
             {labels ? labels[option] : option}
 
             {/* The "Slide" Background Effect */}
             {isActive && (
-              <span className='animate-in fade-in zoom-in-95 border-kapwa-border-weak bg-kapwa-bg-surface absolute inset-0 -z-10 rounded-md border shadow-sm duration-200' />
+              <span className='animate-in fade-in zoom-in-95 border-tsinelas-border-weak bg-tsinelas-bg-surface absolute inset-0 -z-10 rounded-md border shadow-sm duration-200' />
             )}
           </button>
         );
@@ -64,7 +64,7 @@ export default function QuarterToggle({
       <div className='flex flex-wrap items-center gap-3'>
         {/* Year Toggle */}
         <div className='flex items-center gap-2'>
-          <Calendar className='text-kapwa-text-disabled h-4 w-4' />
+          <Calendar className='text-tsinelas-text-disabled h-4 w-4' />
           <SlideToggle
             options={years}
             selected={selectedYear}
@@ -74,7 +74,7 @@ export default function QuarterToggle({
 
         {/* View Mode Toggle */}
         <div className='flex items-center gap-2'>
-          <PieChart className='text-kapwa-text-disabled h-4 w-4' />
+          <PieChart className='text-tsinelas-text-disabled h-4 w-4' />
           <SlideToggle
             options={['quarter', 'year']}
             selected={viewMode}
@@ -87,10 +87,10 @@ export default function QuarterToggle({
       {/* Bottom Row: Quarter Buttons (Only in Quarter View) */}
       {viewMode === 'quarter' && (
         <div className='animate-in fade-in slide-in-from-top-1 flex items-center gap-2 duration-200'>
-          <span className='text-kapwa-text-disabled mr-1 text-xs font-semibold tracking-wider uppercase'>
+          <span className='text-tsinelas-text-disabled mr-1 text-xs font-semibold tracking-wider uppercase'>
             Period
           </span>
-          <div className='border-kapwa-border-weak bg-kapwa-bg-surface-raised flex rounded-lg border p-1'>
+          <div className='border-tsinelas-border-weak bg-tsinelas-bg-surface-raised flex rounded-lg border p-1'>
             {ALL_QUARTERS.map(q => {
               const isAvailable = quarters.includes(q);
               const isSelected = q === selectedQuarter;
@@ -102,10 +102,10 @@ export default function QuarterToggle({
                   onClick={() => onQuarterChange(q)}
                   className={`relative rounded-md px-4 py-1.5 text-xs font-medium transition-all duration-200 ${
                     !isAvailable
-                      ? 'text-kapwa-text-support cursor-not-allowed bg-transparent' // Greyed out
+                      ? 'text-tsinelas-text-support cursor-not-allowed bg-transparent' // Greyed out
                       : isSelected
-                        ? 'bg-kapwa-brand-600 text-kapwa-text-inverse shadow-sm' // Active & Brand
-                        : 'hover:bg-kapwa-bg-surface text-kapwa-text-support hover:shadow-sm' // Available & Hover
+                        ? 'bg-tsinelas-brand-600 text-tsinelas-text-inverse shadow-sm' // Active & Brand
+                        : 'hover:bg-tsinelas-bg-surface text-tsinelas-text-support hover:shadow-sm' // Available & Hover
                   } `}
                 >
                   {q}

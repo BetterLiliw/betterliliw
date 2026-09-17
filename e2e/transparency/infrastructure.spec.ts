@@ -1,5 +1,5 @@
 import { test, expect } from '../test-config';
-import { assertKapwaTokens } from '../utils/kapwa';
+import { assertTsinelasTokens } from '../utils/tsinelas';
 
 test.describe('Infrastructure Transparency Page', () => {
   test.beforeEach(async ({ page }) => {
@@ -7,7 +7,7 @@ test.describe('Infrastructure Transparency Page', () => {
     await page.goto('/transparency/infrastructure');
   });
 
-  test('infrastructure page uses Kapwa semantic tokens', async ({ page }) => {
+  test('infrastructure page uses Tsinelas semantic tokens', async ({ page }) => {
     // Check page title is visible
     // The module layout owns the h1; the page title is the h2 beneath it
     await expect(
@@ -17,8 +17,8 @@ test.describe('Infrastructure Transparency Page', () => {
         .first()
     ).toBeVisible();
 
-    // Verify Kapwa semantic tokens are used
-    await assertKapwaTokens(page);
+    // Verify Tsinelas semantic tokens are used
+    await assertTsinelasTokens(page);
   });
 
   test('infrastructure page displays stats cards', async ({ page }) => {
@@ -166,8 +166,8 @@ test.describe('Infrastructure Detail Page', () => {
       // Check we're on a detail page
       await expect(page).toHaveURL(/\/infrastructure\/.+/);
 
-      // Verify Kapwa semantic tokens
-      await assertKapwaTokens(page);
+      // Verify Tsinelas semantic tokens
+      await assertTsinelasTokens(page);
 
       // Check for project details (title, description, etc.)
       const heading = page.locator('h1, h2').first();

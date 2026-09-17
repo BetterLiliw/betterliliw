@@ -27,7 +27,7 @@ const AccessibilityPage: FC = () => {
       icon: <EyeIcon className='h-6 w-6' />,
       title: 'Visual Accessibility',
       features: [
-        'Kapwa design tokens for text and surface contrast',
+        'Tsinelas design tokens for text and surface contrast',
         'Text that scales with browser zoom',
         'Alt text on meaningful images where present',
         'Clear page headings and section structure',
@@ -115,24 +115,24 @@ const AccessibilityPage: FC = () => {
   const getStatusIcon = (status: string) => {
     switch (status) {
       case 'compliant':
-        return <CheckCircleIcon className='text-kapwa-text-success h-5 w-5' />;
+        return <CheckCircleIcon className='text-tsinelas-text-success h-5 w-5' />;
       case 'in-progress':
       case 'partial':
-        return <AlertCircleIcon className='text-kapwa-text-warning h-5 w-5' />;
+        return <AlertCircleIcon className='text-tsinelas-text-warning h-5 w-5' />;
       default:
-        return <InfoIcon className='text-kapwa-text-brand h-5 w-5' />;
+        return <InfoIcon className='text-tsinelas-text-brand h-5 w-5' />;
     }
   };
 
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'compliant':
-        return 'bg-kapwa-bg-success-weak border-kapwa-border-success';
+        return 'bg-tsinelas-bg-success-weak border-tsinelas-border-success';
       case 'in-progress':
       case 'partial':
-        return 'bg-kapwa-bg-warning-weak border-kapwa-border-warning';
+        return 'bg-tsinelas-bg-warning-weak border-tsinelas-border-warning';
       default:
-        return 'bg-kapwa-bg-info-weak border-kapwa-border-info';
+        return 'bg-tsinelas-bg-info-weak border-tsinelas-border-info';
     }
   };
 
@@ -161,13 +161,13 @@ const AccessibilityPage: FC = () => {
       <SectionAlternator>
         <SectionBlock title='Our Commitment' icon={CheckCircleIcon}>
           <div className='mx-auto max-w-4xl space-y-4'>
-            <p className='text-kapwa-text-support text-lg'>
+            <p className='text-tsinelas-text-support text-lg'>
               Everyone should be able to reach local government information and
               services. We design for assistive technologies such as screen
               readers and keyboard navigation, and we treat accessibility bugs
               as first-class defects.
             </p>
-            <p className='text-kapwa-text-support text-lg'>
+            <p className='text-tsinelas-text-support text-lg'>
               This portal is volunteer-run. Features and audits improve over
               time; if something blocks you, tell us and we will prioritize a
               fix or provide an alternative.
@@ -180,21 +180,21 @@ const AccessibilityPage: FC = () => {
             {accessibilityFeatures.map((feature, index) => (
               <div
                 key={index}
-                className='border-kapwa-border-weak bg-kapwa-bg-surface rounded-lg border p-6'
+                className='border-tsinelas-border-weak bg-tsinelas-bg-surface rounded-lg border p-6'
               >
                 <div className='mb-4 flex items-center'>
-                  <div className='bg-kapwa-bg-surface-raised text-kapwa-text-brand mr-3 rounded-md p-2'>
+                  <div className='bg-tsinelas-bg-surface-raised text-tsinelas-text-brand mr-3 rounded-md p-2'>
                     {feature.icon}
                   </div>
-                  <h3 className='text-kapwa-text-strong text-lg font-semibold'>
+                  <h3 className='text-tsinelas-text-strong text-lg font-semibold'>
                     {feature.title}
                   </h3>
                 </div>
                 <ul className='space-y-2'>
                   {feature.features.map((item, itemIndex) => (
                     <li key={itemIndex} className='flex items-start'>
-                      <CheckCircleIcon className='text-kapwa-text-success mt-0.5 mr-2 h-4 w-4 flex-shrink-0' />
-                      <span className='text-kapwa-text-support text-sm'>
+                      <CheckCircleIcon className='text-tsinelas-text-success mt-0.5 mr-2 h-4 w-4 flex-shrink-0' />
+                      <span className='text-tsinelas-text-support text-sm'>
                         {item}
                       </span>
                     </li>
@@ -216,11 +216,11 @@ const AccessibilityPage: FC = () => {
               >
                 <div className='mb-2 flex items-center'>
                   {getStatusIcon(standard.status)}
-                  <h3 className='text-kapwa-text-strong ml-2 text-lg font-semibold'>
+                  <h3 className='text-tsinelas-text-strong ml-2 text-lg font-semibold'>
                     {standard.level}
                   </h3>
                 </div>
-                <p className='text-kapwa-text-support'>
+                <p className='text-tsinelas-text-support'>
                   {standard.description}
                 </p>
               </div>
@@ -231,42 +231,42 @@ const AccessibilityPage: FC = () => {
         <SectionBlock title='Keyboard Basics' icon={KeyboardIcon}>
           <div className='mx-auto max-w-4xl grid grid-cols-1 gap-4 md:grid-cols-2'>
             <div className='space-y-3'>
-              <div className='bg-kapwa-bg-surface-raised flex items-center justify-between rounded-lg p-3'>
-                <span className='text-kapwa-text-strong font-medium'>
+              <div className='bg-tsinelas-bg-surface-raised flex items-center justify-between rounded-lg p-3'>
+                <span className='text-tsinelas-text-strong font-medium'>
                   Skip to main content
                 </span>
-                <kbd className='bg-kapwa-bg-active rounded-sm px-2 py-1 font-mono text-sm'>
+                <kbd className='bg-tsinelas-bg-active rounded-sm px-2 py-1 font-mono text-sm'>
                   Tab (first focus)
                 </kbd>
               </div>
-              <div className='bg-kapwa-bg-surface-raised flex items-center justify-between rounded-lg p-3'>
-                <span className='text-kapwa-text-strong font-medium'>
+              <div className='bg-tsinelas-bg-surface-raised flex items-center justify-between rounded-lg p-3'>
+                <span className='text-tsinelas-text-strong font-medium'>
                   Move between controls
                 </span>
-                <kbd className='bg-kapwa-bg-active rounded-sm px-2 py-1 font-mono text-sm'>
+                <kbd className='bg-tsinelas-bg-active rounded-sm px-2 py-1 font-mono text-sm'>
                   Tab / Shift+Tab
                 </kbd>
               </div>
-              <div className='bg-kapwa-bg-surface-raised flex items-center justify-between rounded-lg p-3'>
-                <span className='text-kapwa-text-strong font-medium'>
+              <div className='bg-tsinelas-bg-surface-raised flex items-center justify-between rounded-lg p-3'>
+                <span className='text-tsinelas-text-strong font-medium'>
                   Activate link or button
                 </span>
-                <kbd className='bg-kapwa-bg-active rounded-sm px-2 py-1 font-mono text-sm'>
+                <kbd className='bg-tsinelas-bg-active rounded-sm px-2 py-1 font-mono text-sm'>
                   Enter / Space
                 </kbd>
               </div>
             </div>
             <div className='space-y-3'>
-              <div className='bg-kapwa-bg-surface-raised flex items-center justify-between rounded-lg p-3'>
-                <span className='text-kapwa-text-strong font-medium'>
+              <div className='bg-tsinelas-bg-surface-raised flex items-center justify-between rounded-lg p-3'>
+                <span className='text-tsinelas-text-strong font-medium'>
                   Close overlay or menu
                 </span>
-                <kbd className='bg-kapwa-bg-active rounded-sm px-2 py-1 font-mono text-sm'>
+                <kbd className='bg-tsinelas-bg-active rounded-sm px-2 py-1 font-mono text-sm'>
                   Escape
                 </kbd>
               </div>
-              <div className='bg-kapwa-bg-surface-raised rounded-lg p-3'>
-                <p className='text-kapwa-text-support text-sm'>
+              <div className='bg-tsinelas-bg-surface-raised rounded-lg p-3'>
+                <p className='text-tsinelas-text-support text-sm'>
                   There is no global Ctrl+K shortcut yet. Use the hero or site
                   search fields, or open Search from the navigation.
                 </p>
@@ -277,25 +277,25 @@ const AccessibilityPage: FC = () => {
 
         <SectionBlock title='Feedback and Support' icon={MailIcon}>
           <div className='mx-auto max-w-4xl'>
-            <p className='text-kapwa-text-support mb-6 text-lg'>
+            <p className='text-tsinelas-text-support mb-6 text-lg'>
               If you hit an accessibility barrier on {config.portal.name}, email
               us. Include the page URL, what you tried, and the assistive
               technology you use if you can.
             </p>
 
-            <div className='border-kapwa-border-weak bg-kapwa-bg-surface rounded-lg border p-6 max-w-lg'>
+            <div className='border-tsinelas-border-weak bg-tsinelas-bg-surface rounded-lg border p-6 max-w-lg'>
               <div className='mb-4 flex items-center'>
-                <MailIcon className='text-kapwa-text-brand mr-3 h-6 w-6' />
-                <h3 className='text-kapwa-text-strong text-lg font-semibold'>
+                <MailIcon className='text-tsinelas-text-brand mr-3 h-6 w-6' />
+                <h3 className='text-tsinelas-text-strong text-lg font-semibold'>
                   Email
                 </h3>
               </div>
-              <p className='text-kapwa-text-support mb-3'>
+              <p className='text-tsinelas-text-support mb-3'>
                 Accessibility feedback and accommodation requests.
               </p>
               <a
                 href={`mailto:${config.portal.contactEmail}`}
-                className='text-kapwa-text-brand hover:text-kapwa-text-brand font-medium'
+                className='text-tsinelas-text-brand hover:text-tsinelas-text-brand font-medium'
               >
                 {config.portal.contactEmail}
               </a>
@@ -305,11 +305,11 @@ const AccessibilityPage: FC = () => {
 
         <SectionBlock variant='default' className='!py-8'>
           <div className='mx-auto max-w-4xl text-center'>
-            <p className='text-kapwa-text-support text-sm'>
+            <p className='text-tsinelas-text-support text-sm'>
               This accessibility statement was last updated on{' '}
               <time dateTime='2026-07-27'>July 27, 2026</time>.
             </p>
-            <p className='text-kapwa-text-support mt-2 text-sm'>
+            <p className='text-tsinelas-text-support mt-2 text-sm'>
               We revise it when supported features or known gaps change.
             </p>
           </div>

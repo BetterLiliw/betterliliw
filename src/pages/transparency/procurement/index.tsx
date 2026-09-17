@@ -283,7 +283,7 @@ export default function ProcurementPage() {
           label='Categories'
           value={detailedStats.uniqueCategories}
           subtext='Business Sectors'
-          iconBg='bg-kapwa-bg-surface-raised text-kapwa-text-strong'
+          iconBg='bg-tsinelas-bg-surface-raised text-tsinelas-text-strong'
         />
 
         <StatCard
@@ -293,7 +293,7 @@ export default function ProcurementPage() {
             formatPesoAdaptive(detailedStats.totalContractAmount).fullString
           }
           subtext='Accumulated Contract Value'
-          iconBg='bg-kapwa-green-50 text-kapwa-green-600'
+          iconBg='bg-tsinelas-green-50 text-tsinelas-green-600'
         />
 
         <StatCard
@@ -301,7 +301,7 @@ export default function ProcurementPage() {
           label='Average'
           value={formatPesoAdaptive(detailedStats.averageCost).fullString}
           subtext='Per Contract'
-          iconBg='bg-kapwa-bg-brand-weak text-kapwa-text-brand'
+          iconBg='bg-tsinelas-bg-brand-weak text-tsinelas-text-brand'
         />
 
         <StatCard
@@ -309,7 +309,7 @@ export default function ProcurementPage() {
           label='Volume'
           value={detailedStats.totalContractCount.toLocaleString()}
           subtext='Total Contracts'
-          iconBg='bg-kapwa-bg-surface-raised text-kapwa-text-strong'
+          iconBg='bg-tsinelas-bg-surface-raised text-tsinelas-text-strong'
         />
       </CardGrid>
 
@@ -319,7 +319,7 @@ export default function ProcurementPage() {
           {[1, 2, 3, 4, 5].map(i => (
             <div
               key={i}
-              className='bg-kapwa-bg-surface-raised h-16 animate-pulse rounded-xl'
+              className='bg-tsinelas-bg-surface-raised h-16 animate-pulse rounded-xl'
             />
           ))}
         </div>
@@ -330,10 +330,10 @@ export default function ProcurementPage() {
           icon={Search}
         />
       ) : (
-        <div className='border-kapwa-border-weak bg-kapwa-bg-surface overflow-hidden rounded-xl border shadow-sm'>
+        <div className='border-tsinelas-border-weak bg-tsinelas-bg-surface overflow-hidden rounded-xl border shadow-sm'>
           <div className='overflow-x-auto'>
             <table className='w-full text-left text-sm'>
-              <thead className='border-kapwa-border-weak bg-kapwa-bg-surface-raised text-kapwa-text-disabled border-b text-xs font-bold tracking-wider uppercase'>
+              <thead className='border-tsinelas-border-weak bg-tsinelas-bg-surface-raised text-tsinelas-text-disabled border-b text-xs font-bold tracking-wider uppercase'>
                 <tr>
                   <th className='hidden w-32 px-3 py-3 md:table-cell md:px-6 md:py-4'>
                     Ref ID
@@ -350,18 +350,18 @@ export default function ProcurementPage() {
                   </th>
                 </tr>
               </thead>
-              <tbody className='divide-y divide-kapwa-border-weak'>
+              <tbody className='divide-y divide-tsinelas-border-weak'>
                 {paginatedResults.map(row => (
                   <tr
                     key={row.id}
-                    className='group hover:bg-kapwa-bg-surface-raised/50 transition-colors'
+                    className='group hover:bg-tsinelas-bg-surface-raised/50 transition-colors'
                   >
-                    <td className='group-hover:text-kapwa-text-brand text-kapwa-text-disabled hidden px-3 py-3 font-mono text-xs transition-colors md:table-cell md:px-6 md:py-4'>
+                    <td className='group-hover:text-tsinelas-text-brand text-tsinelas-text-disabled hidden px-3 py-3 font-mono text-xs transition-colors md:table-cell md:px-6 md:py-4'>
                       {row.reference_id}
                     </td>
                     <td className='px-3 py-3 sm:px-6 sm:py-4'>
                       <p
-                        className='text-kapwa-text-strong line-clamp-2 leading-snug font-bold'
+                        className='text-tsinelas-text-strong line-clamp-2 leading-snug font-bold'
                         title={row.notice_title}
                       >
                         {row.notice_title}
@@ -379,7 +379,7 @@ export default function ProcurementPage() {
                         </Badge>
                         {row.awardee_name && (
                           <span
-                            className='text-kapwa-text-disabled max-w-[150px] truncate text-xs sm:max-w-[200px]'
+                            className='text-tsinelas-text-disabled max-w-[150px] truncate text-xs sm:max-w-[200px]'
                             title={row.awardee_name}
                           >
                             • {row.awardee_name}
@@ -387,10 +387,10 @@ export default function ProcurementPage() {
                         )}
                       </div>
                     </td>
-                    <td className='text-kapwa-text-strong px-3 py-3 text-right font-mono font-bold sm:px-6 sm:py-4'>
+                    <td className='text-tsinelas-text-strong px-3 py-3 text-right font-mono font-bold sm:px-6 sm:py-4'>
                       {formatPesoAdaptive(row.contract_amount).fullString}
                     </td>
-                    <td className='text-kapwa-text-support hidden px-3 py-3 text-xs whitespace-nowrap md:table-cell md:px-6 md:py-4'>
+                    <td className='text-tsinelas-text-support hidden px-3 py-3 text-xs whitespace-nowrap md:table-cell md:px-6 md:py-4'>
                       {formatDate(row.award_date)}
                     </td>
                     <td className='px-3 py-4 text-center sm:px-6'>
@@ -425,16 +425,16 @@ export default function ProcurementPage() {
       {/* --- EXTERNAL LINKS FOOTER --- */}
       <div className='grid grid-cols-1 gap-4 md:grid-cols-2'>
         {/* Link 1: Local Analytics */}
-        <div className='hover:border-kapwa-border-brand border-kapwa-border-weak bg-kapwa-bg-surface flex h-full flex-col justify-between rounded-xl border p-6 shadow-sm transition-all'>
+        <div className='hover:border-tsinelas-border-brand border-tsinelas-border-weak bg-tsinelas-bg-surface flex h-full flex-col justify-between rounded-xl border p-6 shadow-sm transition-all'>
           <div className='mb-4 flex items-start gap-4'>
-            <div className='bg-kapwa-blue-50 text-kapwa-blue-600 shrink-0 rounded-xl p-3'>
+            <div className='bg-tsinelas-blue-50 text-tsinelas-blue-600 shrink-0 rounded-xl p-3'>
               <BarChart3 className='h-6 w-6' />
             </div>
             <div>
-              <h4 className='text-kapwa-text-strong mb-1 font-bold'>
+              <h4 className='text-tsinelas-text-strong mb-1 font-bold'>
                 Advanced Analytics
               </h4>
-              <p className='text-kapwa-text-disabled text-xs leading-relaxed'>
+              <p className='text-tsinelas-text-disabled text-xs leading-relaxed'>
                 View detailed spending charts, top supplier breakdowns, and
                 historical procurement trends for {lguLabels.name}.
               </p>
@@ -444,23 +444,23 @@ export default function ProcurementPage() {
             href={orgDashboardUrl}
             target='_blank'
             rel='noreferrer'
-            className='text-kapwa-text-inverse bg-kapwa-brand-600 hover:bg-kapwa-brand-700 inline-flex w-full items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-xs font-bold transition-colors'
+            className='text-tsinelas-text-inverse bg-tsinelas-brand-600 hover:bg-tsinelas-brand-700 inline-flex w-full items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-xs font-bold transition-colors'
           >
             View {lguLabels.name} Charts <ExternalLink className='h-3 w-3' />
           </a>
         </div>
 
         {/* Link 2: National Comparison */}
-        <div className='hover:border-kapwa-border-brand border-kapwa-border-weak bg-kapwa-bg-surface flex h-full flex-col justify-between rounded-xl border p-6 shadow-sm transition-all'>
+        <div className='hover:border-tsinelas-border-brand border-tsinelas-border-weak bg-tsinelas-bg-surface flex h-full flex-col justify-between rounded-xl border p-6 shadow-sm transition-all'>
           <div className='mb-4 flex items-start gap-4'>
-            <div className='text-kapwa-text-inverse bg-kapwa-brand-600 shrink-0 rounded-xl p-3'>
+            <div className='text-tsinelas-text-inverse bg-tsinelas-brand-600 shrink-0 rounded-xl p-3'>
               <Building2 className='h-6 w-6' />
             </div>
             <div>
-              <h4 className='text-kapwa-text-strong mb-1 font-bold'>
+              <h4 className='text-tsinelas-text-strong mb-1 font-bold'>
                 Transparency Dashboard
               </h4>
-              <p className='text-kapwa-text-disabled text-xs leading-relaxed'>
+              <p className='text-tsinelas-text-disabled text-xs leading-relaxed'>
                 Access the full Philippine procurement database to compare local
                 spending against national averages.
               </p>
@@ -470,7 +470,7 @@ export default function ProcurementPage() {
             href='https://transparency.bettergov.ph/procurement'
             target='_blank'
             rel='noreferrer'
-            className='text-kapwa-text-inverse bg-kapwa-brand-600 hover:bg-kapwa-brand-700 inline-flex w-full items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-xs font-bold transition-colors'
+            className='text-tsinelas-text-inverse bg-tsinelas-brand-600 hover:bg-tsinelas-brand-700 inline-flex w-full items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-xs font-bold transition-colors'
           >
             View Dashboard <ExternalLink className='h-3 w-3' />
           </a>

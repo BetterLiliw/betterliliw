@@ -24,21 +24,21 @@ interface HitProps {
 
 const Hit: FC<HitProps> = ({ hit }) => {
   return (
-    <article className='hit-item border-kapwa-border-weak hover:bg-kapwa-bg-surface-raised hover:border-kapwa-border-brand border-b p-4 transition-all'>
+    <article className='hit-item border-tsinelas-border-weak hover:bg-tsinelas-bg-surface-raised hover:border-tsinelas-border-brand border-b p-4 transition-all'>
       <a href={`/services/${hit.slug}`} className='block'>
-        <h2 className='text-kapwa-text-info text-lg font-semibold hover:underline'>
+        <h2 className='text-tsinelas-text-info text-lg font-semibold hover:underline'>
           {hit.plainLanguageName || hit.service}
         </h2>
-        <div className='text-kapwa-text-support mt-1 flex items-center gap-2 text-xs'>
+        <div className='text-tsinelas-text-support mt-1 flex items-center gap-2 text-xs'>
           {hit.category && <span>{hit.category.name}</span>}
           <Badge
             variant='primary'
-            className='bg-kapwa-bg-info-weak text-kapwa-text-info'
+            className='bg-tsinelas-bg-info-weak text-tsinelas-text-info'
           >
             {hit.type}
           </Badge>
           {hit.classification && (
-            <span className='text-kapwa-text-disabled'>
+            <span className='text-tsinelas-text-disabled'>
               {hit.classification}
             </span>
           )}
@@ -86,13 +86,13 @@ const SearchPage: FC = () => {
         keywords={['search', 'Liliw services', 'Citizen', 'Charter']}
       />
 
-      <h1 className='kapwa-heading-xl text-kapwa-text-strong font-extrabold'>
+      <h1 className='tsinelas-heading-xl text-tsinelas-text-strong font-extrabold'>
         Search
       </h1>
 
       <div className='mb-6'>
         <div className='relative'>
-          <SearchIcon className='absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-kapwa-text-disabled' />
+          <SearchIcon className='absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-tsinelas-text-disabled' />
           <Input
             type='text'
             placeholder='Search for government services, offices, and resources...'
@@ -106,7 +106,7 @@ const SearchPage: FC = () => {
       {/* Active Filters */}
       {activeFiltersCount > 0 && (
         <div className='mb-6 flex flex-wrap items-center gap-2'>
-          <span className='text-kapwa-text-disabled text-sm'>
+          <span className='text-tsinelas-text-disabled text-sm'>
             Active filters:
           </span>
           {typeFilter && (
@@ -114,7 +114,7 @@ const SearchPage: FC = () => {
               Type: {typeFilter}
               <button
                 onClick={() => setTypeFilter('')}
-                className='hover:text-kapwa-text-inverse ml-1'
+                className='hover:text-tsinelas-text-inverse ml-1'
                 aria-label='Remove type filter'
               >
                 ×
@@ -126,7 +126,7 @@ const SearchPage: FC = () => {
               Category: {categoryFilter}
               <button
                 onClick={() => setCategoryFilter('')}
-                className='hover:text-kapwa-text-inverse ml-1'
+                className='hover:text-tsinelas-text-inverse ml-1'
                 aria-label='Remove category filter'
               >
                 ×
@@ -139,7 +139,7 @@ const SearchPage: FC = () => {
                 setTypeFilter('');
                 setCategoryFilter('');
               }}
-              className='text-kapwa-text-brand hover:text-kapwa-text-link-hover text-sm font-medium'
+              className='text-tsinelas-text-brand hover:text-tsinelas-text-link-hover text-sm font-medium'
             >
               Clear all
             </button>
@@ -149,19 +149,19 @@ const SearchPage: FC = () => {
 
       <div className='grid grid-cols-1 gap-8 lg:grid-cols-4'>
         <div className='lg:col-span-1'>
-          <div className='bg-kapwa-bg-surface border-kapwa-border-weak sticky top-24 rounded-lg border p-4 shadow-sm'>
-            <h3 className='mb-4 kapwa-heading-md text-kapwa-text-strong'>
+          <div className='bg-tsinelas-bg-surface border-tsinelas-border-weak sticky top-24 rounded-lg border p-4 shadow-sm'>
+            <h3 className='mb-4 tsinelas-heading-md text-tsinelas-text-strong'>
               Filter By
             </h3>
 
             <div className='mb-6'>
-              <h4 className='mb-3 kapwa-label-sm text-kapwa-text-disabled'>
+              <h4 className='mb-3 tsinelas-label-sm text-tsinelas-text-disabled'>
                 Type
               </h4>
               <select
                 value={typeFilter}
                 onChange={e => setTypeFilter(e.target.value)}
-                className='border-kapwa-border-weak bg-kapwa-bg-surface text-kapwa-text-strong w-full rounded-lg border p-2 text-sm focus:border-kapwa-border-focus focus:outline-none focus:ring-2 focus:ring-kapwa-border-focus/20'
+                className='border-tsinelas-border-weak bg-tsinelas-bg-surface text-tsinelas-text-strong w-full rounded-lg border p-2 text-sm focus:border-tsinelas-border-focus focus:outline-none focus:ring-2 focus:ring-tsinelas-border-focus/20'
               >
                 <option value=''>All</option>
                 <option value='transaction'>Transaction</option>
@@ -170,13 +170,13 @@ const SearchPage: FC = () => {
             </div>
 
             <div>
-              <h4 className='mb-3 kapwa-label-sm text-kapwa-text-disabled'>
+              <h4 className='mb-3 tsinelas-label-sm text-tsinelas-text-disabled'>
                 Category
               </h4>
               <select
                 value={categoryFilter}
                 onChange={e => setCategoryFilter(e.target.value)}
-                className='border-kapwa-border-weak bg-kapwa-bg-surface text-kapwa-text-strong w-full rounded-lg border p-2 text-sm focus:border-kapwa-border-focus focus:outline-none focus:ring-2 focus:ring-kapwa-border-focus/20'
+                className='border-tsinelas-border-weak bg-tsinelas-bg-surface text-tsinelas-text-strong w-full rounded-lg border p-2 text-sm focus:border-tsinelas-border-focus focus:outline-none focus:ring-2 focus:ring-tsinelas-border-focus/20'
               >
                 <option value=''>All</option>
                 {categories.map(c => (
@@ -190,7 +190,7 @@ const SearchPage: FC = () => {
         </div>
 
         <div className='lg:col-span-3'>
-          <div className='bg-kapwa-bg-surface overflow-hidden rounded-lg shadow-sm'>
+          <div className='bg-tsinelas-bg-surface overflow-hidden rounded-lg shadow-sm'>
             {filteredResults.length === 0 ? (
               <EmptyState
                 title='No results found'
@@ -217,8 +217,8 @@ const SearchPage: FC = () => {
               />
             ) : (
               <>
-                <div className='border-kapwa-border-weak border-b p-4'>
-                  <p className='text-kapwa-text-disabled text-sm'>
+                <div className='border-tsinelas-border-weak border-b p-4'>
+                  <p className='text-tsinelas-text-disabled text-sm'>
                     {filteredResults.length} result
                     {filteredResults.length !== 1 ? 's' : ''} found
                   </p>

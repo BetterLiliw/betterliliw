@@ -34,7 +34,7 @@ const GovernmentSection: FC = () => {
         'government.electedofficialsDescription',
         'Meet your Mayor, Vice Mayor, and Councilors.'
       ),
-      icon: <UsersIcon className='text-kapwa-text-brand h-10 w-10' />,
+      icon: <UsersIcon className='text-tsinelas-text-brand h-10 w-10' />,
       link: '/government/elected-officials',
     },
     {
@@ -44,26 +44,26 @@ const GovernmentSection: FC = () => {
         'government.departmentsDescription',
         'Services and offices under the Executive branch.'
       ),
-      icon: <Building2Icon className='text-kapwa-text-brand h-10 w-10' />,
+      icon: <Building2Icon className='text-tsinelas-text-brand h-10 w-10' />,
       link: '/government/departments',
     },
     {
       id: 'barangays',
       title: t('government.barangaysTitle'),
       description: t('government.barangaysDescription'),
-      icon: <HomeIcon className='text-kapwa-text-brand h-10 w-10' />,
+      icon: <HomeIcon className='text-tsinelas-text-brand h-10 w-10' />,
       link: '/government/barangays',
     },
   ];
 
   return (
-    <section className='bg-kapwa-bg-surface py-12'>
+    <section className='bg-tsinelas-bg-surface py-12'>
       <div className='container mx-auto px-4'>
         <div className='mb-12 text-center'>
-          <h2 className='text-kapwa-text-strong mb-4 kapwa-heading-lg font-bold'>
+          <h2 className='text-tsinelas-text-strong mb-4 tsinelas-heading-lg font-bold'>
             {t('government.title')}
           </h2>
-          <p className='text-kapwa-text-support mx-auto max-w-2xl'>
+          <p className='text-tsinelas-text-support mx-auto max-w-2xl'>
             {t('government.description')}
           </p>
         </div>
@@ -87,10 +87,10 @@ const GovernmentSection: FC = () => {
             <Card key={branch.id} hover className='text-center'>
               <CardContent className='p-6'>
                 <div className='mb-4 flex justify-center'>{branch.icon}</div>
-                <h3 className='text-kapwa-text-strong mb-2 text-xl font-semibold'>
+                <h3 className='text-tsinelas-text-strong mb-2 text-xl font-semibold'>
                   {branch.title}
                 </h3>
-                <p className='text-kapwa-text-support mb-4'>
+                <p className='text-tsinelas-text-support mb-4'>
                   {branch.description}
                 </p>
                 <Button
@@ -121,7 +121,7 @@ const GovernmentSection: FC = () => {
 
         {/* Banner CTA - using documented Banner component */}
         <Banner
-          className='p-kapwa-lg mt-12'
+          className='p-tsinelas-lg mt-12'
           type='default'
           title={t('government.directoryTitle')}
           description={t('government.directoryDescription')}

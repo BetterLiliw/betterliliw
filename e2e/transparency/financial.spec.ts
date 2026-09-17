@@ -1,5 +1,5 @@
 import { test, expect } from '../test-config';
-import { assertKapwaTokens } from '../utils/kapwa';
+import { assertTsinelasTokens } from '../utils/tsinelas';
 
 test.describe('Financial Transparency Page', () => {
   test.beforeEach(async ({ page }) => {
@@ -7,14 +7,14 @@ test.describe('Financial Transparency Page', () => {
     await page.goto('/transparency/financial');
   });
 
-  test('financial page uses Kapwa semantic tokens', async ({ page }) => {
+  test('financial page uses Tsinelas semantic tokens', async ({ page }) => {
     // Check page title is visible
     await expect(
       page.locator('h1').filter({ hasText: /Financial/i })
     ).toBeVisible();
 
-    // Verify Kapwa semantic tokens are used
-    await assertKapwaTokens(page);
+    // Verify Tsinelas semantic tokens are used
+    await assertTsinelasTokens(page);
   });
 
   test('financial page displays summary cards', async ({ page }) => {

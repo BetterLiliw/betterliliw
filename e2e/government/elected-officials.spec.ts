@@ -1,15 +1,15 @@
 import { test, expect } from '../test-config';
-import { assertKapwaTokens } from '../utils/kapwa';
+import { assertTsinelasTokens } from '../utils/tsinelas';
 
 test.describe('Elected Officials Pages', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/government/elected-officials');
   });
 
-  test('elected officials index page uses Kapwa semantic tokens', async ({
+  test('elected officials index page uses Tsinelas semantic tokens', async ({
     page,
   }) => {
-    await assertKapwaTokens(page);
+    await assertTsinelasTokens(page);
   });
 
   test('elected officials index displays executive branch', async ({
@@ -29,7 +29,7 @@ test.describe('Elected Officials Pages', () => {
   }) => {
     // Sangguniang Bayan section is now rendered directly on the index page
     const sangguniangSection = page
-      .locator('h2, h3, [class*="text-kapwa"]')
+      .locator('h2, h3, [class*="text-tsinelas"]')
       .filter({ hasText: /Sangguniang Bayan/i })
       .first();
     await expect(sangguniangSection).toBeVisible();
@@ -86,7 +86,7 @@ test.describe('Elected Officials Pages', () => {
   test('committees page uses semantic tokens', async ({ page }) => {
     await page.goto('/government/elected-officials/committees');
 
-    await assertKapwaTokens(page);
+    await assertTsinelasTokens(page);
   });
 
   test('committees page has search functionality', async ({ page }) => {

@@ -56,16 +56,16 @@ export function PaginationControls({
   const end = Math.min(currentPage * resultsPerPage, totalItems);
 
   return (
-    <div className='border-kapwa-border-weak bg-kapwa-bg-surface-raised flex flex-col items-center gap-4 border-t p-4 md:flex-row md:justify-between'>
+    <div className='border-tsinelas-border-weak bg-tsinelas-bg-surface-raised flex flex-col items-center gap-4 border-t p-4 md:flex-row md:justify-between'>
       {/* Left: Info & Selector */}
-      <div className='text-kapwa-text-disabled flex flex-wrap items-center justify-center gap-4 text-xs font-medium'>
+      <div className='text-tsinelas-text-disabled flex flex-wrap items-center justify-center gap-4 text-xs font-medium'>
         <span>
           Showing{' '}
-          <span className='text-kapwa-text-strong font-bold'>
+          <span className='text-tsinelas-text-strong font-bold'>
             {Math.max(0, start)}-{Math.max(0, end)}
           </span>{' '}
           of{' '}
-          <span className='text-kapwa-text-strong font-bold'>
+          <span className='text-tsinelas-text-strong font-bold'>
             {totalItems.toLocaleString()}
           </span>
         </span>
@@ -75,7 +75,7 @@ export function PaginationControls({
           <select
             value={resultsPerPage}
             onChange={e => onResultsPerPageChange(Number(e.target.value))}
-            className='focus:border-kapwa-border-brand focus:ring-kapwa-border-brand border-kapwa-border-weak bg-kapwa-bg-surface text-kapwa-text-support h-8 rounded-lg text-xs font-medium'
+            className='focus:border-tsinelas-border-brand focus:ring-tsinelas-border-brand border-tsinelas-border-weak bg-tsinelas-bg-surface text-tsinelas-text-support h-8 rounded-lg text-xs font-medium'
           >
             {[10, 20, 50, 100].map(val => (
               <option key={val} value={val}>
@@ -103,7 +103,7 @@ export function PaginationControls({
             page === '...' ? (
               <span
                 key={`ellipsis-${idx}`}
-                className='text-kapwa-text-disabled px-2 py-1 text-xs'
+                className='text-tsinelas-text-disabled px-2 py-1 text-xs'
               >
                 ...
               </span>
@@ -113,8 +113,8 @@ export function PaginationControls({
                 onClick={() => onPageChange(page as number)}
                 className={`h-8 w-8 rounded-lg text-xs font-bold transition-colors ${
                   currentPage === page
-                    ? 'bg-kapwa-bg-brand-default text-kapwa-text-inverse'
-                    : 'hover:bg-kapwa-bg-surface-raised border-kapwa-border-weak bg-kapwa-bg-surface text-kapwa-text-support border'
+                    ? 'bg-tsinelas-bg-brand-default text-tsinelas-text-inverse'
+                    : 'hover:bg-tsinelas-bg-surface-raised border-tsinelas-border-weak bg-tsinelas-bg-surface text-tsinelas-text-support border'
                 }`}
               >
                 {page}

@@ -1,5 +1,5 @@
 import { test, expect } from '../test-config';
-import { assertKapwaTokens } from '../utils/kapwa';
+import { assertTsinelasTokens } from '../utils/tsinelas';
 
 test.describe('Admin Reconcile', () => {
   test.beforeEach(async ({ page }) => {
@@ -7,14 +7,14 @@ test.describe('Admin Reconcile', () => {
     await page.goto('/admin/reconcile');
   });
 
-  test('reconcile page uses Kapwa semantic tokens', async ({ page }) => {
+  test('reconcile page uses Tsinelas semantic tokens', async ({ page }) => {
     // Check page title is visible
     await expect(
       page.locator('h1').filter({ hasText: /Reconcile/i })
     ).toBeVisible();
 
-    // Verify Kapwa semantic tokens are used
-    await assertKapwaTokens(page);
+    // Verify Tsinelas semantic tokens are used
+    await assertTsinelasTokens(page);
   });
 
   test('reconcile page displays conflict records', async ({ page }) => {

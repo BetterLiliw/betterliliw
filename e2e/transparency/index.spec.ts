@@ -1,5 +1,5 @@
 import { test, expect } from '../test-config';
-import { assertKapwaTokens } from '../utils/kapwa';
+import { assertTsinelasTokens } from '../utils/tsinelas';
 
 test.describe('Transparency Pages', () => {
   test.beforeEach(async ({ page }) => {
@@ -14,11 +14,11 @@ test.describe('Transparency Pages', () => {
     ).toBeVisible();
   });
 
-  test('transparency index page uses Kapwa semantic tokens', async ({
+  test('transparency index page uses Tsinelas semantic tokens', async ({
     page,
   }) => {
-    // Verify Kapwa semantic tokens are used
-    await assertKapwaTokens(page);
+    // Verify Tsinelas semantic tokens are used
+    await assertTsinelasTokens(page);
   });
 
   test('transparency index displays navigation cards', async ({ page }) => {

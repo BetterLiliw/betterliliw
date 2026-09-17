@@ -53,7 +53,7 @@
 - ✅ Real code patterns tested (not just mocks)
 - ✅ Edge cases included
 - ✅ Accessibility validated
-- ✅ Kapwa design tokens verified
+- ✅ Tsinelas design tokens verified
 
 ### 4. Code Quality ✅
 
@@ -107,7 +107,7 @@ High - Charts render at incorrect sizes, breaking responsive layouts
 
 **2. Color Highlighting (2 tests):**
 - Current: All entries use support color
-- Expected: First entry uses brand color (`text-kapwa-text-brand-bold`)
+- Expected: First entry uses brand color (`text-tsinelas-text-brand-bold`)
 - Fix: Apply conditional styling based on index
 
 **3. Null/Undefined Values (2 tests):**
@@ -172,7 +172,7 @@ const sortedPayload = [...payload].sort(
 **Changes:**
 ```typescript
 // Add null/undefined check:
-<span className='text-kapwa-text-strong text-[11px] font-black tabular-nums'>
+<span className='text-tsinelas-text-strong text-[11px] font-black tabular-nums'>
   {formatter && (entry.value === null || entry.value === undefined)
     ? 'N/A'
     : formatter(Number(entry.value))
@@ -194,8 +194,8 @@ const sortedPayload = [...payload].sort(
   className={cn(
     'max-w-[130px] truncate text-[11px] font-bold transition-colors',
     index === 0
-      ? 'text-kapwa-text-brand-bold'
-      : 'group-hover:text-kapwa-text-strong text-kapwa-text-support'
+      ? 'text-tsinelas-text-brand-bold'
+      : 'group-hover:text-tsinelas-text-strong text-tsinelas-text-support'
   )}
 >
 ```

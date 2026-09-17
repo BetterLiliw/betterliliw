@@ -22,15 +22,15 @@ export function OfficialCard({
   return (
     <Card
       hover
-      className='group focus-within:ring-kapwa-border-focus h-20 transition-all focus-within:ring-2 focus-within:ring-offset-2'
+      className='group focus-within:ring-tsinelas-border-focus h-20 transition-all focus-within:ring-2 focus-within:ring-offset-2'
     >
       <CardContent className='flex h-full items-center gap-3 px-4 py-0'>
         <Icon
           aria-hidden='true'
-          className='text-kapwa-text-support group-hover:text-kapwa-text-brand h-5 w-5 shrink-0 transition-colors'
+          className='text-tsinelas-text-support group-hover:text-tsinelas-text-brand h-5 w-5 shrink-0 transition-colors'
         />
         <div className='min-w-0 flex-1'>
-          <h3 className='text-kapwa-text-strong truncate text-sm font-bold'>
+          <h3 className='text-tsinelas-text-strong truncate text-sm font-bold'>
             {toTitleCase(official.name)}
           </h3>
           <Badge
@@ -54,13 +54,13 @@ interface PunongBarangayCardProps {
 
 export function PunongBarangayCard({ official }: PunongBarangayCardProps) {
   return (
-    <Card className='border-kapwa-border-brand h-30' variant='default'>
+    <Card className='border-tsinelas-border-brand h-30' variant='default'>
       <CardContent className='flex h-full flex-col items-center justify-center gap-2 px-6 py-4 text-center'>
-        <div className='bg-kapwa-bg-brand-weak text-kapwa-text-brand border-kapwa-border-brand flex h-12 w-12 items-center justify-center rounded-full border-2'>
+        <div className='bg-tsinelas-bg-brand-weak text-tsinelas-text-brand border-tsinelas-border-brand flex h-12 w-12 items-center justify-center rounded-full border-2'>
           <UserIcon aria-hidden='true' className='h-6 w-6' />
         </div>
         <div className='min-w-0'>
-          <h2 className='text-kapwa-text-strong text-lg font-black'>
+          <h2 className='text-tsinelas-text-strong text-lg font-black'>
             Hon. {toTitleCase(official.name)}
           </h2>
           <Badge

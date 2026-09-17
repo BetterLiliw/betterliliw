@@ -50,7 +50,7 @@ export default function DepartmentDetail() {
   if (!dept)
     return (
       <div
-        className='text-kapwa-text-disabled p-20 text-center font-bold tracking-widest uppercase'
+        className='text-tsinelas-text-disabled p-20 text-center font-bold tracking-widest uppercase'
         role='alert'
       >
         Office Not Found
@@ -105,7 +105,7 @@ export default function DepartmentDetail() {
       {/* Skip Link for Accessibility */}
       <a
         href='#main-content'
-        className='focus:bg-kapwa-bg-surface focus:text-kapwa-text-strong focus:ring-kapwa-border-focus sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:ring-2'
+        className='focus:bg-tsinelas-bg-surface focus:text-tsinelas-text-strong focus:ring-tsinelas-border-focus sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:ring-2'
       >
         Skip to main content
       </a>
@@ -141,9 +141,9 @@ export default function DepartmentDetail() {
           <div className='flex items-center gap-3'>
             <Briefcase
               aria-hidden='true'
-              className='text-kapwa-text-brand h-5 w-5'
+              className='text-tsinelas-text-brand h-5 w-5'
             />
-            <h1 className='text-kapwa-text-strong kapwa-heading-xl font-extrabold'>
+            <h1 className='text-tsinelas-text-strong tsinelas-heading-xl font-extrabold'>
               {toTitleCase(dept.office_name)}
             </h1>
           </div>
@@ -154,7 +154,7 @@ export default function DepartmentDetail() {
 
         {/* Middle: Address */}
         {dept.address && (
-          <p className='text-kapwa-text-support mb-4 text-sm'>
+          <p className='text-tsinelas-text-support mb-4 text-sm'>
             {dept.address}, {lguLabels.location}
           </p>
         )}
@@ -164,7 +164,7 @@ export default function DepartmentDetail() {
           {contactValue && (
             <a
               href={toTelUri(contactValue) || '#'}
-              className='text-kapwa-text-support hover:text-kapwa-text-brand flex items-center gap-2 transition-colors'
+              className='text-tsinelas-text-support hover:text-tsinelas-text-brand flex items-center gap-2 transition-colors'
             >
               <PhoneIcon aria-hidden='true' className='h-4 w-4' />
               <span>{contactValue}</span>
@@ -175,7 +175,7 @@ export default function DepartmentDetail() {
               href={dept.website}
               target='_blank'
               rel='noreferrer'
-              className='text-kapwa-text-support hover:text-kapwa-text-brand flex items-center gap-2 transition-colors'
+              className='text-tsinelas-text-support hover:text-tsinelas-text-brand flex items-center gap-2 transition-colors'
             >
               <GlobeIcon aria-hidden='true' className='h-4 w-4' />
               <span>Website</span>
@@ -184,7 +184,7 @@ export default function DepartmentDetail() {
           {dept.email && (
             <a
               href={`mailto:${dept.email}`}
-              className='text-kapwa-text-support hover:text-kapwa-text-brand flex items-center gap-2 transition-colors'
+              className='text-tsinelas-text-support hover:text-tsinelas-text-brand flex items-center gap-2 transition-colors'
             >
               <MailIcon aria-hidden='true' className='h-4 w-4' />
               <span>{dept.email}</span>
@@ -203,16 +203,16 @@ export default function DepartmentDetail() {
             aria-label='Office Leadership'
           >
             <p className='sr-only'>Office Leadership</p>
-            <p className='text-kapwa-text-disabled pl-1 text-[10px] font-bold tracking-widest uppercase'>
+            <p className='text-tsinelas-text-disabled pl-1 text-[10px] font-bold tracking-widest uppercase'>
               Office Leadership
             </p>
             <Card hover={false} className='rounded-xl'>
               <div className='flex flex-col gap-4 md:flex-row md:items-center md:gap-6'>
-                <div className='border-kapwa-border-brand text-kapwa-text-brand bg-kapwa-bg-surface flex h-16 w-16 shrink-0 items-center justify-center rounded-full border-2'>
+                <div className='border-tsinelas-border-brand text-tsinelas-text-brand bg-tsinelas-bg-surface flex h-16 w-16 shrink-0 items-center justify-center rounded-full border-2'>
                   <UserIcon className='h-8 w-8' />
                 </div>
                 <div className='flex-1'>
-                  <h3 className='text-kapwa-text-strong text-xl font-bold'>
+                  <h3 className='text-tsinelas-text-strong text-xl font-bold'>
                     {dept.department_head.name}
                   </h3>
                   <Badge variant='secondary' className='mt-1'>
@@ -221,7 +221,7 @@ export default function DepartmentDetail() {
                   {dept.department_head.email && (
                     <a
                       href={`mailto:${dept.department_head.email}`}
-                      className='text-kapwa-text-brand mt-2 flex items-center gap-2 text-sm'
+                      className='text-tsinelas-text-brand mt-2 flex items-center gap-2 text-sm'
                     >
                       <MailIcon className='h-4 w-4' />
                       {dept.department_head.email}
@@ -241,7 +241,7 @@ export default function DepartmentDetail() {
             aria-label='Department Services'
           >
             <p className='sr-only'>Department Services</p>
-            <p className='text-kapwa-text-disabled pl-1 text-[10px] font-bold tracking-widest uppercase'>
+            <p className='text-tsinelas-text-disabled pl-1 text-[10px] font-bold tracking-widest uppercase'>
               Department Services
             </p>
             <div className='grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-3'>
@@ -253,23 +253,23 @@ export default function DepartmentDetail() {
                 >
                   <Card
                     hover
-                    className='hover:border-kapwa-border-brand border-kapwa-border-weak h-full shadow-xs'
+                    className='hover:border-tsinelas-border-brand border-tsinelas-border-weak h-full shadow-xs'
                   >
                     <CardContent className='flex h-full items-center justify-between gap-3 p-4'>
                       <div className='flex min-w-0 items-center gap-3'>
-                        <div className='bg-kapwa-bg-surface text-kapwa-text-brand group-hover:bg-kapwa-bg-brand-default border-kapwa-border-brand group-hover:text-kapwa-text-inverse shrink-0 rounded-lg border p-2 shadow-sm transition-colors'>
+                        <div className='bg-tsinelas-bg-surface text-tsinelas-text-brand group-hover:bg-tsinelas-bg-brand-default border-tsinelas-border-brand group-hover:text-tsinelas-text-inverse shrink-0 rounded-lg border p-2 shadow-sm transition-colors'>
                           <CheckCircle2 className='h-5 w-5' />
                         </div>
                         <div className='min-w-0'>
-                          <p className='text-kapwa-text-brand mb-0.5 truncate text-[10px] font-bold tracking-widest uppercase'>
+                          <p className='text-tsinelas-text-brand mb-0.5 truncate text-[10px] font-bold tracking-widest uppercase'>
                             Service
                           </p>
-                          <p className='group-hover:text-kapwa-text-brand-bold text-kapwa-text-support text-sm leading-tight font-bold transition-colors'>
+                          <p className='group-hover:text-tsinelas-text-brand-bold text-tsinelas-text-support text-sm leading-tight font-bold transition-colors'>
                             {service.plainLanguageName || service.service}
                           </p>
                         </div>
                       </div>
-                      <ArrowRight className='group-hover:text-kapwa-text-brand text-kapwa-text-support h-4 w-4 shrink-0 transition-all group-hover:translate-x-1' />
+                      <ArrowRight className='group-hover:text-tsinelas-text-brand text-tsinelas-text-support h-4 w-4 shrink-0 transition-all group-hover:translate-x-1' />
                     </CardContent>
                   </Card>
                 </Link>
@@ -281,12 +281,12 @@ export default function DepartmentDetail() {
         {/* Office Mandate */}
         <div className='space-y-2' role='group' aria-label='Office Mandate'>
           <p className='sr-only'>Office Mandate</p>
-          <p className='text-kapwa-text-disabled pl-1 text-[10px] font-bold tracking-widest uppercase'>
+          <p className='text-tsinelas-text-disabled pl-1 text-[10px] font-bold tracking-widest uppercase'>
             Office Mandate
           </p>
-          <Card variant='default' hover={false} className='bg-kapwa-bg-surface'>
+          <Card variant='default' hover={false} className='bg-tsinelas-bg-surface'>
             <CardContent className='p-6'>
-              <p className='text-kapwa-text-support text-sm leading-relaxed'>
+              <p className='text-tsinelas-text-support text-sm leading-relaxed'>
                 The {toTitleCase(dept.office_name)} is a frontline office of the{' '}
                 {lguLabels.fullName}. It is responsible for executing
                 administrative mandates and technical functions to ensure the

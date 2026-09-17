@@ -56,7 +56,7 @@ export function SidebarLayout({
   }, [location]);
 
   return (
-    <div className={`bg-kapwa-bg-surface min-h-screen ${className}`}>
+    <div className={`bg-tsinelas-bg-surface min-h-screen ${className}`}>
       <div className='container mx-auto py-6 sm:px-4 md:py-8'>
         {/* HEADER LOGIC: Custom Node OR Default ModuleHeader */}
         {headerNode ? (
@@ -73,7 +73,7 @@ export function SidebarLayout({
         <div className='mb-4 md:hidden'>
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className='border-kapwa-border-weak bg-kapwa-bg-surface text-kapwa-text-support active:bg-kapwa-bg-surface-raised flex w-full items-center justify-between rounded-xl border px-4 py-3 font-bold shadow-sm'
+            className='border-tsinelas-border-weak bg-tsinelas-bg-surface text-tsinelas-text-support active:bg-tsinelas-bg-surface-raised flex w-full items-center justify-between rounded-xl border px-4 py-3 font-bold shadow-sm'
           >
             <span className='text-sm tracking-widest uppercase'>Menu</span>
             {mobileMenuOpen ? (
@@ -96,7 +96,7 @@ export function SidebarLayout({
           >
             <button
               onClick={() => setIsCollapsed(false)}
-              className='hover:text-kapwa-text-brand hover:border-kapwa-border-brand border-kapwa-border-weak bg-kapwa-bg-surface text-kapwa-text-disabled rounded-lg border p-2 shadow-sm transition-colors'
+              className='hover:text-tsinelas-text-brand hover:border-tsinelas-border-brand border-tsinelas-border-weak bg-tsinelas-bg-surface text-tsinelas-text-disabled rounded-lg border p-2 shadow-sm transition-colors'
               title='Expand Menu'
             >
               <PanelLeftOpen className='h-5 w-5' />
@@ -121,7 +121,7 @@ export function SidebarLayout({
                 <div className='mb-2 hidden justify-end md:flex'>
                   <button
                     onClick={() => setIsCollapsed(true)}
-                    className='hover:text-kapwa-text-brand text-kapwa-text-disabled flex items-center gap-1 text-[10px] font-bold tracking-widest uppercase transition-colors'
+                    className='hover:text-tsinelas-text-brand text-tsinelas-text-disabled flex items-center gap-1 text-[10px] font-bold tracking-widest uppercase transition-colors'
                   >
                     Hide Menu <PanelLeftClose className='h-3.5 w-3.5' />
                   </button>
@@ -135,7 +135,7 @@ export function SidebarLayout({
           <main className='min-w-0 flex-1 transition-all duration-500 ease-in-out'>
             <div
               id='layout-content'
-              className='border-kapwa-border-weak bg-kapwa-bg-surface min-h-[50vh] rounded-2xl border p-4 shadow-sm md:p-8'
+              className='border-tsinelas-border-weak bg-tsinelas-bg-surface min-h-[50vh] rounded-2xl border p-4 shadow-sm md:p-8'
             >
               {children}
             </div>

@@ -27,12 +27,12 @@ export default function ServiceFilters({
   const officeDivisions = getAllOfficeDivisions();
 
   return (
-    <div className='border-kapwa-border-weak bg-kapwa-bg-surface space-y-5 rounded-2xl border p-5 shadow-sm'>
+    <div className='border-tsinelas-border-weak bg-tsinelas-bg-surface space-y-5 rounded-2xl border p-5 shadow-sm'>
       {/* Source Filter */}
       <div>
         <div className='mb-3 flex items-center gap-2'>
-          <CheckCircle2 className='text-kapwa-text-disabled h-4 w-4' />
-          <h4 className='text-kapwa-text-strong text-xs font-bold uppercase tracking-wider'>
+          <CheckCircle2 className='text-tsinelas-text-disabled h-4 w-4' />
+          <h4 className='text-tsinelas-text-strong text-xs font-bold uppercase tracking-wider'>
             Data Source
           </h4>
         </div>
@@ -58,8 +58,8 @@ export default function ServiceFilters({
       {/* Classification Filter (only for Citizens Charter services) */}
       <div>
         <div className='mb-3 flex items-center gap-2'>
-          <Layers className='text-kapwa-text-disabled h-4 w-4' />
-          <h4 className='text-kapwa-text-strong text-xs font-bold uppercase tracking-wider'>
+          <Layers className='text-tsinelas-text-disabled h-4 w-4' />
+          <h4 className='text-tsinelas-text-strong text-xs font-bold uppercase tracking-wider'>
             Classification
           </h4>
         </div>
@@ -85,8 +85,8 @@ export default function ServiceFilters({
       {/* Office Division Filter */}
       <div>
         <div className='mb-3 flex items-center gap-2'>
-          <Building2 className='text-kapwa-text-disabled h-4 w-4' />
-          <h4 className='text-kapwa-text-strong text-xs font-bold uppercase tracking-wider'>
+          <Building2 className='text-tsinelas-text-disabled h-4 w-4' />
+          <h4 className='text-tsinelas-text-strong text-xs font-bold uppercase tracking-wider'>
             Office Division
           </h4>
         </div>
@@ -135,8 +135,8 @@ function SourceBadge({ source, selected, onClick }: SourceBadgeProps) {
       onClick={onClick}
       className={`transition-all ${
         selected
-          ? 'border-kapwa-border-brand bg-kapwa-bg-brand-weak text-kapwa-text-brand'
-          : 'border-kapwa-border-weak bg-kapwa-bg-surface text-kapwa-text-support hover:border-kapwa-border-weak hover:bg-kapwa-bg-surface-raised'
+          ? 'border-tsinelas-border-brand bg-tsinelas-bg-brand-weak text-tsinelas-text-brand'
+          : 'border-tsinelas-border-weak bg-tsinelas-bg-surface text-tsinelas-text-support hover:border-tsinelas-border-weak hover:bg-tsinelas-bg-surface-raised'
       } inline-flex items-center gap-1.5 rounded-md border px-3 py-1.5 text-xs font-bold`}
     >
       {isSelected ? (
@@ -172,8 +172,8 @@ function ClassificationBadge({
       onClick={onClick}
       className={`transition-all ${
         selected
-          ? 'border-kapwa-border-brand bg-kapwa-bg-brand-weak text-kapwa-text-brand'
-          : 'border-kapwa-border-weak bg-kapwa-bg-surface text-kapwa-text-support hover:border-kapwa-border-weak hover:bg-kapwa-bg-surface-raised'
+          ? 'border-tsinelas-border-brand bg-tsinelas-bg-brand-weak text-tsinelas-text-brand'
+          : 'border-tsinelas-border-weak bg-tsinelas-bg-surface text-tsinelas-text-support hover:border-tsinelas-border-weak hover:bg-tsinelas-bg-surface-raised'
       } inline-flex items-center gap-1.5 rounded-md border px-3 py-1.5 text-xs font-bold`}
     >
       {classification === 'all' ? (
@@ -207,8 +207,8 @@ function OfficeDivisionItem({
       onClick={onClick}
       className={`w-full text-left transition-all ${
         selected
-          ? 'bg-kapwa-bg-brand-weak text-kapwa-text-brand'
-          : 'text-kapwa-text-support hover:bg-kapwa-bg-surface-raised'
+          ? 'bg-tsinelas-bg-brand-weak text-tsinelas-text-brand'
+          : 'text-tsinelas-text-support hover:bg-tsinelas-bg-surface-raised'
       } rounded-lg px-3 py-2 text-xs font-medium`}
     >
       {division}

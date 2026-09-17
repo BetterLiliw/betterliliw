@@ -39,14 +39,14 @@ export function ContactItem({
   const content = (
     <div
       className={cn(
-        'bg-kapwa-bg-surface flex items-start gap-3 rounded-xl border border-kapwa-border-weak p-3 transition-all',
-        'group hover:border-kapwa-border-brand hover:bg-kapwa-bg-surface-brand/30',
+        'bg-tsinelas-bg-surface flex items-start gap-3 rounded-xl border border-tsinelas-border-weak p-3 transition-all',
+        'group hover:border-tsinelas-border-brand hover:bg-tsinelas-bg-surface-brand/30',
         className
       )}
     >
       {/* Icon Wrapper */}
       <div
-        className='group-hover:bg-kapwa-bg-surface-brand group-hover:text-kapwa-text-brand bg-kapwa-bg-surface-raised text-kapwa-text-disabled shrink-0 rounded-lg p-2 transition-colors'
+        className='group-hover:bg-tsinelas-bg-surface-brand group-hover:text-tsinelas-text-brand bg-tsinelas-bg-surface-raised text-tsinelas-text-disabled shrink-0 rounded-lg p-2 transition-colors'
         aria-hidden='true'
       >
         <Icon className='h-4 w-4' />
@@ -54,10 +54,10 @@ export function ContactItem({
 
       {/* Text Area */}
       <div className='min-w-0 flex-1'>
-        <p className='text-kapwa-text-disabled mb-1 text-[10px] leading-none font-bold tracking-widest uppercase'>
+        <p className='text-tsinelas-text-disabled mb-1 text-[10px] leading-none font-bold tracking-widest uppercase'>
           {label}
         </p>
-        <div className='text-kapwa-text-support group-hover:text-kapwa-text-strong truncate text-sm font-bold transition-colors'>
+        <div className='text-tsinelas-text-support group-hover:text-tsinelas-text-strong truncate text-sm font-bold transition-colors'>
           {Array.isArray(value) ? value[0] : value}
         </div>
       </div>
@@ -65,7 +65,7 @@ export function ContactItem({
       {/* External Visual Indicator */}
       {external && href && (
         <ExternalLink
-          className='group-hover:text-kapwa-text-brand-600 text-kapwa-text-support ml-auto h-3 w-3 transition-colors'
+          className='group-hover:text-tsinelas-text-brand-600 text-tsinelas-text-support ml-auto h-3 w-3 transition-colors'
           aria-hidden='true'
         />
       )}
@@ -79,7 +79,7 @@ export function ContactItem({
         href={href}
         target={external ? '_blank' : undefined}
         rel={external ? 'noreferrer' : undefined}
-        className='focus:ring-kapwa-border-brand block min-h-[44px] rounded-xl focus:ring-2 focus:outline-none'
+        className='focus:ring-tsinelas-border-brand block min-h-[44px] rounded-xl focus:ring-2 focus:outline-none'
         aria-label={`${label}: ${Array.isArray(value) ? value[0] : value}`}
       >
         {content}

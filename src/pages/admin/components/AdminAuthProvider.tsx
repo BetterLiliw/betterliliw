@@ -89,24 +89,24 @@ export function AdminAuthProvider({ children }: AdminAuthProviderProps) {
   if (loading) {
     return (
       <div className='flex min-h-screen items-center justify-center'>
-        <div className='border-t-primary-500 border-kapwa-border-weak h-8 w-8 animate-spin rounded-full border-4' />
+        <div className='border-t-primary-500 border-tsinelas-border-weak h-8 w-8 animate-spin rounded-full border-4' />
       </div>
     );
   }
 
   if (!user) {
     return (
-      <div className='bg-kapwa-bg-surface-raised flex min-h-screen items-center justify-center px-4'>
+      <div className='bg-tsinelas-bg-surface-raised flex min-h-screen items-center justify-center px-4'>
         <Card variant='default' className='w-full max-w-md'>
           <CardContent className='space-y-6 p-8'>
             <div className='text-center'>
-              <div className='bg-kapwa-bg-brand-weak mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full'>
-                <Shield className='text-kapwa-text-brand h-8 w-8' />
+              <div className='bg-tsinelas-bg-brand-weak mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full'>
+                <Shield className='text-tsinelas-text-brand h-8 w-8' />
               </div>
-              <h1 className='text-kapwa-text-strong kapwa-heading-xl font-extrabold'>
+              <h1 className='text-tsinelas-text-strong tsinelas-heading-xl font-extrabold'>
                 Admin Access Required
               </h1>
-              <p className='text-kapwa-text-support mt-2'>
+              <p className='text-tsinelas-text-support mt-2'>
                 You need to authenticate to access the admin dashboard.
               </p>
             </div>
@@ -123,8 +123,8 @@ export function AdminAuthProvider({ children }: AdminAuthProviderProps) {
               </Button>
             </div>
 
-            <div className='bg-kapwa-bg-surface-raised text-kapwa-text-support rounded-md p-4 text-sm'>
-              <p className='text-kapwa-text-strong font-bold'>
+            <div className='bg-tsinelas-bg-surface-raised text-tsinelas-text-support rounded-md p-4 text-sm'>
+              <p className='text-tsinelas-text-strong font-bold'>
                 Authorized users only
               </p>
               <p className='mt-1'>
@@ -149,7 +149,7 @@ export function AdminAuthProvider({ children }: AdminAuthProviderProps) {
         checkAuth,
       }}
     >
-      <div className='border-kapwa-border-weak bg-kapwa-bg-surface border-b'>
+      <div className='border-tsinelas-border-weak bg-tsinelas-bg-surface border-b'>
         <div className='mx-auto max-w-7xl px-4 py-3 sm:px-6 lg:px-8'>
           <div className='flex items-center justify-between'>
             <div className='flex items-center gap-3'>
@@ -159,10 +159,10 @@ export function AdminAuthProvider({ children }: AdminAuthProviderProps) {
                 className='h-8 w-8 rounded-full'
               />
               <div>
-                <p className='text-kapwa-text-strong text-sm font-bold'>
+                <p className='text-tsinelas-text-strong text-sm font-bold'>
                   {user.name || user.login}
                 </p>
-                <p className='text-kapwa-text-disabled text-xs'>
+                <p className='text-tsinelas-text-disabled text-xs'>
                   {user.email || user.login}
                 </p>
               </div>

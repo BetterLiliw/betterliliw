@@ -53,28 +53,28 @@ export default function SummaryCards({
       value: totalIncome,
       trend: calculateTrend(totalIncome, prevYear?.totalIncome),
       icon: Landmark,
-      iconBg: 'bg-kapwa-green-50 text-kapwa-green-600',
+      iconBg: 'bg-tsinelas-green-50 text-tsinelas-green-600',
     },
     {
       label: 'Total Expenditure (M)',
       value: totalExpenditure,
       trend: calculateTrend(totalExpenditure, prevYear?.totalExpenditure),
       icon: ReceiptText,
-      iconBg: 'bg-kapwa-red-50 text-kapwa-red-600',
+      iconBg: 'bg-tsinelas-red-50 text-tsinelas-red-600',
     },
     {
       label: 'Net Operating Income (M)',
       value: netIncome,
       trend: calculateTrend(netIncome, prevYear?.netIncome),
       icon: Scale,
-      iconBg: 'bg-kapwa-bg-brand-weak text-kapwa-text-brand',
+      iconBg: 'bg-tsinelas-bg-brand-weak text-tsinelas-text-brand',
     },
     {
       label: 'Treasury Balance (M)',
       value: fundBalance,
       trend: calculateTrend(fundBalance, prevYear?.fundCashEnd),
       icon: Vault,
-      iconBg: 'bg-kapwa-orange-50 text-kapwa-orange-600',
+      iconBg: 'bg-tsinelas-orange-50 text-tsinelas-orange-600',
     },
   ];
 

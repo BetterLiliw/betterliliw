@@ -403,7 +403,7 @@ describe('DetailPageLayout', () => {
         <DetailPageLayout title='Test' sections={defaultSections} />
       );
 
-      expect(container.firstChild).toHaveClass('bg-kapwa-bg-surface');
+      expect(container.firstChild).toHaveClass('bg-tsinelas-bg-surface');
       expect(container.firstChild).toHaveClass('min-h-screen');
     });
 

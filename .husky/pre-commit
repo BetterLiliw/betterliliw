@@ -16,10 +16,10 @@ if grep -rn "bg-gray-\|text-gray-\|border-gray-\|bg-slate-\|text-slate-\|border-
   grep -v "reference-implementation"; then
   echo ""
   echo "❌ Raw color tokens found in navigation pages!"
-  echo "Please use Kapwa semantic tokens:"
-  echo "  - Backgrounds: bg-kapwa-bg-*"
-  echo "  - Text: text-kapwa-text-*"
-  echo "  - Borders: border-kapwa-border-*"
+  echo "Please use Tsinelas semantic tokens:"
+  echo "  - Backgrounds: bg-tsinelas-bg-*"
+  echo "  - Text: text-tsinelas-text-*"
+  echo "  - Borders: border-tsinelas-border-*"
   echo ""
   echo "Reference: Navigation Design System Specification (docs/navigation-design-system-spec.md)"
   exit 1

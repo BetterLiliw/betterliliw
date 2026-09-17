@@ -63,7 +63,7 @@ export function DetailPageLayout({
   className = '',
 }: DetailPageLayoutProps) {
   return (
-    <div className={`bg-kapwa-bg-surface min-h-screen space-y-6 ${className}`}>
+    <div className={`bg-tsinelas-bg-surface min-h-screen space-y-6 ${className}`}>
       {/* Hero Section */}
       <PageHero
         title={title}
@@ -149,11 +149,11 @@ export function DetailPageLayout({
               <Link key={item.href} to={item.href} className='group block'>
                 <Card hover>
                   <CardContent>
-                    <h3 className='group-hover:text-kapwa-text-link text-kapwa-text-strong font-semibold transition-colors'>
+                    <h3 className='group-hover:text-tsinelas-text-link text-tsinelas-text-strong font-semibold transition-colors'>
                       {item.title}
                     </h3>
                     {item.description && (
-                      <p className='text-kapwa-text-default mt-2 text-sm'>
+                      <p className='text-tsinelas-text-default mt-2 text-sm'>
                         {item.description}
                       </p>
                     )}

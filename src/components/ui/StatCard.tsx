@@ -59,8 +59,8 @@ export function StatCard(props: StatCardProps) {
     // variant is reserved for future use, extracted to avoid unused warning
   } = props;
   const trendColor = trend?.positive
-    ? 'text-kapwa-text-success'
-    : 'text-kapwa-text-danger';
+    ? 'text-tsinelas-text-success'
+    : 'text-tsinelas-text-danger';
   const TrendIcon = trend?.positive ? ArrowUpRight : ArrowDownRight;
 
   return (
@@ -76,10 +76,10 @@ export function StatCard(props: StatCardProps) {
         )}
       >
         <div className='flex min-w-0 flex-1 flex-col gap-1'>
-          <p className='text-kapwa-text-disabled truncate text-[10px] font-bold tracking-widest uppercase'>
+          <p className='text-tsinelas-text-disabled truncate text-[10px] font-bold tracking-widest uppercase'>
             {label}
           </p>
-          <div className='text-kapwa-text-strong flex items-center gap-2 text-3xl font-black'>
+          <div className='text-tsinelas-text-strong flex items-center gap-2 text-3xl font-black'>
             <span className='truncate'>
               {typeof value === 'number' ? value.toLocaleString() : value}
             </span>
@@ -98,7 +98,7 @@ export function StatCard(props: StatCardProps) {
             </span>
           </div>
           {subtext && (
-            <span className='text-kapwa-text-disabled truncate text-xs font-medium'>
+            <span className='text-tsinelas-text-disabled truncate text-xs font-medium'>
               {subtext}
             </span>
           )}
@@ -107,7 +107,7 @@ export function StatCard(props: StatCardProps) {
           <div
             className={cn(
               'flex shrink-0 items-center justify-center rounded-xl p-2',
-              iconBg || 'bg-kapwa-bg-surface-raised text-kapwa-text-strong',
+              iconBg || 'bg-tsinelas-bg-surface-raised text-tsinelas-text-strong',
               children ? 'h-auto' : 'h-10 w-10'
             )}
           >

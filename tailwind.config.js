@@ -6,15 +6,15 @@ module.exports = {
   ],
   theme: {
     extend: {
-      // Kapwa Design System provides all design tokens via @bettergov/kapwa package
-      // Custom theme extensions are kept minimal to avoid conflicts
+      // The Tsinelas design system (src/styles/tsinelas.css) provides every
+      // design token via Tailwind v4 `@theme`, layered over @bettergov/kapwa.
+      // This legacy config is kept minimal so nothing here can conflict.
       fontFamily: {
-        // Use Inter from index.css, not Figtree
-        sans: ['var(--font-kapwa-sans)'],
-        mono: ['var(--font-kapwa-mono)'],
+        display: ['var(--font-tsinelas-display)'],
+        sans: ['var(--font-tsinelas-sans)'],
+        mono: ['var(--font-tsinelas-mono)'],
       },
-      // Custom animations are now in index.css using @theme
-      // No need to duplicate them here
+      // Custom animations live in src/index.css using @theme.
     },
   },
   plugins: [],

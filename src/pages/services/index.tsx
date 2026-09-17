@@ -151,7 +151,7 @@ export default function ServicesPage() {
       <div className='flex items-center justify-between'>
         <Badge
           variant='slate'
-          className='bg-kapwa-bg-surface-raised border-kapwa-border-weak'
+          className='bg-tsinelas-bg-surface-raised border-tsinelas-border-weak'
         >
           {filteredServices.length} Results
         </Badge>
@@ -167,7 +167,7 @@ export default function ServicesPage() {
                 <button
                   type='button'
                   onClick={() => setOfficeDivision('all')}
-                  className='hover:text-kapwa-text-inverse ml-1'
+                  className='hover:text-tsinelas-text-inverse ml-1'
                 >
                   ×
                 </button>
@@ -181,7 +181,7 @@ export default function ServicesPage() {
                 <button
                   type='button'
                   onClick={() => setSource('all')}
-                  className='hover:text-kapwa-text-inverse ml-1'
+                  className='hover:text-tsinelas-text-inverse ml-1'
                 >
                   ×
                 </button>
@@ -193,7 +193,7 @@ export default function ServicesPage() {
                 <button
                   type='button'
                   onClick={() => setClassification('all')}
-                  className='hover:text-kapwa-text-inverse ml-1'
+                  className='hover:text-tsinelas-text-inverse ml-1'
                 >
                   ×
                 </button>
@@ -217,7 +217,7 @@ export default function ServicesPage() {
             ref={loadMoreRef}
             className='flex justify-center py-12 col-span-full'
           >
-            <div className='border-kapwa-border-brand h-6 w-6 animate-spin rounded-full border-2 border-t-transparent' />
+            <div className='border-tsinelas-border-brand h-6 w-6 animate-spin rounded-full border-2 border-t-transparent' />
           </div>
         )}
       </CardGrid>

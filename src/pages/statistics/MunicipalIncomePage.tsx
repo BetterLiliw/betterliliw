@@ -92,7 +92,7 @@ export default function MunicipalIncomePage() {
       </PageHero>
 
       {/* KPI Cards - using StatGrid with StatCard */}
-      <div className='mb-kapwa-lg'>
+      <div className='mb-tsinelas-lg'>
         <StatGrid
           columns={3}
           stats={[
@@ -122,7 +122,7 @@ export default function MunicipalIncomePage() {
       </div>
 
       {/* Chart wrapped in DetailSection */}
-      <div className='mb-kapwa-lg'>
+      <div className='mb-tsinelas-lg'>
         <DetailSection title='Revenue Composition' icon={Landmark}>
           <div className='flex justify-center'>
             <FinancialPieChart
@@ -144,11 +144,11 @@ export default function MunicipalIncomePage() {
       <DetailSection title='Full Financial Itemization' icon={Coins}>
         <div className='grid grid-cols-1 gap-8 md:grid-cols-3'>
           <div className='space-y-4'>
-            <h4 className='text-kapwa-text-accent-orange border-b pb-2 text-[10px] font-black tracking-widest uppercase'>
+            <h4 className='text-tsinelas-text-accent-orange border-b pb-2 text-[10px] font-black tracking-widest uppercase'>
               Local Tax
             </h4>
-            <div className='text-kapwa-text-support space-y-2 text-sm font-bold'>
-              <div className='bg-kapwa-bg-surface-raised flex justify-between rounded-lg p-2'>
+            <div className='text-tsinelas-text-support space-y-2 text-sm font-bold'>
+              <div className='bg-tsinelas-bg-surface-raised flex justify-between rounded-lg p-2'>
                 <span>Real Property</span>
                 <span>
                   {
@@ -159,7 +159,7 @@ export default function MunicipalIncomePage() {
                   }
                 </span>
               </div>
-              <div className='bg-kapwa-bg-surface-raised flex justify-between rounded-lg p-2'>
+              <div className='bg-tsinelas-bg-surface-raised flex justify-between rounded-lg p-2'>
                 <span>Business Tax</span>
                 <span>
                   {
@@ -172,11 +172,11 @@ export default function MunicipalIncomePage() {
             </div>
           </div>
           <div className='space-y-4'>
-            <h4 className='text-kapwa-text-brand border-b pb-2 text-[10px] font-black tracking-widest uppercase'>
+            <h4 className='text-tsinelas-text-brand border-b pb-2 text-[10px] font-black tracking-widest uppercase'>
               Non-Tax
             </h4>
-            <div className='text-kapwa-text-support space-y-2 text-sm font-bold'>
-              <div className='bg-kapwa-bg-surface-raised flex justify-between rounded-lg p-2'>
+            <div className='text-tsinelas-text-support space-y-2 text-sm font-bold'>
+              <div className='bg-tsinelas-bg-surface-raised flex justify-between rounded-lg p-2'>
                 <span>Fees</span>
                 <span>
                   {
@@ -187,7 +187,7 @@ export default function MunicipalIncomePage() {
                   }
                 </span>
               </div>
-              <div className='bg-kapwa-bg-surface-raised flex justify-between rounded-lg p-2'>
+              <div className='bg-tsinelas-bg-surface-raised flex justify-between rounded-lg p-2'>
                 <span>Enterprises</span>
                 <span>
                   {
@@ -201,11 +201,11 @@ export default function MunicipalIncomePage() {
             </div>
           </div>
           <div className='space-y-4'>
-            <h4 className='border-b pb-2 text-[10px] font-black tracking-widest text-kapwa-text-success uppercase'>
+            <h4 className='border-b pb-2 text-[10px] font-black tracking-widest text-tsinelas-text-success uppercase'>
               External
             </h4>
-            <div className='text-kapwa-text-support space-y-2 text-sm font-bold'>
-              <div className='bg-kapwa-bg-surface-raised flex justify-between rounded-lg p-2'>
+            <div className='text-tsinelas-text-support space-y-2 text-sm font-bold'>
+              <div className='bg-tsinelas-bg-surface-raised flex justify-between rounded-lg p-2'>
                 <span>Allotment</span>
                 <span>
                   {
@@ -215,7 +215,7 @@ export default function MunicipalIncomePage() {
                   }
                 </span>
               </div>
-              <div className='bg-kapwa-bg-surface-raised flex justify-between rounded-lg p-2'>
+              <div className='bg-tsinelas-bg-surface-raised flex justify-between rounded-lg p-2'>
                 <span>Other Shares</span>
                 <span>
                   {
@@ -232,8 +232,8 @@ export default function MunicipalIncomePage() {
       </DetailSection>
 
       {/* Footer */}
-      <footer className='border-kapwa-border-weak space-y-4 border-t pt-10 text-center'>
-        <div className='bg-kapwa-bg-success-weak text-kapwa-text-success mx-auto flex h-6 w-6 items-center justify-center rounded-full'>
+      <footer className='border-tsinelas-border-weak space-y-4 border-t pt-10 text-center'>
+        <div className='bg-tsinelas-bg-success-weak text-tsinelas-text-success mx-auto flex h-6 w-6 items-center justify-center rounded-full'>
           <svg
             className='h-4 w-4'
             fill='none'
@@ -249,16 +249,16 @@ export default function MunicipalIncomePage() {
           </svg>
         </div>
         <div className='space-y-1'>
-          <p className='text-kapwa-text-strong text-[10px] font-bold tracking-widest uppercase'>
+          <p className='text-tsinelas-text-strong text-[10px] font-bold tracking-widest uppercase'>
             Verified Data Audit
           </p>
-          <p className='text-kapwa-text-disabled text-[10px] font-bold tracking-widest uppercase'>
+          <p className='text-tsinelas-text-disabled text-[10px] font-bold tracking-widest uppercase'>
             Source:{' '}
             <a
               href='https://data.bettergov.ph/datasets/9/resources/31'
               target='_blank'
               rel='noreferrer'
-              className='hover:text-kapwa-text-brand underline'
+              className='hover:text-tsinelas-text-brand underline'
             >
               Bureau of Local Government Finance (BLGF)
             </a>

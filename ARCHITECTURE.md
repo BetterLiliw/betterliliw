@@ -58,12 +58,27 @@ App.tsx
 
 ## Design System
 
-### Kapwa Design Tokens
+### Tsinelas Design Tokens
+Tsinelas is BetterLiliw's design system, defined in `src/styles/tsinelas.css`
+and built over `@bettergov/kapwa` (which stays installed as the engine). It
+implements the BetterLiliw Brand Guidelines (`public/BetterLiliw_Brand_Guidelines.pdf`):
+
+- **Type**: Poppins 600/700 for display and headings (`tsinelas-heading-*`,
+  `tsinelas-eyebrow`), Source Sans 3 400/600 for body and interface
+  (`tsinelas-body-*`, `tsinelas-label-*`). Sentence case for headings; all caps
+  only for small labels. Body never below 16px on mobile.
+- **Color**: Deep Navy `#1C3A5B` (brand), Sunrise Gold `#D28A22` (accent — a
+  shape color, never text on white; use `text-tsinelas-text-warning` = `#9A6210`
+  when gold text is unavoidable), Lake Teal `#306F8E` (links, tourism), Field
+  Green `#305E51` (barangay, government, success), Sky Tint `#CEE2EE` (bands,
+  callouts), plus four working neutrals.
+- **Rules**: one gold CTA per screen, gold buttons take navy labels, never white.
+
 **Never use raw colors in components.** Always use semantic tokens:
 
 ```tsx
 // ✅ Correct
-<div className="bg-kapwa-surface text-kapwa-text-strong">
+<div className="bg-tsinelas-bg-surface text-tsinelas-text-strong">
 
 // ❌ Wrong
 <div className="bg-blue-500 text-white">
@@ -71,7 +86,7 @@ App.tsx
 
 ### Import Patterns
 ```tsx
-// Base components from Kapwa (@bettergov/kapwa)
+// Base components from Kapwa (@bettergov/kapwa), recolored by Tsinelas
 import { Button } from '@bettergov/kapwa/button';
 import { Input } from '@bettergov/kapwa/input';
 
@@ -160,10 +175,10 @@ Located in `e2e/`:
 - Search functionality
 - Service directory navigation
 - Admin dashboard operations
-- Semantic token validation (via `e2e/utils/kapwa.ts`)
+- Semantic token validation (via `e2e/utils/tsinelas.ts`)
 
 **Shared Testing Utilities:**
-- `e2e/utils/kapwa.ts` - Validates Kapwa design token usage and prevents raw Tailwind colors
+- `e2e/utils/tsinelas.ts` - Validates Tsinelas design token usage and prevents raw Tailwind colors
 
 ### Unit Tests (Vitest)
 Component testing for complex UI components.

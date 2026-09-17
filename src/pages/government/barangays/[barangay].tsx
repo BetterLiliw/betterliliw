@@ -93,7 +93,7 @@ export default function BarangayDetail() {
       {/* Skip Link for Accessibility */}
       <a
         href='#main-content'
-        className='focus:bg-kapwa-bg-surface focus:text-kapwa-text-strong focus:ring-kapwa-border-focus sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:ring-2'
+        className='focus:bg-tsinelas-bg-surface focus:text-tsinelas-text-strong focus:ring-tsinelas-border-focus sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:ring-2'
       >
         Skip to main content
       </a>
@@ -123,14 +123,14 @@ export default function BarangayDetail() {
       {/* --- OFFICIALS SECTION (Unified) --- */}
       <main id='main-content' className='space-y-6'>
         {/* Section Header */}
-        <div className='border-kapwa-border-weak flex items-center gap-2 border-b pb-3'>
+        <div className='border-tsinelas-border-weak flex items-center gap-2 border-b pb-3'>
           <UsersIcon
             aria-hidden='true'
-            className='text-kapwa-text-disabled h-4 w-4'
+            className='text-tsinelas-text-disabled h-4 w-4'
           />
           <h2
             id='officials-heading'
-            className='kapwa-heading-md text-kapwa-text-strong'
+            className='tsinelas-heading-md text-tsinelas-text-strong'
           >
             Barangay Officials
           </h2>
@@ -140,7 +140,7 @@ export default function BarangayDetail() {
         {punongBarangay && (
           <div className='space-y-2' role='group' aria-label='Chief Executive'>
             <p className='sr-only'>Chief Executive</p>
-            <p className='text-kapwa-text-disabled pl-1 text-[10px] font-bold tracking-widest uppercase'>
+            <p className='text-tsinelas-text-disabled pl-1 text-[10px] font-bold tracking-widest uppercase'>
               Chief Executive
             </p>
             <PunongBarangayCard official={punongBarangay} />
@@ -154,7 +154,7 @@ export default function BarangayDetail() {
           aria-label='Sangguniang Barangay'
         >
           <p className='sr-only'>Sangguniang Barangay</p>
-          <p className='text-kapwa-text-disabled pl-1 text-[10px] font-bold tracking-widest uppercase'>
+          <p className='text-tsinelas-text-disabled pl-1 text-[10px] font-bold tracking-widest uppercase'>
             Sangguniang Barangay
           </p>
           <div className='grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-3'>
@@ -177,7 +177,7 @@ export default function BarangayDetail() {
             aria-label='Sangguniang Kabataan'
           >
             <p className='sr-only'>Sangguniang Kabataan</p>
-            <p className='text-kapwa-text-disabled pl-1 text-[10px] font-bold tracking-widest uppercase'>
+            <p className='text-tsinelas-text-disabled pl-1 text-[10px] font-bold tracking-widest uppercase'>
               Sangguniang Kabataan
             </p>
             <div className='grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-3'>
@@ -200,7 +200,7 @@ export default function BarangayDetail() {
           aria-label='Barangay Administration'
         >
           <p className='sr-only'>Barangay Administration</p>
-          <p className='text-kapwa-text-disabled pl-1 text-[10px] font-bold tracking-widest uppercase'>
+          <p className='text-tsinelas-text-disabled pl-1 text-[10px] font-bold tracking-widest uppercase'>
             Barangay Administration
           </p>
           <div className='grid grid-cols-1 gap-3 md:grid-cols-2'>

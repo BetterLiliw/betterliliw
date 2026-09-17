@@ -1,5 +1,5 @@
 import { test, expect } from '../test-config';
-import { assertKapwaTokens } from '../utils/kapwa';
+import { assertTsinelasTokens } from '../utils/tsinelas';
 
 test.describe('Service Detail Page', () => {
   test.beforeEach(async ({ page }) => {
@@ -8,9 +8,9 @@ test.describe('Service Detail Page', () => {
     await page.goto('/services/animal-bite-treatment-center');
   });
 
-  test('service detail page uses Kapwa semantic tokens', async ({ page }) => {
-    // Verify Kapwa semantic tokens are used
-    await assertKapwaTokens(page);
+  test('service detail page uses Tsinelas semantic tokens', async ({ page }) => {
+    // Verify Tsinelas semantic tokens are used
+    await assertTsinelasTokens(page);
   });
 
   test('service detail page displays quick info section', async ({ page }) => {
@@ -19,8 +19,8 @@ test.describe('Service Detail Page', () => {
     const h1 = page.locator('h1').last();
     await expect(h1).toBeVisible();
 
-    // Verify Kapwa design tokens are present
-    await assertKapwaTokens(page);
+    // Verify Tsinelas design tokens are present
+    await assertTsinelasTokens(page);
   });
 
   test('service detail page displays requirements section', async ({
@@ -41,8 +41,8 @@ test.describe('Service Detail Page', () => {
       const firstCard = requirementCards.first();
       await expect(firstCard).toBeVisible();
 
-      // Check that requirement card uses Kapwa tokens
-      await assertKapwaTokens(page);
+      // Check that requirement card uses Tsinelas tokens
+      await assertTsinelasTokens(page);
     }
   });
 
@@ -61,9 +61,9 @@ test.describe('Service Detail Page', () => {
     if (timelineExists) {
       await expect(timeline).toBeVisible();
 
-      // Check that timeline uses Kapwa tokens
+      // Check that timeline uses Tsinelas tokens
       const timelineHTML = await timeline.innerHTML();
-      expect(timelineHTML).toMatch(/kapwa/);
+      expect(timelineHTML).toMatch(/tsinelas/);
     }
   });
 

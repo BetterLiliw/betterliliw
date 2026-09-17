@@ -21,7 +21,7 @@ export function BarangayHeader({ barangay }: BarangayHeaderProps) {
 
   return (
     <header
-      className='bg-kapwa-bg-surface border-kapwa-border-weak rounded-xl border p-6 shadow-sm'
+      className='bg-tsinelas-bg-surface border-tsinelas-border-weak rounded-xl border p-6 shadow-sm'
       role='banner'
       aria-label='Barangay information header'
     >
@@ -30,9 +30,9 @@ export function BarangayHeader({ barangay }: BarangayHeaderProps) {
         <div className='flex items-center gap-3'>
           <MapPinIcon
             aria-hidden='true'
-            className='text-kapwa-text-brand h-5 w-5'
+            className='text-tsinelas-text-brand h-5 w-5'
           />
-          <h1 className='kapwa-heading-lg text-kapwa-text-strong'>
+          <h1 className='tsinelas-heading-lg text-tsinelas-text-strong'>
             Barangay{' '}
             {toTitleCase(barangay.barangay_name.replace('BARANGAY', ''))}
           </h1>
@@ -44,7 +44,7 @@ export function BarangayHeader({ barangay }: BarangayHeaderProps) {
 
       {/* Middle: Address */}
       {barangay.address && (
-        <p className='text-kapwa-text-support mb-4 text-sm'>
+        <p className='text-tsinelas-text-support mb-4 text-sm'>
           {barangay.address}, {lguLabels.location}
         </p>
       )}
@@ -54,7 +54,7 @@ export function BarangayHeader({ barangay }: BarangayHeaderProps) {
         {contactValue && (
           <a
             href={`tel:${contactValue}`}
-            className='text-kapwa-text-support hover:text-kapwa-text-brand flex items-center gap-2 transition-colors'
+            className='text-tsinelas-text-support hover:text-tsinelas-text-brand flex items-center gap-2 transition-colors'
           >
             <PhoneIcon aria-hidden='true' className='h-4 w-4' />
             <span>{contactValue}</span>
@@ -65,7 +65,7 @@ export function BarangayHeader({ barangay }: BarangayHeaderProps) {
             href={barangay.website}
             target='_blank'
             rel='noreferrer'
-            className='text-kapwa-text-support hover:text-kapwa-text-brand flex items-center gap-2 transition-colors'
+            className='text-tsinelas-text-support hover:text-tsinelas-text-brand flex items-center gap-2 transition-colors'
           >
             <GlobeIcon aria-hidden='true' className='h-4 w-4' />
             <span>Facebook</span>

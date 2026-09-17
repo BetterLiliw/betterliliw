@@ -46,14 +46,14 @@ export function ReloadPrompt() {
     <div
       role='status'
       aria-live='polite'
-      className='bg-kapwa-bg-surface border-kapwa-border-weak fixed right-4 bottom-4 left-4 z-40 flex items-center gap-3 rounded-lg border p-4 shadow-lg sm:left-auto sm:max-w-sm'
+      className='bg-tsinelas-bg-surface border-tsinelas-border-weak fixed right-4 bottom-4 left-4 z-40 flex items-center gap-3 rounded-lg border p-4 shadow-lg sm:left-auto sm:max-w-sm'
     >
       {needRefresh ? (
-        <RefreshCw className='text-kapwa-text-brand h-5 w-5 shrink-0' />
+        <RefreshCw className='text-tsinelas-text-brand h-5 w-5 shrink-0' />
       ) : (
-        <WifiOff className='text-kapwa-text-muted h-5 w-5 shrink-0' />
+        <WifiOff className='text-tsinelas-text-muted h-5 w-5 shrink-0' />
       )}
-      <p className='text-kapwa-text-strong flex-1 text-sm'>
+      <p className='text-tsinelas-text-strong flex-1 text-sm'>
         {needRefresh ? t('pwa.updateAvailable') : t('pwa.offlineReady')}
       </p>
       {needRefresh && (
@@ -69,7 +69,7 @@ export function ReloadPrompt() {
         type='button'
         onClick={close}
         aria-label={t('pwa.dismiss')}
-        className='text-kapwa-text-muted hover:text-kapwa-text-strong rounded p-1'
+        className='text-tsinelas-text-muted hover:text-tsinelas-text-strong rounded p-1'
       >
         <X className='h-4 w-4' />
       </button>

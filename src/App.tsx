@@ -137,7 +137,7 @@ import ComingSoon from '@/pages/ComingSoon';
 function PageLoader() {
   return (
     <div className='flex min-h-[40vh] items-center justify-center'>
-      <div className='text-kapwa-text-muted text-sm'>Loading…</div>
+      <div className='text-tsinelas-text-muted text-sm'>Loading…</div>
     </div>
   );
 }

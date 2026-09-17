@@ -1,5 +1,5 @@
 import { test, expect } from '../test-config';
-import { assertKapwaTokens } from '../utils/kapwa';
+import { assertTsinelasTokens } from '../utils/tsinelas';
 
 test.describe('Admin Error Log', () => {
   test.beforeEach(async ({ page }) => {
@@ -7,14 +7,14 @@ test.describe('Admin Error Log', () => {
     await page.goto('/admin/errors');
   });
 
-  test('error log page uses Kapwa semantic tokens', async ({ page }) => {
+  test('error log page uses Tsinelas semantic tokens', async ({ page }) => {
     // Check page title is visible
     await expect(
       page.locator('h1').filter({ hasText: /Error Log/i })
     ).toBeVisible();
 
-    // Verify Kapwa semantic tokens are used
-    await assertKapwaTokens(page);
+    // Verify Tsinelas semantic tokens are used
+    await assertTsinelasTokens(page);
   });
 
   test('error log displays error cards', async ({ page }) => {

@@ -1,5 +1,5 @@
 import { test, expect } from '../test-config';
-import { assertKapwaTokens } from '../utils/kapwa';
+import { assertTsinelasTokens } from '../utils/tsinelas';
 
 test.describe('Barangays Pages', () => {
   test.beforeEach(async ({ page }) => {
@@ -7,8 +7,8 @@ test.describe('Barangays Pages', () => {
     await page.goto('/government/barangays');
   });
 
-  test('barangays index page uses Kapwa semantic tokens', async ({ page }) => {
-    await assertKapwaTokens(page);
+  test('barangays index page uses Tsinelas semantic tokens', async ({ page }) => {
+    await assertTsinelasTokens(page);
   });
 
   test('barangays index displays all barangay cards', async ({ page }) => {
@@ -66,7 +66,7 @@ test.describe('Barangays Pages', () => {
     const header = page.locator('header[role="banner"]');
     await expect(header).toBeVisible();
 
-    await assertKapwaTokens(page);
+    await assertTsinelasTokens(page);
   });
 
   test('barangay detail page displays officials section', async ({ page }) => {

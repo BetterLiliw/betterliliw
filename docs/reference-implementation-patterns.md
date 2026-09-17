@@ -71,7 +71,7 @@ project-root/
   e2e/                        # Playwright E2E tests
     test-config.ts            # Extended fixture with API mocking
     utils/                    # Shared test utilities
-      kapwa.ts                # Design system assertions
+      tsinelas.ts                # Design system assertions
       navbar.ts               # Navigation helpers
       device.ts               # Mobile detection
     government/               # Tests mirror page structure
@@ -158,7 +158,7 @@ export default config;
 
 ## 3. Design System Enforcement
 
-**Sources**: `.husky/pre-commit`, `e2e/utils/kapwa.ts`, `.claude/skills/design-cohesion-check/`
+**Sources**: `.husky/pre-commit`, `e2e/utils/tsinelas.ts`, `.claude/skills/design-cohesion-check/`
 
 Three independent enforcement layers ensure the design system is never violated, regardless of who writes the code.
 
@@ -175,7 +175,7 @@ if grep -rn "bg-gray-\|text-gray-\|border-gray-\|bg-slate-\|text-slate-\|border-
   src/pages/transparency src/pages/openlgu --include="*.tsx" 2>/dev/null | \
   grep -v "reference-implementation"; then
   echo "❌ Raw color tokens found! Use semantic tokens:"
-  echo "  - bg-kapwa-bg-*, text-kapwa-text-*, border-kapwa-border-*"
+  echo "  - bg-tsinelas-bg-*, text-tsinelas-text-*, border-tsinelas-border-*"
   exit 1
 fi
 
@@ -188,17 +188,17 @@ npx lint-staged
 ### Layer 2: E2E Assertion (CI Block)
 
 ```typescript
-// e2e/utils/kapwa.ts
-export async function assertKapwaTokens(page: Page): Promise<void> {
+// e2e/utils/tsinelas.ts
+export async function assertTsinelasTokens(page: Page): Promise<void> {
   let mainHTML = await page.locator('main').innerHTML();
 
   // Strip code examples that intentionally show "wrong" usage
   mainHTML = mainHTML.replace(/<pre[^>]*>[\s\S]*?<\/pre>/gi, '');
 
   // Positive: semantic tokens MUST be present
-  expect(mainHTML).toMatch(/text-kapwa-text-/);
-  expect(mainHTML).toMatch(/bg-kapwa-bg-/);
-  expect(mainHTML).toMatch(/border-kapwa-border-/);
+  expect(mainHTML).toMatch(/text-tsinelas-text-/);
+  expect(mainHTML).toMatch(/bg-tsinelas-bg-/);
+  expect(mainHTML).toMatch(/border-tsinelas-border-/);
 
   // Negative: raw Tailwind colors MUST NOT be present
   expect(mainHTML).not.toMatch(/text-(slate|gray|blue|green|red|yellow)-\d+/);
@@ -638,7 +638,7 @@ set -e
 
 # Stage 1: Design system enforcement
 if grep -rn "bg-gray-\|text-gray-\|border-gray-" src/pages/... ; then
-  echo "❌ Use semantic tokens: bg-kapwa-bg-*, text-kapwa-text-*"
+  echo "❌ Use semantic tokens: bg-tsinelas-bg-*, text-tsinelas-text-*"
   exit 1
 fi
 
@@ -760,7 +760,7 @@ Tailwind v4 CSS-first configuration. Design tokens come from the `@bettergov/kap
 @import '@bettergov/kapwa/styles';
 ```
 
-**Minimal tailwind.config.js** — Kapwa provides everything:
+**Minimal tailwind.config.js** — Tsinelas provides everything:
 
 ```javascript
 module.exports = {
@@ -768,8 +768,9 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['var(--font-kapwa-sans)'],   // Inter
-        mono: ['var(--font-kapwa-mono)'],   // Roboto Mono
+        display: ['var(--font-tsinelas-display)'], // Poppins
+        sans: ['var(--font-tsinelas-sans)'],       // Source Sans 3
+        mono: ['var(--font-tsinelas-mono)'],       // system monospace
       },
     },
   },
@@ -777,16 +778,16 @@ module.exports = {
 };
 ```
 
-**Design token hierarchy** (defined in Kapwa's CSS via `@theme`):
+**Design token hierarchy** (defined in `src/styles/tsinelas.css` via `@theme`, over `@bettergov/kapwa`):
 
 | Layer | Pattern | Example |
 |-------|---------|---------|
-| Text | `text-kapwa-text-{purpose}` | `text-kapwa-text-strong`, `text-kapwa-text-support`, `text-kapwa-text-brand` |
-| Background | `bg-kapwa-bg-{purpose}` | `bg-kapwa-bg-surface`, `bg-kapwa-bg-surface-raised`, `bg-kapwa-bg-hover` |
-| Border | `border-kapwa-border-{purpose}` | `border-kapwa-border-weak`, `border-kapwa-border-strong`, `border-kapwa-border-brand` |
-| Spacing | `p-kapwa-{size}` | `p-kapwa-xs` (4px) through `p-kapwa-3xl` (48px) |
-| Typography | `kapwa-heading-xl/lg/md/sm` | `kapwa-heading-lg` (bold, tight tracking) |
-| Animation | `duration-kapwa-{speed}` | `duration-kapwa-fast` (75ms) through `duration-kapwa-slow` (500ms) |
+| Text | `text-tsinelas-text-{purpose}` | `text-tsinelas-text-strong`, `text-tsinelas-text-support`, `text-tsinelas-text-brand` |
+| Background | `bg-tsinelas-bg-{purpose}` | `bg-tsinelas-bg-surface`, `bg-tsinelas-bg-surface-raised`, `bg-tsinelas-bg-hover` |
+| Border | `border-tsinelas-border-{purpose}` | `border-tsinelas-border-weak`, `border-tsinelas-border-strong`, `border-tsinelas-border-brand` |
+| Spacing | `p-tsinelas-{size}` | `p-tsinelas-xs` (4px) through `p-tsinelas-3xl` (48px) |
+| Typography | `tsinelas-heading-xl/lg/md/sm` | `tsinelas-heading-lg` (Poppins 600, 28/36); `tsinelas-eyebrow` for all-caps section labels |
+| Animation | `duration-tsinelas-{speed}` | `duration-tsinelas-fast` (75ms) through `duration-tsinelas-slow` (500ms) |
 
 ---
 
@@ -800,7 +801,7 @@ Project-specific quality standards encoded as AI-checkable checklists.
 
 | Skill | Trigger | What it does |
 |-------|---------|--------------|
-| `design-cohesion-check` | After writing components | Audits Kapwa token usage, detects raw colors, hardcoded values |
+| `design-cohesion-check` | After writing components | Audits Tsinelas token usage, detects raw colors, hardcoded values |
 | `component-split` | When component >300 lines | Guides splitting into focused sub-components |
 | `responsive-check` | After UI changes | Checks mobile-first breakpoints, touch targets, fixed widths |
 | `d1-migration` | Database schema changes | Sequential migration numbering, local-first, backup safety |
@@ -829,18 +830,18 @@ Project-specific quality standards encoded as AI-checkable checklists.
 # .claude/skills/design-cohesion-check/SKILL.md
 ---
 name: design-cohesion-check
-description: Audit components for Kapwa design token usage
+description: Audit components for Tsinelas design token usage
 disable-model-invocation: false
 user-invocable: true
 ---
 
 ## Check 1: Missing Tailwind v4 Prefixes
-Detect: `kapwa-text-strong` (missing `text-` prefix)
-Fix: `text-kapwa-text-strong`
+Detect: `tsinelas-text-strong` (missing `text-` prefix)
+Fix: `text-tsinelas-text-strong`
 
 ## Check 2: Raw Color Tokens
 Detect: `bg-gray-500`, `text-blue-600`
-Fix: `bg-kapwa-bg-surface`, `text-kapwa-text-brand`
+Fix: `bg-tsinelas-bg-surface`, `text-tsinelas-text-brand`
 
 ## Check 3: Hardcoded Colors
 Detect: `#fff`, `rgb(0,0,0)`, `rgba(...)`
@@ -870,7 +871,7 @@ Fix: Use semantic tokens
 | Security headers | `functions/utils/security-headers.ts` |
 | Audit logging | `functions/utils/audit-log.ts` |
 | E2E test config | `e2e/test-config.ts` |
-| Design assertions | `e2e/utils/kapwa.ts` |
+| Design assertions | `e2e/utils/tsinelas.ts` |
 | Pre-commit hook | `.husky/pre-commit` |
 | Vite config | `vite.config.ts` |
 | Tailwind config | `tailwind.config.js` |

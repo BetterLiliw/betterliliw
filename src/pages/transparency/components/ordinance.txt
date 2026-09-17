@@ -1811,7 +1811,7 @@ Councilor Samantha Nicole A. Banasihan - Ortega</td>
                   <td style="width: 5%"><a>Ordinance No. 2025 - 2449</a></td>
                   <td style="width: 20%">Nov 03, 2025</td>
                   <td style="width: 30%">N/A</td>
-                  <td style="width: 30%">An Ordinance enacting the Supplemental Budget from General Fund amounting to Twenty Million Eight Hundred Eighty Four Thousand Eight Hundred Seventy Five Pesos and 25/100  (Php 20,884,875.25) chargeable against government  equity surplus in the amount of Eighteen Million Five Hundred Thirty Eight Thousand Seven Hundred Fifty Pesos (Php 18,538,750.00; from the Office of the Municipal Social Welfare and Development Officer: Donation (Damayan sa Kapwa program) in the amount of One Million Five Hund</td>
+                  <td style="width: 30%">An Ordinance enacting the Supplemental Budget from General Fund amounting to Twenty Million Eight Hundred Eighty Four Thousand Eight Hundred Seventy Five Pesos and 25/100  (Php 20,884,875.25) chargeable against government  equity surplus in the amount of Eighteen Million Five Hundred Thirty Eight Thousand Seven Hundred Fifty Pesos (Php 18,538,750.00; from the Office of the Municipal Social Welfare and Development Officer: Donation (Damayan sa Tsinelas program) in the amount of One Million Five Hund</td>
                   <td style="width: 200%">Councilor Miko c. Pelegrina</td>
                   <td style="width: 15%; text-align: center;"><a class="button" href="public/storage/ordinances/Ordinance No. 2025 - 2449_1763533008.pdf" download=""><i class="fa fa-download"></i>&nbsp;PDF File/Download</a></td>
               </tr><tr role="row" class="odd">
@@ -2007,7 +2007,7 @@ Councilor Samantha Nicole A. Banasihan - Ortega</td>
                   <td style="width: 5%"><a>Ordinance No. 2024 - 2408</a></td>
                   <td style="width: 20%">Dec 02, 2024</td>
                   <td style="width: 30%">N/A</td>
-                  <td style="width: 30%">An Ordinance enacting the Supplemental Budget amounting to Three Million Five Hundred Thousand Pesos (Php 3,500,000.00) as Damayan sa Kapwa augmentation fund chargeable against the Personal Services reversion</td>
+                  <td style="width: 30%">An Ordinance enacting the Supplemental Budget amounting to Three Million Five Hundred Thousand Pesos (Php 3,500,000.00) as Damayan sa Tsinelas augmentation fund chargeable against the Personal Services reversion</td>
                   <td style="width: 200%">Councilor Marlo PJ A. Alipon</td>
                   <td style="width: 15%; text-align: center;"><a class="button" href="public/storage/ordinances/Ordinance No. 2024 - 2408_1754293077.pdf" download=""><i class="fa fa-download"></i>&nbsp;PDF File/Download</a></td>
               </tr><tr role="row" class="odd">
@@ -2497,14 +2497,14 @@ Councilor Samantha Nicole A. Banasihan - Ortega</td>
                   <td style="width: 5%"><a>2023-2347</a></td>
                   <td style="width: 20%">Jan 16, 2023</td>
                   <td style="width: 30%">N/A</td>
-                  <td style="width: 30%">AN ORDINANCE AMENDING ORDINANCE NO. 2022-2344 ENTITTLED "AN ORDINANCE STREAMLINING THE POLICIES, GUIDELIONES, REQUIREMENTS, AND PROCESSES OF THE DAMAYAN SA KAPWA PROGRAM IN THE MUNICIPALITY OF LOS BAÑOS".</td>
+                  <td style="width: 30%">AN ORDINANCE AMENDING ORDINANCE NO. 2022-2344 ENTITTLED "AN ORDINANCE STREAMLINING THE POLICIES, GUIDELIONES, REQUIREMENTS, AND PROCESSES OF THE DAMAYAN SA TSINELAS PROGRAM IN THE MUNICIPALITY OF LOS BAÑOS".</td>
                   <td style="width: 200%">COUNCILOR JONATHAN BRYAN S. SIYTIAP</td>
                   <td style="width: 15%; text-align: center;"><a class="button" href="public/storage/ordinances/Ordinance No. 2023-2347_1712557728.pdf" download=""><i class="fa fa-download"></i>&nbsp;PDF File/Download</a></td>
               </tr><tr role="row" class="odd">
                   <td style="width: 5%"><a>2023-2347</a></td>
                   <td style="width: 20%">Jan 16, 2023</td>
                   <td style="width: 30%">N/A</td>
-                  <td style="width: 30%">AN ORDINANCE AMENDING ORDINANCE NO. 2022-2344 ENTITTLED "AN ORDINANCE STREAMLINING THE POLICIES, GUIDELIONES, REQUIREMENTS, AND PROCESSES OF THE DAMAYAN SA KAPWA PROGRAM IN THE MUNICIPALITY OF LOS BAÑOS".</td>
+                  <td style="width: 30%">AN ORDINANCE AMENDING ORDINANCE NO. 2022-2344 ENTITTLED "AN ORDINANCE STREAMLINING THE POLICIES, GUIDELIONES, REQUIREMENTS, AND PROCESSES OF THE DAMAYAN SA TSINELAS PROGRAM IN THE MUNICIPALITY OF LOS BAÑOS".</td>
                   <td style="width: 200%">COUNCILOR JONATHAN BRYAN S. SIYTIAP</td>
                   <td style="width: 15%; text-align: center;"><a class="button" href="public/storage/ordinances/Ordinance No. 2023-2347_1709540392.pdf" download=""><i class="fa fa-download"></i>&nbsp;PDF File/Download</a></td>
               </tr><tr role="row" class="even">
@@ -2553,7 +2553,7 @@ Councilor Samantha Nicole A. Banasihan - Ortega</td>
                   <td style="width: 5%"><a>ORDINANCE NO. 2022 - 2344</a></td>
                   <td style="width: 20%">Dec 05, 2022</td>
                   <td style="width: 30%">N/A</td>
-                  <td style="width: 30%">AN ORDINANCE STREAMLINING THE POLICIES, GUIDELINES, REQUIREMENTS, AND PROCESSES OF THE DAMAYAN SA KAPWA PROGRAM IN THE MUNICIPALITY OF LOS BA?OS. (AUTHOR: COUNCILOR JONATHAN BRYAN S. SIYTIAP, 12/05/2022)</td>
+                  <td style="width: 30%">AN ORDINANCE STREAMLINING THE POLICIES, GUIDELINES, REQUIREMENTS, AND PROCESSES OF THE DAMAYAN SA TSINELAS PROGRAM IN THE MUNICIPALITY OF LOS BA?OS. (AUTHOR: COUNCILOR JONATHAN BRYAN S. SIYTIAP, 12/05/2022)</td>
                   <td style="width: 200%">N/A</td>
                   <td style="width: 15%; text-align: center;"><a class="button" href="public/storage/ordinances/Ordinance No. 2022-2344.pdf" download=""><i class="fa fa-download"></i>&nbsp;PDF File/Download</a></td>
               </tr><tr role="row" class="odd">
@@ -3941,7 +3941,7 @@ Councilor Geronimo A. Ciceron</td>
                   <td style="width: 5%"><a>2021-2204</a></td>
                   <td style="width: 20%">Oct 25, 2021</td>
                   <td style="width: 30%">Social Welfare, Senior Citizen and PWD</td>
-                  <td style="width: 30%">AN ORDINANCE AMENDING ORDINANCE NO. 2021-2132 ENTITLED: "AN ORDINANCE INSTITUTIONALIZING THE DAMAYAN SA KAPWA PROGRAM OF THE MUNICIPALITY OF LOS BAÑOS, LAGUNA."</td>
+                  <td style="width: 30%">AN ORDINANCE AMENDING ORDINANCE NO. 2021-2132 ENTITLED: "AN ORDINANCE INSTITUTIONALIZING THE DAMAYAN SA TSINELAS PROGRAM OF THE MUNICIPALITY OF LOS BAÑOS, LAGUNA."</td>
                   <td style="width: 200%">Councilor(s) Janos S. Lapiz, Geronimo A. Ciceron, Marlo PJ A. Alipon, Mike Dexter A. Concio, MArk Lester B. Dizon, Cris Dayril B. Bagnes, Rodora P. Loares, Arlene P. delos Santos, Jozylyn N. Manansala</td>
                   <td style="width: 15%; text-align: center;"><a class="button" href="public/storage/ordinances/Ordinance No, 2021-2204_1658459754.pdf" download=""><i class="fa fa-download"></i>&nbsp;PDF File/Download</a></td>
               </tr><tr role="row" class="even">
@@ -4432,7 +4432,7 @@ Councilor Mark Lester B. Dizon</td>
                   <td style="width: 5%"><a>2021-2132</a></td>
                   <td style="width: 20%">Mar 31, 2021</td>
                   <td style="width: 30%">Social Welfare, Senior Citizen and PWD</td>
-                  <td style="width: 30%">AN ORDINANCE INSTITUTIONALIZING THE DAMAYAN SA KAPWA PROGRAM OF THE MUNICIPALITY OF LOS BAÑOS, LAGUNA.</td>
+                  <td style="width: 30%">AN ORDINANCE INSTITUTIONALIZING THE DAMAYAN SA TSINELAS PROGRAM OF THE MUNICIPALITY OF LOS BAÑOS, LAGUNA.</td>
                   <td style="width: 200%">Councilor(s) :  Janos S. Lapiz
 		    Geronimo A. Ciceron
 		    Marlo PJ A. Alipon

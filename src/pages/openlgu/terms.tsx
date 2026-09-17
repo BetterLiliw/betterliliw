@@ -105,50 +105,50 @@ export default function TermsIndex() {
           >
             <Card
               hover={false}
-              className='h-full hover:border-kapwa-border-brand hover:shadow-md'
+              className='h-full hover:border-tsinelas-border-brand hover:shadow-md'
             >
               <header className='mb-4 flex items-start justify-between'>
                 <div>
                   <Badge variant='primary' dot className='mb-2'>
                     {term.ordinal} Term
                   </Badge>
-                  <h3 className='group-hover:text-kapwa-text-brand text-kapwa-text-strong text-xl font-bold transition-colors'>
+                  <h3 className='group-hover:text-tsinelas-text-brand text-tsinelas-text-strong text-xl font-bold transition-colors'>
                     {term.name}
                   </h3>
-                  <p className='text-kapwa-text-disabled mt-1 text-sm'>
+                  <p className='text-tsinelas-text-disabled mt-1 text-sm'>
                     {term.year_range}
                   </p>
                 </div>
-                <ChevronRight className='group-hover:text-kapwa-text-brand text-kapwa-text-support h-5 w-5 transition-colors' />
+                <ChevronRight className='group-hover:text-tsinelas-text-brand text-tsinelas-text-support h-5 w-5 transition-colors' />
               </header>
 
-              <div className='text-kapwa-text-disabled mb-4 flex items-center gap-2 text-xs'>
+              <div className='text-tsinelas-text-disabled mb-4 flex items-center gap-2 text-xs'>
                 <Calendar className='h-3.5 w-3.5' />
                 <span>
                   {term.start_date} — {term.end_date}
                 </span>
               </div>
 
-              <div className='border-kapwa-border-weak grid grid-cols-2 gap-3 border-t pt-4'>
+              <div className='border-tsinelas-border-weak grid grid-cols-2 gap-3 border-t pt-4'>
                 <div className='text-center'>
                   <div className='flex items-center justify-center gap-1'>
-                    <Users className='text-kapwa-text-brand h-4 w-4' />
-                    <span className='text-kapwa-text-strong text-lg font-bold'>
+                    <Users className='text-tsinelas-text-brand h-4 w-4' />
+                    <span className='text-tsinelas-text-strong text-lg font-bold'>
                       {term.legislativeCount}
                     </span>
                   </div>
-                  <p className='text-kapwa-text-disabled mt-1 text-[10px] font-bold tracking-widest uppercase'>
+                  <p className='text-tsinelas-text-disabled mt-1 text-[10px] font-bold tracking-widest uppercase'>
                     Councilors
                   </p>
                 </div>
                 <div className='text-center'>
                   <div className='flex items-center justify-center gap-1'>
-                    <FileText className='text-kapwa-text-accent-orange h-4 w-4' />
-                    <span className='text-kapwa-text-strong text-lg font-bold'>
+                    <FileText className='text-tsinelas-text-accent-orange h-4 w-4' />
+                    <span className='text-tsinelas-text-strong text-lg font-bold'>
                       {term.documentCount}
                     </span>
                   </div>
-                  <p className='text-kapwa-text-disabled mt-1 text-[10px] font-bold tracking-widest uppercase'>
+                  <p className='text-tsinelas-text-disabled mt-1 text-[10px] font-bold tracking-widest uppercase'>
                     Documents
                   </p>
                 </div>
@@ -157,17 +157,17 @@ export default function TermsIndex() {
               {(term.ordCount > 0 || term.resCount > 0 || term.eoCount > 0) && (
                 <div className='mt-3 flex flex-wrap gap-2'>
                   {term.ordCount > 0 && (
-                    <span className='bg-kapwa-bg-surface text-kapwa-text-brand rounded-full px-2 py-1 text-[10px] font-bold'>
+                    <span className='bg-tsinelas-bg-surface text-tsinelas-text-brand rounded-full px-2 py-1 text-[10px] font-bold'>
                       {term.ordCount} Ord
                     </span>
                   )}
                   {term.resCount > 0 && (
-                    <span className='bg-kapwa-bg-accent-orange-weak text-kapwa-text-accent-orange rounded-full px-2 py-1 text-[10px] font-bold'>
+                    <span className='bg-tsinelas-bg-accent-orange-weak text-tsinelas-text-accent-orange rounded-full px-2 py-1 text-[10px] font-bold'>
                       {term.resCount} Res
                     </span>
                   )}
                   {term.eoCount > 0 && (
-                    <span className='bg-kapwa-yellow-50 text-kapwa-yellow-700 rounded-full px-2 py-1 text-[10px] font-bold'>
+                    <span className='bg-tsinelas-yellow-50 text-tsinelas-yellow-700 rounded-full px-2 py-1 text-[10px] font-bold'>
                       {term.eoCount} EO
                     </span>
                   )}

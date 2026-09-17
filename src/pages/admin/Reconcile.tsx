@@ -219,7 +219,7 @@ export default function Reconcile() {
   if (loading && items.length === 0) {
     return (
       <div className='flex items-center justify-center py-12'>
-        <RefreshCw className='text-kapwa-text-disabled h-8 w-8 animate-spin' />
+        <RefreshCw className='text-tsinelas-text-disabled h-8 w-8 animate-spin' />
       </div>
     );
   }
@@ -243,10 +243,10 @@ export default function Reconcile() {
       {/* Header */}
       <div className='flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between'>
         <div>
-          <h2 className='text-kapwa-text-strong text-2xl font-bold'>
+          <h2 className='text-tsinelas-text-strong text-2xl font-bold'>
             Data Reconciliation
           </h2>
-          <p className='text-kapwa-text-support'>
+          <p className='text-tsinelas-text-support'>
             {pagination.total} conflicts between Facebook and gov.ph sources
           </p>
         </div>
@@ -284,7 +284,7 @@ export default function Reconcile() {
       <div className='grid gap-6 lg:grid-cols-3'>
         {/* Conflict List */}
         <div className='space-y-4 lg:col-span-1'>
-          <h3 className='text-kapwa-text-strong font-bold'>Conflicts</h3>
+          <h3 className='text-tsinelas-text-strong font-bold'>Conflicts</h3>
           <div className='space-y-3'>
             {items.map(item => (
               <Card
@@ -292,9 +292,9 @@ export default function Reconcile() {
                 variant='default'
                 className={
                   selectedItem?.id === item.id
-                    ? 'border-l-kapwa-border-brand bg-kapwa-bg-brand-weak/30 border-l-4'
+                    ? 'border-l-tsinelas-border-brand bg-tsinelas-bg-brand-weak/30 border-l-4'
                     : item.status === 'unresolved'
-                      ? 'border-l-4 border-l-kapwa-border-warning'
+                      ? 'border-l-4 border-l-tsinelas-border-warning'
                       : ''
                 }
                 hover
@@ -312,11 +312,11 @@ export default function Reconcile() {
                       </div>
                       {item.document && (
                         <>
-                          <p className='text-kapwa-text-strong text-sm font-bold'>
+                          <p className='text-tsinelas-text-strong text-sm font-bold'>
                             {item.document.type === 'ordinance' ? 'O' : 'R'} -{' '}
                             {item.document.number}
                           </p>
-                          <p className='text-kapwa-text-support mt-1 line-clamp-2 text-xs'>
+                          <p className='text-tsinelas-text-support mt-1 line-clamp-2 text-xs'>
                             {item.document.title}
                           </p>
                         </>
@@ -365,20 +365,20 @@ export default function Reconcile() {
                       >
                         {documentDetail.type}
                       </Badge>
-                      <span className='text-kapwa-text-support font-mono font-bold'>
+                      <span className='text-tsinelas-text-support font-mono font-bold'>
                         {documentDetail.number}
                       </span>
                       <a
                         href={documentDetail.pdf_url}
                         target='_blank'
                         rel='noopener noreferrer'
-                        className='text-kapwa-text-brand ml-auto text-sm hover:underline'
+                        className='text-tsinelas-text-brand ml-auto text-sm hover:underline'
                       >
                         <FileText className='mr-1 inline h-4 w-4' />
                         View PDF
                       </a>
                     </div>
-                    <p className='text-kapwa-text-support'>
+                    <p className='text-tsinelas-text-support'>
                       {documentDetail.title}
                     </p>
                     {documentDetail.authors &&
@@ -454,10 +454,10 @@ export default function Reconcile() {
                 </CardHeader>
                 <CardContent className='space-y-4'>
                   {/* Facebook Value */}
-                  <div className='bg-kapwa-bg-info-weak rounded-md p-4'>
+                  <div className='bg-tsinelas-bg-info-weak rounded-md p-4'>
                     <div className='mb-2 flex items-center gap-2'>
-                      <Facebook className='text-kapwa-text-info h-4 w-4' />
-                      <span className='text-sm font-bold text-kapwa-text-brand'>
+                      <Facebook className='text-tsinelas-text-info h-4 w-4' />
+                      <span className='text-sm font-bold text-tsinelas-text-brand'>
                         Facebook Source
                       </span>
                     </div>
@@ -471,12 +471,12 @@ export default function Reconcile() {
                           ''
                         }
                         onChange={e => setEditedValue(e.target.value)}
-                        className='bg-kapwa-bg-surface w-full rounded-md border border-kapwa-border-brand px-3 py-2 text-sm'
+                        className='bg-tsinelas-bg-surface w-full rounded-md border border-tsinelas-border-brand px-3 py-2 text-sm'
                       />
                     ) : (
-                      <p className='text-sm text-kapwa-text-brand'>
+                      <p className='text-sm text-tsinelas-text-brand'>
                         {selectedItem.facebook_value || (
-                          <span className='text-kapwa-text-brand italic'>
+                          <span className='text-tsinelas-text-brand italic'>
                             Not available
                           </span>
                         )}
@@ -503,14 +503,14 @@ export default function Reconcile() {
 
                   {/* Resolved Value */}
                   {selectedItem.resolved_value && (
-                    <div className='bg-kapwa-bg-hover rounded-md p-4'>
+                    <div className='bg-tsinelas-bg-hover rounded-md p-4'>
                       <div className='mb-2 flex items-center gap-2'>
-                        <Check className='text-kapwa-text-support h-4 w-4' />
-                        <span className='text-kapwa-text-strong text-sm font-bold'>
+                        <Check className='text-tsinelas-text-support h-4 w-4' />
+                        <span className='text-tsinelas-text-strong text-sm font-bold'>
                           Resolved Value
                         </span>
                       </div>
-                      <p className='text-kapwa-text-support text-sm'>
+                      <p className='text-tsinelas-text-support text-sm'>
                         {selectedItem.resolved_value}
                       </p>
                     </div>
@@ -559,11 +559,11 @@ export default function Reconcile() {
 
                   {/* Notes */}
                   {selectedItem.notes && (
-                    <div className='bg-kapwa-bg-surface-raised rounded-md p-3'>
-                      <p className='text-kapwa-text-strong text-xs font-bold uppercase'>
+                    <div className='bg-tsinelas-bg-surface-raised rounded-md p-3'>
+                      <p className='text-tsinelas-text-strong text-xs font-bold uppercase'>
                         Notes
                       </p>
-                      <p className='text-kapwa-text-support mt-1 text-sm'>
+                      <p className='text-tsinelas-text-support mt-1 text-sm'>
                         {selectedItem.notes}
                       </p>
                     </div>
@@ -574,8 +574,8 @@ export default function Reconcile() {
           ) : (
             <Card variant='default'>
               <CardContent className='py-12 text-center'>
-                <GitMerge className='text-kapwa-text-disabled mx-auto mb-4 h-12 w-12' />
-                <p className='text-kapwa-text-support'>
+                <GitMerge className='text-tsinelas-text-disabled mx-auto mb-4 h-12 w-12' />
+                <p className='text-tsinelas-text-support'>
                   Select a conflict from the list to view details and resolve
                 </p>
               </CardContent>
@@ -587,7 +587,7 @@ export default function Reconcile() {
       {/* Pagination */}
       {pagination.total > pagination.limit && (
         <div className='flex items-center justify-between'>
-          <p className='text-kapwa-text-support text-sm'>
+          <p className='text-tsinelas-text-support text-sm'>
             Showing {pagination.offset + 1}-
             {Math.min(pagination.offset + pagination.limit, pagination.total)}{' '}
             of {pagination.total}

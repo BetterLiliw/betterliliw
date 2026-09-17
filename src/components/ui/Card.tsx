@@ -102,11 +102,11 @@ export const Card = forwardRef<HTMLElement, CardProps>(
     ref
   ) => {
     const variants = {
-      default: 'bg-kapwa-bg-surface border-kapwa-border-weak shadow-sm',
+      default: 'bg-tsinelas-bg-surface border-tsinelas-border-weak shadow-sm',
       featured:
-        'bg-kapwa-bg-surface border-kapwa-border-brand shadow-md ring-1 ring-kapwa-border-brand',
-      slate: 'bg-kapwa-bg-surface border-kapwa-border-weak shadow-none',
-      compact: 'bg-kapwa-bg-surface border-kapwa-border-weak shadow-xs text-sm',
+        'bg-tsinelas-bg-surface border-tsinelas-border-brand shadow-md ring-1 ring-tsinelas-border-brand',
+      slate: 'bg-tsinelas-bg-surface border-tsinelas-border-weak shadow-none',
+      compact: 'bg-tsinelas-bg-surface border-tsinelas-border-weak shadow-xs text-sm',
     };
 
     return (
@@ -116,7 +116,7 @@ export const Card = forwardRef<HTMLElement, CardProps>(
           'w-full overflow-hidden rounded-2xl border transition-all duration-300',
           variants[variant],
           hover &&
-            'hover:border-kapwa-border-brand hover:-translate-y-0.5 hover:shadow-lg',
+            'hover:border-tsinelas-border-brand hover:-translate-y-0.5 hover:shadow-lg',
           className
         )}
         {...props}
@@ -144,7 +144,7 @@ export const CardHeader = ({
   ...props
 }: HTMLAttributes<HTMLDivElement>) => (
   <header
-    className={cn('border-b border-kapwa-border-weak p-4 md:p-6', className)}
+    className={cn('border-b border-tsinelas-border-weak p-4 md:p-6', className)}
     {...props}
   >
     {children}
@@ -180,7 +180,7 @@ export const CardFooter = ({
 }: HTMLAttributes<HTMLDivElement>) => (
   <footer
     className={cn(
-      'bg-kapwa-bg-surface/50 border-t border-kapwa-border-weak p-4 md:p-6',
+      'bg-tsinelas-bg-surface/50 border-t border-tsinelas-border-weak p-4 md:p-6',
       className
     )}
     {...props}
@@ -209,7 +209,7 @@ export const CardImage = ({
   className,
   ...props
 }: ImgHTMLAttributes<HTMLImageElement>) => (
-  <div className='bg-kapwa-bg-hover relative h-48 w-full overflow-hidden'>
+  <div className='bg-tsinelas-bg-hover relative h-48 w-full overflow-hidden'>
     <img
       className={cn(
         'h-full w-full object-cover transition-transform duration-500 group-hover:scale-105',
@@ -258,7 +258,7 @@ export const CardAvatar = ({
   return (
     <div
       className={cn(
-        'bg-kapwa-bg-surface-raised text-kapwa-text-disabled flex shrink-0 items-center justify-center rounded-2xl font-black uppercase shadow-inner',
+        'bg-tsinelas-bg-surface-raised text-tsinelas-text-disabled flex shrink-0 items-center justify-center rounded-2xl font-black uppercase shadow-inner',
         sizes[size],
         className
       )}
@@ -303,7 +303,7 @@ export const CardTitle = ({
   return (
     <Tag
       className={cn(
-        'text-kapwa-text-strong font-extrabold tracking-tight',
+        'text-tsinelas-text-strong font-extrabold tracking-tight',
         sizes[level],
         className
       )}
@@ -331,7 +331,7 @@ export const CardDescription = ({
 }) => (
   <p
     className={cn(
-      'text-kapwa-text-support mt-2 kapwa-body-sm-default leading-relaxed',
+      'text-tsinelas-text-support mt-2 tsinelas-body-sm-default leading-relaxed',
       className
     )}
   >
@@ -383,12 +383,12 @@ export const CardContactInfo = ({
 
   return (
     <address
-      className={cn('text-kapwa-text-support text-sm not-italic', spacing)}
+      className={cn('text-tsinelas-text-support text-sm not-italic', spacing)}
     >
       {contact.address && (
         <div className='flex items-start gap-2'>
           <MapPinIcon
-            className={cn('text-kapwa-text-disabled mt-0.5 shrink-0', iconSize)}
+            className={cn('text-tsinelas-text-disabled mt-0.5 shrink-0', iconSize)}
             aria-hidden='true'
           />
           <span className='leading-snug'>{contact.address}</span>
@@ -397,7 +397,7 @@ export const CardContactInfo = ({
       {contact.phone && (
         <div className='flex items-start gap-2'>
           <PhoneIcon
-            className={cn('text-kapwa-text-disabled mt-0.5 shrink-0', iconSize)}
+            className={cn('text-tsinelas-text-disabled mt-0.5 shrink-0', iconSize)}
             aria-hidden='true'
           />
           <span className='font-medium tabular-nums'>
@@ -408,12 +408,12 @@ export const CardContactInfo = ({
       {contact.email && (
         <div className='flex items-start gap-2'>
           <MailIcon
-            className={cn('text-kapwa-text-disabled mt-0.5 shrink-0', iconSize)}
+            className={cn('text-tsinelas-text-disabled mt-0.5 shrink-0', iconSize)}
             aria-hidden='true'
           />
           <a
             href={`mailto:${contact.email}`}
-            className='text-kapwa-text-brand font-bold break-all hover:underline'
+            className='text-tsinelas-text-brand font-bold break-all hover:underline'
           >
             {contact.email}
           </a>
@@ -422,7 +422,7 @@ export const CardContactInfo = ({
       {contact.website && (
         <div className='flex items-start gap-2'>
           <ExternalLinkIcon
-            className={cn('text-kapwa-text-disabled mt-0.5 shrink-0', iconSize)}
+            className={cn('text-tsinelas-text-disabled mt-0.5 shrink-0', iconSize)}
             aria-hidden='true'
           />
           <a
@@ -433,7 +433,7 @@ export const CardContactInfo = ({
             }
             target='_blank'
             rel='noreferrer'
-            className='text-kapwa-text-brand truncate font-bold hover:underline'
+            className='text-tsinelas-text-brand truncate font-bold hover:underline'
           >
             Official Website
           </a>
@@ -510,7 +510,7 @@ export const CardList = ({
  * Useful for separating sections within a card.
  */
 export const CardDivider = ({ className }: { className?: string }) => (
-  <hr className={cn('border-kapwa-border-weak', className)} />
+  <hr className={cn('border-tsinelas-border-weak', className)} />
 );
 
 // Note: StatCard and StatGrid are in separate files to avoid circular dependency

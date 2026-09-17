@@ -46,22 +46,22 @@ export const Navbar: FC = () => {
 
   return (
     <nav
-      className='sticky top-0 z-50 border-b border-kapwa-border-weak bg-kapwa-bg-surface shadow-xs'
+      className='sticky top-0 z-50 border-b border-tsinelas-border-weak bg-tsinelas-bg-surface shadow-xs'
       role='navigation'
     >
       {/* 1. TOP BAR: Responsive & Aligned Right */}
-      <div className='border-b border-kapwa-border-weak bg-kapwa-bg-surface-raised'>
+      <div className='border-b border-tsinelas-border-weak bg-tsinelas-bg-surface-raised'>
         <div className='container px-4 mx-auto'>
           <div className='flex gap-3 justify-end items-center h-10 sm:gap-4 md:gap-6'>
             <Link
               to='/join-us'
-              className='text-kapwa-text-brand hover:text-kapwa-text-link-hover hidden text-[10px] font-bold tracking-widest whitespace-nowrap uppercase md:inline-flex md:text-xs'
+              className='text-tsinelas-text-brand hover:text-tsinelas-text-link-hover hidden text-[10px] font-bold tracking-widest whitespace-nowrap uppercase md:inline-flex md:text-xs'
             >
               🚀 Join Us
             </Link>
             <Link
               to='/about'
-              className='hover:text-kapwa-text-brand hidden text-[10px] font-bold tracking-widest whitespace-nowrap text-kapwa-text-support uppercase md:inline-flex md:text-xs'
+              className='hover:text-tsinelas-text-brand hidden text-[10px] font-bold tracking-widest whitespace-nowrap text-tsinelas-text-support uppercase md:inline-flex md:text-xs'
             >
               About
             </Link>
@@ -69,23 +69,23 @@ export const Navbar: FC = () => {
               href={config.lgu.officialWebsite}
               target='_blank'
               rel='noreferrer'
-              className='hover:text-kapwa-text-brand inline-flex text-[9px] font-bold tracking-widest whitespace-nowrap text-kapwa-text-support uppercase sm:text-[10px] md:text-xs'
+              className='hover:text-tsinelas-text-brand inline-flex text-[9px] font-bold tracking-widest whitespace-nowrap text-tsinelas-text-support uppercase sm:text-[10px] md:text-xs'
             >
               <span className='inline sm:hidden'>Gov.ph</span>
               <span className='hidden sm:inline'>Official Gov.ph</span>
             </a>
             <Link
               to={`https://hotlines.bettergov.ph/?city=${encodeURIComponent(config.lgu.name)}&province=${encodeURIComponent(config.lgu.province)}`}
-              className='hover:text-kapwa-text-brand inline-flex text-[9px] font-bold tracking-widest whitespace-nowrap text-kapwa-text-support uppercase sm:text-[10px] md:text-xs'
+              className='hover:text-tsinelas-text-brand inline-flex text-[9px] font-bold tracking-widest whitespace-nowrap text-tsinelas-text-support uppercase sm:text-[10px] md:text-xs'
             >
               Hotlines
             </Link>
-            <div className='flex items-center pl-2 border-l shrink-0 border-kapwa-border-weak'>
+            <div className='flex items-center pl-2 border-l shrink-0 border-tsinelas-border-weak'>
               <select
                 aria-label='Select Language'
                 value={i18n.language}
                 onChange={e => changeLanguage(e.target.value as LanguageType)}
-                className='cursor-pointer bg-transparent text-[9px] font-bold tracking-widest text-kapwa-text-support uppercase outline-none sm:text-[10px] md:text-xs'
+                className='cursor-pointer bg-transparent text-[9px] font-bold tracking-widest text-tsinelas-text-support uppercase outline-none sm:text-[10px] md:text-xs'
               >
                 {Object.entries(LANGUAGES).map(([code, lang]) => (
                   <option key={code} value={code}>
@@ -114,8 +114,8 @@ export const Navbar: FC = () => {
               alt={`${config.portal.name} Logo`}
               className='mr-3 h-10 w-auto transition-transform shrink-0 group-hover:scale-105 md:h-12'
             />
-            <div className='hidden min-w-0 flex-col justify-center border-l border-kapwa-border-weak pl-3 sm:flex'>
-              <div className='line-clamp-2 text-[10px] leading-tight font-medium text-kapwa-text-support md:text-xs'>
+            <div className='hidden min-w-0 flex-col justify-center border-l border-tsinelas-border-weak pl-3 sm:flex'>
+              <div className='line-clamp-2 text-[10px] leading-tight font-medium text-tsinelas-text-support md:text-xs'>
                 Community Portal for {config.lgu.fullName}
               </div>
             </div>
@@ -141,8 +141,8 @@ export const Navbar: FC = () => {
                     className={cn(
                       'flex gap-1 items-center px-3 py-2 text-sm font-bold tracking-widest uppercase border-b-2 transition-all',
                       active
-                        ? 'text-kapwa-text-brand border-kapwa-border-brand'
-                        : 'border-transparent hover:text-kapwa-text-brand text-kapwa-text-strong'
+                        ? 'text-tsinelas-text-brand border-tsinelas-border-brand'
+                        : 'border-transparent hover:text-tsinelas-text-brand text-tsinelas-text-strong'
                     )}
                   >
                     {t(`navbar.${item.label.toLowerCase()}`)}
@@ -158,12 +158,12 @@ export const Navbar: FC = () => {
 
                   {/* Desktop Dropdown Menu */}
                   {hasChildren && hoveredDropdown === item.label && (
-                    <div className='absolute left-0 top-full py-2 w-64 rounded-b-xl border shadow-xl duration-200 animate-in fade-in slide-in-from-top-2 border-kapwa-border-weak bg-kapwa-bg-surface'>
+                    <div className='absolute left-0 top-full py-2 w-64 rounded-b-xl border shadow-xl duration-200 animate-in fade-in slide-in-from-top-2 border-tsinelas-border-weak bg-tsinelas-bg-surface'>
                       {item.children?.map(child => (
                         <Link
                           key={child.label}
                           to={child.href}
-                          className='block px-5 py-3 text-xs font-bold tracking-wider uppercase transition-colors hover:bg-kapwa-bg-surface-raised hover:text-kapwa-text-link-hover text-kapwa-text-strong'
+                          className='block px-5 py-3 text-xs font-bold tracking-wider uppercase transition-colors hover:bg-tsinelas-bg-surface-raised hover:text-tsinelas-text-link-hover text-tsinelas-text-strong'
                           onClick={closeMenu}
                         >
                           {child.label}
@@ -176,7 +176,7 @@ export const Navbar: FC = () => {
             })}
             <Link
               to='/search'
-              className='p-3 ml-4 transition-colors hover:text-kapwa-text-brand text-kapwa-text-strong'
+              className='p-3 ml-4 transition-colors hover:text-tsinelas-text-brand text-tsinelas-text-strong'
               aria-label='Search'
             >
               <SearchIcon className='w-5 h-5' />
@@ -187,7 +187,7 @@ export const Navbar: FC = () => {
           <div className='flex gap-1 items-center lg:hidden'>
             <Link
               to='/search'
-              className='p-3 text-kapwa-text-strong'
+              className='p-3 text-tsinelas-text-strong'
               aria-label='Search'
             >
               <SearchIcon className='w-6 h-6' />
@@ -196,7 +196,7 @@ export const Navbar: FC = () => {
               onClick={toggleMenu}
               variant='ghost'
               aria-label='Toggle Menu'
-              className='p-3 rounded-xl bg-kapwa-bg-surface-raised text-kapwa-text-strong'
+              className='p-3 rounded-xl bg-tsinelas-bg-surface-raised text-tsinelas-text-strong'
             >
               {isOpen ? (
                 <XIcon className='w-6 h-6' />
@@ -210,7 +210,7 @@ export const Navbar: FC = () => {
 
       {/* 3. MOBILE MENU OVERLAY: RESTORED NESTING */}
       {isOpen && (
-        <div className='animate-in slide-in-from-right fixed inset-0 top-[104px] z-40 overflow-y-auto bg-kapwa-bg-surface duration-300 lg:hidden'>
+        <div className='animate-in slide-in-from-right fixed inset-0 top-[104px] z-40 overflow-y-auto bg-tsinelas-bg-surface duration-300 lg:hidden'>
           <div className='flex flex-col p-4 pb-20'>
             {mainNavigation.map(item => {
               const hasChildren = item.children && item.children.length > 0;
@@ -219,7 +219,7 @@ export const Navbar: FC = () => {
               return (
                 <div
                   key={item.label}
-                  className='border-b border-kapwa-border-weak last:border-0'
+                  className='border-b border-tsinelas-border-weak last:border-0'
                 >
                   <div className='flex items-center'>
                     <Link
@@ -228,8 +228,8 @@ export const Navbar: FC = () => {
                       className={cn(
                         'flex-1 p-4 text-lg font-bold transition-colors',
                         isActiveRoute(item.href)
-                          ? 'text-kapwa-text-brand'
-                          : 'text-kapwa-text-strong'
+                          ? 'text-tsinelas-text-brand'
+                          : 'text-tsinelas-text-strong'
                       )}
                     >
                       {t(`navbar.${item.label.toLowerCase()}`)}
@@ -241,7 +241,7 @@ export const Navbar: FC = () => {
                           setActiveMobileSubmenu(isSubOpen ? null : item.label);
                         }}
                         variant='ghost'
-                        className='p-4 text-kapwa-text-disabled'
+                        className='p-4 text-tsinelas-text-disabled'
                       >
                         <ChevronDownIcon
                           className={cn(
@@ -255,13 +255,13 @@ export const Navbar: FC = () => {
 
                   {/* Mobile Submenu Items */}
                   {hasChildren && isSubOpen && (
-                    <div className='overflow-hidden mx-2 mb-2 rounded-2xl animate-in slide-in-from-top-2 bg-kapwa-bg-surface-raised'>
+                    <div className='overflow-hidden mx-2 mb-2 rounded-2xl animate-in slide-in-from-top-2 bg-tsinelas-bg-surface-raised'>
                       {item.children?.map(child => (
                         <Link
                           key={child.label}
                           to={child.href}
                           onClick={closeMenu}
-                          className='block p-4 text-sm font-bold border-b border-kapwa-bg-surface text-kapwa-text-strong last:border-0'
+                          className='block p-4 text-sm font-bold border-b border-tsinelas-bg-surface text-tsinelas-text-strong last:border-0'
                         >
                           {child.label}
                         </Link>
@@ -273,25 +273,25 @@ export const Navbar: FC = () => {
             })}
 
             {/* Mobile-only additional links */}
-            <div className='pt-4 mt-4 space-y-1 border-t border-kapwa-border-weak'>
+            <div className='pt-4 mt-4 space-y-1 border-t border-tsinelas-border-weak'>
               <Link
                 to='/join-us'
                 onClick={closeMenu}
-                className='block p-4 text-xs font-black tracking-widest uppercase text-kapwa-text-brand'
+                className='block p-4 text-xs font-black tracking-widest uppercase text-tsinelas-text-brand'
               >
                 🚀 Join the Revolution
               </Link>
               <Link
                 to='/about'
                 onClick={closeMenu}
-                className='block p-4 text-xs font-bold tracking-widest uppercase text-kapwa-text-support'
+                className='block p-4 text-xs font-bold tracking-widest uppercase text-tsinelas-text-support'
               >
                 About Better LB
               </Link>
               <Link
                 to='/contact'
                 onClick={closeMenu}
-                className='block p-4 text-xs font-bold tracking-widest uppercase text-kapwa-text-support'
+                className='block p-4 text-xs font-bold tracking-widest uppercase text-tsinelas-text-support'
               >
                 Contact Us
               </Link>

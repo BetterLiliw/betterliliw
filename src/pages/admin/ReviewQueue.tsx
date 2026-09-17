@@ -422,7 +422,7 @@ export default function ReviewQueue() {
   if (loading && items.length === 0) {
     return (
       <div className='flex items-center justify-center py-12'>
-        <RefreshCw className='text-kapwa-text-disabled h-8 w-8 animate-spin' />
+        <RefreshCw className='text-tsinelas-text-disabled h-8 w-8 animate-spin' />
       </div>
     );
   }
@@ -454,10 +454,10 @@ export default function ReviewQueue() {
       {/* Header */}
       <div className='flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between'>
         <div>
-          <h2 className='text-kapwa-text-strong text-2xl font-bold'>
+          <h2 className='text-tsinelas-text-strong text-2xl font-bold'>
             Review Queue
           </h2>
-          <p className='text-kapwa-text-support'>
+          <p className='text-tsinelas-text-support'>
             {pagination.total} items needing review
             {selectedItems.size > 0 && ` (${selectedItems.size} selected)`}
           </p>
@@ -469,7 +469,7 @@ export default function ReviewQueue() {
               setTypeFilter(e.target.value as ItemType | 'all');
               setPage(0);
             }}
-            className='focus:border-kapwa-border-brand focus:ring-kapwa-border-brand/20 border-kapwa-border-weak bg-kapwa-bg-surface h-9 rounded-md border px-3 py-1 text-sm shadow-sm focus:ring-2 focus:outline-none'
+            className='focus:border-tsinelas-border-brand focus:ring-tsinelas-border-brand/20 border-tsinelas-border-weak bg-tsinelas-bg-surface h-9 rounded-md border px-3 py-1 text-sm shadow-sm focus:ring-2 focus:outline-none'
           >
             {typeOptions.map(opt => (
               <option key={opt.value} value={opt.value}>
@@ -483,7 +483,7 @@ export default function ReviewQueue() {
               setStatusFilter(e.target.value as ReviewStatus | 'all');
               setPage(0);
             }}
-            className='focus:border-kapwa-border-brand focus:ring-kapwa-border-brand/20 border-kapwa-border-weak bg-kapwa-bg-surface h-9 rounded-md border px-3 py-1 text-sm shadow-sm focus:ring-2 focus:outline-none'
+            className='focus:border-tsinelas-border-brand focus:ring-tsinelas-border-brand/20 border-tsinelas-border-weak bg-tsinelas-bg-surface h-9 rounded-md border px-3 py-1 text-sm shadow-sm focus:ring-2 focus:outline-none'
           >
             {statusOptions.map(opt => (
               <option key={opt.value} value={opt.value}>
@@ -504,9 +504,9 @@ export default function ReviewQueue() {
 
       {/* Bulk Actions Bar */}
       {selectedItems.size > 0 && (
-        <div className='bg-kapwa-bg-surface flex items-center justify-between rounded-md p-4'>
+        <div className='bg-tsinelas-bg-surface flex items-center justify-between rounded-md p-4'>
           <div className='flex items-center gap-3'>
-            <span className='text-kapwa-text-brand-bold font-medium'>
+            <span className='text-tsinelas-text-brand-bold font-medium'>
               {selectedItems.size} item{selectedItems.size !== 1 ? 's' : ''}{' '}
               selected
             </span>
@@ -537,10 +537,10 @@ export default function ReviewQueue() {
 
       {/* Select All Bar */}
       {items.length > 0 && (
-        <div className='text-kapwa-text-support flex items-center gap-2 text-sm'>
+        <div className='text-tsinelas-text-support flex items-center gap-2 text-sm'>
           <button
             onClick={selectAllVisible}
-            className='hover:text-kapwa-text-brand flex items-center gap-1'
+            className='hover:text-tsinelas-text-brand flex items-center gap-1'
           >
             <CheckSquare className='h-4 w-4' />
             Select all visible
@@ -548,7 +548,7 @@ export default function ReviewQueue() {
           <span>•</span>
           <button
             onClick={clearSelection}
-            className='hover:text-kapwa-text-brand'
+            className='hover:text-tsinelas-text-brand'
           >
             Clear selection
           </button>
@@ -576,10 +576,10 @@ export default function ReviewQueue() {
                   <div className='flex flex-wrap items-center gap-3'>
                     <button
                       onClick={() => toggleItemSelection(item.id)}
-                      className='hover:text-kapwa-text-brand text-kapwa-text-disabled flex-shrink-0'
+                      className='hover:text-tsinelas-text-brand text-tsinelas-text-disabled flex-shrink-0'
                     >
                       {selectedItems.has(item.id) ? (
-                        <CheckSquare className='text-kapwa-text-brand h-5 w-5' />
+                        <CheckSquare className='text-tsinelas-text-brand h-5 w-5' />
                       ) : (
                         <Square className='h-5 w-5' />
                       )}
@@ -589,18 +589,18 @@ export default function ReviewQueue() {
                     </Badge>
                     <Badge variant='slate'>{item.item_type}</Badge>
                     <Badge variant='outline'>{item.source_type}</Badge>
-                    <span className='text-kapwa-text-disabled text-xs'>
+                    <span className='text-tsinelas-text-disabled text-xs'>
                       ID: {item.item_id}
                     </span>
                   </div>
 
                   {/* Description */}
                   <div>
-                    <h3 className='text-kapwa-text-strong font-bold'>
+                    <h3 className='text-tsinelas-text-strong font-bold'>
                       {item.issue_type}
                     </h3>
                     {item.description && (
-                      <p className='text-kapwa-text-support mt-1 text-sm'>
+                      <p className='text-tsinelas-text-support mt-1 text-sm'>
                         {item.description}
                       </p>
                     )}
@@ -608,7 +608,7 @@ export default function ReviewQueue() {
 
                   {/* Document Details (if applicable) */}
                   {item.document && (
-                    <div className='bg-kapwa-bg-surface-raised rounded-md p-3'>
+                    <div className='bg-tsinelas-bg-surface-raised rounded-md p-3'>
                       <div className='flex items-center gap-2 text-sm'>
                         <Badge
                           variant={
@@ -619,11 +619,11 @@ export default function ReviewQueue() {
                         >
                           {item.document.type}
                         </Badge>
-                        <span className='text-kapwa-text-support font-mono font-bold'>
+                        <span className='text-tsinelas-text-support font-mono font-bold'>
                           {item.document.number}
                         </span>
                       </div>
-                      <p className='text-kapwa-text-support mt-1 text-sm'>
+                      <p className='text-tsinelas-text-support mt-1 text-sm'>
                         {item.document.title}
                       </p>
                       {item.document.pdf_url && (
@@ -631,7 +631,7 @@ export default function ReviewQueue() {
                           href={item.document.pdf_url}
                           target='_blank'
                           rel='noopener noreferrer'
-                          className='text-kapwa-text-brand mt-2 inline-flex items-center gap-1 text-xs hover:underline'
+                          className='text-tsinelas-text-brand mt-2 inline-flex items-center gap-1 text-xs hover:underline'
                         >
                           <FileText className='h-3 w-3' />
                           View PDF
@@ -641,7 +641,7 @@ export default function ReviewQueue() {
                   )}
 
                   {/* Metadata */}
-                  <div className='text-kapwa-text-disabled flex flex-wrap gap-4 text-xs'>
+                  <div className='text-tsinelas-text-disabled flex flex-wrap gap-4 text-xs'>
                     <div className='flex items-center gap-1'>
                       <Calendar className='h-3 w-3' />
                       Created {new Date(item.created_at).toLocaleString()}
@@ -657,7 +657,7 @@ export default function ReviewQueue() {
                         href={item.source_url}
                         target='_blank'
                         rel='noopener noreferrer'
-                        className='text-kapwa-text-brand hover:underline'
+                        className='text-tsinelas-text-brand hover:underline'
                       >
                         Source
                       </a>
@@ -769,7 +769,7 @@ export default function ReviewQueue() {
       {/* Pagination */}
       {pagination.total > pagination.limit && (
         <div className='flex items-center justify-between'>
-          <p className='text-kapwa-text-support text-sm'>
+          <p className='text-tsinelas-text-support text-sm'>
             Showing {pagination.offset + 1}-
             {Math.min(pagination.offset + pagination.limit, pagination.total)}{' '}
             of {pagination.total}
@@ -812,9 +812,9 @@ export default function ReviewQueue() {
 
       {/* Session Form Modal */}
       {sessionFormSessionId && sessionFormOpen && (
-        <div className='bg-kapwa-bg-surface-bold/50 fixed inset-0 z-50 flex items-center justify-center p-4'>
-          <div className='bg-kapwa-bg-surface max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-lg p-6'>
-            <h2 className='text-kapwa-text-strong mb-4 text-2xl font-bold'>
+        <div className='bg-tsinelas-bg-surface-bold/50 fixed inset-0 z-50 flex items-center justify-center p-4'>
+          <div className='bg-tsinelas-bg-surface max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-lg p-6'>
+            <h2 className='text-tsinelas-text-strong mb-4 text-2xl font-bold'>
               {sessionFormSessionId ? 'Edit Session' : 'Create Session'}
             </h2>
             <SessionDataForm
@@ -836,9 +836,9 @@ export default function ReviewQueue() {
 
       {/* Attendance Form Modal */}
       {attendanceFormSessionId && attendanceFormOpen && (
-        <div className='bg-kapwa-bg-surface-bold/50 fixed inset-0 z-50 flex items-center justify-center p-4'>
-          <div className='bg-kapwa-bg-surface max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-lg p-6'>
-            <h2 className='text-kapwa-text-strong mb-4 text-2xl font-bold'>
+        <div className='bg-tsinelas-bg-surface-bold/50 fixed inset-0 z-50 flex items-center justify-center p-4'>
+          <div className='bg-tsinelas-bg-surface max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-lg p-6'>
+            <h2 className='text-tsinelas-text-strong mb-4 text-2xl font-bold'>
               Edit Attendance
             </h2>
             <AttendanceForm

@@ -1,5 +1,5 @@
 import { test, expect } from '../test-config';
-import { assertKapwaTokens } from '../utils/kapwa';
+import { assertTsinelasTokens } from '../utils/tsinelas';
 
 test.describe('Admin Review Queue Page', () => {
   test.beforeEach(async ({ page }) => {
@@ -7,13 +7,13 @@ test.describe('Admin Review Queue Page', () => {
     await page.goto('/admin/review-queue');
   });
 
-  test('review queue page uses Kapwa semantic tokens', async ({ page }) => {
+  test('review queue page uses Tsinelas semantic tokens', async ({ page }) => {
     // Check page title is visible
     await expect(
       page.locator('h1').filter({ hasText: /Review/i })
     ).toBeVisible();
 
-    await assertKapwaTokens(page);
+    await assertTsinelasTokens(page);
   });
 
   test('review queue page shows empty state when no items', async ({

@@ -243,7 +243,7 @@ export default function InfrastructurePage() {
           value={stats.totalBudget}
           subtext='Current List'
           icon={Wallet}
-          iconBg='bg-kapwa-green-50 text-kapwa-green-600'
+          iconBg='bg-tsinelas-green-50 text-tsinelas-green-600'
         />
 
         <StatCard
@@ -251,7 +251,7 @@ export default function InfrastructurePage() {
           value={`${stats.avgProgress.toFixed(1)}%`}
           subtext='Completion Rate'
           icon={TrendingUp}
-          iconBg='bg-kapwa-bg-brand-weak text-kapwa-text-brand'
+          iconBg='bg-tsinelas-bg-brand-weak text-tsinelas-text-brand'
         />
 
         <StatCard
@@ -259,7 +259,7 @@ export default function InfrastructurePage() {
           value={stats.count}
           subtext='Projects Found'
           icon={FileText}
-          iconBg='bg-kapwa-bg-surface-raised text-kapwa-text-strong'
+          iconBg='bg-tsinelas-bg-surface-raised text-tsinelas-text-strong'
         />
 
         <StatCard
@@ -267,7 +267,7 @@ export default function InfrastructurePage() {
           value={stats.infraYear || 'N/A'}
           subtext='Most Recent'
           icon={CalendarCheck}
-          iconBg='bg-kapwa-orange-50 text-kapwa-orange-600'
+          iconBg='bg-tsinelas-orange-50 text-tsinelas-orange-600'
         />
       </CardGrid>
 
@@ -277,7 +277,7 @@ export default function InfrastructurePage() {
           {[1, 2, 3].map(i => (
             <div
               key={i}
-              className='bg-kapwa-bg-surface-raised h-16 animate-pulse rounded-xl'
+              className='bg-tsinelas-bg-surface-raised h-16 animate-pulse rounded-xl'
             />
           ))}
         </div>
@@ -302,10 +302,10 @@ export default function InfrastructurePage() {
           icon={HardHat}
         />
       ) : (
-        <div className='border-kapwa-border-weak bg-kapwa-bg-surface overflow-hidden rounded-xl border shadow-sm'>
+        <div className='border-tsinelas-border-weak bg-tsinelas-bg-surface overflow-hidden rounded-xl border shadow-sm'>
           <div className='overflow-x-auto'>
             <table className='w-full text-left text-sm'>
-              <thead className='border-kapwa-border-weak bg-kapwa-bg-surface-raised text-kapwa-text-disabled border-b text-xs font-bold tracking-wider uppercase'>
+              <thead className='border-tsinelas-border-weak bg-tsinelas-bg-surface-raised text-tsinelas-text-disabled border-b text-xs font-bold tracking-wider uppercase'>
                 <tr>
                   <th className='hidden w-32 px-3 py-3 md:table-cell md:px-6 md:py-4'>
                     Contract ID
@@ -322,7 +322,7 @@ export default function InfrastructurePage() {
                   </th>
                 </tr>
               </thead>
-              <tbody className='divide-y divide-kapwa-border-weak'>
+              <tbody className='divide-y divide-tsinelas-border-weak'>
                 {paginatedResults.map(item => (
                   <tr
                     key={item.contractId}
@@ -331,13 +331,13 @@ export default function InfrastructurePage() {
                         `/transparency/infrastructure/${item.contractId}`
                       )
                     }
-                    className='group hover:bg-kapwa-bg-surface-raised/50 cursor-pointer transition-colors'
+                    className='group hover:bg-tsinelas-bg-surface-raised/50 cursor-pointer transition-colors'
                   >
-                    <td className='group-hover:text-kapwa-text-brand text-kapwa-text-disabled hidden px-3 py-3 font-mono text-xs transition-colors md:table-cell md:px-6 md:py-4'>
+                    <td className='group-hover:text-tsinelas-text-brand text-tsinelas-text-disabled hidden px-3 py-3 font-mono text-xs transition-colors md:table-cell md:px-6 md:py-4'>
                       {item.contractId}
                     </td>
                     <td className='px-3 py-3 sm:px-6 sm:py-4'>
-                      <p className='group-hover:text-kapwa-text-brand text-kapwa-text-strong mb-1 line-clamp-2 leading-snug font-bold transition-colors'>
+                      <p className='group-hover:text-tsinelas-text-brand text-tsinelas-text-strong mb-1 line-clamp-2 leading-snug font-bold transition-colors'>
                         {item.description}
                       </p>
                       <div className='flex flex-wrap items-center gap-2'>
@@ -349,8 +349,8 @@ export default function InfrastructurePage() {
                             {item.category}
                           </span>
                         </Badge>
-                        <span className='text-kapwa-text-disabled flex items-center gap-1 text-xs'>
-                          <MapPin className='text-kapwa-text-support h-3 w-3 shrink-0' />
+                        <span className='text-tsinelas-text-disabled flex items-center gap-1 text-xs'>
+                          <MapPin className='text-tsinelas-text-support h-3 w-3 shrink-0' />
                           <span className='truncate'>
                             {item.location.barangay
                               ? `${item.location.barangay}, `
@@ -360,17 +360,17 @@ export default function InfrastructurePage() {
                         </span>
                       </div>
                     </td>
-                    <td className='text-kapwa-text-strong px-3 py-3 text-right font-mono font-bold sm:px-6 sm:py-4'>
+                    <td className='text-tsinelas-text-strong px-3 py-3 text-right font-mono font-bold sm:px-6 sm:py-4'>
                       {formatPesoAdaptive(item.budget).fullString}
                     </td>
                     <td className='hidden w-32 px-3 py-3 text-center md:table-cell md:px-6 md:py-4'>
                       <div className='flex flex-col items-center'>
-                        <span className='text-kapwa-text-support mb-1 text-xs font-bold'>
+                        <span className='text-tsinelas-text-support mb-1 text-xs font-bold'>
                           {item.progress.toFixed(1)}%
                         </span>
-                        <div className='bg-kapwa-bg-hover h-1.5 w-full overflow-hidden rounded-xl'>
+                        <div className='bg-tsinelas-bg-hover h-1.5 w-full overflow-hidden rounded-xl'>
                           <div
-                            className={`h-full ${item.progress >= 100 ? 'bg-kapwa-bg-success-weak' : 'bg-kapwa-bg-brand-weak'}`}
+                            className={`h-full ${item.progress >= 100 ? 'bg-tsinelas-bg-success-weak' : 'bg-tsinelas-bg-brand-weak'}`}
                             style={{
                               width: `${Math.min(item.progress, 100)}%`,
                             }}
@@ -413,16 +413,16 @@ export default function InfrastructurePage() {
 
       {/*  External Links Footer  */}
       <div className='grid grid-cols-1 gap-4 md:grid-cols-2'>
-        <div className='hover:border-kapwa-border-brand border-kapwa-border-weak bg-kapwa-bg-surface flex h-full flex-col justify-between rounded-xl border p-6 shadow-sm transition-all'>
+        <div className='hover:border-tsinelas-border-brand border-tsinelas-border-weak bg-tsinelas-bg-surface flex h-full flex-col justify-between rounded-xl border p-6 shadow-sm transition-all'>
           <div className='mb-4 flex items-start gap-4'>
-            <div className='bg-kapwa-blue-50 text-kapwa-blue-600 shrink-0 rounded-xl p-3'>
+            <div className='bg-tsinelas-blue-50 text-tsinelas-blue-600 shrink-0 rounded-xl p-3'>
               <BarChart3 className='h-6 w-6' />
             </div>
             <div>
-              <h4 className='text-kapwa-text-strong mb-1 font-bold'>
+              <h4 className='text-tsinelas-text-strong mb-1 font-bold'>
                 Data & Analytics
               </h4>
-              <p className='text-kapwa-text-disabled text-xs leading-relaxed'>
+              <p className='text-tsinelas-text-disabled text-xs leading-relaxed'>
                 View detailed budget breakdowns, regional comparisons, and
                 contractor performance charts on BetterGov Transparency
                 Dashboard.
@@ -433,22 +433,22 @@ export default function InfrastructurePage() {
             href={dpwhDashboardUrl}
             target='_blank'
             rel='noreferrer'
-            className='text-kapwa-text-inverse bg-kapwa-brand-600 hover:bg-kapwa-brand-700 inline-flex w-full items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-xs font-bold transition-colors'
+            className='text-tsinelas-text-inverse bg-tsinelas-brand-600 hover:bg-tsinelas-brand-700 inline-flex w-full items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-xs font-bold transition-colors'
           >
             Open Transparency Dashboard <ExternalLink className='h-3 w-3' />
           </a>
         </div>
 
-        <div className='hover:border-kapwa-border-brand border-kapwa-border-weak bg-kapwa-bg-surface flex h-full flex-col justify-between rounded-xl border p-6 shadow-sm transition-all'>
+        <div className='hover:border-tsinelas-border-brand border-tsinelas-border-weak bg-tsinelas-bg-surface flex h-full flex-col justify-between rounded-xl border p-6 shadow-sm transition-all'>
           <div className='mb-4 flex items-start gap-4'>
-            <div className='text-kapwa-text-inverse bg-kapwa-brand-600 shrink-0 rounded-xl p-3'>
+            <div className='text-tsinelas-text-inverse bg-tsinelas-brand-600 shrink-0 rounded-xl p-3'>
               <Layers className='h-6 w-6' />
             </div>
             <div>
-              <h4 className='text-kapwa-text-strong mb-1 font-bold'>
+              <h4 className='text-tsinelas-text-strong mb-1 font-bold'>
                 Citizen Verification
               </h4>
-              <p className='text-kapwa-text-disabled text-xs leading-relaxed'>
+              <p className='text-tsinelas-text-disabled text-xs leading-relaxed'>
                 Report issues, upload photos, and verify actual physical
                 progress of infrastructure projects in your barangay on
                 Bisto.ph.
@@ -459,7 +459,7 @@ export default function InfrastructurePage() {
             href={bistoProjectsUrl}
             target='_blank'
             rel='noreferrer'
-            className='text-kapwa-text-inverse bg-kapwa-brand-600 hover:bg-kapwa-brand-700 inline-flex w-full items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-xs font-bold transition-colors'
+            className='text-tsinelas-text-inverse bg-tsinelas-brand-600 hover:bg-tsinelas-brand-700 inline-flex w-full items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-xs font-bold transition-colors'
           >
             Visit Bisto.ph <ExternalLink className='h-3 w-3' />
           </a>

@@ -152,10 +152,10 @@ export default function AuditLog() {
     <div className='space-y-6'>
       <div className='flex items-center justify-between'>
         <div>
-          <h1 className='text-kapwa-text-strong kapwa-heading-xl font-extrabold'>
+          <h1 className='text-tsinelas-text-strong tsinelas-heading-xl font-extrabold'>
             Audit Logs
           </h1>
-          <p className='kapwa-body-md text-kapwa-text-weak'>
+          <p className='tsinelas-body-md text-tsinelas-text-weak'>
             Track all administrative actions in the system
           </p>
         </div>
@@ -201,10 +201,10 @@ export default function AuditLog() {
         <CardContent>
           <div className='grid grid-cols-1 md:grid-cols-5 gap-4'>
             <div>
-              <label className='block kapwa-body-sm-strong mb-1'>Action</label>
+              <label className='block tsinelas-body-sm-strong mb-1'>Action</label>
               <input
                 type='text'
-                className='kapwa-input w-full'
+                className='tsinelas-input w-full'
                 placeholder='e.g. create_document'
                 value={filters.action || ''}
                 onChange={e =>
@@ -213,10 +213,10 @@ export default function AuditLog() {
               />
             </div>
             <div>
-              <label className='block kapwa-body-sm-strong mb-1'>User</label>
+              <label className='block tsinelas-body-sm-strong mb-1'>User</label>
               <input
                 type='text'
-                className='kapwa-input w-full'
+                className='tsinelas-input w-full'
                 placeholder='username'
                 value={filters.performed_by || ''}
                 onChange={e =>
@@ -225,12 +225,12 @@ export default function AuditLog() {
               />
             </div>
             <div>
-              <label className='block kapwa-body-sm-strong mb-1'>
+              <label className='block tsinelas-body-sm-strong mb-1'>
                 Target Type
               </label>
               <input
                 type='text'
-                className='kapwa-input w-full'
+                className='tsinelas-input w-full'
                 placeholder='e.g. document'
                 value={filters.target_type || ''}
                 onChange={e =>
@@ -239,12 +239,12 @@ export default function AuditLog() {
               />
             </div>
             <div>
-              <label className='block kapwa-body-sm-strong mb-1'>
+              <label className='block tsinelas-body-sm-strong mb-1'>
                 Start Date
               </label>
               <input
                 type='date'
-                className='kapwa-input w-full'
+                className='tsinelas-input w-full'
                 value={filters.start_date || ''}
                 onChange={e =>
                   setFilters({ ...filters, start_date: e.target.value })
@@ -252,12 +252,12 @@ export default function AuditLog() {
               />
             </div>
             <div>
-              <label className='block kapwa-body-sm-strong mb-1'>
+              <label className='block tsinelas-body-sm-strong mb-1'>
                 End Date
               </label>
               <input
                 type='date'
-                className='kapwa-input w-full'
+                className='tsinelas-input w-full'
                 value={filters.end_date || ''}
                 onChange={e =>
                   setFilters({ ...filters, end_date: e.target.value })
@@ -273,8 +273,8 @@ export default function AuditLog() {
         <Card>
           <CardContent>
             <div className='flex items-center justify-center py-12'>
-              <RefreshCw className='h-6 w-6 animate-spin text-kapwa-text-weak' />
-              <span className='ml-2 kapwa-body-md text-kapwa-text-weak'>
+              <RefreshCw className='h-6 w-6 animate-spin text-tsinelas-text-weak' />
+              <span className='ml-2 tsinelas-body-md text-tsinelas-text-weak'>
                 Loading audit logs...
               </span>
             </div>
@@ -296,23 +296,23 @@ export default function AuditLog() {
             <div className='overflow-x-auto'>
               <table className='w-full'>
                 <thead>
-                  <tr className='border-b border-kapwa-border-default'>
-                    <th className='text-left py-3 px-4 kapwa-body-sm-strong'>
+                  <tr className='border-b border-tsinelas-border-default'>
+                    <th className='text-left py-3 px-4 tsinelas-body-sm-strong'>
                       Timestamp
                     </th>
-                    <th className='text-left py-3 px-4 kapwa-body-sm-strong'>
+                    <th className='text-left py-3 px-4 tsinelas-body-sm-strong'>
                       User
                     </th>
-                    <th className='text-left py-3 px-4 kapwa-body-sm-strong'>
+                    <th className='text-left py-3 px-4 tsinelas-body-sm-strong'>
                       Action
                     </th>
-                    <th className='text-left py-3 px-4 kapwa-body-sm-strong'>
+                    <th className='text-left py-3 px-4 tsinelas-body-sm-strong'>
                       Target Type
                     </th>
-                    <th className='text-left py-3 px-4 kapwa-body-sm-strong'>
+                    <th className='text-left py-3 px-4 tsinelas-body-sm-strong'>
                       Target ID
                     </th>
-                    <th className='text-left py-3 px-4 kapwa-body-sm-strong'>
+                    <th className='text-left py-3 px-4 tsinelas-body-sm-strong'>
                       Details
                     </th>
                   </tr>
@@ -321,24 +321,24 @@ export default function AuditLog() {
                   {logs.map(log => (
                     <tr
                       key={log.id}
-                      className='border-b border-kap-border-weak hover:bg-kapwa-bg-hover'
+                      className='border-b border-kap-border-weak hover:bg-tsinelas-bg-hover'
                     >
-                      <td className='py-3 px-4 kapwa-body-sm'>
+                      <td className='py-3 px-4 tsinelas-body-sm'>
                         {new Date(log.createdAt).toLocaleString()}
                       </td>
-                      <td className='py-3 px-4 kapwa-body-sm'>
+                      <td className='py-3 px-4 tsinelas-body-sm'>
                         {log.performedBy}
                       </td>
                       <td className='py-3 px-4'>
                         {getActionBadge(log.action)}
                       </td>
-                      <td className='py-3 px-4 kapwa-body-sm'>
+                      <td className='py-3 px-4 tsinelas-body-sm'>
                         <Badge variant='secondary'>{log.targetType}</Badge>
                       </td>
-                      <td className='py-3 px-4 kapwa-body-sm font-mono text-xs'>
+                      <td className='py-3 px-4 tsinelas-body-sm font-mono text-xs'>
                         {log.targetId || '-'}
                       </td>
-                      <td className='py-3 px-4 kapwa-body-sm'>
+                      <td className='py-3 px-4 tsinelas-body-sm'>
                         {formatDetails(log.details)}
                       </td>
                     </tr>
@@ -349,7 +349,7 @@ export default function AuditLog() {
 
             {/* Pagination */}
             <div className='mt-4 flex items-center justify-between'>
-              <div className='kapwa-body-sm text-kapwa-text-weak'>
+              <div className='tsinelas-body-sm text-tsinelas-text-weak'>
                 Showing {logs.length} of {total} logs
               </div>
               <PaginationControls

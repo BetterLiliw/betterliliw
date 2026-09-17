@@ -167,16 +167,16 @@ test.describe('SidebarLayout Component', () => {
       await expect(mainContentDesktop).toBeVisible();
     });
 
-    test('sidebar uses Kapwa semantic tokens', async ({ page }) => {
+    test('sidebar uses Tsinelas semantic tokens', async ({ page }) => {
       // Set desktop viewport to ensure sidebar is visible
       await page.setViewportSize({ width: 1280, height: 720 });
 
       const sidebar = page.locator('aside').first();
       await expect(sidebar).toBeVisible();
 
-      // Check for Kapwa semantic tokens in sidebar
+      // Check for Tsinelas semantic tokens in sidebar
       const sidebarHTML = await sidebar.innerHTML();
-      expect(sidebarHTML).toMatch(/kapwa/);
+      expect(sidebarHTML).toMatch(/tsinelas/);
     });
 
     test('mobile menu button has accessible styling', async ({ page }) => {

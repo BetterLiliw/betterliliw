@@ -27,7 +27,7 @@ Comprehensive test suite for chart components (`ChartTooltip`, `ChartContainer`,
 - ❌ **FAILS:** Displays color indicators (expecting 2 dots, finding 3)
 
 #### Styling Tests (4)
-- ✅ Applies Kapwa design tokens
+- ✅ Applies Tsinelas design tokens
 - ✅ Has proper padding and rounding
 - ✅ Has shadow for elevation
 - ✅ Has animation classes
@@ -55,7 +55,7 @@ Comprehensive test suite for chart components (`ChartTooltip`, `ChartContainer`,
 - ✅ Has role="region" for accessibility
 
 #### Styling Tests (6)
-- ✅ Applies Kapwa design tokens
+- ✅ Applies Tsinelas design tokens
 - ✅ Has proper padding
 - ✅ Has rounded corners
 - ✅ Has shadow for elevation
@@ -136,7 +136,7 @@ Comprehensive test suite for chart components (`ChartTooltip`, `ChartContainer`,
 **6. Entry Color Highlighting (2 tests)**
 - File: ChartTooltip
 - Issue: First entry not highlighted with brand color
-- Expected: First entry uses `text-kapwa-text-brand-bold`
+- Expected: First entry uses `text-tsinelas-text-brand-bold`
 - Actual: All entries use support color
 - Fix: Apply conditional styling based on index
 
@@ -157,7 +157,7 @@ Comprehensive test suite for chart components (`ChartTooltip`, `ChartContainer`,
 
 **Scenario Coverage:**
 - ✅ Normal rendering
-- ✅ Styling and Kapwa tokens
+- ✅ Styling and Tsinelas tokens
 - ✅ Accessibility (ARIA, keyboard)
 - ✅ Edge cases (null, undefined, 0, negative)
 - ✅ Responsive behavior
@@ -228,6 +228,6 @@ After all tests pass:
 - Tests use Vitest with happy-dom environment
 - Recharts components are mocked for isolated testing
 - Tests follow existing project patterns (see Badge.test.tsx)
-- All Kapwa design token classes are verified
+- All Tsinelas design token classes are verified
 - Accessibility attributes are validated
 - ESLint: Zero errors, zero warnings

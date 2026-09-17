@@ -1,0 +1,699 @@
+/* ==========================================================================
+ * Tsinelas — the BetterLiliw design system.
+ *
+ * Named after the town's signature craft. Every token here comes from the
+ * BetterLiliw Brand Guidelines v1.0 (public/BetterLiliw_Brand_Guidelines.pdf):
+ * five brand colors already present in the logo, four working neutrals,
+ * Poppins for display and headings, Source Sans 3 for body and interface.
+ *
+ * Tsinelas sits on top of @bettergov/kapwa, which stays installed as the
+ * engine underneath (Button, Banner, Input, Label and the token *shape*).
+ * App code uses `tsinelas-*` tokens exclusively; the final section of this
+ * file re-points Kapwa's own scales at the brand ramps so the vendored
+ * components render on-brand without per-component overrides.
+ *
+ * Structure
+ *   1. Primitive scales      @theme          --color-tsinelas-{scale}-{step}
+ *   2. Spacing / motion       @theme          --spacing-, --duration-, --ease-
+ *   3. Typography tokens      @theme          --font-, --tracking-
+ *   4. Semantic colors        @theme inline   --color-tsinelas-{text,bg,border}-*
+ *   5. Type classes           @layer components  .tsinelas-heading-*, .tsinelas-body-*
+ *   6. Base element styles    @layer base
+ *   7. Kapwa compatibility    @theme          --color-primary-*, --color-gray-*, ...
+ *
+ * Contrast (WCAG 2.1, measured): navy/white 11.6, navy/sky 8.7, white/green
+ * 7.4, white/teal 5.5, navy/gold 4.1 (large text only), gold-700/white 5.1.
+ * Gold is a shape color, never a text color; gold buttons take navy labels.
+ * ========================================================================== */
+
+/* --------------------------------------------------------------------------
+ * 1. Primitive scales
+ * The brand anchor sits at step 600 of every ramp; 50–500 are tints toward
+ * white, 700–950 are shades toward a cool near-black so they stay in family.
+ * -------------------------------------------------------------------------- */
+@theme {
+  /* Deep Navy #1C3A5B — primary: headings, nav, footers.
+   * 200 is Sky Tint #CEE2EE, 50 is the page surface #F7FAFC. */
+  --color-tsinelas-brand-50: #f7fafc;
+  --color-tsinelas-brand-100: #e6eff5;
+  --color-tsinelas-brand-200: #cee2ee;
+  --color-tsinelas-brand-300: #a9c1d6;
+  --color-tsinelas-brand-400: #7c9bb8;
+  --color-tsinelas-brand-500: #4a6c8f;
+  --color-tsinelas-brand-600: #1c3a5b;
+  --color-tsinelas-brand-700: #193350;
+  --color-tsinelas-brand-800: #162d47;
+  --color-tsinelas-brand-900: #13263c;
+  --color-tsinelas-brand-950: #101f31;
+
+  /* Sunrise Gold #D28A22 — accent: rules, one CTA per screen.
+   * 700 is #9A6210, the only gold that may carry text on white. */
+  --color-tsinelas-gold-50: #fcf8f2;
+  --color-tsinelas-gold-100: #f9efe0;
+  --color-tsinelas-gold-200: #f2dec1;
+  --color-tsinelas-gold-300: #e9c795;
+  --color-tsinelas-gold-400: #e0af69;
+  --color-tsinelas-gold-500: #d99d45;
+  --color-tsinelas-gold-600: #d28a22;
+  --color-tsinelas-gold-700: #9a6210;
+  --color-tsinelas-gold-800: #7a4e0d;
+  --color-tsinelas-gold-900: #5c3b0b;
+  --color-tsinelas-gold-950: #3b2607;
+
+  /* Lake Teal #306F8E — links, tourism section. */
+  --color-tsinelas-teal-50: #f3f6f8;
+  --color-tsinelas-teal-100: #e2ebef;
+  --color-tsinelas-teal-200: #c5d7df;
+  --color-tsinelas-teal-300: #9cbac9;
+  --color-tsinelas-teal-400: #729db2;
+  --color-tsinelas-teal-500: #5186a0;
+  --color-tsinelas-teal-600: #306f8e;
+  --color-tsinelas-teal-700: #295f7a;
+  --color-tsinelas-teal-800: #235069;
+  --color-tsinelas-teal-900: #1d4055;
+  --color-tsinelas-teal-950: #152d3f;
+
+  /* Field Green #305E51 — barangay, government, success. */
+  --color-tsinelas-green-50: #f3f5f5;
+  --color-tsinelas-green-100: #e2e8e7;
+  --color-tsinelas-green-200: #c5d2ce;
+  --color-tsinelas-green-300: #9cb2ab;
+  --color-tsinelas-green-400: #729289;
+  --color-tsinelas-green-500: #51786d;
+  --color-tsinelas-green-600: #305e51;
+  --color-tsinelas-green-700: #295148;
+  --color-tsinelas-green-800: #234540;
+  --color-tsinelas-green-900: #1d3838;
+  --color-tsinelas-green-950: #15292e;
+
+  /* Working neutrals — 950 body text #1A2B38, 700 muted text #5B6E7B,
+   * 200 borders and rules #D4DEE5, 50 page surface #F7FAFC. */
+  --color-tsinelas-gray-50: #f7fafc;
+  --color-tsinelas-gray-100: #edf2f6;
+  --color-tsinelas-gray-200: #d4dee5;
+  --color-tsinelas-gray-300: #b8c5cf;
+  --color-tsinelas-gray-400: #98a8b4;
+  --color-tsinelas-gray-500: #7d8f9c;
+  --color-tsinelas-gray-600: #6c7f8d;
+  --color-tsinelas-gray-700: #5b6e7b;
+  --color-tsinelas-gray-800: #44545f;
+  --color-tsinelas-gray-900: #2c3b47;
+  --color-tsinelas-gray-950: #1a2b38;
+
+  /* Alpha neutrals for hover/active states that must sit on any surface.
+   * Tinted with the body-text navy rather than pure black. */
+  --color-tsinelas-neutral-50: hsla(0, 0%, 100%, 1);
+  --color-tsinelas-neutral-100: hsla(206, 37%, 16%, 0.06);
+  --color-tsinelas-neutral-200: hsla(206, 37%, 16%, 0.08);
+  --color-tsinelas-neutral-300: hsla(206, 37%, 16%, 0.12);
+
+  /* Status colors with no brand equivalent, carried over from Kapwa. */
+  --color-tsinelas-red-50: #fff1f2;
+  --color-tsinelas-red-100: #ffe0e3;
+  --color-tsinelas-red-200: #ffc6cc;
+  --color-tsinelas-red-300: #ff9fa9;
+  --color-tsinelas-red-400: #ff6878;
+  --color-tsinelas-red-500: #fb384d;
+  --color-tsinelas-red-600: #e9192f;
+  --color-tsinelas-red-700: #ce1226;
+  --color-tsinelas-red-800: #a21221;
+  --color-tsinelas-red-900: #861622;
+  --color-tsinelas-red-950: #49060d;
+
+  --color-tsinelas-yellow-50: #fefce8;
+  --color-tsinelas-yellow-100: #fffac2;
+  --color-tsinelas-yellow-200: #fff389;
+  --color-tsinelas-yellow-300: #ffe945;
+  --color-tsinelas-yellow-400: #fdd712;
+  --color-tsinelas-yellow-500: #ecb706;
+  --color-tsinelas-yellow-600: #cc8e02;
+  --color-tsinelas-yellow-700: #a26406;
+  --color-tsinelas-yellow-800: #864e0c;
+  --color-tsinelas-yellow-900: #724011;
+  --color-tsinelas-yellow-950: #432105;
+
+  --color-tsinelas-purple-50: #f5f4fe;
+  --color-tsinelas-purple-100: #eeeafd;
+  --color-tsinelas-purple-200: #dfd8fc;
+  --color-tsinelas-purple-300: #c6b9f9;
+  --color-tsinelas-purple-400: #aa92f3;
+  --color-tsinelas-purple-500: #8f65ed;
+  --color-tsinelas-purple-600: #8148e3;
+  --color-tsinelas-purple-700: #6f32cf;
+  --color-tsinelas-purple-800: #5d2aad;
+  --color-tsinelas-purple-900: #4e248e;
+  --color-tsinelas-purple-950: #2f1560;
+
+  /* Legacy scale names inherited from Kapwa. `orange` resolves to gold and
+   * `blue` to teal so existing `*-tsinelas-orange-*` / `*-tsinelas-blue-*`
+   * usages land on brand colors. Prefer the brand names in new code. */
+  --color-tsinelas-orange-50: var(--color-tsinelas-gold-50);
+  --color-tsinelas-orange-100: var(--color-tsinelas-gold-100);
+  --color-tsinelas-orange-200: var(--color-tsinelas-gold-200);
+  --color-tsinelas-orange-300: var(--color-tsinelas-gold-300);
+  --color-tsinelas-orange-400: var(--color-tsinelas-gold-400);
+  --color-tsinelas-orange-500: var(--color-tsinelas-gold-500);
+  --color-tsinelas-orange-600: var(--color-tsinelas-gold-600);
+  --color-tsinelas-orange-700: var(--color-tsinelas-gold-700);
+  --color-tsinelas-orange-800: var(--color-tsinelas-gold-800);
+  --color-tsinelas-orange-900: var(--color-tsinelas-gold-900);
+  --color-tsinelas-orange-950: var(--color-tsinelas-gold-950);
+
+  --color-tsinelas-blue-50: var(--color-tsinelas-teal-50);
+  --color-tsinelas-blue-100: var(--color-tsinelas-teal-100);
+  --color-tsinelas-blue-200: var(--color-tsinelas-teal-200);
+  --color-tsinelas-blue-300: var(--color-tsinelas-teal-300);
+  --color-tsinelas-blue-400: var(--color-tsinelas-teal-400);
+  --color-tsinelas-blue-500: var(--color-tsinelas-teal-500);
+  --color-tsinelas-blue-600: var(--color-tsinelas-teal-600);
+  --color-tsinelas-blue-700: var(--color-tsinelas-teal-700);
+  --color-tsinelas-blue-800: var(--color-tsinelas-teal-800);
+  --color-tsinelas-blue-900: var(--color-tsinelas-teal-900);
+  --color-tsinelas-blue-950: var(--color-tsinelas-teal-950);
+
+  --color-tsinelas-bg-overlay: hsla(206, 37%, 16%, 0.6);
+
+  /* ------------------------------------------------------------------------
+   * 2. Spacing and motion
+   * ---------------------------------------------------------------------- */
+  --spacing-tsinelas-3xs: 0.125rem; /* 2px */
+  --spacing-tsinelas-2xs: 0.25rem; /* 4px */
+  --spacing-tsinelas-xs: 0.5rem; /* 8px */
+  --spacing-tsinelas-sm: 0.75rem; /* 12px */
+  --spacing-tsinelas-md: 1rem; /* 16px */
+  --spacing-tsinelas-lg: 1.5rem; /* 24px */
+  --spacing-tsinelas-xl: 2rem; /* 32px */
+  --spacing-tsinelas-2xl: 2.5rem; /* 40px */
+  --spacing-tsinelas-3xl: 3rem; /* 48px */
+
+  --duration-tsinelas-75: 75ms;
+  --duration-tsinelas-100: 100ms;
+  --duration-tsinelas-150: 150ms;
+  --duration-tsinelas-200: 200ms;
+  --duration-tsinelas-300: 300ms;
+  --duration-tsinelas-500: 500ms;
+  --duration-tsinelas-700: 700ms;
+  --duration-tsinelas-1000: 1000ms;
+
+  --ease-tsinelas-linear: linear;
+  --ease-tsinelas-in: cubic-bezier(0.4, 0, 1, 1);
+  --ease-tsinelas-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-tsinelas-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-tsinelas-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --ease-tsinelas-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+  /* ------------------------------------------------------------------------
+   * 3. Typography
+   * Two families, two weights each (Poppins 600/700, Source Sans 3 400/600),
+   * loaded from Google Fonts in index.html with display=swap. On a slow
+   * connection the system fallback renders first — the right trade for this
+   * audience. Mono is system-only: nothing in the brand needs a downloaded
+   * monospace face.
+   * ---------------------------------------------------------------------- */
+  --font-tsinelas-display: 'Poppins', 'Segoe UI', system-ui, sans-serif;
+  --font-tsinelas-sans:
+    'Source Sans 3', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-tsinelas-mono:
+    ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono',
+    monospace;
+
+  /* Tailwind's own `font-sans` / `font-display` / `font-mono` utilities. */
+  --font-sans: var(--font-tsinelas-sans);
+  --font-display: var(--font-tsinelas-display);
+  --font-mono: var(--font-tsinelas-mono);
+
+  --tracking-tsinelas-tight: -0.01em; /* headings */
+  --tracking-tsinelas-label: 0.1em; /* all-caps section labels */
+}
+
+/* --------------------------------------------------------------------------
+ * 4. Semantic colors
+ * `@theme inline` so utilities carry the resolved value and no redundant
+ * global variable is emitted for every alias.
+ * -------------------------------------------------------------------------- */
+@theme inline {
+  /* Text */
+  --color-tsinelas-text-strong: var(--color-tsinelas-gray-950);
+  --color-tsinelas-text-default: var(--color-tsinelas-gray-950);
+  --color-tsinelas-text-support: var(--color-tsinelas-gray-700);
+  --color-tsinelas-text-muted: var(--color-tsinelas-gray-700);
+  --color-tsinelas-text-weak: var(--color-tsinelas-gray-600);
+  --color-tsinelas-text-disabled: var(--color-tsinelas-gray-500);
+  --color-tsinelas-text-on-disabled: var(--color-tsinelas-gray-600);
+  --color-tsinelas-text-inverse: var(--color-tsinelas-neutral-50);
+  --color-tsinelas-text-inverse-strong: var(--color-tsinelas-neutral-50);
+  --color-tsinelas-text-inverse-subtle: var(--color-tsinelas-gray-300);
+  --color-tsinelas-text-link: var(--color-tsinelas-teal-600);
+  --color-tsinelas-text-link-hover: var(--color-tsinelas-teal-700);
+  --color-tsinelas-text-link-visited: var(--color-tsinelas-teal-800);
+  --color-tsinelas-text-brand: var(--color-tsinelas-brand-600);
+  --color-tsinelas-text-brand-bold: var(--color-tsinelas-brand-900);
+  --color-tsinelas-text-success: var(--color-tsinelas-green-600);
+  --color-tsinelas-text-danger: var(--color-tsinelas-red-600);
+  --color-tsinelas-text-warning: var(--color-tsinelas-gold-700);
+  --color-tsinelas-text-info: var(--color-tsinelas-teal-600);
+
+  --color-tsinelas-text-accent-purple: var(--color-tsinelas-purple-700);
+  --color-tsinelas-text-accent-green: var(--color-tsinelas-green-700);
+  --color-tsinelas-text-accent-red: var(--color-tsinelas-red-700);
+  --color-tsinelas-text-accent-orange: var(--color-tsinelas-gold-700);
+  --color-tsinelas-text-accent-gold: var(--color-tsinelas-gold-700);
+  --color-tsinelas-text-accent-yellow: var(--color-tsinelas-yellow-700);
+  --color-tsinelas-text-accent-blue: var(--color-tsinelas-teal-700);
+  --color-tsinelas-text-accent-teal: var(--color-tsinelas-teal-700);
+
+  /* Backgrounds */
+  --color-tsinelas-bg-surface: var(--color-tsinelas-neutral-50);
+  --color-tsinelas-bg-surface-raised: var(--color-tsinelas-gray-50);
+  --color-tsinelas-bg-surface-brand: var(--color-tsinelas-brand-200);
+  --color-tsinelas-bg-surface-brand-weak: var(--color-tsinelas-brand-50);
+  --color-tsinelas-bg-surface-bold: var(--color-tsinelas-brand-600);
+  --color-tsinelas-bg-surface-adaptive: var(--color-tsinelas-neutral-100);
+  --color-tsinelas-bg-subtle: var(--color-tsinelas-gray-50);
+  --color-tsinelas-bg-muted: var(--color-tsinelas-gray-100);
+  --color-tsinelas-bg-hover: var(--color-tsinelas-neutral-200);
+  --color-tsinelas-bg-hover-weak: var(--color-tsinelas-neutral-100);
+  --color-tsinelas-bg-active: var(--color-tsinelas-neutral-300);
+  --color-tsinelas-bg-selected: var(--color-tsinelas-brand-100);
+  --color-tsinelas-bg-disabled: var(--color-tsinelas-neutral-300);
+  --color-tsinelas-bg-focus: var(--color-tsinelas-yellow-500);
+  --color-tsinelas-bg-surface-brand-active: var(--color-tsinelas-brand-50);
+
+  --color-tsinelas-bg-gray-default: var(--color-tsinelas-gray-50);
+  --color-tsinelas-bg-gray-hover: var(--color-tsinelas-gray-100);
+  --color-tsinelas-bg-gray-active: var(--color-tsinelas-gray-200);
+  --color-tsinelas-bg-gray-disabled: var(--color-tsinelas-gray-300);
+
+  --color-tsinelas-bg-brand-default: var(--color-tsinelas-brand-600);
+  --color-tsinelas-bg-brand-hover: var(--color-tsinelas-brand-700);
+  --color-tsinelas-bg-brand-active: var(--color-tsinelas-brand-800);
+  --color-tsinelas-bg-brand-weak: var(--color-tsinelas-brand-200);
+
+  --color-tsinelas-bg-info-default: var(--color-tsinelas-teal-600);
+  --color-tsinelas-bg-info-hover: var(--color-tsinelas-teal-700);
+  --color-tsinelas-bg-info-active: var(--color-tsinelas-teal-800);
+  --color-tsinelas-bg-info-weak: var(--color-tsinelas-teal-50);
+
+  --color-tsinelas-bg-danger-default: var(--color-tsinelas-red-700);
+  --color-tsinelas-bg-danger-hover: var(--color-tsinelas-red-800);
+  --color-tsinelas-bg-danger-active: var(--color-tsinelas-red-900);
+  --color-tsinelas-bg-danger-weak: var(--color-tsinelas-red-50);
+
+  --color-tsinelas-bg-warning-default: var(--color-tsinelas-gold-600);
+  --color-tsinelas-bg-warning-hover: var(--color-tsinelas-gold-700);
+  --color-tsinelas-bg-warning-active: var(--color-tsinelas-gold-800);
+  --color-tsinelas-bg-warning-weak: var(--color-tsinelas-gold-50);
+
+  --color-tsinelas-bg-success-default: var(--color-tsinelas-green-600);
+  --color-tsinelas-bg-success-hover: var(--color-tsinelas-green-700);
+  --color-tsinelas-bg-success-active: var(--color-tsinelas-green-800);
+  --color-tsinelas-bg-success-weak: var(--color-tsinelas-green-50);
+
+  --color-tsinelas-bg-accent-purple-default: var(--color-tsinelas-purple-700);
+  --color-tsinelas-bg-accent-purple-weak: var(--color-tsinelas-purple-50);
+
+  --color-tsinelas-bg-accent-green-default: var(--color-tsinelas-green-600);
+  --color-tsinelas-bg-accent-green-weak: var(--color-tsinelas-green-50);
+
+  --color-tsinelas-bg-accent-red-default: var(--color-tsinelas-red-500);
+  --color-tsinelas-bg-accent-red-weak: var(--color-tsinelas-red-50);
+
+  /* Gold is the one CTA per screen. Buttons on it take navy labels. */
+  --color-tsinelas-bg-accent-gold-default: var(--color-tsinelas-gold-600);
+  --color-tsinelas-bg-accent-gold-hover: var(--color-tsinelas-gold-500);
+  --color-tsinelas-bg-accent-gold-weak: var(--color-tsinelas-gold-50);
+  --color-tsinelas-bg-accent-orange-default: var(--color-tsinelas-gold-600);
+  --color-tsinelas-bg-accent-orange-hover: var(--color-tsinelas-gold-500);
+  --color-tsinelas-bg-accent-orange-weak: var(--color-tsinelas-gold-50);
+
+  --color-tsinelas-bg-accent-teal-default: var(--color-tsinelas-teal-600);
+  --color-tsinelas-bg-accent-teal-weak: var(--color-tsinelas-teal-50);
+  --color-tsinelas-bg-accent-blue-default: var(--color-tsinelas-teal-600);
+  --color-tsinelas-bg-accent-blue-weak: var(--color-tsinelas-teal-50);
+
+  --color-tsinelas-bg-accent-yellow-default: var(--color-tsinelas-yellow-500);
+  --color-tsinelas-bg-accent-yellow-hover: var(--color-tsinelas-yellow-600);
+  --color-tsinelas-bg-accent-yellow-weak: var(--color-tsinelas-yellow-50);
+
+  /* Borders */
+  --color-tsinelas-border-strong: var(--color-tsinelas-gray-400);
+  --color-tsinelas-border-default: var(--color-tsinelas-gray-200);
+  --color-tsinelas-border-weak: var(--color-tsinelas-gray-200);
+  --color-tsinelas-border-inverse: var(--color-tsinelas-gray-50);
+  --color-tsinelas-border-on-disabled: var(--color-tsinelas-gray-400);
+  --color-tsinelas-border-focus: var(--color-tsinelas-teal-600);
+  --color-tsinelas-border-brand: var(--color-tsinelas-brand-600);
+  --color-tsinelas-border-success: var(--color-tsinelas-green-600);
+  --color-tsinelas-border-danger: var(--color-tsinelas-red-700);
+  --color-tsinelas-border-warning: var(--color-tsinelas-gold-600);
+  --color-tsinelas-border-info: var(--color-tsinelas-teal-600);
+  --color-tsinelas-border-accent-gold: var(--color-tsinelas-gold-600);
+  --color-tsinelas-border-accent-orange: var(--color-tsinelas-gold-600);
+  --color-tsinelas-border-accent-yellow: var(--color-tsinelas-yellow-500);
+}
+
+/* --------------------------------------------------------------------------
+ * 5. Type classes
+ * The brand scale: H1 Poppins 700 40/46, H2 Poppins 600 28/36, H3 Poppins
+ * 600 20/28, body Source Sans 400 16/26, section label Poppins 600 11px
+ * letter-spaced 0.10em. Sentence case for headings, never title case; all
+ * caps only for small labels. Placed in the components layer so responsive
+ * `text-*` utilities can still override a size where a page needs it.
+ * -------------------------------------------------------------------------- */
+@layer components {
+  .tsinelas-display {
+    font-family: var(--font-tsinelas-display);
+  }
+  .tsinelas-sans {
+    font-family: var(--font-tsinelas-sans);
+  }
+  .tsinelas-mono {
+    font-family: var(--font-tsinelas-mono);
+  }
+
+  .tsinelas-heading-xl {
+    font-family: var(--font-tsinelas-display);
+    font-size: 2.5rem; /* 40px */
+    font-weight: 700;
+    line-height: 1.15; /* 46px */
+    letter-spacing: var(--tracking-tsinelas-tight);
+  }
+  .tsinelas-heading-lg {
+    font-family: var(--font-tsinelas-display);
+    font-size: 1.75rem; /* 28px */
+    font-weight: 600;
+    line-height: 1.2857; /* 36px */
+    letter-spacing: var(--tracking-tsinelas-tight);
+  }
+  .tsinelas-heading-md {
+    font-family: var(--font-tsinelas-display);
+    font-size: 1.25rem; /* 20px */
+    font-weight: 600;
+    line-height: 1.4; /* 28px */
+    letter-spacing: var(--tracking-tsinelas-tight);
+  }
+  .tsinelas-heading-sm {
+    font-family: var(--font-tsinelas-display);
+    font-size: 1.125rem; /* 18px */
+    font-weight: 600;
+    line-height: 1.4444; /* 26px */
+    letter-spacing: var(--tracking-tsinelas-tight);
+  }
+
+  /* Section label / eyebrow: the one place all-caps is allowed. */
+  .tsinelas-eyebrow {
+    font-family: var(--font-tsinelas-display);
+    font-size: 0.6875rem; /* 11px */
+    font-weight: 600;
+    line-height: 1.4545; /* 16px */
+    letter-spacing: var(--tracking-tsinelas-label);
+    text-transform: uppercase;
+  }
+
+  .tsinelas-body-xl-default,
+  .tsinelas-body-xl-strong {
+    font-family: var(--font-tsinelas-sans);
+    font-size: 1.25rem; /* 20px */
+    line-height: 1.5; /* 30px */
+  }
+  .tsinelas-body-lg-default,
+  .tsinelas-body-lg-strong,
+  .tsinelas-body-lg {
+    font-family: var(--font-tsinelas-sans);
+    font-size: 1.125rem; /* 18px */
+    line-height: 1.5556; /* 28px */
+  }
+  .tsinelas-body-md-default,
+  .tsinelas-body-md-strong,
+  .tsinelas-body-md,
+  .tsinelas-body {
+    font-family: var(--font-tsinelas-sans);
+    font-size: 1rem; /* 16px */
+    line-height: 1.625; /* 26px */
+  }
+  .tsinelas-body-sm-default,
+  .tsinelas-body-sm-strong,
+  .tsinelas-body-sm {
+    font-family: var(--font-tsinelas-sans);
+    font-size: 0.875rem; /* 14px */
+    line-height: 1.5714; /* 22px */
+  }
+  .tsinelas-body-xs-default,
+  .tsinelas-body-xs-strong {
+    font-family: var(--font-tsinelas-sans);
+    font-size: 0.75rem; /* 12px */
+    line-height: 1.5; /* 18px */
+  }
+  .tsinelas-body-xl-default,
+  .tsinelas-body-lg-default,
+  .tsinelas-body-lg,
+  .tsinelas-body-md-default,
+  .tsinelas-body-md,
+  .tsinelas-body,
+  .tsinelas-body-sm-default,
+  .tsinelas-body-sm,
+  .tsinelas-body-xs-default {
+    font-weight: 400;
+  }
+  .tsinelas-body-xl-strong,
+  .tsinelas-body-lg-strong,
+  .tsinelas-body-md-strong,
+  .tsinelas-body-sm-strong,
+  .tsinelas-body-xs-strong {
+    font-weight: 600;
+  }
+
+  /* Form and control labels: interface text, so Source Sans. */
+  .tsinelas-label-lg,
+  .tsinelas-label-md,
+  .tsinelas-label-sm,
+  .tsinelas-label-xs {
+    font-family: var(--font-tsinelas-sans);
+    font-weight: 600;
+    line-height: 1.25;
+  }
+  .tsinelas-label-lg {
+    font-size: 1.125rem;
+  }
+  .tsinelas-label-md {
+    font-size: 1rem;
+  }
+  .tsinelas-label-sm {
+    font-size: 0.875rem;
+  }
+  .tsinelas-label-xs {
+    font-size: 0.75rem;
+  }
+
+  .tsinelas-input {
+    font-family: var(--font-tsinelas-sans);
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5rem;
+  }
+
+  .tsinelas-link-lg,
+  .tsinelas-link-md,
+  .tsinelas-link-sm {
+    font-family: var(--font-tsinelas-sans);
+    font-weight: 400;
+    line-height: 1.5;
+  }
+  .tsinelas-link-lg {
+    font-size: 1.125rem;
+  }
+  .tsinelas-link-md {
+    font-size: 1rem;
+  }
+  .tsinelas-link-sm {
+    font-size: 0.875rem;
+  }
+
+  .tsinelas-code-lg,
+  .tsinelas-code-md,
+  .tsinelas-code-sm {
+    font-family: var(--font-tsinelas-mono);
+    font-weight: 400;
+    line-height: 1.5;
+  }
+  .tsinelas-code-lg {
+    font-size: 1.125rem;
+  }
+  .tsinelas-code-md {
+    font-size: 1rem;
+  }
+  .tsinelas-code-sm {
+    font-size: 0.875rem;
+  }
+
+  /* Phone numbers, addresses and figures in directory rows: tabular digits
+   * so columns align. */
+  .tsinelas-tabular {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* --------------------------------------------------------------------------
+ * 6. Base element styles
+ * -------------------------------------------------------------------------- */
+@layer base {
+  html {
+    font-family: var(--font-tsinelas-sans);
+    color: var(--color-tsinelas-text-strong);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    font-size: 1rem; /* body never drops below 16px on mobile */
+    line-height: 1.625;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-tsinelas-display);
+    font-weight: 600;
+    letter-spacing: var(--tracking-tsinelas-tight);
+  }
+
+  h1 {
+    font-weight: 700;
+  }
+
+  code,
+  kbd,
+  samp,
+  pre {
+    font-family: var(--font-tsinelas-mono);
+  }
+}
+
+/* --------------------------------------------------------------------------
+ * 7. Kapwa compatibility
+ * @bettergov/kapwa components render Tailwind scales rather than kapwa-*
+ * tokens: Button uses `primary` / `secondary`, the outline and ghost variants
+ * use `gray`, Banner uses raw `green` / `red` / `yellow` / `blue` tints.
+ * Re-pointing those scales here keeps the vendored components on-brand.
+ *
+ *   primary   → Deep Navy   (Button variant="primary")
+ *   secondary → Lake Teal   (Button variant="secondary" hard-codes white text;
+ *                            white on gold fails contrast, white on teal is 5.5:1)
+ *   accent    → Sunrise Gold
+ *   gray      → working neutrals
+ *
+ * Kapwa's own kapwa-* scales are also aliased so anything still reaching
+ * for them (its typography classes, third-party snippets) matches the brand.
+ * -------------------------------------------------------------------------- */
+@theme {
+  --color-primary-50: var(--color-tsinelas-brand-50);
+  --color-primary-100: var(--color-tsinelas-brand-100);
+  --color-primary-200: var(--color-tsinelas-brand-200);
+  --color-primary-300: var(--color-tsinelas-brand-300);
+  --color-primary-400: var(--color-tsinelas-brand-400);
+  --color-primary-500: var(--color-tsinelas-brand-600);
+  --color-primary-600: var(--color-tsinelas-brand-700);
+  --color-primary-700: var(--color-tsinelas-brand-800);
+  --color-primary-800: var(--color-tsinelas-brand-900);
+  --color-primary-900: var(--color-tsinelas-brand-950);
+
+  --color-secondary-50: var(--color-tsinelas-teal-50);
+  --color-secondary-100: var(--color-tsinelas-teal-100);
+  --color-secondary-200: var(--color-tsinelas-teal-200);
+  --color-secondary-300: var(--color-tsinelas-teal-300);
+  --color-secondary-400: var(--color-tsinelas-teal-400);
+  --color-secondary-500: var(--color-tsinelas-teal-600);
+  --color-secondary-600: var(--color-tsinelas-teal-700);
+  --color-secondary-700: var(--color-tsinelas-teal-800);
+  --color-secondary-800: var(--color-tsinelas-teal-900);
+  --color-secondary-900: var(--color-tsinelas-teal-950);
+
+  --color-accent-50: var(--color-tsinelas-gold-50);
+  --color-accent-100: var(--color-tsinelas-gold-100);
+  --color-accent-200: var(--color-tsinelas-gold-200);
+  --color-accent-300: var(--color-tsinelas-gold-300);
+  --color-accent-400: var(--color-tsinelas-gold-400);
+  --color-accent-500: var(--color-tsinelas-gold-600);
+  --color-accent-600: var(--color-tsinelas-gold-700);
+  --color-accent-700: var(--color-tsinelas-gold-800);
+  --color-accent-800: var(--color-tsinelas-gold-900);
+  --color-accent-900: var(--color-tsinelas-gold-950);
+
+  --color-gray-50: var(--color-tsinelas-gray-50);
+  --color-gray-100: var(--color-tsinelas-gray-100);
+  --color-gray-200: var(--color-tsinelas-gray-200);
+  --color-gray-300: var(--color-tsinelas-gray-300);
+  --color-gray-400: var(--color-tsinelas-gray-400);
+  --color-gray-500: var(--color-tsinelas-gray-500);
+  --color-gray-600: var(--color-tsinelas-gray-600);
+  --color-gray-700: var(--color-tsinelas-gray-700);
+  --color-gray-800: var(--color-tsinelas-gray-800);
+  --color-gray-900: var(--color-tsinelas-gray-900);
+  --color-gray-950: var(--color-tsinelas-gray-950);
+
+  --color-kapwa-brand-50: var(--color-tsinelas-brand-50);
+  --color-kapwa-brand-100: var(--color-tsinelas-brand-100);
+  --color-kapwa-brand-200: var(--color-tsinelas-brand-200);
+  --color-kapwa-brand-300: var(--color-tsinelas-brand-300);
+  --color-kapwa-brand-400: var(--color-tsinelas-brand-400);
+  --color-kapwa-brand-500: var(--color-tsinelas-brand-500);
+  --color-kapwa-brand-600: var(--color-tsinelas-brand-600);
+  --color-kapwa-brand-700: var(--color-tsinelas-brand-700);
+  --color-kapwa-brand-800: var(--color-tsinelas-brand-800);
+  --color-kapwa-brand-900: var(--color-tsinelas-brand-900);
+  --color-kapwa-brand-950: var(--color-tsinelas-brand-950);
+
+  --color-kapwa-gray-50: var(--color-tsinelas-gray-50);
+  --color-kapwa-gray-100: var(--color-tsinelas-gray-100);
+  --color-kapwa-gray-200: var(--color-tsinelas-gray-200);
+  --color-kapwa-gray-300: var(--color-tsinelas-gray-300);
+  --color-kapwa-gray-400: var(--color-tsinelas-gray-400);
+  --color-kapwa-gray-500: var(--color-tsinelas-gray-500);
+  --color-kapwa-gray-600: var(--color-tsinelas-gray-600);
+  --color-kapwa-gray-700: var(--color-tsinelas-gray-700);
+  --color-kapwa-gray-800: var(--color-tsinelas-gray-800);
+  --color-kapwa-gray-900: var(--color-tsinelas-gray-900);
+  --color-kapwa-gray-950: var(--color-tsinelas-gray-950);
+
+  --color-kapwa-blue-50: var(--color-tsinelas-teal-50);
+  --color-kapwa-blue-100: var(--color-tsinelas-teal-100);
+  --color-kapwa-blue-200: var(--color-tsinelas-teal-200);
+  --color-kapwa-blue-300: var(--color-tsinelas-teal-300);
+  --color-kapwa-blue-400: var(--color-tsinelas-teal-400);
+  --color-kapwa-blue-500: var(--color-tsinelas-teal-600);
+  --color-kapwa-blue-600: var(--color-tsinelas-teal-600);
+  --color-kapwa-blue-700: var(--color-tsinelas-teal-700);
+  --color-kapwa-blue-800: var(--color-tsinelas-teal-800);
+  --color-kapwa-blue-900: var(--color-tsinelas-teal-900);
+  --color-kapwa-blue-950: var(--color-tsinelas-teal-950);
+
+  --color-kapwa-green-50: var(--color-tsinelas-green-50);
+  --color-kapwa-green-100: var(--color-tsinelas-green-100);
+  --color-kapwa-green-200: var(--color-tsinelas-green-200);
+  --color-kapwa-green-300: var(--color-tsinelas-green-300);
+  --color-kapwa-green-400: var(--color-tsinelas-green-400);
+  --color-kapwa-green-500: var(--color-tsinelas-green-500);
+  --color-kapwa-green-600: var(--color-tsinelas-green-600);
+  --color-kapwa-green-700: var(--color-tsinelas-green-700);
+  --color-kapwa-green-800: var(--color-tsinelas-green-800);
+  --color-kapwa-green-900: var(--color-tsinelas-green-900);
+  --color-kapwa-green-950: var(--color-tsinelas-green-950);
+
+  --color-kapwa-orange-50: var(--color-tsinelas-gold-50);
+  --color-kapwa-orange-100: var(--color-tsinelas-gold-100);
+  --color-kapwa-orange-200: var(--color-tsinelas-gold-200);
+  --color-kapwa-orange-300: var(--color-tsinelas-gold-300);
+  --color-kapwa-orange-400: var(--color-tsinelas-gold-400);
+  --color-kapwa-orange-500: var(--color-tsinelas-gold-500);
+  --color-kapwa-orange-600: var(--color-tsinelas-gold-600);
+  --color-kapwa-orange-700: var(--color-tsinelas-gold-700);
+  --color-kapwa-orange-800: var(--color-tsinelas-gold-800);
+  --color-kapwa-orange-900: var(--color-tsinelas-gold-900);
+  --color-kapwa-orange-950: var(--color-tsinelas-gold-950);
+
+  --font-kapwa-sans: var(--font-tsinelas-sans);
+  --font-kapwa-mono: var(--font-tsinelas-mono);
+}

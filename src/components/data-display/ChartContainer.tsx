@@ -39,11 +39,11 @@ export function ChartTooltip({
     );
 
     return (
-      <div className='animate-in fade-in zoom-in-95 border-kapwa-border-weak bg-kapwa-bg-surface min-w-[220px] rounded-xl border p-3 shadow-xl duration-200'>
+      <div className='animate-in fade-in zoom-in-95 border-tsinelas-border-weak bg-tsinelas-bg-surface min-w-[220px] rounded-xl border p-3 shadow-xl duration-200'>
         {/* Uses CHART_THEME.text for the label color */}
         <p
           style={{ color: CHART_THEME.text }}
-          className='mb-2 border-b border-kapwa-border-weak pb-1 text-[10px] font-bold tracking-widest uppercase'
+          className='mb-2 border-b border-tsinelas-border-weak pb-1 text-[10px] font-bold tracking-widest uppercase'
         >
           Year: {label}
         </p>
@@ -64,15 +64,15 @@ export function ChartTooltip({
                     'max-w-[130px] truncate text-[11px] font-bold transition-colors',
                     // Use CHART_THEME.fontWeight for consistency
                     index === 0
-                      ? 'text-kapwa-text-brand-bold'
-                      : 'group-hover:text-kapwa-text-strong text-kapwa-text-support'
+                      ? 'text-tsinelas-text-brand-bold'
+                      : 'group-hover:text-tsinelas-text-strong text-tsinelas-text-support'
                   )}
                 >
                   {entry.name}
                 </span>
               </div>
               <span
-                className='text-kapwa-text-strong text-[11px] font-black tabular-nums'
+                className='text-tsinelas-text-strong text-[11px] font-black tabular-nums'
                 style={{ fontWeight: CHART_THEME.fontWeight + 200 }} // Slightly bolder than axis
               >
                 {formatter ? formatter(Number(entry.value)) : entry.value}
@@ -81,9 +81,9 @@ export function ChartTooltip({
           ))}
         </div>
 
-        <div className='text-kapwa-text-support mt-2 flex items-center justify-between border-t border-kapwa-border-weak pt-2 text-[9px] font-bold tracking-tight uppercase'>
+        <div className='text-tsinelas-text-support mt-2 flex items-center justify-between border-t border-tsinelas-border-weak pt-2 text-[9px] font-bold tracking-tight uppercase'>
           <span>Ranked by Value</span>
-          <div className='w-1 h-1 rounded-full bg-kapwa-bg-active' />
+          <div className='w-1 h-1 rounded-full bg-tsinelas-bg-active' />
         </div>
       </div>
     );
@@ -103,7 +103,7 @@ export function ChartContainer({
   return (
     <div
       className={cn(
-        'p-4 w-full rounded-3xl border shadow-sm duration-700 animate-in fade-in slide-in-from-bottom-2 border-kapwa-border-weak bg-kapwa-bg-surface md:p-6',
+        'p-4 w-full rounded-3xl border shadow-sm duration-700 animate-in fade-in slide-in-from-bottom-2 border-tsinelas-border-weak bg-tsinelas-bg-surface md:p-6',
         className
       )}
       role='region'

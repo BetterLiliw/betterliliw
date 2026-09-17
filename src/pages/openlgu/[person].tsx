@@ -103,7 +103,7 @@ export default function PersonDetail() {
   if (!person) {
     return (
       <div
-        className='text-kapwa-text-disabled p-12 text-center font-bold tracking-widest uppercase'
+        className='text-tsinelas-text-disabled p-12 text-center font-bold tracking-widest uppercase'
         role='alert'
       >
         <SEO title='Official Not Found' noIndex />
@@ -280,7 +280,7 @@ export default function PersonDetail() {
         <div className='flex flex-col items-center gap-6 md:flex-row md:items-start'>
           {/* Avatar */}
           <div
-            className='flex h-28 w-28 shrink-0 items-center justify-center rounded-2xl from-kapwa-brand-600 to-kapwa-brand-700 text-kapwa-text-inverse bg-linear-to-br text-4xl font-black shadow-lg'
+            className='flex h-28 w-28 shrink-0 items-center justify-center rounded-2xl from-tsinelas-brand-600 to-tsinelas-brand-700 text-tsinelas-text-inverse bg-linear-to-br text-4xl font-black shadow-lg'
             aria-hidden='true'
           >
             {person.first_name[0]}
@@ -289,7 +289,7 @@ export default function PersonDetail() {
 
           {/* Name and role info */}
           <div className='flex-1 text-center md:text-left'>
-            <h1 className='text-kapwa-text-strong kapwa-heading-xl font-extrabold'>
+            <h1 className='text-tsinelas-text-strong tsinelas-heading-xl font-extrabold'>
               Hon. {officialName}
             </h1>
             <div className='mt-3 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between'>
@@ -305,7 +305,7 @@ export default function PersonDetail() {
                   </Badge>
                 )}
               </div>
-              <p className='text-kapwa-text-disabled text-sm'>
+              <p className='text-tsinelas-text-disabled text-sm'>
                 {totalTermsServed} term{totalTermsServed > 1 ? 's' : ''} served
                 {latestMembership?.term && (
                   <> • {latestMembership.term.year_range}</>
@@ -315,89 +315,89 @@ export default function PersonDetail() {
           </div>
 
           {/* Attendance indicator - simplified */}
-          <div className='bg-kapwa-bg-surface-raised flex shrink-0 flex-col items-center gap-1 rounded-xl px-6 py-3 md:items-end'>
+          <div className='bg-tsinelas-bg-surface-raised flex shrink-0 flex-col items-center gap-1 rounded-xl px-6 py-3 md:items-end'>
             <div className='flex items-center gap-2'>
               {overallAttendanceRate >= 90 ? (
-                <CheckCircle2 className='h-5 w-5 text-kapwa-text-success' />
+                <CheckCircle2 className='h-5 w-5 text-tsinelas-text-success' />
               ) : overallAttendanceRate >= 75 ? (
-                <CalendarCheck className='text-kapwa-text-accent-orange h-5 w-5' />
+                <CalendarCheck className='text-tsinelas-text-accent-orange h-5 w-5' />
               ) : (
-                <XCircle className='text-kapwa-text-danger h-5 w-5' />
+                <XCircle className='text-tsinelas-text-danger h-5 w-5' />
               )}
               <span
                 className={`text-3xl leading-none font-black ${
                   overallAttendanceRate >= 90
-                    ? 'text-kapwa-text-success'
+                    ? 'text-tsinelas-text-success'
                     : overallAttendanceRate >= 75
-                      ? 'text-kapwa-text-accent-orange'
-                      : 'text-kapwa-text-danger'
+                      ? 'text-tsinelas-text-accent-orange'
+                      : 'text-tsinelas-text-danger'
                 }`}
               >
                 {overallAttendanceRate}%
               </span>
             </div>
-            <p className='text-kapwa-text-disabled text-[10px] font-bold tracking-widest uppercase'>
+            <p className='text-tsinelas-text-disabled text-[10px] font-bold tracking-widest uppercase'>
               Attendance Rate
             </p>
           </div>
         </div>
 
         {/* Stats bar - horizontal below profile */}
-        <div className='border-kapwa-border-weak mt-8 grid grid-cols-4 gap-4 border-t pt-6'>
+        <div className='border-tsinelas-border-weak mt-8 grid grid-cols-4 gap-4 border-t pt-6'>
           <div className='text-center'>
             <div className='flex items-center justify-center gap-2'>
-              <FileText className='text-kapwa-text-brand h-5 w-5' />
-              <span className='text-kapwa-text-strong text-2xl font-bold'>
+              <FileText className='text-tsinelas-text-brand h-5 w-5' />
+              <span className='text-tsinelas-text-strong text-2xl font-bold'>
                 {ordCount}
               </span>
             </div>
-            <p className='text-kapwa-text-disabled mt-1 text-[10px] font-bold tracking-widest uppercase'>
+            <p className='text-tsinelas-text-disabled mt-1 text-[10px] font-bold tracking-widest uppercase'>
               Ordinances
             </p>
           </div>
           <div className='text-center'>
             <div className='flex items-center justify-center gap-2'>
-              <BookOpen className='text-kapwa-text-accent-orange h-5 w-5' />
-              <span className='text-kapwa-text-strong text-2xl font-bold'>
+              <BookOpen className='text-tsinelas-text-accent-orange h-5 w-5' />
+              <span className='text-tsinelas-text-strong text-2xl font-bold'>
                 {resCount}
               </span>
             </div>
-            <p className='text-kapwa-text-disabled mt-1 text-[10px] font-bold tracking-widest uppercase'>
+            <p className='text-tsinelas-text-disabled mt-1 text-[10px] font-bold tracking-widest uppercase'>
               Resolutions
             </p>
           </div>
           <div className='text-center'>
             <div className='flex items-center justify-center gap-2'>
-              <ScrollText className='text-kapwa-yellow-700 h-5 w-5' />
-              <span className='text-kapwa-text-strong text-2xl font-bold'>
+              <ScrollText className='text-tsinelas-yellow-700 h-5 w-5' />
+              <span className='text-tsinelas-text-strong text-2xl font-bold'>
                 {eoCount}
               </span>
             </div>
-            <p className='text-kapwa-text-disabled mt-1 text-[10px] font-bold tracking-widest uppercase'>
+            <p className='text-tsinelas-text-disabled mt-1 text-[10px] font-bold tracking-widest uppercase'>
               Exec. Orders
             </p>
           </div>
           {hasExecutiveRole && totalExecutiveOrdersSigned > 0 ? (
             <div className='text-center'>
               <div className='flex items-center justify-center gap-2'>
-                <ScrollText className='text-kapwa-yellow-700 h-5 w-5' />
-                <span className='text-kapwa-text-strong text-2xl font-bold'>
+                <ScrollText className='text-tsinelas-yellow-700 h-5 w-5' />
+                <span className='text-tsinelas-text-strong text-2xl font-bold'>
                   {totalExecutiveOrdersSigned}
                 </span>
               </div>
-              <p className='text-kapwa-text-disabled mt-1 text-[10px] font-bold tracking-widest uppercase'>
+              <p className='text-tsinelas-text-disabled mt-1 text-[10px] font-bold tracking-widest uppercase'>
                 EOs Signed
               </p>
             </div>
           ) : (
             <div className='text-center'>
               <div className='flex items-center justify-center gap-2'>
-                <Calendar className='text-kapwa-text-support h-5 w-5' />
-                <span className='text-kapwa-text-strong text-2xl font-bold'>
+                <Calendar className='text-tsinelas-text-support h-5 w-5' />
+                <span className='text-tsinelas-text-strong text-2xl font-bold'>
                   {allAttendanceRecords.length}
                 </span>
               </div>
-              <p className='text-kapwa-text-disabled mt-1 text-[10px] font-bold tracking-widest uppercase'>
+              <p className='text-tsinelas-text-disabled mt-1 text-[10px] font-bold tracking-widest uppercase'>
                 Sessions
               </p>
             </div>
@@ -460,14 +460,14 @@ export default function PersonDetail() {
                 return (
                   <div
                     key={membership.term_id}
-                    className={`group bg-kapwa-bg-surface relative overflow-hidden rounded-xl border p-5 shadow-sm transition-all hover:shadow-md ${
+                    className={`group bg-tsinelas-bg-surface relative overflow-hidden rounded-xl border p-5 shadow-sm transition-all hover:shadow-md ${
                       isActive
-                        ? 'border-kapwa-border-brand bg-linear-to-r from-kapwa-brand-weak/50 to-kapwa-bg-surface'
-                        : 'border-kapwa-border-weak'
+                        ? 'border-tsinelas-border-brand bg-linear-to-r from-tsinelas-brand-weak/50 to-tsinelas-bg-surface'
+                        : 'border-tsinelas-border-weak'
                     }`}
                   >
                     {isActive && (
-                      <div className='bg-kapwa-bg-brand-default text-kapwa-text-inverse absolute top-0 right-0 rounded-bl-xl px-3 py-1 text-[10px] font-bold'>
+                      <div className='bg-tsinelas-bg-brand-default text-tsinelas-text-inverse absolute top-0 right-0 rounded-bl-xl px-3 py-1 text-[10px] font-bold'>
                         CURRENT TERM
                       </div>
                     )}
@@ -475,7 +475,7 @@ export default function PersonDetail() {
                       <div className='flex-1 space-y-4'>
                         {/* Term header */}
                         <div className='flex flex-wrap items-center gap-2'>
-                          <h3 className='text-kapwa-text-strong text-xl font-bold'>
+                          <h3 className='text-tsinelas-text-strong text-xl font-bold'>
                             {isExecutive
                               ? membership.term?.year_range ||
                                 membership.term_id
@@ -503,12 +503,12 @@ export default function PersonDetail() {
                             committeesByRole.member.length > 0) && (
                             <div className='space-y-3'>
                               {/* Section header */}
-                              <div className='border-kapwa-border-weak flex items-center gap-2 border-b pb-2'>
-                                <Users className='text-kapwa-text-disabled h-4 w-4' />
-                                <span className='text-kapwa-text-disabled text-[10px] font-bold tracking-widest uppercase'>
+                              <div className='border-tsinelas-border-weak flex items-center gap-2 border-b pb-2'>
+                                <Users className='text-tsinelas-text-disabled h-4 w-4' />
+                                <span className='text-tsinelas-text-disabled text-[10px] font-bold tracking-widest uppercase'>
                                   Committee Assignments
                                 </span>
-                                <span className='text-kapwa-text-disabled ml-auto text-xs'>
+                                <span className='text-tsinelas-text-disabled ml-auto text-xs'>
                                   {committeesByRole.chairperson.length +
                                     committeesByRole.viceChairperson.length +
                                     committeesByRole.member.length}{' '}
@@ -522,16 +522,16 @@ export default function PersonDetail() {
                                 {committeesByRole.chairperson.map(c => (
                                   <div
                                     key={`chair-${c.id}`}
-                                    className='group flex items-center gap-3 rounded-lg border border-kapwa-border-warning/50 bg-linear-to-r from-kapwa-warning-weak to-kapwa-warning-weak/50 px-3 py-2.5 transition-all hover:border-amber-300 hover:shadow-sm'
+                                    className='group flex items-center gap-3 rounded-lg border border-tsinelas-border-warning/50 bg-linear-to-r from-tsinelas-warning-weak to-tsinelas-warning-weak/50 px-3 py-2.5 transition-all hover:border-amber-300 hover:shadow-sm'
                                   >
-                                    <div className='flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-kapwa-bg-warning-weak text-kapwa-text-warning shadow-sm'>
+                                    <div className='flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-tsinelas-bg-warning-weak text-tsinelas-text-warning shadow-sm'>
                                       <Crown className='h-4 w-4' />
                                     </div>
                                     <div className='min-w-0 flex-1'>
-                                      <p className='text-kapwa-text-strong truncate text-sm font-semibold'>
+                                      <p className='text-tsinelas-text-strong truncate text-sm font-semibold'>
                                         {c.name}
                                       </p>
-                                      <p className='text-[10px] font-medium tracking-wide text-kapwa-text-warning uppercase'>
+                                      <p className='text-[10px] font-medium tracking-wide text-tsinelas-text-warning uppercase'>
                                         Chairperson
                                       </p>
                                     </div>
@@ -541,16 +541,16 @@ export default function PersonDetail() {
                                 {committeesByRole.viceChairperson.map(c => (
                                   <div
                                     key={`vice-${c.id}`}
-                                    className='group flex items-center gap-3 rounded-lg border border-kapwa-border-info/50 bg-linear-to-r from-kapwa-info-weak to-kapwa-info-weak/50 px-3 py-2.5 transition-all hover:border-blue-300 hover:shadow-sm'
+                                    className='group flex items-center gap-3 rounded-lg border border-tsinelas-border-info/50 bg-linear-to-r from-tsinelas-info-weak to-tsinelas-info-weak/50 px-3 py-2.5 transition-all hover:border-blue-300 hover:shadow-sm'
                                   >
-                                    <div className='bg-kapwa-bg-info-weak text-kapwa-text-info flex h-8 w-8 shrink-0 items-center justify-center rounded-lg shadow-sm'>
+                                    <div className='bg-tsinelas-bg-info-weak text-tsinelas-text-info flex h-8 w-8 shrink-0 items-center justify-center rounded-lg shadow-sm'>
                                       <Shield className='h-4 w-4' />
                                     </div>
                                     <div className='min-w-0 flex-1'>
-                                      <p className='text-kapwa-text-strong truncate text-sm font-semibold'>
+                                      <p className='text-tsinelas-text-strong truncate text-sm font-semibold'>
                                         {c.name}
                                       </p>
-                                      <p className='text-kapwa-text-info text-[10px] font-medium tracking-wide uppercase'>
+                                      <p className='text-tsinelas-text-info text-[10px] font-medium tracking-wide uppercase'>
                                         Vice Chairperson
                                       </p>
                                     </div>
@@ -560,16 +560,16 @@ export default function PersonDetail() {
                                 {committeesByRole.member.map(c => (
                                   <div
                                     key={`member-${c.id}`}
-                                    className='group border-kapwa-border-weak bg-kapwa-bg-surface-raised hover:border-kapwa-border-weak flex items-center gap-3 rounded-lg border px-3 py-2.5 transition-all hover:shadow-sm'
+                                    className='group border-tsinelas-border-weak bg-tsinelas-bg-surface-raised hover:border-tsinelas-border-weak flex items-center gap-3 rounded-lg border px-3 py-2.5 transition-all hover:shadow-sm'
                                   >
-                                    <div className='bg-kapwa-bg-hover text-kapwa-text-disabled flex h-8 w-8 shrink-0 items-center justify-center rounded-lg'>
+                                    <div className='bg-tsinelas-bg-hover text-tsinelas-text-disabled flex h-8 w-8 shrink-0 items-center justify-center rounded-lg'>
                                       <User className='h-4 w-4' />
                                     </div>
                                     <div className='min-w-0 flex-1'>
-                                      <p className='text-kapwa-text-support truncate text-sm font-medium'>
+                                      <p className='text-tsinelas-text-support truncate text-sm font-medium'>
                                         {c.name}
                                       </p>
-                                      <p className='text-kapwa-text-disabled text-[10px] font-medium tracking-wide uppercase'>
+                                      <p className='text-tsinelas-text-disabled text-[10px] font-medium tracking-wide uppercase'>
                                         Member
                                       </p>
                                     </div>
@@ -580,35 +580,35 @@ export default function PersonDetail() {
                           )}
 
                         {/* Term stats - inline */}
-                        <div className='border-kapwa-border-weak flex flex-wrap items-center gap-x-6 gap-y-2 border-t pt-4 text-sm'>
+                        <div className='border-tsinelas-border-weak flex flex-wrap items-center gap-x-6 gap-y-2 border-t pt-4 text-sm'>
                           {!isExecutive ? (
                             <>
                               <div className='flex items-center gap-2'>
                                 <CalendarCheck
-                                  className={`h-4 w-4 ${membership.attendanceRate >= 90 ? 'text-kapwa-text-success' : 'text-kapwa-text-disabled'}`}
+                                  className={`h-4 w-4 ${membership.attendanceRate >= 90 ? 'text-tsinelas-text-success' : 'text-tsinelas-text-disabled'}`}
                                 />
                                 <span
                                   className={
                                     membership.attendanceRate >= 90
-                                      ? 'font-semibold text-kapwa-text-success'
-                                      : 'text-kapwa-text-support'
+                                      ? 'font-semibold text-tsinelas-text-success'
+                                      : 'text-tsinelas-text-support'
                                   }
                                 >
                                   {membership.attendanceRate}% attendance
-                                  <span className='text-kapwa-text-disabled font-normal'>
+                                  <span className='text-tsinelas-text-disabled font-normal'>
                                     {' '}
                                     ({membership.presentCount}/
                                     {membership.totalCount})
                                   </span>
                                 </span>
                               </div>
-                              <span className='text-kapwa-text-support'>•</span>
-                              <span className='text-kapwa-text-support'>
-                                <span className='text-kapwa-text-brand font-semibold'>
+                              <span className='text-tsinelas-text-support'>•</span>
+                              <span className='text-tsinelas-text-support'>
+                                <span className='text-tsinelas-text-brand font-semibold'>
                                   {membership.termStats?.ordinances || 0}
                                 </span>{' '}
                                 ord,
-                                <span className='text-kapwa-text-accent-orange font-semibold'>
+                                <span className='text-tsinelas-text-accent-orange font-semibold'>
                                   {' '}
                                   {membership.termStats?.resolutions || 0}
                                 </span>{' '}
@@ -616,7 +616,7 @@ export default function PersonDetail() {
                                 {membership.termStats?.executiveOrders ? (
                                   <span>
                                     ,{' '}
-                                    <span className='text-kapwa-yellow-700 font-semibold'>
+                                    <span className='text-tsinelas-yellow-700 font-semibold'>
                                       {membership.termStats.executiveOrders}
                                     </span>{' '}
                                     EO
@@ -627,8 +627,8 @@ export default function PersonDetail() {
                               </span>
                             </>
                           ) : (
-                            <span className='text-kapwa-text-support'>
-                              <span className='text-kapwa-yellow-700 font-semibold'>
+                            <span className='text-tsinelas-text-support'>
+                              <span className='text-tsinelas-yellow-700 font-semibold'>
                                 {membership.executiveOrdersSigned || 0}
                               </span>{' '}
                               Executive Orders signed
@@ -641,7 +641,7 @@ export default function PersonDetail() {
                       {membership.term && (
                         <Link
                           to={`/openlgu/term/${membership.term.id}`}
-                          className='group-hover:text-kapwa-text-brand text-kapwa-text-support shrink-0 transition-colors'
+                          className='group-hover:text-tsinelas-text-brand text-tsinelas-text-support shrink-0 transition-colors'
                           aria-label={`View details for ${membership.term.name}`}
                         >
                           <ChevronRight className='h-6 w-6' />
@@ -666,7 +666,7 @@ export default function PersonDetail() {
                 {authoredDocs.length > 6 && (
                   <Link
                     to={`/openlgu?search=${encodeURIComponent(officialName)}`}
-                    className='text-kapwa-text-brand hover:text-kapwa-text-brand shrink-0 text-sm font-medium'
+                    className='text-tsinelas-text-brand hover:text-tsinelas-text-brand shrink-0 text-sm font-medium'
                   >
                     View all {authoredDocs.length} →
                   </Link>
@@ -686,7 +686,7 @@ export default function PersonDetail() {
                     <Link
                       key={doc.id}
                       to={`/openlgu/documents/${doc.id}`}
-                      className='group hover:bg-kapwa-bg-surface-raised -mx-5 block min-h-[44px] px-5 py-4 transition-colors'
+                      className='group hover:bg-tsinelas-bg-surface-raised -mx-5 block min-h-[44px] px-5 py-4 transition-colors'
                     >
                       <div className='flex items-start gap-3'>
                         <Badge
@@ -701,35 +701,35 @@ export default function PersonDetail() {
                         </Badge>
                         <div className='min-w-0 flex-1'>
                           <div className='mb-1 flex items-center gap-2'>
-                            <span className='text-kapwa-text-disabled font-mono text-[10px] font-bold uppercase'>
+                            <span className='text-tsinelas-text-disabled font-mono text-[10px] font-bold uppercase'>
                               {doc.number}
                             </span>
-                            <span className='text-kapwa-text-support'>•</span>
-                            <span className='text-kapwa-text-support font-mono text-[10px] font-bold'>
+                            <span className='text-tsinelas-text-support'>•</span>
+                            <span className='text-tsinelas-text-support font-mono text-[10px] font-bold'>
                               {doc.date_enacted}
                             </span>
                             {termBadge && (
                               <>
-                                <span className='text-kapwa-text-support'>
+                                <span className='text-tsinelas-text-support'>
                                   •
                                 </span>
-                                <span className='text-kapwa-text-disabled text-[10px] font-medium'>
+                                <span className='text-tsinelas-text-disabled text-[10px] font-medium'>
                                   {termBadge.ordinal}
                                 </span>
                               </>
                             )}
                           </div>
-                          <p className='group-hover:text-kapwa-text-brand text-kapwa-text-strong line-clamp-2 text-sm leading-relaxed font-semibold transition-colors'>
+                          <p className='group-hover:text-tsinelas-text-brand text-tsinelas-text-strong line-clamp-2 text-sm leading-relaxed font-semibold transition-colors'>
                             {doc.title}
                           </p>
                         </div>
-                        <ChevronRight className='group-hover:text-kapwa-text-brand text-kapwa-text-support mt-0.5 h-5 w-5 shrink-0 transition-colors' />
+                        <ChevronRight className='group-hover:text-tsinelas-text-brand text-tsinelas-text-support mt-0.5 h-5 w-5 shrink-0 transition-colors' />
                       </div>
                     </Link>
                   );
                 })
               ) : (
-                <p className='text-kapwa-text-disabled py-8 text-center text-sm italic'>
+                <p className='text-tsinelas-text-disabled py-8 text-center text-sm italic'>
                   No legislation authored yet.
                 </p>
               )}
@@ -745,7 +745,7 @@ export default function PersonDetail() {
               title={
                 <div className='flex items-center justify-between gap-4'>
                   <span>Attendance Log</span>
-                  <span className='text-kapwa-text-disabled shrink-0 text-xs font-medium'>
+                  <span className='text-tsinelas-text-disabled shrink-0 text-xs font-medium'>
                     {allAttendanceRecords.length} sessions
                   </span>
                 </div>
@@ -761,40 +761,40 @@ export default function PersonDetail() {
                       <Link
                         key={s.id}
                         to={`/openlgu/session/${s.id}`}
-                        className='group hover:border-kapwa-border-brand border-kapwa-border-weak bg-kapwa-bg-surface-raised hover:bg-kapwa-bg-surface flex items-center justify-between rounded-lg border p-3 text-xs transition-all hover:shadow-sm'
+                        className='group hover:border-tsinelas-border-brand border-tsinelas-border-weak bg-tsinelas-bg-surface-raised hover:bg-tsinelas-bg-surface flex items-center justify-between rounded-lg border p-3 text-xs transition-all hover:shadow-sm'
                       >
                         <div className='flex items-center gap-3'>
                           {isPresent ? (
-                            <div className='rounded-full bg-kapwa-bg-success-weak p-1'>
+                            <div className='rounded-full bg-tsinelas-bg-success-weak p-1'>
                               <CheckCircle2
-                                className='h-3.5 w-3.5 text-kapwa-text-success'
+                                className='h-3.5 w-3.5 text-tsinelas-text-success'
                                 aria-label='Present'
                               />
                             </div>
                           ) : (
-                            <div className='bg-kapwa-bg-accent-orange-weak rounded-full p-1'>
+                            <div className='bg-tsinelas-bg-accent-orange-weak rounded-full p-1'>
                               <XCircle
-                                className='text-kapwa-text-accent-orange h-3.5 w-3.5'
+                                className='text-tsinelas-text-accent-orange h-3.5 w-3.5'
                                 aria-label='Absent'
                               />
                             </div>
                           )}
                           <div>
-                            <p className='text-kapwa-text-support font-semibold'>
+                            <p className='text-tsinelas-text-support font-semibold'>
                               {s.date}
                             </p>
-                            <p className='text-kapwa-text-disabled text-[10px]'>
+                            <p className='text-tsinelas-text-disabled text-[10px]'>
                               {s.ordinal_number}
                             </p>
                           </div>
                         </div>
-                        <ChevronRight className='group-hover:text-kapwa-text-brand text-kapwa-text-support h-4 w-4 transition-colors' />
+                        <ChevronRight className='group-hover:text-tsinelas-text-brand text-tsinelas-text-support h-4 w-4 transition-colors' />
                       </Link>
                     );
                   })}
                 </div>
               ) : (
-                <p className='text-kapwa-text-disabled py-4 text-center text-sm italic'>
+                <p className='text-tsinelas-text-disabled py-4 text-center text-sm italic'>
                   No attendance records found.
                 </p>
               )}
@@ -805,7 +805,7 @@ export default function PersonDetail() {
                 title={
                   <div className='flex items-center justify-between gap-4'>
                     <span>Executive Orders Summary</span>
-                    <span className='text-kapwa-text-disabled shrink-0 text-xs font-medium'>
+                    <span className='text-tsinelas-text-disabled shrink-0 text-xs font-medium'>
                       {totalExecutiveOrdersSigned} total
                     </span>
                   </div>
@@ -813,7 +813,7 @@ export default function PersonDetail() {
                 icon={ScrollText}
               >
                 <div className='space-y-3'>
-                  <p className='text-kapwa-text-support text-sm'>
+                  <p className='text-tsinelas-text-support text-sm'>
                     As {latestMembership?.role || 'Executive'}, this official
                     has signed {totalExecutiveOrdersSigned} executive order
                     {totalExecutiveOrdersSigned !== 1 ? 's' : ''} across their
@@ -822,7 +822,7 @@ export default function PersonDetail() {
                   {totalExecutiveOrdersSigned > 0 && (
                     <Link
                       to={`/openlgu?search=${encodeURIComponent(officialName)}&type=executive_order`}
-                      className='text-kapwa-text-brand hover:text-kapwa-text-brand inline-flex items-center gap-2 text-sm font-medium'
+                      className='text-tsinelas-text-brand hover:text-tsinelas-text-brand inline-flex items-center gap-2 text-sm font-medium'
                     >
                       View all executive orders →
                     </Link>
@@ -833,29 +833,29 @@ export default function PersonDetail() {
           )}
 
           {/* Quick summary card */}
-          <div className='border-kapwa-border-weak rounded-xl border bg-linear-to-br from-slate-50 to-kapwa-bg-surface p-6'>
-            <h3 className='text-kapwa-text-disabled mb-4 text-sm font-bold tracking-widest uppercase'>
+          <div className='border-tsinelas-border-weak rounded-xl border bg-linear-to-br from-slate-50 to-tsinelas-bg-surface p-6'>
+            <h3 className='text-tsinelas-text-disabled mb-4 text-sm font-bold tracking-widest uppercase'>
               Career Summary
             </h3>
             <dl className='space-y-3'>
               <div className='flex items-center justify-between'>
-                <dt className='text-kapwa-text-support text-sm'>Total Terms</dt>
-                <dd className='text-kapwa-text-strong text-lg font-bold'>
+                <dt className='text-tsinelas-text-support text-sm'>Total Terms</dt>
+                <dd className='text-tsinelas-text-strong text-lg font-bold'>
                   {totalTermsServed}
                 </dd>
               </div>
               {hasLegislativeRole && (
                 <div className='flex items-center justify-between'>
-                  <dt className='text-kapwa-text-support text-sm'>
+                  <dt className='text-tsinelas-text-support text-sm'>
                     Overall Attendance
                   </dt>
                   <dd
                     className={`text-lg font-bold ${
                       overallAttendanceRate >= 90
-                        ? 'text-kapwa-text-success'
+                        ? 'text-tsinelas-text-success'
                         : overallAttendanceRate >= 75
-                          ? 'text-kapwa-text-accent-orange'
-                          : 'text-kapwa-text-danger'
+                          ? 'text-tsinelas-text-accent-orange'
+                          : 'text-tsinelas-text-danger'
                     }`}
                   >
                     {overallAttendanceRate}%
@@ -864,19 +864,19 @@ export default function PersonDetail() {
               )}
               {hasExecutiveRole && totalExecutiveOrdersSigned > 0 && (
                 <div className='flex items-center justify-between'>
-                  <dt className='text-kapwa-text-support text-sm'>
+                  <dt className='text-tsinelas-text-support text-sm'>
                     Executive Orders Signed
                   </dt>
-                  <dd className='text-kapwa-yellow-700 text-lg font-bold'>
+                  <dd className='text-tsinelas-yellow-700 text-lg font-bold'>
                     {totalExecutiveOrdersSigned}
                   </dd>
                 </div>
               )}
               <div className='flex items-center justify-between'>
-                <dt className='text-kapwa-text-support text-sm'>
+                <dt className='text-tsinelas-text-support text-sm'>
                   Total Documents
                 </dt>
-                <dd className='text-kapwa-text-strong text-lg font-bold'>
+                <dd className='text-tsinelas-text-strong text-lg font-bold'>
                   {authoredDocs.length}
                 </dd>
               </div>

@@ -233,29 +233,29 @@ export default function FinancialPage() {
       </Breadcrumb>
 
       {/* 2. Unified Header with Controls */}
-      <div className='border-kapwa-border-weak bg-kapwa-bg-surface flex flex-col gap-8 rounded-3xl border p-8 shadow-sm xl:flex-row xl:items-center xl:justify-between'>
+      <div className='border-tsinelas-border-weak bg-tsinelas-bg-surface flex flex-col gap-8 rounded-3xl border p-8 shadow-sm xl:flex-row xl:items-center xl:justify-between'>
         <div className='space-y-4'>
           <div className='flex flex-wrap items-center gap-2'>
             <Badge variant='primary' dot>
               Verified Audit
             </Badge>
             <Badge variant='slate'>FY {selectedYear}</Badge>
-            <div className='border-kapwa-border-weak bg-kapwa-bg-surface-raised text-kapwa-text-disabled flex items-center gap-1.5 rounded-md border px-2.5 py-1 text-[10px] font-bold tracking-widest uppercase'>
-              <Info className='text-kapwa-text-disabled h-3.5 w-3.5' />
+            <div className='border-tsinelas-border-weak bg-tsinelas-bg-surface-raised text-tsinelas-text-disabled flex items-center gap-1.5 rounded-md border px-2.5 py-1 text-[10px] font-bold tracking-widest uppercase'>
+              <Info className='text-tsinelas-text-disabled h-3.5 w-3.5' />
               <span>Millions (PHP)</span>
             </div>
           </div>
-          <h1 className='text-kapwa-text-strong kapwa-heading-xl font-extrabold flex items-center gap-3'>
-            <BarChart2Icon className='h-8 w-8 text-kapwa-text-success' />
+          <h1 className='text-tsinelas-text-strong tsinelas-heading-xl font-extrabold flex items-center gap-3'>
+            <BarChart2Icon className='h-8 w-8 text-tsinelas-text-success' />
             Financial Performance
           </h1>
-          <p className='text-kapwa-text-disabled max-w-xl text-sm leading-relaxed font-medium'>
+          <p className='text-tsinelas-text-disabled max-w-xl text-sm leading-relaxed font-medium'>
             Independent visualization of the municipal budget, including current
             operating income and expenditures.
           </p>
         </div>
 
-        <div className='border-kapwa-border-weak bg-kapwa-bg-surface-raised shrink-0 rounded-2xl border p-4'>
+        <div className='border-tsinelas-border-weak bg-tsinelas-bg-surface-raised shrink-0 rounded-2xl border p-4'>
           <QuarterToggle
             quarters={quartersInYear.map(q => getQuarter(q.period))}
             years={years}
@@ -292,10 +292,10 @@ export default function FinancialPage() {
           data={incomeChartData}
           // BetterGov: Brand for local, Blue for national, Gray for others
           colors={[
-            'var(--color-kapwa-brand-600)',
-            'var(--color-kapwa-blue-600)',
-            'var(--color-kapwa-gray-500)',
-            'var(--color-kapwa-gray-400)',
+            'var(--color-tsinelas-brand-600)',
+            'var(--color-tsinelas-blue-600)',
+            'var(--color-tsinelas-gray-500)',
+            'var(--color-tsinelas-gray-400)',
           ]}
         />
 
@@ -305,19 +305,19 @@ export default function FinancialPage() {
           data={expenditureChartData}
           // BetterGov: Red for services, Orange for economic, Yellow for debt
           colors={[
-            'var(--color-kapwa-red-600)',
-            'var(--color-kapwa-orange-600)',
-            'var(--color-kapwa-yellow-600)',
-            'var(--color-kapwa-blue-600)',
+            'var(--color-tsinelas-red-600)',
+            'var(--color-tsinelas-orange-600)',
+            'var(--color-tsinelas-yellow-600)',
+            'var(--color-tsinelas-blue-600)',
           ]}
         />
       </div>
 
       {/* 5. Accessibility Footer */}
       <footer className='pt-10 text-center'>
-        <div className='border-kapwa-border-weak bg-kapwa-bg-surface inline-flex items-center gap-2 rounded-full border px-4 py-2 shadow-sm'>
-          <ShieldCheck className='h-4 w-4 text-kapwa-text-success' />
-          <span className='text-kapwa-text-disabled text-[10px] font-bold tracking-widest uppercase'>
+        <div className='border-tsinelas-border-weak bg-tsinelas-bg-surface inline-flex items-center gap-2 rounded-full border px-4 py-2 shadow-sm'>
+          <ShieldCheck className='h-4 w-4 text-tsinelas-text-success' />
+          <span className='text-tsinelas-text-disabled text-[10px] font-bold tracking-widest uppercase'>
             Source: LGU SRE via BLGF and Full Disclosure Policy Portal
           </span>
         </div>

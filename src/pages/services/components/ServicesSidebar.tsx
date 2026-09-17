@@ -48,17 +48,17 @@ export default function ServicesSidebar({
           />
         ))}
       </SidebarContainer>
-      <div className='p-5 mt-8 space-y-4 rounded-2xl border-2 shadow-sm border-kapwa-orange-100 bg-kapwa-bg-accent-orange-weak/30'>
+      <div className='p-5 mt-8 space-y-4 rounded-2xl border-2 shadow-sm border-tsinelas-orange-100 bg-tsinelas-bg-accent-orange-weak/30'>
         <div className='flex gap-3 items-center'>
-          <div className='p-2 rounded-lg bg-kapwa-bg-accent-orange-weak text-kapwa-text-accent-orange'>
+          <div className='p-2 rounded-lg bg-tsinelas-bg-accent-orange-weak text-tsinelas-text-accent-orange'>
             <PlusCircle className='w-5 h-5' />
           </div>
-          <h4 className='text-sm font-bold leading-tight text-kapwa-text-strong'>
+          <h4 className='text-sm font-bold leading-tight text-tsinelas-text-strong'>
             Missing a service?
           </h4>
         </div>
 
-        <p className='text-xs leading-relaxed text-kapwa-text-on-disabled'>
+        <p className='text-xs leading-relaxed text-tsinelas-text-on-disabled'>
           Better LB is community-maintained. Help your fellow citizens by
           suggesting a new service directory.
         </p>
@@ -67,7 +67,7 @@ export default function ServicesSidebar({
           href={`${config.portal.githubUrl}/issues/new?template=contribution.yml`}
           target='_blank'
           rel='noopener noreferrer'
-          className='bg-kapwa-bg-accent-orange-default hover:bg-kapwa-orange-700 shadow-md text-kapwa-text-inverse flex min-h-[44px] w-full items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-xs font-bold transition-all'
+          className='bg-tsinelas-bg-accent-orange-default hover:bg-tsinelas-orange-700 shadow-md text-tsinelas-text-inverse flex min-h-[44px] w-full items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-xs font-bold transition-all'
         >
           Suggest New Service
         </a>

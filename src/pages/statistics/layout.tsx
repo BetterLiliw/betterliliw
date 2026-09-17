@@ -8,7 +8,7 @@ import { lguLabels } from '@/lib/lguLabels';
 
 export default function StatisticsLayout() {
   return (
-    <div className='min-h-screen bg-kapwa-bg-surface'>
+    <div className='min-h-screen bg-tsinelas-bg-surface'>
       <PageHeader
         variant='centered'
         title={`${lguLabels.adjective} Statistics`}

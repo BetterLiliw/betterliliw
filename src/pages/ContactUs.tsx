@@ -26,7 +26,7 @@ const ContactUs: FC = () => {
         'Send us an email for general inquiries and collaboration opportunities',
       contact: config.portal.contactEmail,
       action: `mailto:${config.portal.contactEmail}`,
-      color: 'bg-kapwa-bg-brand-weak text-kapwa-text-brand',
+      color: 'bg-tsinelas-bg-brand-weak text-tsinelas-text-brand',
     },
     {
       icon: <MessageCircleIcon className='h-8 w-8' />,
@@ -35,7 +35,7 @@ const ContactUs: FC = () => {
         'Join our volunteer community for real-time discussions and support',
       contact: 'Discord',
       action: config.portal.discordUrl,
-      color: 'bg-kapwa-bg-brand-weak text-kapwa-text-brand',
+      color: 'bg-tsinelas-bg-brand-weak text-tsinelas-text-brand',
     },
     {
       icon: <UsersIcon className='h-8 w-8' />,
@@ -43,7 +43,7 @@ const ContactUs: FC = () => {
       description: 'Help us build better digital services for Filipinos',
       contact: 'Become a Volunteer',
       action: '/join-us',
-      color: 'bg-kapwa-bg-brand-weak text-kapwa-text-brand',
+      color: 'bg-tsinelas-bg-brand-weak text-tsinelas-text-brand',
     },
     {
       icon: <GlobeIcon className='h-8 w-8' />,
@@ -51,7 +51,7 @@ const ContactUs: FC = () => {
       description: 'Found a bug or have a suggestion? Open an issue on GitHub',
       contact: 'GitHub Issues',
       action: `${config.portal.githubUrl}/issues`,
-      color: 'bg-kapwa-bg-brand-weak text-kapwa-text-brand',
+      color: 'bg-tsinelas-bg-brand-weak text-tsinelas-text-brand',
     },
   ];
 
@@ -91,7 +91,7 @@ const ContactUs: FC = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   return (
-    <div className='bg-kapwa-bg-surface-raised min-h-screen'>
+    <div className='bg-tsinelas-bg-surface-raised min-h-screen'>
       <SEO
         title='Contact Us'
         description='Get in touch with our volunteers, report issues, or join our community.'
@@ -100,17 +100,17 @@ const ContactUs: FC = () => {
 
       <div className='container mx-auto px-4 py-8 md:py-12'>
         {/* Header Section */}
-        <div className='bg-kapwa-bg-surface border-kapwa-border-weak mt-4 rounded-lg border p-6 shadow-xs md:p-8 md:py-16'>
+        <div className='bg-tsinelas-bg-surface border-tsinelas-border-weak mt-4 rounded-lg border p-6 shadow-xs md:p-8 md:py-16'>
           <div className='mx-auto max-w-4xl text-center'>
             <div className='mb-6 flex justify-center'>
-              <div className='bg-kapwa-bg-info-weak rounded-full p-4'>
-                <HeartHandshakeIcon className='text-kapwa-text-info h-12 w-12' />
+              <div className='bg-tsinelas-bg-info-weak rounded-full p-4'>
+                <HeartHandshakeIcon className='text-tsinelas-text-info h-12 w-12' />
               </div>
             </div>
-            <h1 className='text-kapwa-text-strong kapwa-heading-xl font-extrabold'>
+            <h1 className='text-tsinelas-text-strong tsinelas-heading-xl font-extrabold'>
               Connect with Us
             </h1>
-            <p className='text-kapwa-text-support mx-auto mb-8 max-w-3xl text-lg md:text-xl'>
+            <p className='text-tsinelas-text-support mx-auto mb-8 max-w-3xl text-lg md:text-xl'>
               We&apos;re a passionate community of volunteers, developers, and
               designers dedicated to improving digital public services in the
               Philippines. Whether you have a question, a suggestion, or want to
@@ -124,15 +124,15 @@ const ContactUs: FC = () => {
           {contactMethods.map((method, index) => (
             <div
               key={index}
-              className='bg-kapwa-bg-surface border-kapwa-border-weak rounded-lg border p-6 shadow-xs transition-shadow hover:shadow-md'
+              className='bg-tsinelas-bg-surface border-tsinelas-border-weak rounded-lg border p-6 shadow-xs transition-shadow hover:shadow-md'
             >
               <div className={`${method.color} mb-4 w-fit rounded-lg p-3`}>
                 {method.icon}
               </div>
-              <h3 className='text-kapwa-text-strong mb-2 text-lg font-semibold'>
+              <h3 className='text-tsinelas-text-strong mb-2 text-lg font-semibold'>
                 {method.title}
               </h3>
-              <p className='text-kapwa-text-support mb-4 text-sm'>
+              <p className='text-tsinelas-text-support mb-4 text-sm'>
                 {method.description}
               </p>
               <Button
@@ -154,13 +154,13 @@ const ContactUs: FC = () => {
         </div>
 
         {/* FAQ Section */}
-        <div className='bg-kapwa-bg-surface mt-8 rounded-lg border p-6 shadow-xs md:p-8'>
+        <div className='bg-tsinelas-bg-surface mt-8 rounded-lg border p-6 shadow-xs md:p-8'>
           <div className='mx-auto max-w-4xl'>
             <div className='mb-8 text-center'>
-              <h2 className='text-kapwa-text-strong mb-4 kapwa-heading-lg font-bold'>
+              <h2 className='text-tsinelas-text-strong mb-4 tsinelas-heading-lg font-bold'>
                 Frequently Asked Questions
               </h2>
-              <p className='text-kapwa-text-support'>
+              <p className='text-tsinelas-text-support'>
                 Find answers to common questions about BetterGov
               </p>
             </div>
@@ -172,17 +172,17 @@ const ContactUs: FC = () => {
                     onClick={() => setOpenFaq(openFaq === index ? null : index)}
                     className='flex w-full items-center justify-between p-4 text-left'
                   >
-                    <h3 className='text-kapwa-text-support flex-1 font-semibold'>
+                    <h3 className='text-tsinelas-text-support flex-1 font-semibold'>
                       {faq.question}
                     </h3>
                     {openFaq === index ? (
-                      <ChevronUpIcon className='text-kapwa-text-disabled h-5 w-5' />
+                      <ChevronUpIcon className='text-tsinelas-text-disabled h-5 w-5' />
                     ) : (
-                      <ChevronDownIcon className='text-kapwa-text-disabled h-5 w-5' />
+                      <ChevronDownIcon className='text-tsinelas-text-disabled h-5 w-5' />
                     )}
                   </button>
                   {openFaq === index && (
-                    <div className='text-kapwa-text-support p-4 pt-0 text-sm leading-relaxed'>
+                    <div className='text-tsinelas-text-support p-4 pt-0 text-sm leading-relaxed'>
                       <p>
                         {faq.answer}
                         {faq.link && (
@@ -190,7 +190,7 @@ const ContactUs: FC = () => {
                             {' '}
                             <Link
                               to={faq.link.href}
-                              className='text-kapwa-text-info font-medium hover:text-kapwa-text-link-hover'
+                              className='text-tsinelas-text-info font-medium hover:text-tsinelas-text-link-hover'
                               target={
                                 faq.link.href.startsWith('http')
                                   ? '_blank'
@@ -217,17 +217,17 @@ const ContactUs: FC = () => {
         </div>
 
         {/* Call to Action */}
-        <div className='from-kapwa-brand-600 to-kapwa-purple-600 bg-linear-to-r mt-8 rounded-lg p-8 text-center'>
-          <h3 className='text-kapwa-text-inverse mb-4 kapwa-heading-md font-bold'>
+        <div className='from-tsinelas-brand-600 to-tsinelas-purple-600 bg-linear-to-r mt-8 rounded-lg p-8 text-center'>
+          <h3 className='text-tsinelas-text-inverse mb-4 tsinelas-heading-md font-bold'>
             Ready to Make a Difference?
           </h3>
-          <p className='text-kapwa-text-inverse/80 mx-auto mb-6 max-w-2xl'>
+          <p className='text-tsinelas-text-inverse/80 mx-auto mb-6 max-w-2xl'>
             Join our community of volunteers building better digital services
             for the Philippines.
           </p>
           <Link
             to='/join-us'
-            className='bg-kapwa-bg-surface text-kapwa-text-info hover:bg-kapwa-bg-surface-raised inline-flex items-center rounded-lg px-6 py-3 font-semibold transition-colors'
+            className='bg-tsinelas-bg-surface text-tsinelas-text-info hover:bg-tsinelas-bg-surface-raised inline-flex items-center rounded-lg px-6 py-3 font-semibold transition-colors'
           >
             Become a Volunteer
             <ArrowRightIcon className='ml-2 h-5 w-5' />

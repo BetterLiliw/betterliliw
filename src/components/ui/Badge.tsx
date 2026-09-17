@@ -30,33 +30,33 @@ export function Badge({
   dot = false,
   ...props
 }: BadgeProps) {
-  // High-contrast color mapping using Kapwa semantic tokens (WCAG 2.1 Level AA Compliant)
+  // High-contrast color mapping using Tsinelas semantic tokens (WCAG 2.1 Level AA Compliant)
   const variants = {
     primary:
-      'bg-kapwa-bg-brand-weak text-kapwa-text-brand border-kapwa-border-brand',
+      'bg-tsinelas-bg-brand-weak text-tsinelas-text-brand border-tsinelas-border-brand',
     secondary:
-      'bg-kapwa-bg-accent-orange-weak text-kapwa-text-accent-orange border-kapwa-border-warning',
-    yellow: 'bg-kapwa-yellow-50 text-kapwa-yellow-700 border-kapwa-yellow-600',
+      'bg-tsinelas-bg-accent-orange-weak text-tsinelas-text-accent-orange border-tsinelas-border-warning',
+    yellow: 'bg-tsinelas-yellow-50 text-tsinelas-yellow-700 border-tsinelas-yellow-600',
     success:
-      'bg-kapwa-bg-success-weak text-kapwa-text-success border-kapwa-border-success',
+      'bg-tsinelas-bg-success-weak text-tsinelas-text-success border-tsinelas-border-success',
     warning:
-      'bg-kapwa-bg-warning-weak text-kapwa-text-warning border-kapwa-border-warning',
+      'bg-tsinelas-bg-warning-weak text-tsinelas-text-warning border-tsinelas-border-warning',
     error:
-      'bg-kapwa-bg-danger-weak text-kapwa-text-danger border-kapwa-border-danger',
+      'bg-tsinelas-bg-danger-weak text-tsinelas-text-danger border-tsinelas-border-danger',
     slate:
-      'bg-kapwa-bg-surface-raised text-kapwa-text-support border-kapwa-border-weak',
-    outline: 'bg-transparent text-kapwa-text-support border-kapwa-border-weak',
+      'bg-tsinelas-bg-surface-raised text-tsinelas-text-support border-tsinelas-border-weak',
+    outline: 'bg-transparent text-tsinelas-text-support border-tsinelas-border-weak',
   };
 
   const dotColors = {
-    primary: 'bg-kapwa-bg-brand-default',
-    secondary: 'bg-kapwa-bg-accent-orange-default',
-    yellow: 'bg-kapwa-yellow-600',
-    success: 'bg-kapwa-bg-success-default',
-    warning: 'bg-kapwa-bg-warning-default',
-    error: 'bg-kapwa-bg-danger-default',
-    slate: 'bg-kapwa-bg-surface-raised',
-    outline: 'bg-kapwa-bg-surface-raised',
+    primary: 'bg-tsinelas-bg-brand-default',
+    secondary: 'bg-tsinelas-bg-accent-orange-default',
+    yellow: 'bg-tsinelas-yellow-600',
+    success: 'bg-tsinelas-bg-success-default',
+    warning: 'bg-tsinelas-bg-warning-default',
+    error: 'bg-tsinelas-bg-danger-default',
+    slate: 'bg-tsinelas-bg-surface-raised',
+    outline: 'bg-tsinelas-bg-surface-raised',
   };
 
   return (

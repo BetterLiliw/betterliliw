@@ -67,12 +67,12 @@ export default function ServiceCard({ service }: ServiceCardProps) {
     >
       <Card
         hover
-        className='border-kapwa-border-weak flex h-full flex-col shadow-sm'
+        className='border-tsinelas-border-weak flex h-full flex-col shadow-sm'
       >
         <CardContent className='flex h-full flex-col p-6'>
           {/* Icon & Status Badges */}
           <div className='mb-4 flex items-start justify-between gap-2'>
-            <div className='bg-kapwa-bg-surface text-kapwa-text-brand border-kapwa-border-brand rounded-xl border p-2.5 shadow-xs'>
+            <div className='bg-tsinelas-bg-surface text-tsinelas-text-brand border-tsinelas-border-brand rounded-xl border p-2.5 shadow-xs'>
               <CategoryIcon className='h-5 w-5' />
             </div>
             <div className='flex flex-wrap items-center justify-end gap-1.5'>
@@ -96,7 +96,7 @@ export default function ServiceCard({ service }: ServiceCardProps) {
           {/* Service Number (for Citizens Charter services) */}
           {service.serviceNumber && (
             <div className='mb-2'>
-              <span className='text-kapwa-text-disabled text-[10px] font-bold tracking-widest uppercase'>
+              <span className='text-tsinelas-text-disabled text-[10px] font-bold tracking-widest uppercase'>
                 Service No. {service.serviceNumber}
               </span>
             </div>
@@ -104,47 +104,47 @@ export default function ServiceCard({ service }: ServiceCardProps) {
 
           {/* Title & Category Label */}
           <div className='flex-1'>
-            <h3 className='group-hover:text-kapwa-text-brand text-kapwa-text-strong mb-1 leading-snug font-bold transition-colors'>
+            <h3 className='group-hover:text-tsinelas-text-brand text-tsinelas-text-strong mb-1 leading-snug font-bold transition-colors'>
               {service.plainLanguageName || service.service}
             </h3>
-            <p className='text-kapwa-text-disabled text-[10px] font-bold tracking-widest uppercase'>
+            <p className='text-tsinelas-text-disabled text-[10px] font-bold tracking-widest uppercase'>
               {service.category.name}
             </p>
             {/* Office Division (for Citizens Charter services) */}
             {service.officeDivision && (
-              <p className='text-kapwa-text-support mt-1 text-[11px] font-medium leading-tight'>
+              <p className='text-tsinelas-text-support mt-1 text-[11px] font-medium leading-tight'>
                 {service.officeDivision}
               </p>
             )}
           </div>
 
           {/* Footer Row */}
-          <div className='mt-6 flex items-center justify-between border-t border-kapwa-border-weak pt-4'>
+          <div className='mt-6 flex items-center justify-between border-t border-tsinelas-border-weak pt-4'>
             {/* Verification / Data Status */}
             <div className='flex items-center gap-1.5 text-[10px] font-bold tracking-widest uppercase'>
               {needsVerification ? (
                 <>
-                  <AlertCircle className='h-3 w-3 text-kapwa-text-warning' />
-                  <span className='text-kapwa-text-warning'>
+                  <AlertCircle className='h-3 w-3 text-tsinelas-text-warning' />
+                  <span className='text-tsinelas-text-warning'>
                     Pending Verification
                   </span>
                 </>
               ) : hasValidDate ? (
                 <>
-                  <ClockIcon className='h-3 w-3 text-kapwa-text-success' />
-                  <span className='text-kapwa-text-strong0'>
+                  <ClockIcon className='h-3 w-3 text-tsinelas-text-success' />
+                  <span className='text-tsinelas-text-strong'>
                     {format(new Date(service.updatedAt!), 'MMM yyyy')}
                   </span>
                 </>
               ) : isOfficialSource ? (
                 <>
-                  <ShieldCheck className='h-3 w-3 text-kapwa-text-success' />
-                  <span className='text-kapwa-text-success'>Official Data</span>
+                  <ShieldCheck className='h-3 w-3 text-tsinelas-text-success' />
+                  <span className='text-tsinelas-text-success'>Official Data</span>
                 </>
               ) : (
                 <>
-                  <span className='bg-kapwa-bg-disabled h-1.5 w-1.5 shrink-0 rounded-full' />
-                  <span className='text-kapwa-text-inverse-subtle italic'>
+                  <span className='bg-tsinelas-bg-disabled h-1.5 w-1.5 shrink-0 rounded-full' />
+                  <span className='text-tsinelas-text-inverse-subtle italic'>
                     Unverified
                   </span>
                 </>
@@ -152,14 +152,14 @@ export default function ServiceCard({ service }: ServiceCardProps) {
             </div>
 
             {/* View Link */}
-            <span className='text-kapwa-text-brand flex items-center gap-1 text-xs font-bold transition-transform group-hover:translate-x-1'>
+            <span className='text-tsinelas-text-brand flex items-center gap-1 text-xs font-bold transition-transform group-hover:translate-x-1'>
               View <ArrowRightIcon className='h-3 w-3' />
             </span>
           </div>
 
           {/* Classification Badge (for Citizens Charter services) */}
           {service.classification && (
-            <div className='mt-3 border-t border-kapwa-border-weak pt-3'>
+            <div className='mt-3 border-t border-tsinelas-border-weak pt-3'>
               <Badge variant='outline' className='text-[9px]'>
                 {service.classification} Transaction
               </Badge>

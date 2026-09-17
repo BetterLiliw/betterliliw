@@ -9,21 +9,21 @@ const PromotionBanner: FC = () => {
   const { t } = useTranslation('common');
 
   return (
-    <section className='bg-kapwa-bg-accent-yellow-weak text-kapwa-text-inverse py-12'>
+    <section className='bg-tsinelas-bg-accent-yellow-weak text-tsinelas-text-inverse py-12'>
       <div className='container mx-auto px-4'>
         <div className='items-center justify-between md:flex'>
           <div>
-            <h2 className='mb-2 kapwa-heading-lg font-bold'>
+            <h2 className='mb-2 tsinelas-heading-lg font-bold'>
               {t('promotion.philsysTitle')}
             </h2>
-            <p className='text-kapwa-text-inverse/90 mb-6 max-w-xl md:mb-0'>
+            <p className='text-tsinelas-text-inverse/90 mb-6 max-w-xl md:mb-0'>
               {t('promotion.philsysDescription')}
             </p>
           </div>
           <div>
             <Link to='https://philsys.gov.ph/registration-process'>
               <Button
-                className='text-kapwa-text-accent-yellow bg-kapwa-bg-surface hover:bg-kapwa-bg-hover cursor-pointer px-8 py-3 text-lg shadow-lg'
+                className='text-tsinelas-text-accent-yellow bg-tsinelas-bg-surface hover:bg-tsinelas-bg-hover cursor-pointer px-8 py-3 text-lg shadow-lg'
                 size='lg'
               >
                 {t('promotion.registerNow')}

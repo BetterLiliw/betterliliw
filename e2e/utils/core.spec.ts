@@ -6,7 +6,7 @@ test.describe('Better LB Sanity Suite', () => {
   test('should pass WCAG 2.1 Level AA checks', async ({ page }) => {
     test.fixme(
       true,
-      'axe reports real violations: nested/duplicate <main> landmarks, duplicate skip links, aria-required-children, and colour contrast in Kapwa components'
+      'axe reports real violations: nested/duplicate <main> landmarks, duplicate skip links, aria-required-children, and colour contrast in Tsinelas components'
     );
     await page.goto('/');
     const results = await new AxeBuilder({ page }).analyze();

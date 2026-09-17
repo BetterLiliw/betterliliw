@@ -55,7 +55,7 @@ export default function GovernmentRootLayout() {
         description={`Access information on elected leaders, ${lguLabels.adjective.toLowerCase()} departments, and the 14 component barangays of ${lguLabels.name}.`}
       />
 
-      <SectionBlock className='pb-kapwa-xs md:pb-kapwa-sm'>
+      <SectionBlock className='pb-tsinelas-xs md:pb-tsinelas-sm'>
         <div className='grid grid-cols-1 gap-4 md:grid-cols-3'>
           {branches.map(branch => {
             const isActive = currentPath.includes(branch.path);
@@ -68,8 +68,8 @@ export default function GovernmentRootLayout() {
                 className={cn(
                   'group relative flex min-h-[160px] flex-col justify-between rounded-2xl border-2 p-6 transition-all duration-300',
                   isActive
-                    ? 'bg-kapwa-bg-brand-default border-kapwa-border-brand shadow-lg text-kapwa-text-inverse'
-                    : 'hover:border-kapwa-border-brand border-kapwa-border-weak bg-kapwa-bg-surface text-kapwa-text-strong shadow-sm hover:shadow-md'
+                    ? 'bg-tsinelas-bg-brand-default border-tsinelas-border-brand shadow-lg text-tsinelas-text-inverse'
+                    : 'hover:border-tsinelas-border-brand border-tsinelas-border-weak bg-tsinelas-bg-surface text-tsinelas-text-strong shadow-sm hover:shadow-md'
                 )}
                 state={{ scrollToContent: true }}
               >
@@ -79,8 +79,8 @@ export default function GovernmentRootLayout() {
                       className={cn(
                         'rounded-xl p-2.5 shadow-sm transition-colors',
                         isActive
-                          ? 'bg-kapwa-bg-surface/20 text-kapwa-text-inverse'
-                          : 'bg-kapwa-bg-surface-brand-weak text-kapwa-text-brand border-kapwa-border-brand'
+                          ? 'bg-tsinelas-bg-surface/20 text-tsinelas-text-inverse'
+                          : 'bg-tsinelas-bg-surface-brand-weak text-tsinelas-text-brand border-tsinelas-border-brand'
                       )}
                     >
                       <Icon className='h-5 w-5' />
@@ -89,8 +89,8 @@ export default function GovernmentRootLayout() {
                       className={cn(
                         'text-[10px] font-bold tracking-[0.2em] uppercase',
                         isActive
-                          ? 'text-kapwa-text-inverse'
-                          : 'text-kapwa-text-disabled'
+                          ? 'text-tsinelas-text-inverse'
+                          : 'text-tsinelas-text-disabled'
                       )}
                     >
                       {branch.category}
@@ -101,8 +101,8 @@ export default function GovernmentRootLayout() {
                     className={cn(
                       'text-xl leading-tight font-extrabold tracking-tight',
                       isActive
-                        ? 'text-kapwa-text-inverse'
-                        : 'text-kapwa-text-strong'
+                        ? 'text-tsinelas-text-inverse'
+                        : 'text-tsinelas-text-strong'
                     )}
                   >
                     {branch.title}
@@ -114,8 +114,8 @@ export default function GovernmentRootLayout() {
                     className={cn(
                       'line-clamp-2 pr-6 text-xs leading-relaxed font-medium',
                       isActive
-                        ? 'text-kapwa-text-inverse'
-                        : 'text-kapwa-text-support'
+                        ? 'text-tsinelas-text-inverse'
+                        : 'text-tsinelas-text-support'
                     )}
                   >
                     {branch.description}
@@ -124,8 +124,8 @@ export default function GovernmentRootLayout() {
                     className={cn(
                       'h-5 w-5 shrink-0 transition-transform group-hover:translate-x-1',
                       isActive
-                        ? 'text-kapwa-text-inverse'
-                        : 'text-kapwa-text-support'
+                        ? 'text-tsinelas-text-inverse'
+                        : 'text-tsinelas-text-support'
                     )}
                   />
                 </div>

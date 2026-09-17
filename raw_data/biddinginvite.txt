@@ -233,10 +233,10 @@
                             <td style="width: 10%; text-align: center;"><a class="button" href="public/storage/bidinvitations/requirements/CHECKLIST OF  REQUIREMENTS  GOODS_1647220107.pdf" download=""><i class="fa fa-download"></i>&nbsp;PDF File/Download</a></td>
             </tr><tr role="row" class="even">
               <td style="width: 15%" class="sorting_1"><a>8495032</a></td>
-              <td style="width: 30%">Supply and Delivery of Rice for Damayan sa Kapwa Laban sa COVID-19, Los Baños, Laguna</td>
+              <td style="width: 30%">Supply and Delivery of Rice for Damayan sa Tsinelas Laban sa COVID-19, Los Baños, Laguna</td>
               <td style="width: 15%">918,000.00</td>
               <td style="width: 10%; text-align: center;"><a class="button" href="public/storage/bidinvitations/invitation_file/22-GOODS-05_1647916893.pdf" download=""><i class="fa fa-download"></i>&nbsp;PDF File/Download</a></td>
-                            <td style="width: 10%"><a class="button" href="public/storage/bidinvitations/bid_docs/22-GOODS-05-SUPPLY AND DELIVERY OF RICE FOR DAMAYAN SA KAPWA LABAN SA COVID -19 , LOS BANOS, LAGUNA_1647916893.pdf" download=""><i class="fa fa-download"></i>&nbsp;PDF File/Download</a></td>
+                            <td style="width: 10%"><a class="button" href="public/storage/bidinvitations/bid_docs/22-GOODS-05-SUPPLY AND DELIVERY OF RICE FOR DAMAYAN SA TSINELAS LABAN SA COVID -19 , LOS BANOS, LAGUNA_1647916893.pdf" download=""><i class="fa fa-download"></i>&nbsp;PDF File/Download</a></td>
                             <td style="width: 10%; text-align: center;"><a class="button" href="public/storage/bidinvitations/requirements/CHECKLIST OF  REQUIREMENTS  GOODS_1647220107_1647916893.pdf" download=""><i class="fa fa-download"></i>&nbsp;PDF File/Download</a></td>
             </tr><tr role="row" class="odd">
               <td style="width: 15%" class="sorting_1"><a>8542595</a></td>

@@ -92,7 +92,7 @@ export default function MunicipalCommitteesPage() {
       <div className='flex items-center gap-1.5'>
         <Link
           to='/government/elected-officials'
-          className='text-kapwa-text-brand hover:text-kapwa-text-brand-bold flex items-center gap-1 text-[11px] font-bold tracking-widest uppercase transition-colors'
+          className='text-tsinelas-text-brand hover:text-tsinelas-text-brand-bold flex items-center gap-1 text-[11px] font-bold tracking-widest uppercase transition-colors'
         >
           <ChevronLeft className='h-3.5 w-3.5' />
           All Officials
@@ -111,34 +111,34 @@ export default function MunicipalCommitteesPage() {
             <Card
               key={index}
               hover
-              className='border-kapwa-border-weak flex h-full flex-col shadow-xs'
+              className='border-tsinelas-border-weak flex h-full flex-col shadow-xs'
             >
               <CardContent className='flex h-full flex-col space-y-4 p-4'>
                 {/* Top Row: Icon & Title */}
                 <div className='flex items-start gap-3'>
-                  <div className='bg-kapwa-bg-accent-orange-weak text-kapwa-text-accent-orange border-kapwa-border-weak shrink-0 rounded-lg border p-2 shadow-sm'>
+                  <div className='bg-tsinelas-bg-accent-orange-weak text-tsinelas-text-accent-orange border-tsinelas-border-weak shrink-0 rounded-lg border p-2 shadow-sm'>
                     <BookOpenIcon className='h-5 w-5' />
                   </div>
                   <div className='min-w-0 flex-1'>
-                    <h3 className='text-kapwa-text-strong text-base font-bold leading-tight'>
+                    <h3 className='text-tsinelas-text-strong text-base font-bold leading-tight'>
                       {toTitleCase(committee.committee)}
                     </h3>
-                    <p className='text-kapwa-text-disabled mt-0.5 text-[10px] font-bold tracking-widest uppercase'>
+                    <p className='text-tsinelas-text-disabled mt-0.5 text-[10px] font-bold tracking-widest uppercase'>
                       Standing Committee
                     </p>
                   </div>
                 </div>
 
                 {/* Chairperson Highlight Box */}
-                <div className='border-kapwa-border-weak bg-kapwa-bg-surface-raised/50 flex items-center gap-2 rounded-xl border px-3 py-2.5'>
-                  <div className='border-kapwa-border-weak bg-kapwa-bg-surface text-kapwa-text-disabled shrink-0 rounded-full border p-1 shadow-sm'>
+                <div className='border-tsinelas-border-weak bg-tsinelas-bg-surface-raised/50 flex items-center gap-2 rounded-xl border px-3 py-2.5'>
+                  <div className='border-tsinelas-border-weak bg-tsinelas-bg-surface text-tsinelas-text-disabled shrink-0 rounded-full border p-1 shadow-sm'>
                     <User2 className='h-3.5 w-3.5' />
                   </div>
                   <div className='min-w-0'>
-                    <p className='text-kapwa-text-disabled mb-0.5 text-[9px] font-bold tracking-tighter uppercase'>
+                    <p className='text-tsinelas-text-disabled mb-0.5 text-[9px] font-bold tracking-tighter uppercase'>
                       Chairperson
                     </p>
-                    <p className='text-kapwa-text-strong truncate text-xs font-bold leading-tight'>
+                    <p className='text-tsinelas-text-strong truncate text-xs font-bold leading-tight'>
                       {toTitleCase(committee.chairperson)}
                     </p>
                   </div>
@@ -146,10 +146,10 @@ export default function MunicipalCommitteesPage() {
 
                 {/* Member List */}
                 {committee.members && committee.members.length > 0 && (
-                  <div className='border-kapwa-border-weak border-t pt-2'>
+                  <div className='border-tsinelas-border-weak border-t pt-2'>
                     <div className='mb-2.5 flex items-center gap-1.5'>
-                      <UsersIcon className='text-kapwa-text-accent-orange h-3 w-3' />
-                      <p className='text-kapwa-text-disabled text-[9px] font-bold tracking-widest uppercase'>
+                      <UsersIcon className='text-tsinelas-text-accent-orange h-3 w-3' />
+                      <p className='text-tsinelas-text-disabled text-[9px] font-bold tracking-widest uppercase'>
                         Members ({committee.members.length})
                       </p>
                     </div>
@@ -159,11 +159,11 @@ export default function MunicipalCommitteesPage() {
                           key={i}
                           className='flex items-center justify-between gap-2'
                         >
-                          <p className='text-kapwa-text-support truncate text-[11px] font-medium'>
+                          <p className='text-tsinelas-text-support truncate text-[11px] font-medium'>
                             {toTitleCase(member.name)}
                           </p>
                           {member.role && (
-                            <span className='text-kapwa-text-disabled bg-kapwa-bg-surface-raised shrink-0 rounded px-1.5 py-0.5 text-[9px] font-bold uppercase'>
+                            <span className='text-tsinelas-text-disabled bg-tsinelas-bg-surface-raised shrink-0 rounded px-1.5 py-0.5 text-[9px] font-bold uppercase'>
                               {member.role}
                             </span>
                           )}
@@ -180,7 +180,7 @@ export default function MunicipalCommitteesPage() {
 
       {/* Summary footer */}
       {filteredCommittees.length > 0 && (
-        <p className='text-kapwa-text-disabled text-center text-xs'>
+        <p className='text-tsinelas-text-disabled text-center text-xs'>
           Showing {filteredCommittees.length} of {committees.length} committees
         </p>
       )}

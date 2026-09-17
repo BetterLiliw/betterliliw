@@ -1,5 +1,5 @@
 import { test, expect } from '../test-config';
-import { assertKapwaTokens } from '../utils/kapwa';
+import { assertTsinelasTokens } from '../utils/tsinelas';
 
 test.describe('Procurement Transparency Page', () => {
   test.beforeEach(async ({ page }) => {
@@ -7,7 +7,7 @@ test.describe('Procurement Transparency Page', () => {
     await page.goto('/transparency/procurement');
   });
 
-  test('procurement page uses Kapwa semantic tokens', async ({ page }) => {
+  test('procurement page uses Tsinelas semantic tokens', async ({ page }) => {
     // Check page title is visible
     // The module layout owns the h1; the page title is the h2 beneath it
     await expect(
@@ -17,8 +17,8 @@ test.describe('Procurement Transparency Page', () => {
         .first()
     ).toBeVisible();
 
-    // Verify Kapwa semantic tokens are used
-    await assertKapwaTokens(page);
+    // Verify Tsinelas semantic tokens are used
+    await assertTsinelasTokens(page);
   });
 
   test('procurement page displays stats cards', async ({ page }) => {

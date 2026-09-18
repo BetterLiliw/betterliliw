@@ -21,6 +21,8 @@ interface BadgeProps extends Omit<
   variant?: BadgeVariant;
   className?: string;
   dot?: boolean; // Accessibility: Adds a visual shape indicator alongside color
+  /** Carbon tag sizes: md 24px (default), sm 18px. */
+  size?: 'sm' | 'md';
 }
 
 export function Badge({
@@ -28,43 +30,41 @@ export function Badge({
   variant = 'primary',
   className,
   dot = false,
+  size = 'md',
   ...props
 }: BadgeProps) {
-  // High-contrast color mapping using Tsinelas semantic tokens (WCAG 2.1 Level AA Compliant)
+  // Carbon tag pairs: a tinted fill with a deep text of the same hue, no
+  // border. Every pair clears 4.5:1 (WCAG 2.1 AA).
   const variants = {
-    primary:
-      'bg-tsinelas-bg-brand-weak text-tsinelas-text-brand border-tsinelas-border-brand',
-    secondary:
-      'bg-tsinelas-bg-accent-orange-weak text-tsinelas-text-accent-orange border-tsinelas-border-warning',
-    yellow: 'bg-tsinelas-yellow-50 text-tsinelas-yellow-700 border-tsinelas-yellow-600',
-    success:
-      'bg-tsinelas-bg-success-weak text-tsinelas-text-success border-tsinelas-border-success',
-    warning:
-      'bg-tsinelas-bg-warning-weak text-tsinelas-text-warning border-tsinelas-border-warning',
-    error:
-      'bg-tsinelas-bg-danger-weak text-tsinelas-text-danger border-tsinelas-border-danger',
-    slate:
-      'bg-tsinelas-bg-surface-raised text-tsinelas-text-support border-tsinelas-border-weak',
-    outline: 'bg-transparent text-tsinelas-text-support border-tsinelas-border-weak',
+    primary: 'bg-tsinelas-tag-background-navy text-tsinelas-tag-color-navy',
+    secondary: 'bg-tsinelas-tag-background-gold text-tsinelas-tag-color-gold',
+    yellow: 'bg-tsinelas-tag-background-yellow text-tsinelas-tag-color-yellow',
+    success: 'bg-tsinelas-tag-background-green text-tsinelas-tag-color-green',
+    warning: 'bg-tsinelas-tag-background-gold text-tsinelas-tag-color-gold',
+    error: 'bg-tsinelas-tag-background-red text-tsinelas-tag-color-red',
+    slate: 'bg-tsinelas-tag-background-gray text-tsinelas-tag-color-gray',
+    outline:
+      'bg-transparent text-tsinelas-text-secondary shadow-[inset_0_0_0_1px_var(--color-tsinelas-border-subtle-01)]',
   };
 
   const dotColors = {
-    primary: 'bg-tsinelas-bg-brand-default',
-    secondary: 'bg-tsinelas-bg-accent-orange-default',
-    yellow: 'bg-tsinelas-yellow-600',
-    success: 'bg-tsinelas-bg-success-default',
-    warning: 'bg-tsinelas-bg-warning-default',
-    error: 'bg-tsinelas-bg-danger-default',
-    slate: 'bg-tsinelas-bg-surface-raised',
-    outline: 'bg-tsinelas-bg-surface-raised',
+    primary: 'bg-tsinelas-tag-color-navy',
+    secondary: 'bg-tsinelas-tag-color-gold',
+    yellow: 'bg-tsinelas-tag-color-yellow',
+    success: 'bg-tsinelas-tag-color-green',
+    warning: 'bg-tsinelas-tag-color-gold',
+    error: 'bg-tsinelas-tag-color-red',
+    slate: 'bg-tsinelas-tag-color-gray',
+    outline: 'bg-tsinelas-icon-secondary',
   };
 
   return (
     <span
       {...props}
       className={cn(
-        // text-[10px] with font-bold ensures legibility while remaining compact
-        'inline-flex items-center gap-1.5 rounded-md border px-2 py-0.5 text-[10px] font-bold tracking-widest uppercase transition-all',
+        // Carbon tag anatomy: 24px pill, label-01 text, 8px side padding.
+        'inline-flex max-w-full items-center gap-tsinelas-02 rounded-full px-tsinelas-03 tsinelas-label-01 whitespace-nowrap',
+        size === 'sm' ? 'h-[1.125rem]' : 'h-tsinelas-container-01',
         variants[variant],
         className
       )}
@@ -72,7 +72,7 @@ export function Badge({
       {dot && (
         <span
           className={cn(
-            'h-1.5 w-1.5 shrink-0 rounded-full',
+            'size-tsinelas-03 shrink-0 rounded-full',
             dotColors[variant]
           )}
           aria-hidden='true'

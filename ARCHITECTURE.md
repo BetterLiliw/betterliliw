@@ -9,7 +9,7 @@ High-level architecture overview for developers working on BetterLB.
 ```
 ┌─────────────────────────────────────────────────────────────┐
 │                        Browser (Client)                     │
-│  React 19 SPA + Tailwind CSS v4 + @bettergov/kapwa        │
+│  React 19 SPA + Tailwind CSS v4 + Tsinelas (Carbon)      │
 └─────────────────────────────────────────────────────────────┘
                               │
                               ▼
@@ -59,26 +59,41 @@ App.tsx
 ## Design System
 
 ### Tsinelas Design Tokens
-Tsinelas is BetterLiliw's design system, defined in `src/styles/tsinelas.css`
-and built over `@bettergov/kapwa` (which stays installed as the engine). It
-implements the BetterLiliw Brand Guidelines (`public/BetterLiliw_Brand_Guidelines.pdf`):
+Tsinelas is BetterLiliw's design system, defined in `src/styles/tsinelas.css`.
+It is IBM's Carbon Design System wearing the BetterLiliw Brand Guidelines
+(`public/BetterLiliw_Brand_Guidelines.pdf`): Carbon supplies the architecture
+— token roles (`background`, `layer-0N`, `field-0N`, `border-subtle/strong`,
+`text-primary/secondary/helper`, `link-*`, `icon-*`, `support-*`, `focus`,
+`button-*`, `tag-*`), the spacing scale (`tsinelas-01`–`13`, `layout-01`–`07`,
+`container-01`–`05`), the type scale (`tsinelas-heading-01`–`07`,
+`tsinelas-body-01/02`, `tsinelas-label-01/02`, fluid display tokens), the
+motion tokens (`fast/moderate/slow-0N`, productive/expressive curves), the 2x
+grid breakpoints, sharp corners (every `rounded-*` resolves to 0; `rounded-full`
+stays for tags and avatars) and flat elevation — and the brand supplies every
+value:
 
-- **Type**: Poppins 600/700 for display and headings (`tsinelas-heading-*`,
-  `tsinelas-eyebrow`), Source Sans 3 400/600 for body and interface
-  (`tsinelas-body-*`, `tsinelas-label-*`). Sentence case for headings; all caps
-  only for small labels. Body never below 16px on mobile.
+- **Type**: Poppins 600/700 for headings and display, Source Sans 3 400/600
+  for body and interface. Carbon's light heading weight is not used. Sentence
+  case for headings; all caps only for `tsinelas-eyebrow`. Body never below
+  16px on mobile.
 - **Color**: Deep Navy `#1C3A5B` (brand), Sunrise Gold `#D28A22` (accent — a
   shape color, never text on white; use `text-tsinelas-text-warning` = `#9A6210`
   when gold text is unavoidable), Lake Teal `#306F8E` (links, tourism), Field
   Green `#305E51` (barangay, government, success), Sky Tint `#CEE2EE` (bands,
   callouts), plus four working neutrals.
-- **Rules**: one gold CTA per screen, gold buttons take navy labels, never white.
+- **Layers**: the page is `background`; a tile on it is `layer-01`; content
+  inside a tile is `layer-02`. Components use the contextual `bg-tsinelas-layer`
+  / `bg-tsinelas-field` / `border-tsinelas-border-subtle` tokens and the parent
+  declares the level with `.tsinelas-layer-02`.
+- **Rules**: one gold CTA per screen (`<Button variant="accent">`), gold
+  buttons take navy labels, never white. Focus is the 2px inset `tsinelas-focus`
+  ring.
 
 **Never use raw colors in components.** Always use semantic tokens:
 
 ```tsx
 // ✅ Correct
-<div className="bg-tsinelas-bg-surface text-tsinelas-text-strong">
+<div className="bg-tsinelas-layer-01 text-tsinelas-text-primary">
 
 // ❌ Wrong
 <div className="bg-blue-500 text-white">
@@ -86,9 +101,9 @@ implements the BetterLiliw Brand Guidelines (`public/BetterLiliw_Brand_Guideline
 
 ### Import Patterns
 ```tsx
-// Base components from Kapwa (@bettergov/kapwa), recolored by Tsinelas
-import { Button } from '@bettergov/kapwa/button';
-import { Input } from '@bettergov/kapwa/input';
+// Carbon-anatomy base components
+import { Button } from '@/components/ui/Button';
+import { Input } from '@/components/ui/Input';
 
 // Local UI components
 import { Card, Badge } from '@/components/ui';

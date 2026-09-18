@@ -2,7 +2,7 @@ import { FC, ReactNode, useState } from 'react';
 
 import { useNavigate } from 'react-router-dom';
 
-import { Button } from '@bettergov/kapwa/button';
+import { Button } from '@/components/ui/Button';
 import {
   GithubIcon,
   LightbulbIcon,

@@ -2,8 +2,8 @@ import { FC, useMemo } from 'react';
 
 import { useNavigate } from 'react-router-dom';
 
-import { Banner } from '@bettergov/kapwa/banner';
-import { Button } from '@bettergov/kapwa/button';
+import { Banner } from '@/components/ui/Banner';
+import { Button } from '@/components/ui/Button';
 import { Building2Icon, HomeIcon, UsersIcon } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 

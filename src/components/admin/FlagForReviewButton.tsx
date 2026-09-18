@@ -1,8 +1,8 @@
 import { useState } from 'react';
 
-import { Banner } from '@bettergov/kapwa/banner';
-import { Label } from '@bettergov/kapwa/label';
-import { Button } from '@bettergov/kapwa/button';
+import { Banner } from '@/components/ui/Banner';
+import { Label } from '@/components/ui/Label';
+import { Button } from '@/components/ui/Button';
 import { AlertTriangle, Check, Flag } from 'lucide-react';
 
 interface BannerState {

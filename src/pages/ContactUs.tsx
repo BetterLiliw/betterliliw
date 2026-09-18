@@ -2,7 +2,7 @@ import { FC, useState } from 'react';
 
 import { Link } from 'react-router-dom';
 
-import { Button } from '@bettergov/kapwa/button';
+import { Button } from '@/components/ui/Button';
 import {
   ArrowRightIcon,
   ChevronDownIcon,

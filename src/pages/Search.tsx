@@ -2,7 +2,7 @@ import { FC, useMemo, useState } from 'react';
 
 import Fuse from 'fuse.js';
 
-import { Input } from '@bettergov/kapwa/input';
+import { Input } from '@/components/ui/Input';
 import { SearchIcon } from 'lucide-react';
 
 import { SEO } from '@/components/layout/SEO';

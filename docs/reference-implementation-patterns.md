@@ -751,13 +751,12 @@ export default defineConfig({
 
 **Source**: `src/index.css`, `tailwind.config.js`
 
-Tailwind v4 CSS-first configuration. Design tokens come from the `@bettergov/kapwa` npm package.
+Tailwind v4 CSS-first configuration. Every design token comes from `src/styles/tsinelas.css`.
 
 ```css
 /* src/index.css */
 @import 'tailwindcss';
-@source '../node_modules/@bettergov/kapwa/dist';
-@import '@bettergov/kapwa/styles';
+@import './styles/tsinelas.css';
 ```
 
 **Minimal tailwind.config.js** — Tsinelas provides everything:
@@ -778,16 +777,21 @@ module.exports = {
 };
 ```
 
-**Design token hierarchy** (defined in `src/styles/tsinelas.css` via `@theme`, over `@bettergov/kapwa`):
+**Design token hierarchy** (defined in `src/styles/tsinelas.css` via `@theme`; the roles, scales and names are IBM Carbon's, the values are the BetterLiliw brand):
 
 | Layer | Pattern | Example |
 |-------|---------|---------|
-| Text | `text-tsinelas-text-{purpose}` | `text-tsinelas-text-strong`, `text-tsinelas-text-support`, `text-tsinelas-text-brand` |
-| Background | `bg-tsinelas-bg-{purpose}` | `bg-tsinelas-bg-surface`, `bg-tsinelas-bg-surface-raised`, `bg-tsinelas-bg-hover` |
-| Border | `border-tsinelas-border-{purpose}` | `border-tsinelas-border-weak`, `border-tsinelas-border-strong`, `border-tsinelas-border-brand` |
-| Spacing | `p-tsinelas-{size}` | `p-tsinelas-xs` (4px) through `p-tsinelas-3xl` (48px) |
-| Typography | `tsinelas-heading-xl/lg/md/sm` | `tsinelas-heading-lg` (Poppins 600, 28/36); `tsinelas-eyebrow` for all-caps section labels |
-| Animation | `duration-tsinelas-{speed}` | `duration-tsinelas-fast` (75ms) through `duration-tsinelas-slow` (500ms) |
+| Background / layers | `bg-tsinelas-{background,layer-0N,field-0N}` | `bg-tsinelas-layer-01`, `bg-tsinelas-layer-hover-01`, `bg-tsinelas-field-01`; contextual `bg-tsinelas-layer` inside `.tsinelas-layer-02` |
+| Text | `text-tsinelas-text-{role}` | `text-tsinelas-text-primary`, `text-tsinelas-text-secondary`, `text-tsinelas-text-helper`, `text-tsinelas-text-on-color` |
+| Links / icons | `text-tsinelas-{link,icon}-{role}` | `text-tsinelas-link-primary`, `text-tsinelas-icon-secondary` |
+| Border | `border-tsinelas-border-{role}` | `border-tsinelas-border-subtle-00`, `border-tsinelas-border-strong-01`, `border-tsinelas-border-interactive` |
+| Support / buttons / tags | `*-tsinelas-{support,button,tag}-*` | `text-tsinelas-support-error`, `bg-tsinelas-button-primary`, `bg-tsinelas-tag-background-navy` |
+| Spacing | `p-tsinelas-{01..13}`, `-layout-{01..07}`, `-container-{01..05}` | `p-tsinelas-05` (16px), `gap-tsinelas-03` (8px), `h-tsinelas-container-03` (40px) |
+| Typography | `tsinelas-heading-{01..07}`, `tsinelas-body-{01,02}`, `tsinelas-label-{01,02}`, `tsinelas-fluid-*` | `tsinelas-heading-04` (Poppins 600, 28/36); `tsinelas-eyebrow` for all-caps section labels |
+| Motion | `duration-tsinelas-{fast,moderate,slow}-0N`, `ease-tsinelas-{standard,entrance,exit}-{productive,expressive}` | `duration-tsinelas-moderate-01` (150ms) |
+| Focus / grid | `tsinelas-focus`, `tsinelas-grid`, `tsinelas-md:` | 2px inset focus ring; 2x-grid container and breakpoints |
+
+The pre-Carbon names (`text-tsinelas-text-strong`, `bg-tsinelas-bg-surface-raised`, `p-tsinelas-md`, `tsinelas-heading-lg`, …) remain as aliases of the Carbon tokens.
 
 ---
 

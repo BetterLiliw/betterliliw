@@ -2,7 +2,7 @@ import { RefreshCw, WifiOff, X } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useRegisterSW } from 'virtual:pwa-register/react';
 
-import { Button } from '@bettergov/kapwa/button';
+import { Button } from '@/components/ui/Button';
 
 /**
  * Service-worker lifecycle UI.

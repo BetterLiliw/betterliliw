@@ -82,15 +82,19 @@ docs: update setup instructions
 
 ### Design System (Tsinelas)
 
-Tsinelas is the BetterLiliw brand layer (`src/styles/tsinelas.css`) over
-`@bettergov/kapwa`. Headings are Poppins, body and interface are Source Sans 3;
-the palette is the five brand colors from `public/BetterLiliw_Brand_Guidelines.pdf`.
+Tsinelas (`src/styles/tsinelas.css`) is IBM Carbon's design system on the
+BetterLiliw brand: Carbon's token roles (`layer`, `field`, `text-primary`,
+`support-*`, `button-*`), spacing (`tsinelas-01`–`13`), type scale
+(`tsinelas-heading-01`–`07`, `tsinelas-body-01/02`), motion and sharp-cornered
+flat anatomy; Poppins headings, Source Sans 3 body, and the five brand colors
+from `public/BetterLiliw_Brand_Guidelines.pdf`. Components live in
+`src/components/ui` (`Button`, `Input`, `Label`, `Banner`, `Badge`, `Card`).
 
 **Always use semantic tokens, never raw colors:**
 
 ```tsx
 // ✅ Correct
-<div className="bg-tsinelas-bg-surface text-tsinelas-text-strong">
+<div className="bg-tsinelas-layer-01 text-tsinelas-text-primary">
 
 // ❌ Wrong
 <div className="bg-blue-500 text-white">

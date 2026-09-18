@@ -44,7 +44,7 @@ interface CardProps extends HTMLAttributes<HTMLElement> {
   children: ReactNode;
   /** Visual style variant for the card */
   variant?: 'default' | 'featured' | 'slate' | 'compact';
-  /** Enable hover effects (elevation and border color change) */
+  /** Clickable-tile hover: steps the fill to the layer-hover tint */
   hover?: boolean;
 }
 
@@ -85,7 +85,7 @@ interface CardGridProps extends HTMLAttributes<HTMLDivElement> {
  * @remarks
  * - Uses semantic `<article>` element for accessibility
  * - Supports multiple visual variants for different use cases
- * - Hover effects include elevation and border color transitions
+ * - Hover steps the fill to the layer-hover tint (Carbon clickable tile)
  * - Fully responsive with mobile-first approach
  *
  * @example
@@ -101,22 +101,25 @@ export const Card = forwardRef<HTMLElement, CardProps>(
     { children, className, variant = 'default', hover = true, ...props },
     ref
   ) => {
+    // Carbon tiles: a layer fill defines the box, not a radius or shadow.
+    // The tile is layer-01 on the page and declares layer-02 for whatever
+    // sits inside it. `featured` takes the 1px interactive outline of a
+    // selected tile.
     const variants = {
-      default: 'bg-tsinelas-bg-surface border-tsinelas-border-weak shadow-sm',
+      default: '',
       featured:
-        'bg-tsinelas-bg-surface border-tsinelas-border-brand shadow-md ring-1 ring-tsinelas-border-brand',
-      slate: 'bg-tsinelas-bg-surface border-tsinelas-border-weak shadow-none',
-      compact: 'bg-tsinelas-bg-surface border-tsinelas-border-weak shadow-xs text-sm',
+        'shadow-[inset_0_0_0_1px_var(--color-tsinelas-border-interactive)]',
+      slate: 'shadow-[inset_0_0_0_1px_var(--color-tsinelas-border-tile-01)]',
+      compact: 'text-sm',
     };
 
     return (
       <article
         ref={ref}
         className={cn(
-          'w-full overflow-hidden rounded-2xl border transition-all duration-300',
+          'tsinelas-layer-02 w-full overflow-hidden bg-tsinelas-layer-01',
           variants[variant],
-          hover &&
-            'hover:border-tsinelas-border-brand hover:-translate-y-0.5 hover:shadow-lg',
+          hover && 'tsinelas-tile-clickable',
           className
         )}
         {...props}
@@ -144,7 +147,10 @@ export const CardHeader = ({
   ...props
 }: HTMLAttributes<HTMLDivElement>) => (
   <header
-    className={cn('border-b border-tsinelas-border-weak p-4 md:p-6', className)}
+    className={cn(
+      'border-b border-tsinelas-border-subtle p-tsinelas-05 md:p-tsinelas-06',
+      className
+    )}
     {...props}
   >
     {children}
@@ -162,7 +168,7 @@ export const CardContent = ({
   className,
   ...props
 }: HTMLAttributes<HTMLDivElement>) => (
-  <div className={cn('p-4 md:p-6', className)} {...props}>
+  <div className={cn('p-tsinelas-05 md:p-tsinelas-06', className)} {...props}>
     {children}
   </div>
 );
@@ -180,7 +186,7 @@ export const CardFooter = ({
 }: HTMLAttributes<HTMLDivElement>) => (
   <footer
     className={cn(
-      'bg-tsinelas-bg-surface/50 border-t border-tsinelas-border-weak p-4 md:p-6',
+      'border-t border-tsinelas-border-subtle p-tsinelas-05 md:p-tsinelas-06',
       className
     )}
     {...props}
@@ -209,7 +215,7 @@ export const CardImage = ({
   className,
   ...props
 }: ImgHTMLAttributes<HTMLImageElement>) => (
-  <div className='bg-tsinelas-bg-hover relative h-48 w-full overflow-hidden'>
+  <div className='bg-tsinelas-skeleton-background relative h-48 w-full overflow-hidden'>
     <img
       className={cn(
         'h-full w-full object-cover transition-transform duration-500 group-hover:scale-105',
@@ -258,7 +264,7 @@ export const CardAvatar = ({
   return (
     <div
       className={cn(
-        'bg-tsinelas-bg-surface-raised text-tsinelas-text-disabled flex shrink-0 items-center justify-center rounded-2xl font-black uppercase shadow-inner',
+        'bg-tsinelas-layer-accent-01 text-tsinelas-text-secondary flex shrink-0 items-center justify-center rounded-full tsinelas-display font-semibold uppercase',
         sizes[size],
         className
       )}
@@ -303,7 +309,7 @@ export const CardTitle = ({
   return (
     <Tag
       className={cn(
-        'text-tsinelas-text-strong font-extrabold tracking-tight',
+        'text-tsinelas-text-primary tsinelas-display font-semibold tracking-tight',
         sizes[level],
         className
       )}
@@ -331,7 +337,7 @@ export const CardDescription = ({
 }) => (
   <p
     className={cn(
-      'text-tsinelas-text-support mt-2 tsinelas-body-sm-default leading-relaxed',
+      'text-tsinelas-text-secondary mt-tsinelas-03 tsinelas-body-01',
       className
     )}
   >
@@ -388,7 +394,10 @@ export const CardContactInfo = ({
       {contact.address && (
         <div className='flex items-start gap-2'>
           <MapPinIcon
-            className={cn('text-tsinelas-text-disabled mt-0.5 shrink-0', iconSize)}
+            className={cn(
+              'text-tsinelas-text-disabled mt-0.5 shrink-0',
+              iconSize
+            )}
             aria-hidden='true'
           />
           <span className='leading-snug'>{contact.address}</span>
@@ -397,7 +406,10 @@ export const CardContactInfo = ({
       {contact.phone && (
         <div className='flex items-start gap-2'>
           <PhoneIcon
-            className={cn('text-tsinelas-text-disabled mt-0.5 shrink-0', iconSize)}
+            className={cn(
+              'text-tsinelas-text-disabled mt-0.5 shrink-0',
+              iconSize
+            )}
             aria-hidden='true'
           />
           <span className='font-medium tabular-nums'>
@@ -408,7 +420,10 @@ export const CardContactInfo = ({
       {contact.email && (
         <div className='flex items-start gap-2'>
           <MailIcon
-            className={cn('text-tsinelas-text-disabled mt-0.5 shrink-0', iconSize)}
+            className={cn(
+              'text-tsinelas-text-disabled mt-0.5 shrink-0',
+              iconSize
+            )}
             aria-hidden='true'
           />
           <a
@@ -422,7 +437,10 @@ export const CardContactInfo = ({
       {contact.website && (
         <div className='flex items-start gap-2'>
           <ExternalLinkIcon
-            className={cn('text-tsinelas-text-disabled mt-0.5 shrink-0', iconSize)}
+            className={cn(
+              'text-tsinelas-text-disabled mt-0.5 shrink-0',
+              iconSize
+            )}
             aria-hidden='true'
           />
           <a
@@ -510,7 +528,7 @@ export const CardList = ({
  * Useful for separating sections within a card.
  */
 export const CardDivider = ({ className }: { className?: string }) => (
-  <hr className={cn('border-tsinelas-border-weak', className)} />
+  <hr className={cn('border-tsinelas-border-subtle', className)} />
 );
 
 // Note: StatCard and StatGrid are in separate files to avoid circular dependency

@@ -1,38 +1,51 @@
 /* ==========================================================================
  * Tsinelas — the BetterLiliw design system.
  *
- * Named after the town's signature craft. Every token here comes from the
- * BetterLiliw Brand Guidelines v1.0 (public/BetterLiliw_Brand_Guidelines.pdf):
- * five brand colors already present in the logo, four working neutrals,
- * Poppins for display and headings, Source Sans 3 for body and interface.
+ * Named after the town's signature craft. Tsinelas is IBM's Carbon Design
+ * System wearing the BetterLiliw brand: Carbon supplies the architecture —
+ * the token model (background / layer / field / border / text / link / icon /
+ * support / focus / button), the 2x grid, the spacing and type scales, the
+ * motion curves, sharp corners and flat elevation — and the BetterLiliw Brand
+ * Guidelines v1.0 (public/BetterLiliw_Brand_Guidelines.pdf) supply every
+ * value: the five brand colors already present in the logo, four working
+ * neutrals, Poppins for headings and Source Sans 3 for body and interface.
  *
- * Tsinelas sits on top of @bettergov/kapwa, which stays installed as the
- * engine underneath (Button, Banner, Input, Label and the token *shape*).
- * App code uses `tsinelas-*` tokens exclusively; the final section of this
- * file re-points Kapwa's own scales at the brand ramps so the vendored
- * components render on-brand without per-component overrides.
+ * Where Carbon and the brand disagree, the brand wins on *what* (colors,
+ * fonts, weights) and Carbon wins on *how* (roles, scales, anatomy). Carbon's
+ * IBM Plex, Blue 60 and light-weight headings are therefore not here.
+ *
+ * Reference: the Carbon Design System Figma kit (Elements page: "Color
+ * tokens - White theme" and "Type tokens") and carbondesignsystem.com. The
+ * kit uses Carbon v10 type names (productive-heading-0N, body-short/long);
+ * both the v10 and v11 spellings are provided as classes.
  *
  * Structure
- *   1. Primitive scales      @theme          --color-tsinelas-{scale}-{step}
- *   2. Spacing / motion       @theme          --spacing-, --duration-, --ease-
- *   3. Typography tokens      @theme          --font-, --tracking-
- *   4. Semantic colors        @theme inline   --color-tsinelas-{text,bg,border}-*
- *   5. Type classes           @layer components  .tsinelas-heading-*, .tsinelas-body-*
- *   6. Base element styles    @layer base
- *   7. Kapwa compatibility    @theme          --color-primary-*, --color-gray-*, ...
+ *   1. Primitive scales        @theme          --color-tsinelas-{scale}-{step}
+ *   2. Spacing and layout      @theme          --spacing-tsinelas-{01..13}, layout, container
+ *   3. Motion                  @theme          --duration-, --ease-
+ *   4. Typography              @theme          --font-, --tracking-
+ *   5. Shape and elevation     @theme          --radius-*, --shadow-*
+ *   6. Grid                    @theme          --breakpoint-tsinelas-*, --container-tsinelas-*
+ *   7. Semantic colors         @theme inline   Carbon roles + legacy aliases
+ *   8. Layer context           :root           contextual layer / field / border
+ *   9. Type tokens             @layer components  .tsinelas-heading-03, .tsinelas-body-01, ...
+ *  10. Base styles, utilities  @layer base, @utility
  *
  * Contrast (WCAG 2.1, measured): navy/white 11.6, navy/sky 8.7, white/green
- * 7.4, white/teal 5.5, navy/gold 4.1 (large text only), gold-700/white 5.1.
- * Gold is a shape color, never a text color; gold buttons take navy labels.
+ * 7.4, white/teal 5.5, text-primary/gold 5.1, gold-700/white 5.1,
+ * text-secondary/white 5.3. Gold is a shape color, never a text color; gold
+ * buttons take navy labels.
  * ========================================================================== */
 
 /* --------------------------------------------------------------------------
  * 1. Primitive scales
  * The brand anchor sits at step 600 of every ramp; 50–500 are tints toward
  * white, 700–950 are shades toward a cool near-black so they stay in family.
+ * Semantic tokens (section 7) are the public API; reach for a primitive only
+ * for data visualisation or a documented brand moment.
  * -------------------------------------------------------------------------- */
 @theme {
-  /* Deep Navy #1C3A5B — primary: headings, nav, footers.
+  /* Deep Navy #1C3A5B — primary: interactive, headings, nav, footers.
    * 200 is Sky Tint #CEE2EE, 50 is the page surface #F7FAFC. */
   --color-tsinelas-brand-50: #f7fafc;
   --color-tsinelas-brand-100: #e6eff5;
@@ -46,7 +59,7 @@
   --color-tsinelas-brand-900: #13263c;
   --color-tsinelas-brand-950: #101f31;
 
-  /* Sunrise Gold #D28A22 — accent: rules, one CTA per screen.
+  /* Sunrise Gold #D28A22 — accent: rules, warning, one CTA per screen.
    * 700 is #9A6210, the only gold that may carry text on white. */
   --color-tsinelas-gold-50: #fcf8f2;
   --color-tsinelas-gold-100: #f9efe0;
@@ -60,7 +73,7 @@
   --color-tsinelas-gold-900: #5c3b0b;
   --color-tsinelas-gold-950: #3b2607;
 
-  /* Lake Teal #306F8E — links, tourism section. */
+  /* Lake Teal #306F8E — links, info, secondary actions, tourism. */
   --color-tsinelas-teal-50: #f3f6f8;
   --color-tsinelas-teal-100: #e2ebef;
   --color-tsinelas-teal-200: #c5d7df;
@@ -101,13 +114,18 @@
   --color-tsinelas-gray-950: #1a2b38;
 
   /* Alpha neutrals for hover/active states that must sit on any surface.
-   * Tinted with the body-text navy rather than pure black. */
+   * Carbon tints these from Gray 50 at 12% (hover), 20% (selected) and 50%
+   * (active); the base here is the brand's gray-500 so they stay cool. On
+   * white they land on #EFF2F4, #E5E9EC and #BEC7CD — the same depth as the
+   * Carbon kit's #E5E5E5 / #E0E0E0 / #C6C6C6. */
   --color-tsinelas-neutral-50: hsla(0, 0%, 100%, 1);
-  --color-tsinelas-neutral-100: hsla(206, 37%, 16%, 0.06);
-  --color-tsinelas-neutral-200: hsla(206, 37%, 16%, 0.08);
-  --color-tsinelas-neutral-300: hsla(206, 37%, 16%, 0.12);
+  --color-tsinelas-neutral-100: hsla(205, 13%, 55%, 0.08);
+  --color-tsinelas-neutral-200: hsla(205, 13%, 55%, 0.12);
+  --color-tsinelas-neutral-300: hsla(205, 13%, 55%, 0.2);
+  --color-tsinelas-neutral-400: hsla(205, 13%, 55%, 0.3);
+  --color-tsinelas-neutral-500: hsla(205, 13%, 55%, 0.5);
 
-  /* Status colors with no brand equivalent, carried over from Kapwa. */
+  /* Status colors with no brand equivalent. */
   --color-tsinelas-red-50: #fff1f2;
   --color-tsinelas-red-100: #ffe0e3;
   --color-tsinelas-red-200: #ffc6cc;
@@ -144,9 +162,9 @@
   --color-tsinelas-purple-900: #4e248e;
   --color-tsinelas-purple-950: #2f1560;
 
-  /* Legacy scale names inherited from Kapwa. `orange` resolves to gold and
-   * `blue` to teal so existing `*-tsinelas-orange-*` / `*-tsinelas-blue-*`
-   * usages land on brand colors. Prefer the brand names in new code. */
+  /* Legacy scale names. `orange` resolves to gold and `blue` to teal so
+   * existing `*-tsinelas-orange-*` / `*-tsinelas-blue-*` usages land on brand
+   * colors. Prefer the brand names in new code. */
   --color-tsinelas-orange-50: var(--color-tsinelas-gold-50);
   --color-tsinelas-orange-100: var(--color-tsinelas-gold-100);
   --color-tsinelas-orange-200: var(--color-tsinelas-gold-200);
@@ -171,81 +189,415 @@
   --color-tsinelas-blue-900: var(--color-tsinelas-teal-900);
   --color-tsinelas-blue-950: var(--color-tsinelas-teal-950);
 
-  --color-tsinelas-bg-overlay: hsla(206, 37%, 16%, 0.6);
+  /* ------------------------------------------------------------------------
+   * 2. Spacing and layout — Carbon's scales verbatim.
+   *
+   * spacing-01..13 is the component-level scale (padding, gaps, icon
+   * offsets). layout-01..07 is for space *between* components and sections.
+   * container-01..05 are the fixed heights of fields, buttons and rows.
+   *   p-tsinelas-05  gap-tsinelas-03  mt-tsinelas-layout-04  h-tsinelas-container-04
+   * ---------------------------------------------------------------------- */
+  --spacing-tsinelas-01: 0.125rem; /* 2px */
+  --spacing-tsinelas-02: 0.25rem; /* 4px */
+  --spacing-tsinelas-03: 0.5rem; /* 8px */
+  --spacing-tsinelas-04: 0.75rem; /* 12px */
+  --spacing-tsinelas-05: 1rem; /* 16px */
+  --spacing-tsinelas-06: 1.5rem; /* 24px */
+  --spacing-tsinelas-07: 2rem; /* 32px */
+  --spacing-tsinelas-08: 2.5rem; /* 40px */
+  --spacing-tsinelas-09: 3rem; /* 48px */
+  --spacing-tsinelas-10: 4rem; /* 64px */
+  --spacing-tsinelas-11: 5rem; /* 80px */
+  --spacing-tsinelas-12: 6rem; /* 96px */
+  --spacing-tsinelas-13: 10rem; /* 160px */
+
+  --spacing-tsinelas-layout-01: 1rem; /* 16px */
+  --spacing-tsinelas-layout-02: 1.5rem; /* 24px */
+  --spacing-tsinelas-layout-03: 2rem; /* 32px */
+  --spacing-tsinelas-layout-04: 3rem; /* 48px */
+  --spacing-tsinelas-layout-05: 4rem; /* 64px */
+  --spacing-tsinelas-layout-06: 6rem; /* 96px */
+  --spacing-tsinelas-layout-07: 10rem; /* 160px */
+
+  /* Fixed control heights: 01 tag/small chip, 02 sm field, 03 md field,
+   * 04 lg field and default button, 05 xl button / list row. */
+  --spacing-tsinelas-container-01: 1.5rem; /* 24px */
+  --spacing-tsinelas-container-02: 2rem; /* 32px */
+  --spacing-tsinelas-container-03: 2.5rem; /* 40px */
+  --spacing-tsinelas-container-04: 3rem; /* 48px */
+  --spacing-tsinelas-container-05: 4rem; /* 64px */
+
+  --spacing-tsinelas-icon-01: 1rem; /* 16px */
+  --spacing-tsinelas-icon-02: 1.25rem; /* 20px */
+
+  /* Fluid spacing for section rhythm that should breathe with the viewport. */
+  --spacing-tsinelas-fluid-01: 0;
+  --spacing-tsinelas-fluid-02: 2vw;
+  --spacing-tsinelas-fluid-03: 5vw;
+  --spacing-tsinelas-fluid-04: 10vw;
+
+  /* Legacy t-shirt names, aliased onto the numbered scale. */
+  --spacing-tsinelas-3xs: var(--spacing-tsinelas-01);
+  --spacing-tsinelas-2xs: var(--spacing-tsinelas-02);
+  --spacing-tsinelas-xs: var(--spacing-tsinelas-03);
+  --spacing-tsinelas-sm: var(--spacing-tsinelas-04);
+  --spacing-tsinelas-md: var(--spacing-tsinelas-05);
+  --spacing-tsinelas-lg: var(--spacing-tsinelas-06);
+  --spacing-tsinelas-xl: var(--spacing-tsinelas-07);
+  --spacing-tsinelas-2xl: var(--spacing-tsinelas-08);
+  --spacing-tsinelas-3xl: var(--spacing-tsinelas-09);
 
   /* ------------------------------------------------------------------------
-   * 2. Spacing and motion
+   * 3. Motion — Carbon's durations and curves.
+   *
+   * Productive motion (fast-*, moderate-*, the *-productive curves) is for
+   * interface feedback: hovers, toggles, menus. Expressive motion (slow-*,
+   * the *-expressive curves) is for moments that carry meaning: page
+   * transitions, hero reveals, notifications arriving.
+   *   duration-tsinelas-moderate-01  ease-tsinelas-standard-productive
    * ---------------------------------------------------------------------- */
-  --spacing-tsinelas-3xs: 0.125rem; /* 2px */
-  --spacing-tsinelas-2xs: 0.25rem; /* 4px */
-  --spacing-tsinelas-xs: 0.5rem; /* 8px */
-  --spacing-tsinelas-sm: 0.75rem; /* 12px */
-  --spacing-tsinelas-md: 1rem; /* 16px */
-  --spacing-tsinelas-lg: 1.5rem; /* 24px */
-  --spacing-tsinelas-xl: 2rem; /* 32px */
-  --spacing-tsinelas-2xl: 2.5rem; /* 40px */
-  --spacing-tsinelas-3xl: 3rem; /* 48px */
+  --duration-tsinelas-fast-01: 70ms; /* micro feedback: hover, toggle */
+  --duration-tsinelas-fast-02: 110ms; /* small fades, color shifts */
+  --duration-tsinelas-moderate-01: 150ms; /* dropdowns, tooltips */
+  --duration-tsinelas-moderate-02: 240ms; /* modals, panels */
+  --duration-tsinelas-slow-01: 400ms; /* page transitions */
+  --duration-tsinelas-slow-02: 700ms; /* large hero and data reveals */
 
-  --duration-tsinelas-75: 75ms;
-  --duration-tsinelas-100: 100ms;
-  --duration-tsinelas-150: 150ms;
-  --duration-tsinelas-200: 200ms;
-  --duration-tsinelas-300: 300ms;
-  --duration-tsinelas-500: 500ms;
-  --duration-tsinelas-700: 700ms;
+  --ease-tsinelas-standard-productive: cubic-bezier(0.2, 0, 0.38, 0.9);
+  --ease-tsinelas-standard-expressive: cubic-bezier(0.4, 0.14, 0.3, 1);
+  --ease-tsinelas-entrance-productive: cubic-bezier(0, 0, 0.38, 0.9);
+  --ease-tsinelas-entrance-expressive: cubic-bezier(0, 0, 0.3, 1);
+  --ease-tsinelas-exit-productive: cubic-bezier(0.2, 0, 1, 0.9);
+  --ease-tsinelas-exit-expressive: cubic-bezier(0.4, 0.14, 1, 1);
+
+  /* Legacy numeric durations and named curves. */
+  --duration-tsinelas-75: var(--duration-tsinelas-fast-01);
+  --duration-tsinelas-100: var(--duration-tsinelas-fast-02);
+  --duration-tsinelas-150: var(--duration-tsinelas-moderate-01);
+  --duration-tsinelas-200: var(--duration-tsinelas-moderate-02);
+  --duration-tsinelas-300: var(--duration-tsinelas-moderate-02);
+  --duration-tsinelas-500: var(--duration-tsinelas-slow-01);
+  --duration-tsinelas-700: var(--duration-tsinelas-slow-02);
   --duration-tsinelas-1000: 1000ms;
 
   --ease-tsinelas-linear: linear;
-  --ease-tsinelas-in: cubic-bezier(0.4, 0, 1, 1);
-  --ease-tsinelas-out: cubic-bezier(0, 0, 0.2, 1);
-  --ease-tsinelas-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-tsinelas-in: var(--ease-tsinelas-exit-productive);
+  --ease-tsinelas-out: var(--ease-tsinelas-entrance-productive);
+  --ease-tsinelas-in-out: var(--ease-tsinelas-standard-productive);
   --ease-tsinelas-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
   --ease-tsinelas-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
   /* ------------------------------------------------------------------------
-   * 3. Typography
+   * 4. Typography
    * Two families, two weights each (Poppins 600/700, Source Sans 3 400/600),
    * loaded from Google Fonts in index.html with display=swap. On a slow
    * connection the system fallback renders first — the right trade for this
    * audience. Mono is system-only: nothing in the brand needs a downloaded
-   * monospace face.
+   * monospace face. Carbon's light (300) heading weight is not part of the
+   * brand, so the large display tokens use 700 instead.
    * ---------------------------------------------------------------------- */
   --font-tsinelas-display: 'Poppins', 'Segoe UI', system-ui, sans-serif;
   --font-tsinelas-sans:
     'Source Sans 3', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --font-tsinelas-mono:
-    ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono',
-    monospace;
+    ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
 
   /* Tailwind's own `font-sans` / `font-display` / `font-mono` utilities. */
   --font-sans: var(--font-tsinelas-sans);
   --font-display: var(--font-tsinelas-display);
   --font-mono: var(--font-tsinelas-mono);
 
+  /* Carbon tracks small text open so it stays legible: 0.32px at 12px,
+   * 0.16px at 14px, none from 16px up. Headings are tracked tight. */
   --tracking-tsinelas-tight: -0.01em; /* headings */
+  --tracking-tsinelas-12: 0.32px;
+  --tracking-tsinelas-14: 0.16px;
   --tracking-tsinelas-label: 0.1em; /* all-caps section labels */
+
+  /* ------------------------------------------------------------------------
+   * 5. Shape and elevation
+   * Carbon is sharp-cornered and flat: containers are defined by layer
+   * color and 1px rules, not by radius or drop shadow. Tailwind's radius
+   * scale collapses to 0 so every `rounded-*` in the app renders square;
+   * `rounded-full` is untouched because tags, toggles and avatars stay
+   * round. The only shadow is the one Carbon gives floating surfaces
+   * (menus, popovers, dialogs).
+   * ---------------------------------------------------------------------- */
+  --radius: 0;
+  --radius-xs: 0;
+  --radius-sm: 0;
+  --radius-md: 0;
+  --radius-lg: 0;
+  --radius-xl: 0;
+  --radius-2xl: 0;
+  --radius-3xl: 0;
+  --radius-4xl: 0;
+
+  --shadow-tsinelas-none: 0 0 #0000;
+  --shadow-tsinelas-overlay: 0 2px 6px hsla(206, 37%, 16%, 0.3);
+
+  --shadow-2xs: var(--shadow-tsinelas-none);
+  --shadow-xs: var(--shadow-tsinelas-none);
+  --shadow-sm: var(--shadow-tsinelas-none);
+  --shadow-md: var(--shadow-tsinelas-none);
+  --shadow-lg: var(--shadow-tsinelas-overlay);
+  --shadow-xl: var(--shadow-tsinelas-overlay);
+  --shadow-2xl: var(--shadow-tsinelas-overlay);
+  --shadow-inner: var(--shadow-tsinelas-none);
+
+  /* ------------------------------------------------------------------------
+   * 6. Grid — Carbon's 2x grid.
+   * Five breakpoints, 16px gutters (8px each side of a column), 16px page
+   * margin below `max` and 24px at it. Tailwind's own sm/md/lg/xl/2xl
+   * variants are left alone so existing responsive classes keep their
+   * meaning; the Carbon set is available as `tsinelas-md:` etc. Columns:
+   * sm 4, md 8, lg/xlg/max 16.
+   * ---------------------------------------------------------------------- */
+  --breakpoint-tsinelas-sm: 20rem; /* 320px */
+  --breakpoint-tsinelas-md: 42rem; /* 672px */
+  --breakpoint-tsinelas-lg: 66rem; /* 1056px */
+  --breakpoint-tsinelas-xlg: 82rem; /* 1312px */
+  --breakpoint-tsinelas-max: 99rem; /* 1584px */
+
+  --container-tsinelas-max: 99rem;
 }
 
 /* --------------------------------------------------------------------------
- * 4. Semantic colors
+ * 7. Semantic colors — Carbon's token roles on the brand palette.
  * `@theme inline` so utilities carry the resolved value and no redundant
  * global variable is emitted for every alias.
+ *
+ * Read a token as role + emphasis + state:
+ *   bg-tsinelas-layer-01          the first layer above the page background
+ *   bg-tsinelas-layer-hover-01    that layer under the pointer
+ *   border-tsinelas-border-subtle-01   a hairline on layer-01
+ *   text-tsinelas-text-secondary  supporting text, any layer
  * -------------------------------------------------------------------------- */
 @theme inline {
-  /* Text */
-  --color-tsinelas-text-strong: var(--color-tsinelas-gray-950);
-  --color-tsinelas-text-default: var(--color-tsinelas-gray-950);
-  --color-tsinelas-text-support: var(--color-tsinelas-gray-700);
-  --color-tsinelas-text-muted: var(--color-tsinelas-gray-700);
-  --color-tsinelas-text-weak: var(--color-tsinelas-gray-600);
-  --color-tsinelas-text-disabled: var(--color-tsinelas-gray-500);
-  --color-tsinelas-text-on-disabled: var(--color-tsinelas-gray-600);
+  /* Background — the page itself. */
+  --color-tsinelas-background: var(--color-tsinelas-neutral-50);
+  --color-tsinelas-background-hover: var(--color-tsinelas-neutral-200);
+  --color-tsinelas-background-active: var(--color-tsinelas-neutral-500);
+  --color-tsinelas-background-selected: var(--color-tsinelas-neutral-300);
+  --color-tsinelas-background-selected-hover: var(--color-tsinelas-neutral-400);
+  --color-tsinelas-background-brand: var(--color-tsinelas-brand-600);
+  --color-tsinelas-background-inverse: var(--color-tsinelas-gray-900);
+  --color-tsinelas-background-inverse-hover: var(--color-tsinelas-gray-800);
+
+  /* Layers — Carbon's stacking model. Layer 01 sits on the background,
+   * 02 on 01, 03 on 02; the tint alternates so each is visible on the one
+   * below without a border. Use the contextual `layer` tokens (section 8)
+   * inside components that can appear at any level. */
+  --color-tsinelas-layer-01: var(--color-tsinelas-gray-50);
+  --color-tsinelas-layer-02: var(--color-tsinelas-neutral-50);
+  --color-tsinelas-layer-03: var(--color-tsinelas-gray-50);
+  --color-tsinelas-layer-hover-01: var(--color-tsinelas-gray-100);
+  --color-tsinelas-layer-hover-02: var(--color-tsinelas-gray-100);
+  --color-tsinelas-layer-hover-03: var(--color-tsinelas-gray-100);
+  --color-tsinelas-layer-active-01: var(--color-tsinelas-gray-300);
+  --color-tsinelas-layer-active-02: var(--color-tsinelas-gray-300);
+  --color-tsinelas-layer-active-03: var(--color-tsinelas-gray-300);
+  --color-tsinelas-layer-selected-01: var(--color-tsinelas-gray-200);
+  --color-tsinelas-layer-selected-02: var(--color-tsinelas-gray-200);
+  --color-tsinelas-layer-selected-03: var(--color-tsinelas-gray-200);
+  --color-tsinelas-layer-selected-hover-01: var(--color-tsinelas-gray-300);
+  --color-tsinelas-layer-selected-hover-02: var(--color-tsinelas-gray-300);
+  --color-tsinelas-layer-selected-hover-03: var(--color-tsinelas-gray-300);
+  --color-tsinelas-layer-selected-inverse: var(--color-tsinelas-gray-950);
+  --color-tsinelas-layer-selected-disabled: var(--color-tsinelas-gray-500);
+  --color-tsinelas-layer-accent-01: var(--color-tsinelas-gray-200);
+  --color-tsinelas-layer-accent-02: var(--color-tsinelas-gray-200);
+  --color-tsinelas-layer-accent-03: var(--color-tsinelas-gray-200);
+  --color-tsinelas-layer-accent-hover-01: var(--color-tsinelas-gray-300);
+  --color-tsinelas-layer-accent-hover-02: var(--color-tsinelas-gray-300);
+  --color-tsinelas-layer-accent-hover-03: var(--color-tsinelas-gray-300);
+  --color-tsinelas-layer-accent-active-01: var(--color-tsinelas-gray-300);
+  --color-tsinelas-layer-accent-active-02: var(--color-tsinelas-gray-400);
+  --color-tsinelas-layer-accent-active-03: var(--color-tsinelas-gray-400);
+
+  /* Fields — inputs, selects, text areas. Filled, with a bottom rule. */
+  --color-tsinelas-field-01: var(--color-tsinelas-gray-50);
+  --color-tsinelas-field-02: var(--color-tsinelas-neutral-50);
+  --color-tsinelas-field-03: var(--color-tsinelas-gray-50);
+  --color-tsinelas-field-hover-01: var(--color-tsinelas-gray-100);
+  --color-tsinelas-field-hover-02: var(--color-tsinelas-gray-100);
+  --color-tsinelas-field-hover-03: var(--color-tsinelas-gray-100);
+
+  /* Borders. `subtle` is the hairline between regions on a given layer,
+   * `strong` is a field's bottom rule, `tile` outlines a clickable tile,
+   * `interactive` marks the active control. */
+  --color-tsinelas-border-subtle-00: var(--color-tsinelas-gray-200);
+  --color-tsinelas-border-subtle-01: var(--color-tsinelas-gray-300);
+  --color-tsinelas-border-subtle-02: var(--color-tsinelas-gray-200);
+  --color-tsinelas-border-subtle-03: var(--color-tsinelas-gray-300);
+  --color-tsinelas-border-subtle-selected-01: var(--color-tsinelas-gray-300);
+  --color-tsinelas-border-subtle-selected-02: var(--color-tsinelas-gray-300);
+  --color-tsinelas-border-subtle-selected-03: var(--color-tsinelas-gray-300);
+  --color-tsinelas-border-strong-01: var(--color-tsinelas-gray-500);
+  --color-tsinelas-border-strong-02: var(--color-tsinelas-gray-500);
+  --color-tsinelas-border-strong-03: var(--color-tsinelas-gray-500);
+  --color-tsinelas-border-tile-01: var(--color-tsinelas-gray-300);
+  --color-tsinelas-border-tile-02: var(--color-tsinelas-gray-300);
+  --color-tsinelas-border-tile-03: var(--color-tsinelas-gray-300);
+  --color-tsinelas-border-inverse: var(--color-tsinelas-gray-950);
+  --color-tsinelas-border-interactive: var(--color-tsinelas-brand-600);
+  --color-tsinelas-border-disabled: var(--color-tsinelas-gray-300);
+
+  /* Text. Every value here passes AA on white and on layer-01 except
+   * placeholder (Carbon's is not AA either) and disabled. */
+  --color-tsinelas-text-primary: var(--color-tsinelas-gray-950);
+  --color-tsinelas-text-secondary: var(--color-tsinelas-gray-700);
+  --color-tsinelas-text-placeholder: var(--color-tsinelas-gray-600);
+  --color-tsinelas-text-helper: var(--color-tsinelas-gray-700);
+  --color-tsinelas-text-on-color: var(--color-tsinelas-neutral-50);
+  --color-tsinelas-text-on-color-disabled: var(--color-tsinelas-gray-600);
   --color-tsinelas-text-inverse: var(--color-tsinelas-neutral-50);
-  --color-tsinelas-text-inverse-strong: var(--color-tsinelas-neutral-50);
+  --color-tsinelas-text-disabled: var(--color-tsinelas-gray-400);
+  --color-tsinelas-text-error: var(--color-tsinelas-red-600);
+  /* Tsinelas extension: the label on a gold accent button (5.1:1). */
+  --color-tsinelas-text-on-accent: var(--color-tsinelas-gray-950);
+
+  /* Links are teal, never navy, so they read as links beside headings. */
+  --color-tsinelas-link-primary: var(--color-tsinelas-teal-600);
+  --color-tsinelas-link-primary-hover: var(--color-tsinelas-teal-700);
+  --color-tsinelas-link-secondary: var(--color-tsinelas-teal-700);
+  --color-tsinelas-link-visited: var(--color-tsinelas-teal-800);
+  --color-tsinelas-link-inverse: var(--color-tsinelas-brand-200);
+  --color-tsinelas-link-inverse-hover: var(--color-tsinelas-neutral-50);
+
+  /* Icons. */
+  --color-tsinelas-icon-primary: var(--color-tsinelas-gray-950);
+  --color-tsinelas-icon-secondary: var(--color-tsinelas-gray-700);
+  --color-tsinelas-icon-on-color: var(--color-tsinelas-neutral-50);
+  --color-tsinelas-icon-on-color-disabled: var(--color-tsinelas-gray-600);
+  --color-tsinelas-icon-inverse: var(--color-tsinelas-neutral-50);
+  --color-tsinelas-icon-disabled: var(--color-tsinelas-gray-400);
+  --color-tsinelas-icon-interactive: var(--color-tsinelas-brand-600);
+
+  /* Support — status. Warning is Sunrise Gold rather than Carbon's yellow.
+   * The `-inverse` set is for dark surfaces. */
+  --color-tsinelas-support-error: var(--color-tsinelas-red-600);
+  --color-tsinelas-support-success: var(--color-tsinelas-green-600);
+  --color-tsinelas-support-warning: var(--color-tsinelas-gold-600);
+  --color-tsinelas-support-info: var(--color-tsinelas-teal-600);
+  --color-tsinelas-support-error-inverse: var(--color-tsinelas-red-400);
+  --color-tsinelas-support-success-inverse: var(--color-tsinelas-green-400);
+  --color-tsinelas-support-warning-inverse: var(--color-tsinelas-gold-400);
+  --color-tsinelas-support-info-inverse: var(--color-tsinelas-teal-400);
+  --color-tsinelas-support-caution-major: var(--color-tsinelas-gold-600);
+  --color-tsinelas-support-caution-minor: var(--color-tsinelas-yellow-500);
+
+  /* Notification fills (Carbon's low-contrast inline notification). */
+  --color-tsinelas-notification-background-error: var(--color-tsinelas-red-50);
+  --color-tsinelas-notification-background-success: var(
+    --color-tsinelas-green-50
+  );
+  --color-tsinelas-notification-background-warning: var(
+    --color-tsinelas-gold-50
+  );
+  --color-tsinelas-notification-background-info: var(--color-tsinelas-teal-50);
+  --color-tsinelas-notification-background-default: var(
+    --color-tsinelas-gray-50
+  );
+
+  /* Focus and interaction. Focus is a 2px navy outline inset by 2px
+   * (`tsinelas-focus` utility); `focus-inset` is the white hairline that
+   * separates it from a filled control. */
+  --color-tsinelas-focus: var(--color-tsinelas-brand-600);
+  --color-tsinelas-focus-inset: var(--color-tsinelas-neutral-50);
+  --color-tsinelas-focus-inverse: var(--color-tsinelas-neutral-50);
+  --color-tsinelas-interactive: var(--color-tsinelas-brand-600);
+  --color-tsinelas-highlight: var(--color-tsinelas-brand-200);
+  --color-tsinelas-overlay: hsla(206, 37%, 16%, 0.5);
+  --color-tsinelas-toggle-off: var(--color-tsinelas-gray-500);
+  --color-tsinelas-skeleton-background: var(--color-tsinelas-gray-100);
+  --color-tsinelas-skeleton-element: var(--color-tsinelas-gray-200);
+
+  /* Buttons — Carbon's kinds on the brand.
+   *   primary    Deep Navy, white label
+   *   secondary  Lake Teal, white label (5.5:1; white on gold fails)
+   *   tertiary   navy outline, fills navy on hover
+   *   danger     red
+   *   accent     Sunrise Gold with a navy label — the one CTA per screen
+   *   ghost      no fill, navy label */
+  --color-tsinelas-button-primary: var(--color-tsinelas-brand-600);
+  --color-tsinelas-button-primary-hover: var(--color-tsinelas-brand-700);
+  --color-tsinelas-button-primary-active: var(--color-tsinelas-brand-800);
+  --color-tsinelas-button-secondary: var(--color-tsinelas-teal-600);
+  --color-tsinelas-button-secondary-hover: var(--color-tsinelas-teal-700);
+  --color-tsinelas-button-secondary-active: var(--color-tsinelas-teal-800);
+  --color-tsinelas-button-tertiary: var(--color-tsinelas-brand-600);
+  --color-tsinelas-button-tertiary-hover: var(--color-tsinelas-brand-700);
+  --color-tsinelas-button-tertiary-active: var(--color-tsinelas-brand-800);
+  --color-tsinelas-button-danger-primary: var(--color-tsinelas-red-700);
+  --color-tsinelas-button-danger-secondary: var(--color-tsinelas-red-700);
+  --color-tsinelas-button-danger-hover: var(--color-tsinelas-red-800);
+  --color-tsinelas-button-danger-active: var(--color-tsinelas-red-900);
+  --color-tsinelas-button-accent: var(--color-tsinelas-gold-600);
+  --color-tsinelas-button-accent-hover: var(--color-tsinelas-gold-500);
+  --color-tsinelas-button-accent-active: var(--color-tsinelas-gold-700);
+  --color-tsinelas-button-disabled: var(--color-tsinelas-gray-300);
+  --color-tsinelas-button-separator: var(--color-tsinelas-gray-200);
+
+  /* Tags — Carbon's tag fill/text pairs on the brand hues. */
+  --color-tsinelas-tag-background-navy: var(--color-tsinelas-brand-200);
+  --color-tsinelas-tag-color-navy: var(--color-tsinelas-brand-700);
+  --color-tsinelas-tag-hover-navy: var(--color-tsinelas-brand-300);
+  --color-tsinelas-tag-background-gold: var(--color-tsinelas-gold-200);
+  --color-tsinelas-tag-color-gold: var(--color-tsinelas-gold-800);
+  --color-tsinelas-tag-hover-gold: var(--color-tsinelas-gold-300);
+  --color-tsinelas-tag-background-teal: var(--color-tsinelas-teal-200);
+  --color-tsinelas-tag-color-teal: var(--color-tsinelas-teal-800);
+  --color-tsinelas-tag-hover-teal: var(--color-tsinelas-teal-300);
+  --color-tsinelas-tag-background-green: var(--color-tsinelas-green-200);
+  --color-tsinelas-tag-color-green: var(--color-tsinelas-green-800);
+  --color-tsinelas-tag-hover-green: var(--color-tsinelas-green-300);
+  --color-tsinelas-tag-background-red: var(--color-tsinelas-red-100);
+  --color-tsinelas-tag-color-red: var(--color-tsinelas-red-800);
+  --color-tsinelas-tag-hover-red: var(--color-tsinelas-red-200);
+  --color-tsinelas-tag-background-yellow: var(--color-tsinelas-yellow-100);
+  --color-tsinelas-tag-color-yellow: var(--color-tsinelas-yellow-800);
+  --color-tsinelas-tag-hover-yellow: var(--color-tsinelas-yellow-200);
+  --color-tsinelas-tag-background-purple: var(--color-tsinelas-purple-100);
+  --color-tsinelas-tag-color-purple: var(--color-tsinelas-purple-800);
+  --color-tsinelas-tag-hover-purple: var(--color-tsinelas-purple-200);
+  --color-tsinelas-tag-background-gray: var(--color-tsinelas-gray-200);
+  --color-tsinelas-tag-color-gray: var(--color-tsinelas-gray-800);
+  --color-tsinelas-tag-hover-gray: var(--color-tsinelas-gray-300);
+  --color-tsinelas-tag-background-cool-gray: var(--color-tsinelas-gray-100);
+  --color-tsinelas-tag-color-cool-gray: var(--color-tsinelas-gray-700);
+  --color-tsinelas-tag-hover-cool-gray: var(--color-tsinelas-gray-200);
+
+  /* Contextual layer tokens (see section 8). Inline so each utility
+   * resolves against the nearest `.tsinelas-layer-*` ancestor. */
+  --color-tsinelas-layer: var(--tsinelas-layer);
+  --color-tsinelas-layer-hover: var(--tsinelas-layer-hover);
+  --color-tsinelas-layer-active: var(--tsinelas-layer-active);
+  --color-tsinelas-layer-selected: var(--tsinelas-layer-selected);
+  --color-tsinelas-field: var(--tsinelas-field);
+  --color-tsinelas-field-hover: var(--tsinelas-field-hover);
+  --color-tsinelas-border-subtle: var(--tsinelas-border-subtle);
+  --color-tsinelas-border-strong: var(--tsinelas-border-strong);
+  --color-tsinelas-border-tile: var(--tsinelas-border-tile);
+
+  /* ------------------------------------------------------------------------
+   * Legacy aliases — the pre-Carbon Tsinelas names, kept so the ~3,000
+   * existing usages keep working. Each resolves to the Carbon role it was
+   * playing. New code should use the Carbon names above.
+   * ---------------------------------------------------------------------- */
+  --color-tsinelas-text-strong: var(--color-tsinelas-text-primary);
+  --color-tsinelas-text-default: var(--color-tsinelas-text-primary);
+  --color-tsinelas-text-support: var(--color-tsinelas-text-secondary);
+  --color-tsinelas-text-muted: var(--color-tsinelas-text-secondary);
+  --color-tsinelas-text-weak: var(--color-tsinelas-text-helper);
+  --color-tsinelas-text-on-disabled: var(
+    --color-tsinelas-text-on-color-disabled
+  );
+  --color-tsinelas-text-inverse-strong: var(--color-tsinelas-text-inverse);
   --color-tsinelas-text-inverse-subtle: var(--color-tsinelas-gray-300);
-  --color-tsinelas-text-link: var(--color-tsinelas-teal-600);
-  --color-tsinelas-text-link-hover: var(--color-tsinelas-teal-700);
-  --color-tsinelas-text-link-visited: var(--color-tsinelas-teal-800);
+  --color-tsinelas-text-link: var(--color-tsinelas-link-primary);
+  --color-tsinelas-text-link-hover: var(--color-tsinelas-link-primary-hover);
+  --color-tsinelas-text-link-visited: var(--color-tsinelas-link-visited);
   --color-tsinelas-text-brand: var(--color-tsinelas-brand-600);
   --color-tsinelas-text-brand-bold: var(--color-tsinelas-brand-900);
   --color-tsinelas-text-success: var(--color-tsinelas-green-600);
@@ -262,103 +614,157 @@
   --color-tsinelas-text-accent-blue: var(--color-tsinelas-teal-700);
   --color-tsinelas-text-accent-teal: var(--color-tsinelas-teal-700);
 
-  /* Backgrounds */
-  --color-tsinelas-bg-surface: var(--color-tsinelas-neutral-50);
-  --color-tsinelas-bg-surface-raised: var(--color-tsinelas-gray-50);
-  --color-tsinelas-bg-surface-brand: var(--color-tsinelas-brand-200);
+  --color-tsinelas-bg-surface: var(--color-tsinelas-background);
+  --color-tsinelas-bg-surface-raised: var(--color-tsinelas-layer-01);
+  --color-tsinelas-bg-surface-brand: var(--color-tsinelas-highlight);
   --color-tsinelas-bg-surface-brand-weak: var(--color-tsinelas-brand-50);
-  --color-tsinelas-bg-surface-bold: var(--color-tsinelas-brand-600);
+  --color-tsinelas-bg-surface-bold: var(--color-tsinelas-background-brand);
   --color-tsinelas-bg-surface-adaptive: var(--color-tsinelas-neutral-100);
-  --color-tsinelas-bg-subtle: var(--color-tsinelas-gray-50);
-  --color-tsinelas-bg-muted: var(--color-tsinelas-gray-100);
-  --color-tsinelas-bg-hover: var(--color-tsinelas-neutral-200);
+  --color-tsinelas-bg-subtle: var(--color-tsinelas-layer-01);
+  --color-tsinelas-bg-muted: var(--color-tsinelas-layer-hover-01);
+  --color-tsinelas-bg-hover: var(--color-tsinelas-background-hover);
   --color-tsinelas-bg-hover-weak: var(--color-tsinelas-neutral-100);
-  --color-tsinelas-bg-active: var(--color-tsinelas-neutral-300);
+  --color-tsinelas-bg-active: var(--color-tsinelas-background-active);
   --color-tsinelas-bg-selected: var(--color-tsinelas-brand-100);
-  --color-tsinelas-bg-disabled: var(--color-tsinelas-neutral-300);
-  --color-tsinelas-bg-focus: var(--color-tsinelas-yellow-500);
+  --color-tsinelas-bg-disabled: var(--color-tsinelas-button-disabled);
+  --color-tsinelas-bg-focus: var(--color-tsinelas-focus);
   --color-tsinelas-bg-surface-brand-active: var(--color-tsinelas-brand-50);
+  --color-tsinelas-bg-overlay: var(--color-tsinelas-overlay);
 
-  --color-tsinelas-bg-gray-default: var(--color-tsinelas-gray-50);
-  --color-tsinelas-bg-gray-hover: var(--color-tsinelas-gray-100);
-  --color-tsinelas-bg-gray-active: var(--color-tsinelas-gray-200);
+  --color-tsinelas-bg-gray-default: var(--color-tsinelas-layer-01);
+  --color-tsinelas-bg-gray-hover: var(--color-tsinelas-layer-hover-01);
+  --color-tsinelas-bg-gray-active: var(--color-tsinelas-layer-selected-01);
   --color-tsinelas-bg-gray-disabled: var(--color-tsinelas-gray-300);
 
-  --color-tsinelas-bg-brand-default: var(--color-tsinelas-brand-600);
-  --color-tsinelas-bg-brand-hover: var(--color-tsinelas-brand-700);
-  --color-tsinelas-bg-brand-active: var(--color-tsinelas-brand-800);
+  --color-tsinelas-bg-brand-default: var(--color-tsinelas-button-primary);
+  --color-tsinelas-bg-brand-hover: var(--color-tsinelas-button-primary-hover);
+  --color-tsinelas-bg-brand-active: var(--color-tsinelas-button-primary-active);
   --color-tsinelas-bg-brand-weak: var(--color-tsinelas-brand-200);
 
-  --color-tsinelas-bg-info-default: var(--color-tsinelas-teal-600);
+  --color-tsinelas-bg-info-default: var(--color-tsinelas-support-info);
   --color-tsinelas-bg-info-hover: var(--color-tsinelas-teal-700);
   --color-tsinelas-bg-info-active: var(--color-tsinelas-teal-800);
-  --color-tsinelas-bg-info-weak: var(--color-tsinelas-teal-50);
+  --color-tsinelas-bg-info-weak: var(
+    --color-tsinelas-notification-background-info
+  );
 
-  --color-tsinelas-bg-danger-default: var(--color-tsinelas-red-700);
-  --color-tsinelas-bg-danger-hover: var(--color-tsinelas-red-800);
-  --color-tsinelas-bg-danger-active: var(--color-tsinelas-red-900);
-  --color-tsinelas-bg-danger-weak: var(--color-tsinelas-red-50);
+  --color-tsinelas-bg-danger-default: var(
+    --color-tsinelas-button-danger-primary
+  );
+  --color-tsinelas-bg-danger-hover: var(--color-tsinelas-button-danger-hover);
+  --color-tsinelas-bg-danger-active: var(--color-tsinelas-button-danger-active);
+  --color-tsinelas-bg-danger-weak: var(
+    --color-tsinelas-notification-background-error
+  );
 
-  --color-tsinelas-bg-warning-default: var(--color-tsinelas-gold-600);
+  --color-tsinelas-bg-warning-default: var(--color-tsinelas-support-warning);
   --color-tsinelas-bg-warning-hover: var(--color-tsinelas-gold-700);
   --color-tsinelas-bg-warning-active: var(--color-tsinelas-gold-800);
-  --color-tsinelas-bg-warning-weak: var(--color-tsinelas-gold-50);
+  --color-tsinelas-bg-warning-weak: var(
+    --color-tsinelas-notification-background-warning
+  );
 
-  --color-tsinelas-bg-success-default: var(--color-tsinelas-green-600);
+  --color-tsinelas-bg-success-default: var(--color-tsinelas-support-success);
   --color-tsinelas-bg-success-hover: var(--color-tsinelas-green-700);
   --color-tsinelas-bg-success-active: var(--color-tsinelas-green-800);
-  --color-tsinelas-bg-success-weak: var(--color-tsinelas-green-50);
+  --color-tsinelas-bg-success-weak: var(
+    --color-tsinelas-notification-background-success
+  );
 
   --color-tsinelas-bg-accent-purple-default: var(--color-tsinelas-purple-700);
   --color-tsinelas-bg-accent-purple-weak: var(--color-tsinelas-purple-50);
-
   --color-tsinelas-bg-accent-green-default: var(--color-tsinelas-green-600);
   --color-tsinelas-bg-accent-green-weak: var(--color-tsinelas-green-50);
-
   --color-tsinelas-bg-accent-red-default: var(--color-tsinelas-red-500);
   --color-tsinelas-bg-accent-red-weak: var(--color-tsinelas-red-50);
-
-  /* Gold is the one CTA per screen. Buttons on it take navy labels. */
-  --color-tsinelas-bg-accent-gold-default: var(--color-tsinelas-gold-600);
-  --color-tsinelas-bg-accent-gold-hover: var(--color-tsinelas-gold-500);
+  --color-tsinelas-bg-accent-gold-default: var(--color-tsinelas-button-accent);
+  --color-tsinelas-bg-accent-gold-hover: var(
+    --color-tsinelas-button-accent-hover
+  );
   --color-tsinelas-bg-accent-gold-weak: var(--color-tsinelas-gold-50);
-  --color-tsinelas-bg-accent-orange-default: var(--color-tsinelas-gold-600);
-  --color-tsinelas-bg-accent-orange-hover: var(--color-tsinelas-gold-500);
+  --color-tsinelas-bg-accent-orange-default: var(
+    --color-tsinelas-button-accent
+  );
+  --color-tsinelas-bg-accent-orange-hover: var(
+    --color-tsinelas-button-accent-hover
+  );
   --color-tsinelas-bg-accent-orange-weak: var(--color-tsinelas-gold-50);
-
   --color-tsinelas-bg-accent-teal-default: var(--color-tsinelas-teal-600);
   --color-tsinelas-bg-accent-teal-weak: var(--color-tsinelas-teal-50);
   --color-tsinelas-bg-accent-blue-default: var(--color-tsinelas-teal-600);
   --color-tsinelas-bg-accent-blue-weak: var(--color-tsinelas-teal-50);
-
   --color-tsinelas-bg-accent-yellow-default: var(--color-tsinelas-yellow-500);
   --color-tsinelas-bg-accent-yellow-hover: var(--color-tsinelas-yellow-600);
   --color-tsinelas-bg-accent-yellow-weak: var(--color-tsinelas-yellow-50);
 
-  /* Borders */
-  --color-tsinelas-border-strong: var(--color-tsinelas-gray-400);
-  --color-tsinelas-border-default: var(--color-tsinelas-gray-200);
-  --color-tsinelas-border-weak: var(--color-tsinelas-gray-200);
-  --color-tsinelas-border-inverse: var(--color-tsinelas-gray-50);
-  --color-tsinelas-border-on-disabled: var(--color-tsinelas-gray-400);
-  --color-tsinelas-border-focus: var(--color-tsinelas-teal-600);
-  --color-tsinelas-border-brand: var(--color-tsinelas-brand-600);
-  --color-tsinelas-border-success: var(--color-tsinelas-green-600);
+  --color-tsinelas-border-default: var(--color-tsinelas-border-subtle-00);
+  --color-tsinelas-border-weak: var(--color-tsinelas-border-subtle-00);
+  --color-tsinelas-border-on-disabled: var(--color-tsinelas-border-disabled);
+  --color-tsinelas-border-focus: var(--color-tsinelas-focus);
+  --color-tsinelas-border-brand: var(--color-tsinelas-border-interactive);
+  --color-tsinelas-border-success: var(--color-tsinelas-support-success);
   --color-tsinelas-border-danger: var(--color-tsinelas-red-700);
-  --color-tsinelas-border-warning: var(--color-tsinelas-gold-600);
-  --color-tsinelas-border-info: var(--color-tsinelas-teal-600);
+  --color-tsinelas-border-warning: var(--color-tsinelas-support-warning);
+  --color-tsinelas-border-info: var(--color-tsinelas-support-info);
   --color-tsinelas-border-accent-gold: var(--color-tsinelas-gold-600);
   --color-tsinelas-border-accent-orange: var(--color-tsinelas-gold-600);
   --color-tsinelas-border-accent-yellow: var(--color-tsinelas-yellow-500);
 }
 
 /* --------------------------------------------------------------------------
- * 5. Type classes
- * The brand scale: H1 Poppins 700 40/46, H2 Poppins 600 28/36, H3 Poppins
- * 600 20/28, body Source Sans 400 16/26, section label Poppins 600 11px
- * letter-spaced 0.10em. Sentence case for headings, never title case; all
- * caps only for small labels. Placed in the components layer so responsive
- * `text-*` utilities can still override a size where a page needs it.
+ * 8. Layer context
+ * Carbon components don't know which layer they sit on; they use the
+ * contextual `layer`, `field` and `border-subtle` tokens and the *parent*
+ * declares the level. The root is level 01. Wrap a region in
+ * `.tsinelas-layer-02` (or -03) and every `bg-tsinelas-layer`,
+ * `bg-tsinelas-field`, `border-tsinelas-border-subtle` inside it re-resolves.
+ * -------------------------------------------------------------------------- */
+:root,
+.tsinelas-layer-01 {
+  --tsinelas-layer: var(--color-tsinelas-layer-01);
+  --tsinelas-layer-hover: var(--color-tsinelas-layer-hover-01);
+  --tsinelas-layer-active: var(--color-tsinelas-layer-active-01);
+  --tsinelas-layer-selected: var(--color-tsinelas-layer-selected-01);
+  --tsinelas-field: var(--color-tsinelas-field-01);
+  --tsinelas-field-hover: var(--color-tsinelas-field-hover-01);
+  --tsinelas-border-subtle: var(--color-tsinelas-border-subtle-00);
+  --tsinelas-border-strong: var(--color-tsinelas-border-strong-01);
+  --tsinelas-border-tile: var(--color-tsinelas-border-tile-01);
+}
+.tsinelas-layer-02 {
+  --tsinelas-layer: var(--color-tsinelas-layer-02);
+  --tsinelas-layer-hover: var(--color-tsinelas-layer-hover-02);
+  --tsinelas-layer-active: var(--color-tsinelas-layer-active-02);
+  --tsinelas-layer-selected: var(--color-tsinelas-layer-selected-02);
+  --tsinelas-field: var(--color-tsinelas-field-02);
+  --tsinelas-field-hover: var(--color-tsinelas-field-hover-02);
+  --tsinelas-border-subtle: var(--color-tsinelas-border-subtle-01);
+  --tsinelas-border-strong: var(--color-tsinelas-border-strong-02);
+  --tsinelas-border-tile: var(--color-tsinelas-border-tile-02);
+}
+.tsinelas-layer-03 {
+  --tsinelas-layer: var(--color-tsinelas-layer-03);
+  --tsinelas-layer-hover: var(--color-tsinelas-layer-hover-03);
+  --tsinelas-layer-active: var(--color-tsinelas-layer-active-03);
+  --tsinelas-layer-selected: var(--color-tsinelas-layer-selected-03);
+  --tsinelas-field: var(--color-tsinelas-field-03);
+  --tsinelas-field-hover: var(--color-tsinelas-field-hover-03);
+  --tsinelas-border-subtle: var(--color-tsinelas-border-subtle-02);
+  --tsinelas-border-strong: var(--color-tsinelas-border-strong-03);
+  --tsinelas-border-tile: var(--color-tsinelas-border-tile-03);
+}
+
+/* --------------------------------------------------------------------------
+ * 9. Type tokens
+ * Carbon's type sets on the brand faces. Productive tokens are fixed;
+ * expressive `fluid-*` tokens step up at the 2x grid breakpoints. Sizes are
+ * Carbon's scale (12 14 16 18 20 24 28 32 36 42 48 54 60 68 76 84 92 ...);
+ * weights follow the brand: headings Poppins 600, display Poppins 700,
+ * body Source Sans 400/600. Sentence case for headings, never title case;
+ * all caps only for `tsinelas-eyebrow`.
+ *
+ * Placed in the components layer so responsive `text-*` utilities can still
+ * override a size where a page needs it.
  * -------------------------------------------------------------------------- */
 @layer components {
   .tsinelas-display {
@@ -371,35 +777,424 @@
     font-family: var(--font-tsinelas-mono);
   }
 
-  .tsinelas-heading-xl {
-    font-family: var(--font-tsinelas-display);
-    font-size: 2.5rem; /* 40px */
-    font-weight: 700;
-    line-height: 1.15; /* 46px */
-    letter-spacing: var(--tracking-tsinelas-tight);
+  /* --- Productive: small utility text --------------------------------- */
+  .tsinelas-code-01 {
+    font-family: var(--font-tsinelas-mono);
+    font-size: 0.75rem; /* 12px */
+    font-weight: 400;
+    line-height: 1.3333; /* 16px */
+    letter-spacing: var(--tracking-tsinelas-12);
   }
-  .tsinelas-heading-lg {
+  .tsinelas-code-02 {
+    font-family: var(--font-tsinelas-mono);
+    font-size: 0.875rem; /* 14px */
+    font-weight: 400;
+    line-height: 1.4286; /* 20px */
+    letter-spacing: var(--tracking-tsinelas-12);
+  }
+
+  .tsinelas-label-01,
+  .tsinelas-helper-text-01,
+  .tsinelas-legal-01 {
+    font-family: var(--font-tsinelas-sans);
+    font-size: 0.75rem; /* 12px */
+    font-weight: 400;
+    line-height: 1.3333; /* 16px */
+    letter-spacing: var(--tracking-tsinelas-12);
+  }
+  .tsinelas-label-02,
+  .tsinelas-helper-text-02,
+  .tsinelas-legal-02 {
+    font-family: var(--font-tsinelas-sans);
+    font-size: 0.875rem; /* 14px */
+    font-weight: 400;
+    line-height: 1.2857; /* 18px */
+    letter-spacing: var(--tracking-tsinelas-14);
+  }
+
+  /* --- Productive: body ------------------------------------------------ */
+  .tsinelas-body-compact-01 {
+    font-family: var(--font-tsinelas-sans);
+    font-size: 0.875rem; /* 14px */
+    font-weight: 400;
+    line-height: 1.2857; /* 18px */
+    letter-spacing: var(--tracking-tsinelas-14);
+  }
+  .tsinelas-body-compact-02 {
+    font-family: var(--font-tsinelas-sans);
+    font-size: 1rem; /* 16px */
+    font-weight: 400;
+    line-height: 1.375; /* 22px */
+    letter-spacing: 0;
+  }
+  .tsinelas-body-01 {
+    font-family: var(--font-tsinelas-sans);
+    font-size: 0.875rem; /* 14px */
+    font-weight: 400;
+    line-height: 1.4286; /* 20px */
+    letter-spacing: var(--tracking-tsinelas-14);
+  }
+  .tsinelas-body-02 {
+    font-family: var(--font-tsinelas-sans);
+    font-size: 1rem; /* 16px */
+    font-weight: 400;
+    line-height: 1.5; /* 24px */
+    letter-spacing: 0;
+  }
+
+  /* --- Productive: headings -------------------------------------------- */
+  .tsinelas-heading-compact-01 {
     font-family: var(--font-tsinelas-display);
-    font-size: 1.75rem; /* 28px */
+    font-size: 0.875rem; /* 14px */
     font-weight: 600;
-    line-height: 1.2857; /* 36px */
-    letter-spacing: var(--tracking-tsinelas-tight);
+    line-height: 1.2857; /* 18px */
+    letter-spacing: var(--tracking-tsinelas-14);
   }
-  .tsinelas-heading-md {
+  .tsinelas-heading-compact-02 {
+    font-family: var(--font-tsinelas-display);
+    font-size: 1rem; /* 16px */
+    font-weight: 600;
+    line-height: 1.375; /* 22px */
+    letter-spacing: 0;
+  }
+  .tsinelas-heading-01 {
+    font-family: var(--font-tsinelas-display);
+    font-size: 0.875rem; /* 14px */
+    font-weight: 600;
+    line-height: 1.4286; /* 20px */
+    letter-spacing: var(--tracking-tsinelas-14);
+  }
+  .tsinelas-heading-02 {
+    font-family: var(--font-tsinelas-display);
+    font-size: 1rem; /* 16px */
+    font-weight: 600;
+    line-height: 1.5; /* 24px */
+    letter-spacing: 0;
+  }
+  .tsinelas-heading-03 {
     font-family: var(--font-tsinelas-display);
     font-size: 1.25rem; /* 20px */
     font-weight: 600;
     line-height: 1.4; /* 28px */
     letter-spacing: var(--tracking-tsinelas-tight);
   }
-  .tsinelas-heading-sm {
+  .tsinelas-heading-04 {
     font-family: var(--font-tsinelas-display);
-    font-size: 1.125rem; /* 18px */
+    font-size: 1.75rem; /* 28px */
     font-weight: 600;
-    line-height: 1.4444; /* 26px */
+    line-height: 1.2857; /* 36px */
+    letter-spacing: var(--tracking-tsinelas-tight);
+  }
+  .tsinelas-heading-05 {
+    font-family: var(--font-tsinelas-display);
+    font-size: 2rem; /* 32px */
+    font-weight: 600;
+    line-height: 1.25; /* 40px */
+    letter-spacing: var(--tracking-tsinelas-tight);
+  }
+  .tsinelas-heading-06 {
+    font-family: var(--font-tsinelas-display);
+    font-size: 2.625rem; /* 42px */
+    font-weight: 700;
+    line-height: 1.1905; /* 50px */
+    letter-spacing: var(--tracking-tsinelas-tight);
+  }
+  .tsinelas-heading-07 {
+    font-family: var(--font-tsinelas-display);
+    font-size: 3.375rem; /* 54px */
+    font-weight: 700;
+    line-height: 1.1852; /* 64px */
     letter-spacing: var(--tracking-tsinelas-tight);
   }
 
+  /* --- Expressive: fluid headings and display -------------------------- */
+  .tsinelas-fluid-heading-03,
+  .tsinelas-fluid-heading-04,
+  .tsinelas-fluid-heading-05,
+  .tsinelas-fluid-heading-06,
+  .tsinelas-fluid-display-01,
+  .tsinelas-fluid-display-02,
+  .tsinelas-fluid-display-03,
+  .tsinelas-fluid-display-04 {
+    font-family: var(--font-tsinelas-display);
+    letter-spacing: var(--tracking-tsinelas-tight);
+  }
+  .tsinelas-fluid-heading-03 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.75rem;
+  }
+  .tsinelas-fluid-heading-04 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    line-height: 2.25rem;
+  }
+  .tsinelas-fluid-heading-05 {
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 2.5rem;
+  }
+  .tsinelas-fluid-heading-06 {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 2.5rem;
+  }
+  .tsinelas-fluid-display-01,
+  .tsinelas-fluid-display-02,
+  .tsinelas-fluid-display-03,
+  .tsinelas-fluid-display-04 {
+    font-size: 2.625rem;
+    font-weight: 700;
+    line-height: 3.125rem;
+  }
+  @media (min-width: 42rem) {
+    .tsinelas-fluid-heading-05,
+    .tsinelas-fluid-heading-06 {
+      font-size: 2.25rem;
+      line-height: 2.75rem;
+    }
+    .tsinelas-fluid-display-03 {
+      font-size: 3.375rem;
+      line-height: 4rem;
+    }
+    .tsinelas-fluid-display-04 {
+      font-size: 4.25rem;
+      line-height: 4.875rem;
+    }
+  }
+  @media (min-width: 66rem) {
+    .tsinelas-fluid-heading-04 {
+      font-size: 2rem;
+      line-height: 2.5rem;
+    }
+    .tsinelas-fluid-heading-05,
+    .tsinelas-fluid-heading-06 {
+      font-size: 2.625rem;
+      line-height: 3.125rem;
+    }
+    .tsinelas-fluid-display-01,
+    .tsinelas-fluid-display-02 {
+      font-size: 3.375rem;
+      line-height: 4rem;
+    }
+    .tsinelas-fluid-display-03 {
+      font-size: 3.75rem;
+      line-height: 4.375rem;
+    }
+    .tsinelas-fluid-display-04 {
+      font-size: 5.75rem;
+      line-height: 6.375rem;
+    }
+  }
+  @media (min-width: 82rem) {
+    .tsinelas-fluid-heading-05,
+    .tsinelas-fluid-heading-06 {
+      font-size: 3rem;
+      line-height: 3.5rem;
+    }
+    .tsinelas-fluid-display-01,
+    .tsinelas-fluid-display-02 {
+      font-size: 3.75rem;
+      line-height: 4.375rem;
+    }
+    .tsinelas-fluid-display-03 {
+      font-size: 4.75rem;
+      line-height: 5.375rem;
+    }
+    .tsinelas-fluid-display-04 {
+      font-size: 7.625rem;
+      line-height: 8.125rem;
+    }
+  }
+  @media (min-width: 99rem) {
+    .tsinelas-fluid-heading-03 {
+      font-size: 1.5rem;
+      line-height: 1.875rem;
+    }
+    .tsinelas-fluid-heading-05,
+    .tsinelas-fluid-heading-06 {
+      font-size: 3.75rem;
+      line-height: 4.375rem;
+    }
+    .tsinelas-fluid-display-01,
+    .tsinelas-fluid-display-02 {
+      font-size: 4.75rem;
+      line-height: 5.375rem;
+    }
+    .tsinelas-fluid-display-03 {
+      font-size: 5.25rem;
+      line-height: 5.875rem;
+    }
+    .tsinelas-fluid-display-04 {
+      font-size: 9.75rem;
+      line-height: 10.25rem;
+    }
+  }
+
+  /* --- Expressive: paragraph and quotation ----------------------------- */
+  .tsinelas-fluid-paragraph-01 {
+    font-family: var(--font-tsinelas-sans);
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 1.875rem;
+  }
+  .tsinelas-fluid-quotation-01 {
+    font-family: var(--font-tsinelas-display);
+    font-size: 1.25rem;
+    font-weight: 400;
+    line-height: 1.625rem;
+  }
+  .tsinelas-fluid-quotation-02 {
+    font-family: var(--font-tsinelas-display);
+    font-size: 2rem;
+    font-weight: 400;
+    line-height: 2.5rem;
+  }
+  @media (min-width: 42rem) {
+    .tsinelas-fluid-quotation-01 {
+      font-size: 1.5rem;
+      line-height: 1.875rem;
+    }
+    .tsinelas-fluid-quotation-02 {
+      font-size: 2.25rem;
+      line-height: 2.75rem;
+    }
+  }
+  @media (min-width: 66rem) {
+    .tsinelas-fluid-paragraph-01 {
+      font-size: 1.75rem;
+      line-height: 2.25rem;
+    }
+    .tsinelas-fluid-quotation-01 {
+      font-size: 1.75rem;
+      line-height: 2.25rem;
+    }
+    .tsinelas-fluid-quotation-02 {
+      font-size: 2.625rem;
+      line-height: 3.125rem;
+    }
+  }
+  @media (min-width: 82rem) {
+    .tsinelas-fluid-quotation-01 {
+      font-size: 1.875rem;
+      line-height: 2.375rem;
+    }
+    .tsinelas-fluid-quotation-02 {
+      font-size: 3rem;
+      line-height: 3.5rem;
+    }
+  }
+  @media (min-width: 99rem) {
+    .tsinelas-fluid-paragraph-01 {
+      font-size: 2rem;
+      line-height: 2.5rem;
+    }
+    .tsinelas-fluid-quotation-01 {
+      font-size: 2rem;
+      line-height: 2.5rem;
+    }
+    .tsinelas-fluid-quotation-02 {
+      font-size: 3.75rem;
+      line-height: 4.375rem;
+    }
+  }
+
+  /* --- Carbon v10 names, as used in the Figma kit ---------------------- */
+  /* productive-heading-0N → heading-0N, body-short → body-compact,
+   * body-long → body, caption-01 → label-01 metrics. */
+  .tsinelas-productive-heading-01 {
+    font-family: var(--font-tsinelas-display);
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1.4286;
+    letter-spacing: var(--tracking-tsinelas-14);
+  }
+  .tsinelas-productive-heading-02 {
+    font-family: var(--font-tsinelas-display);
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: 0;
+  }
+  .tsinelas-productive-heading-03 {
+    font-family: var(--font-tsinelas-display);
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.4;
+    letter-spacing: var(--tracking-tsinelas-tight);
+  }
+  .tsinelas-productive-heading-04 {
+    font-family: var(--font-tsinelas-display);
+    font-size: 1.75rem;
+    font-weight: 600;
+    line-height: 1.2857;
+    letter-spacing: var(--tracking-tsinelas-tight);
+  }
+  .tsinelas-productive-heading-05 {
+    font-family: var(--font-tsinelas-display);
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 1.25;
+    letter-spacing: var(--tracking-tsinelas-tight);
+  }
+  .tsinelas-productive-heading-06 {
+    font-family: var(--font-tsinelas-display);
+    font-size: 2.625rem;
+    font-weight: 700;
+    line-height: 1.1905;
+    letter-spacing: var(--tracking-tsinelas-tight);
+  }
+  .tsinelas-productive-heading-07 {
+    font-family: var(--font-tsinelas-display);
+    font-size: 3.375rem;
+    font-weight: 700;
+    line-height: 1.1852;
+    letter-spacing: var(--tracking-tsinelas-tight);
+  }
+  .tsinelas-body-short-01 {
+    font-family: var(--font-tsinelas-sans);
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.2857;
+    letter-spacing: var(--tracking-tsinelas-14);
+  }
+  .tsinelas-body-short-02 {
+    font-family: var(--font-tsinelas-sans);
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.375;
+    letter-spacing: 0;
+  }
+  .tsinelas-body-long-01 {
+    font-family: var(--font-tsinelas-sans);
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.4286;
+    letter-spacing: var(--tracking-tsinelas-14);
+  }
+  .tsinelas-body-long-02 {
+    font-family: var(--font-tsinelas-sans);
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: 0;
+  }
+  .tsinelas-caption-01 {
+    font-family: var(--font-tsinelas-sans);
+    font-size: 0.75rem;
+    font-weight: 400;
+    line-height: 1.3333;
+    letter-spacing: var(--tracking-tsinelas-12);
+  }
+  .tsinelas-caption-02 {
+    font-family: var(--font-tsinelas-sans);
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.2857;
+    letter-spacing: var(--tracking-tsinelas-14);
+  }
+
+  /* --- Brand extensions ------------------------------------------------ */
   /* Section label / eyebrow: the one place all-caps is allowed. */
   .tsinelas-eyebrow {
     font-family: var(--font-tsinelas-display);
@@ -410,39 +1205,82 @@
     text-transform: uppercase;
   }
 
+  /* Phone numbers, addresses and figures in directory rows: tabular digits
+   * so columns align. */
+  .tsinelas-tabular {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* --- Legacy names, mapped onto the Carbon tokens --------------------- */
+  /* heading-xl → heading-06, heading-lg → heading-04, heading-md →
+   * heading-03. heading-sm (18px) has no Carbon counterpart and stays a
+   * Tsinelas extension on the 18 step of the scale. */
+  .tsinelas-heading-xl {
+    font-family: var(--font-tsinelas-display);
+    font-size: 2.625rem;
+    font-weight: 700;
+    line-height: 1.1905;
+    letter-spacing: var(--tracking-tsinelas-tight);
+  }
+  .tsinelas-heading-lg {
+    font-family: var(--font-tsinelas-display);
+    font-size: 1.75rem;
+    font-weight: 600;
+    line-height: 1.2857;
+    letter-spacing: var(--tracking-tsinelas-tight);
+  }
+  .tsinelas-heading-md {
+    font-family: var(--font-tsinelas-display);
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.4;
+    letter-spacing: var(--tracking-tsinelas-tight);
+  }
+  .tsinelas-heading-sm {
+    font-family: var(--font-tsinelas-display);
+    font-size: 1.125rem; /* 18px */
+    font-weight: 600;
+    line-height: 1.3333; /* 24px */
+    letter-spacing: var(--tracking-tsinelas-tight);
+  }
+
+  /* body-md → body-02, body-sm → body-01, body-xs → helper-text-01 metrics.
+   * body-lg (18/26) and body-xl (20/28) are extensions on-scale. */
   .tsinelas-body-xl-default,
   .tsinelas-body-xl-strong {
     font-family: var(--font-tsinelas-sans);
-    font-size: 1.25rem; /* 20px */
-    line-height: 1.5; /* 30px */
+    font-size: 1.25rem;
+    line-height: 1.4; /* 28px */
   }
   .tsinelas-body-lg-default,
   .tsinelas-body-lg-strong,
   .tsinelas-body-lg {
     font-family: var(--font-tsinelas-sans);
-    font-size: 1.125rem; /* 18px */
-    line-height: 1.5556; /* 28px */
+    font-size: 1.125rem;
+    line-height: 1.4444; /* 26px */
   }
   .tsinelas-body-md-default,
   .tsinelas-body-md-strong,
   .tsinelas-body-md,
   .tsinelas-body {
     font-family: var(--font-tsinelas-sans);
-    font-size: 1rem; /* 16px */
-    line-height: 1.625; /* 26px */
+    font-size: 1rem;
+    line-height: 1.5; /* 24px */
   }
   .tsinelas-body-sm-default,
   .tsinelas-body-sm-strong,
   .tsinelas-body-sm {
     font-family: var(--font-tsinelas-sans);
-    font-size: 0.875rem; /* 14px */
-    line-height: 1.5714; /* 22px */
+    font-size: 0.875rem;
+    line-height: 1.4286; /* 20px */
+    letter-spacing: var(--tracking-tsinelas-14);
   }
   .tsinelas-body-xs-default,
   .tsinelas-body-xs-strong {
     font-family: var(--font-tsinelas-sans);
-    font-size: 0.75rem; /* 12px */
-    line-height: 1.5; /* 18px */
+    font-size: 0.75rem;
+    line-height: 1.3333; /* 16px */
+    letter-spacing: var(--tracking-tsinelas-12);
   }
   .tsinelas-body-xl-default,
   .tsinelas-body-lg-default,
@@ -463,33 +1301,41 @@
     font-weight: 600;
   }
 
-  /* Form and control labels: interface text, so Source Sans. */
+  /* Form and control labels: interface text, so Source Sans. Carbon's own
+   * field label is `tsinelas-label-01` (12px regular); these heavier sizes
+   * remain for section and card labels. */
   .tsinelas-label-lg,
   .tsinelas-label-md,
   .tsinelas-label-sm,
   .tsinelas-label-xs {
     font-family: var(--font-tsinelas-sans);
     font-weight: 600;
-    line-height: 1.25;
   }
   .tsinelas-label-lg {
     font-size: 1.125rem;
+    line-height: 1.3333;
   }
   .tsinelas-label-md {
     font-size: 1rem;
+    line-height: 1.375;
   }
   .tsinelas-label-sm {
     font-size: 0.875rem;
+    line-height: 1.2857;
+    letter-spacing: var(--tracking-tsinelas-14);
   }
   .tsinelas-label-xs {
     font-size: 0.75rem;
+    line-height: 1.3333;
+    letter-spacing: var(--tracking-tsinelas-12);
   }
 
   .tsinelas-input {
     font-family: var(--font-tsinelas-sans);
-    font-size: 1rem;
+    font-size: 0.875rem;
     font-weight: 400;
-    line-height: 1.5rem;
+    line-height: 1.2857;
+    letter-spacing: var(--tracking-tsinelas-14);
   }
 
   .tsinelas-link-lg,
@@ -497,16 +1343,19 @@
   .tsinelas-link-sm {
     font-family: var(--font-tsinelas-sans);
     font-weight: 400;
-    line-height: 1.5;
   }
   .tsinelas-link-lg {
     font-size: 1.125rem;
+    line-height: 1.4444;
   }
   .tsinelas-link-md {
     font-size: 1rem;
+    line-height: 1.5;
   }
   .tsinelas-link-sm {
     font-size: 0.875rem;
+    line-height: 1.4286;
+    letter-spacing: var(--tracking-tsinelas-14);
   }
 
   .tsinelas-code-lg,
@@ -514,39 +1363,37 @@
   .tsinelas-code-sm {
     font-family: var(--font-tsinelas-mono);
     font-weight: 400;
-    line-height: 1.5;
+    letter-spacing: var(--tracking-tsinelas-12);
   }
   .tsinelas-code-lg {
     font-size: 1.125rem;
+    line-height: 1.4444;
   }
   .tsinelas-code-md {
     font-size: 1rem;
+    line-height: 1.5;
   }
   .tsinelas-code-sm {
     font-size: 0.875rem;
-  }
-
-  /* Phone numbers, addresses and figures in directory rows: tabular digits
-   * so columns align. */
-  .tsinelas-tabular {
-    font-variant-numeric: tabular-nums;
+    line-height: 1.4286;
   }
 }
 
 /* --------------------------------------------------------------------------
- * 6. Base element styles
+ * 10. Base styles and utilities
  * -------------------------------------------------------------------------- */
 @layer base {
   html {
     font-family: var(--font-tsinelas-sans);
-    color: var(--color-tsinelas-text-strong);
+    color: var(--color-tsinelas-text-primary);
+    background-color: var(--color-tsinelas-background);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
   body {
     font-size: 1rem; /* body never drops below 16px on mobile */
-    line-height: 1.625;
+    line-height: 1.5;
   }
 
   h1,
@@ -570,130 +1417,59 @@
   pre {
     font-family: var(--font-tsinelas-mono);
   }
+
+  ::selection {
+    background-color: var(--color-tsinelas-highlight);
+  }
 }
 
-/* --------------------------------------------------------------------------
- * 7. Kapwa compatibility
- * @bettergov/kapwa components render Tailwind scales rather than kapwa-*
- * tokens: Button uses `primary` / `secondary`, the outline and ghost variants
- * use `gray`, Banner uses raw `green` / `red` / `yellow` / `blue` tints.
- * Re-pointing those scales here keeps the vendored components on-brand.
- *
- *   primary   → Deep Navy   (Button variant="primary")
- *   secondary → Lake Teal   (Button variant="secondary" hard-codes white text;
- *                            white on gold fails contrast, white on teal is 5.5:1)
- *   accent    → Sunrise Gold
- *   gray      → working neutrals
- *
- * Kapwa's own kapwa-* scales are also aliased so anything still reaching
- * for them (its typography classes, third-party snippets) matches the brand.
- * -------------------------------------------------------------------------- */
-@theme {
-  --color-primary-50: var(--color-tsinelas-brand-50);
-  --color-primary-100: var(--color-tsinelas-brand-100);
-  --color-primary-200: var(--color-tsinelas-brand-200);
-  --color-primary-300: var(--color-tsinelas-brand-300);
-  --color-primary-400: var(--color-tsinelas-brand-400);
-  --color-primary-500: var(--color-tsinelas-brand-600);
-  --color-primary-600: var(--color-tsinelas-brand-700);
-  --color-primary-700: var(--color-tsinelas-brand-800);
-  --color-primary-800: var(--color-tsinelas-brand-900);
-  --color-primary-900: var(--color-tsinelas-brand-950);
+/* Tailwind has no `--duration-*` theme namespace, so the motion durations
+ * are exposed as a functional utility: `duration-tsinelas-moderate-01`.
+ * (`ease-tsinelas-*` needs nothing extra; `--ease-*` is a theme namespace.) */
+@utility duration-tsinelas-* {
+  transition-duration: --value(--duration-tsinelas-*);
+}
 
-  --color-secondary-50: var(--color-tsinelas-teal-50);
-  --color-secondary-100: var(--color-tsinelas-teal-100);
-  --color-secondary-200: var(--color-tsinelas-teal-200);
-  --color-secondary-300: var(--color-tsinelas-teal-300);
-  --color-secondary-400: var(--color-tsinelas-teal-400);
-  --color-secondary-500: var(--color-tsinelas-teal-600);
-  --color-secondary-600: var(--color-tsinelas-teal-700);
-  --color-secondary-700: var(--color-tsinelas-teal-800);
-  --color-secondary-800: var(--color-tsinelas-teal-900);
-  --color-secondary-900: var(--color-tsinelas-teal-950);
+/* Carbon focus: a 2px ring drawn inside the element's box so it never
+ * changes layout, on keyboard focus only. Filled controls add the white
+ * `focus-inset` hairline with `tsinelas-focus-inset`. */
+@utility tsinelas-focus {
+  outline: 2px solid transparent;
+  outline-offset: -2px;
 
-  --color-accent-50: var(--color-tsinelas-gold-50);
-  --color-accent-100: var(--color-tsinelas-gold-100);
-  --color-accent-200: var(--color-tsinelas-gold-200);
-  --color-accent-300: var(--color-tsinelas-gold-300);
-  --color-accent-400: var(--color-tsinelas-gold-400);
-  --color-accent-500: var(--color-tsinelas-gold-600);
-  --color-accent-600: var(--color-tsinelas-gold-700);
-  --color-accent-700: var(--color-tsinelas-gold-800);
-  --color-accent-800: var(--color-tsinelas-gold-900);
-  --color-accent-900: var(--color-tsinelas-gold-950);
+  &:focus-visible {
+    outline-color: var(--color-tsinelas-focus);
+  }
+}
 
-  --color-gray-50: var(--color-tsinelas-gray-50);
-  --color-gray-100: var(--color-tsinelas-gray-100);
-  --color-gray-200: var(--color-tsinelas-gray-200);
-  --color-gray-300: var(--color-tsinelas-gray-300);
-  --color-gray-400: var(--color-tsinelas-gray-400);
-  --color-gray-500: var(--color-tsinelas-gray-500);
-  --color-gray-600: var(--color-tsinelas-gray-600);
-  --color-gray-700: var(--color-tsinelas-gray-700);
-  --color-gray-800: var(--color-tsinelas-gray-800);
-  --color-gray-900: var(--color-tsinelas-gray-900);
-  --color-gray-950: var(--color-tsinelas-gray-950);
+@utility tsinelas-focus-inset {
+  &:focus-visible {
+    box-shadow: inset 0 0 0 1px var(--color-tsinelas-focus-inset);
+  }
+}
 
-  --color-kapwa-brand-50: var(--color-tsinelas-brand-50);
-  --color-kapwa-brand-100: var(--color-tsinelas-brand-100);
-  --color-kapwa-brand-200: var(--color-tsinelas-brand-200);
-  --color-kapwa-brand-300: var(--color-tsinelas-brand-300);
-  --color-kapwa-brand-400: var(--color-tsinelas-brand-400);
-  --color-kapwa-brand-500: var(--color-tsinelas-brand-500);
-  --color-kapwa-brand-600: var(--color-tsinelas-brand-600);
-  --color-kapwa-brand-700: var(--color-tsinelas-brand-700);
-  --color-kapwa-brand-800: var(--color-tsinelas-brand-800);
-  --color-kapwa-brand-900: var(--color-tsinelas-brand-900);
-  --color-kapwa-brand-950: var(--color-tsinelas-brand-950);
+/* The 2x grid container: page margin 16px, 24px at `max`, gutter 32px
+ * between columns (16px each side), centred and capped at 1584px. */
+@utility tsinelas-grid {
+  width: 100%;
+  max-width: var(--container-tsinelas-max);
+  margin-inline: auto;
+  padding-inline: var(--spacing-tsinelas-05);
 
-  --color-kapwa-gray-50: var(--color-tsinelas-gray-50);
-  --color-kapwa-gray-100: var(--color-tsinelas-gray-100);
-  --color-kapwa-gray-200: var(--color-tsinelas-gray-200);
-  --color-kapwa-gray-300: var(--color-tsinelas-gray-300);
-  --color-kapwa-gray-400: var(--color-tsinelas-gray-400);
-  --color-kapwa-gray-500: var(--color-tsinelas-gray-500);
-  --color-kapwa-gray-600: var(--color-tsinelas-gray-600);
-  --color-kapwa-gray-700: var(--color-tsinelas-gray-700);
-  --color-kapwa-gray-800: var(--color-tsinelas-gray-800);
-  --color-kapwa-gray-900: var(--color-tsinelas-gray-900);
-  --color-kapwa-gray-950: var(--color-tsinelas-gray-950);
+  @media (min-width: 99rem) {
+    padding-inline: var(--spacing-tsinelas-06);
+  }
+}
 
-  --color-kapwa-blue-50: var(--color-tsinelas-teal-50);
-  --color-kapwa-blue-100: var(--color-tsinelas-teal-100);
-  --color-kapwa-blue-200: var(--color-tsinelas-teal-200);
-  --color-kapwa-blue-300: var(--color-tsinelas-teal-300);
-  --color-kapwa-blue-400: var(--color-tsinelas-teal-400);
-  --color-kapwa-blue-500: var(--color-tsinelas-teal-600);
-  --color-kapwa-blue-600: var(--color-tsinelas-teal-600);
-  --color-kapwa-blue-700: var(--color-tsinelas-teal-700);
-  --color-kapwa-blue-800: var(--color-tsinelas-teal-800);
-  --color-kapwa-blue-900: var(--color-tsinelas-teal-900);
-  --color-kapwa-blue-950: var(--color-tsinelas-teal-950);
+/* Carbon's tile hover: a layer step, not a shadow or a lift. */
+@utility tsinelas-tile-clickable {
+  transition: background-color var(--duration-tsinelas-fast-01)
+    var(--ease-tsinelas-standard-productive);
 
-  --color-kapwa-green-50: var(--color-tsinelas-green-50);
-  --color-kapwa-green-100: var(--color-tsinelas-green-100);
-  --color-kapwa-green-200: var(--color-tsinelas-green-200);
-  --color-kapwa-green-300: var(--color-tsinelas-green-300);
-  --color-kapwa-green-400: var(--color-tsinelas-green-400);
-  --color-kapwa-green-500: var(--color-tsinelas-green-500);
-  --color-kapwa-green-600: var(--color-tsinelas-green-600);
-  --color-kapwa-green-700: var(--color-tsinelas-green-700);
-  --color-kapwa-green-800: var(--color-tsinelas-green-800);
-  --color-kapwa-green-900: var(--color-tsinelas-green-900);
-  --color-kapwa-green-950: var(--color-tsinelas-green-950);
-
-  --color-kapwa-orange-50: var(--color-tsinelas-gold-50);
-  --color-kapwa-orange-100: var(--color-tsinelas-gold-100);
-  --color-kapwa-orange-200: var(--color-tsinelas-gold-200);
-  --color-kapwa-orange-300: var(--color-tsinelas-gold-300);
-  --color-kapwa-orange-400: var(--color-tsinelas-gold-400);
-  --color-kapwa-orange-500: var(--color-tsinelas-gold-500);
-  --color-kapwa-orange-600: var(--color-tsinelas-gold-600);
-  --color-kapwa-orange-700: var(--color-tsinelas-gold-700);
-  --color-kapwa-orange-800: var(--color-tsinelas-gold-800);
-  --color-kapwa-orange-900: var(--color-tsinelas-gold-900);
-  --color-kapwa-orange-950: var(--color-tsinelas-gold-950);
-
-  --font-kapwa-sans: var(--font-tsinelas-sans);
-  --font-kapwa-mono: var(--font-tsinelas-mono);
+  &:hover {
+    background-color: var(--tsinelas-layer-hover);
+  }
+  &:active {
+    background-color: var(--tsinelas-layer-active);
+  }
 }

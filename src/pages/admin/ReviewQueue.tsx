@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 
-import { Banner } from '@bettergov/kapwa/banner';
-import { Button } from '@bettergov/kapwa/button';
+import { Banner } from '@/components/ui/Banner';
+import { Button } from '@/components/ui/Button';
 import {
   Calendar,
   Check,

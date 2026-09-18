@@ -15,7 +15,7 @@ export {
 } from './Card';
 
 // Tsinelas components available for direct import
-export { Input } from '@bettergov/kapwa/input';
-export { Label } from '@bettergov/kapwa/label';
-export { Banner } from '@bettergov/kapwa/banner';
-export { Button } from '@bettergov/kapwa/button';
+export { Input } from '@/components/ui/Input';
+export { Label } from '@/components/ui/Label';
+export { Banner } from '@/components/ui/Banner';
+export { Button } from '@/components/ui/Button';

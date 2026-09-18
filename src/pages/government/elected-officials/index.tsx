@@ -3,7 +3,7 @@ import { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 
 import { SiFacebook } from '@icons-pack/react-simple-icons';
-import { Button } from '@bettergov/kapwa/button';
+import { Button } from '@/components/ui/Button';
 import {
   ArrowRight,
   BookOpenIcon,

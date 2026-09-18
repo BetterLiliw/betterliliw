@@ -5,7 +5,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { ChevronDownIcon, MenuIcon, SearchIcon, XIcon } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
-import { Button } from '@bettergov/kapwa/button';
+import { Button } from '@/components/ui/Button';
 
 import { config } from '@/lib/lguConfig';
 import { cn } from '@/lib/utils';

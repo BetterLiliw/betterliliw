@@ -1,4 +1,4 @@
-import { Button } from '@bettergov/kapwa/button';
+import { Button } from '@/components/ui/Button';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface PaginationProps {

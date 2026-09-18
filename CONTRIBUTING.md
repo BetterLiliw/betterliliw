@@ -90,6 +90,10 @@ flat anatomy; Poppins headings, Source Sans 3 body, and the five brand colors
 from `public/BetterLiliw_Brand_Guidelines.pdf`. Components live in
 `src/components/ui` (`Button`, `Input`, `Label`, `Banner`, `Badge`, `Card`).
 
+Run `npm run dev` and open **`/dev/design-system`** (tokens, type, spacing,
+layers, motion, grid) and **`/dev/components`** (every UI component, live).
+These routes exist only in dev builds.
+
 **Always use semantic tokens, never raw colors:**
 
 ```tsx

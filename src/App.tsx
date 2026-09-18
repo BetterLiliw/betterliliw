@@ -128,6 +128,12 @@ const AdminOpenLguWorkbench = lazy(
   () => import('@/pages/admin/OpenLguWorkbench')
 );
 
+// Dev-only design system reference (/dev). The ternary is folded at build
+// time, so the chunk is never emitted for production.
+const DevRoutes = import.meta.env.DEV
+  ? lazy(() => import('@/pages/dev'))
+  : null;
+
 // NotFound — keep eager, it's tiny and needs to render instantly
 import NotFound from '@/pages/NotFound';
 // ComingSoon — eager: it is the first paint for every visitor while gated
@@ -314,6 +320,9 @@ function AppContent() {
                 element={<AdminOpenLguWorkbench />}
               />
             </Route>
+
+            {/* Design system reference — dev builds only */}
+            {DevRoutes && <Route path='/dev/*' element={<DevRoutes />} />}
 
             {/* Catch-all 404 */}
             <Route path='*' element={<NotFound />} />

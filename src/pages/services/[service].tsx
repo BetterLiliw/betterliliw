@@ -335,7 +335,7 @@ export default function ServiceDetail() {
                     <info.icon className='h-4 w-4' />
                   </div>
                   <div>
-                    <p className='text-tsinelas-text-disabled mb-1 text-[10px] font-bold tracking-widest uppercase'>
+                    <p className='text-tsinelas-text-disabled mb-1 tsinelas-eyebrow'>
                       {info.label}
                     </p>
                     <p className='text-tsinelas-text-strong text-xs font-bold'>
@@ -432,7 +432,7 @@ export default function ServiceDetail() {
                     <info.icon className='h-4 w-4' />
                   </div>
                   <div>
-                    <p className='text-tsinelas-text-disabled mb-1 text-[10px] font-bold tracking-widest uppercase'>
+                    <p className='text-tsinelas-text-disabled mb-1 tsinelas-eyebrow'>
                       {info.label}
                     </p>
                     <p className='text-tsinelas-text-strong text-xs font-bold'>
@@ -457,7 +457,7 @@ export default function ServiceDetail() {
                       <LinkIcon className='h-3.5 w-3.5' />
                     </div>
                     <div className='flex flex-col'>
-                      <p className='text-tsinelas-text-disabled mb-1 text-[10px] font-bold tracking-widest uppercase'>
+                      <p className='text-tsinelas-text-disabled mb-1 tsinelas-eyebrow'>
                         Reference
                       </p>
                       {source.url ? (
@@ -495,7 +495,7 @@ export default function ServiceDetail() {
             }`}
           >
             <div className='flex items-center justify-between'>
-              <p className='text-tsinelas-text-disabled text-[10px] font-bold tracking-widest uppercase'>
+              <p className='text-tsinelas-text-disabled tsinelas-eyebrow'>
                 Data Integrity
               </p>
               {isOfficialSource || isVerified ? (
@@ -553,14 +553,16 @@ export default function ServiceDetail() {
                     <div
                       key={off.slug}
                       className={
-                        idx > 0 ? 'border-t border-tsinelas-border-weak pt-5' : ''
+                        idx > 0
+                          ? 'border-t border-tsinelas-border-weak pt-5'
+                          : ''
                       }
                     >
                       <Link to={officePath} className='group block'>
                         <h3 className='group-hover:text-tsinelas-text-brand text-tsinelas-text-strong leading-tight font-bold transition-colors'>
                           {toTitleCase(off.name)}
                         </h3>
-                        <span className='text-tsinelas-text-brand mt-2 flex items-center gap-1 text-[10px] font-bold tracking-widest uppercase'>
+                        <span className='text-tsinelas-text-brand mt-2 flex items-center gap-1 tsinelas-eyebrow'>
                           View Profile{' '}
                           <ArrowRight className='h-3 w-3 transition-transform group-hover:translate-x-1' />
                         </span>

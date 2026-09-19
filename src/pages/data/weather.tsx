@@ -80,7 +80,7 @@ const WeatherPage: FC = () => {
 
   return (
     <div className='bg-tsinelas-bg-surface-raised min-h-screen'>
-      <div className='container py-8 md:py-12'>
+      <div className='container py-tsinelas-layout-02 md:py-tsinelas-layout-03'>
         {isLoading ? (
           <div className='flex h-64 items-center justify-center'>
             <div className='border-tsinelas-border-brand h-12 w-12 animate-spin rounded-full border-t-2 border-b-2'></div>
@@ -134,7 +134,7 @@ const WeatherPage: FC = () => {
                 >
                   <div className='mb-8 flex flex-col items-center justify-between md:flex-row'>
                     <div>
-                      <h2 className='mb-1 text-3xl font-bold uppercase'>
+                      <h2 className='mb-1 tsinelas-heading-xl uppercase'>
                         {selectedCityData.location}
                       </h2>
                       <p className='text-xl opacity-90'>
@@ -238,7 +238,7 @@ const WeatherPage: FC = () => {
 
         {/* Weather Information Section */}
         <div className='bg-tsinelas-bg-surface mt-12 rounded-lg p-6 shadow-md'>
-          <h2 className='text-tsinelas-text-support mb-4 text-2xl font-bold'>
+          <h2 className='text-tsinelas-text-primary mb-tsinelas-04 tsinelas-heading-lg'>
             About Weather Data
           </h2>
           <p className='text-tsinelas-text-support mb-4'>

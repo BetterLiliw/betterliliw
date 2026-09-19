@@ -40,7 +40,7 @@ export function SidebarGroup({
 }) {
   return (
     <div className='mb-4 last:mb-0'>
-      <h3 className='text-tsinelas-text-disabled px-3 py-2 text-[10px] font-bold tracking-widest uppercase'>
+      <h3 className='text-tsinelas-text-disabled px-3 py-2 tsinelas-eyebrow'>
         {title}
       </h3>
       <ul className='space-y-1'>{children}</ul>

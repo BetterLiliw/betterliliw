@@ -204,7 +204,7 @@ export default function FinancialPage() {
   ];
 
   return (
-    <div className='animate-in fade-in mx-auto max-w-7xl space-y-6 pb-20 duration-500'>
+    <div className='animate-in fade-in mx-auto max-w-7xl space-y-6 pb-tsinelas-layout-04 duration-500'>
       <SEO
         title='Financial Reports'
         description={`Independent visualization of ${lguLabels.fullName}'s municipal income, expenditure and fund allocation.`}
@@ -240,7 +240,7 @@ export default function FinancialPage() {
               Verified Audit
             </Badge>
             <Badge variant='slate'>FY {selectedYear}</Badge>
-            <div className='border-tsinelas-border-weak bg-tsinelas-bg-surface-raised text-tsinelas-text-disabled flex items-center gap-1.5 rounded-md border px-2.5 py-1 text-[10px] font-bold tracking-widest uppercase'>
+            <div className='border-tsinelas-border-weak bg-tsinelas-bg-surface-raised text-tsinelas-text-disabled flex items-center gap-1.5 rounded-md border px-2.5 py-1 tsinelas-eyebrow'>
               <Info className='text-tsinelas-text-disabled h-3.5 w-3.5' />
               <span>Millions (PHP)</span>
             </div>
@@ -317,7 +317,7 @@ export default function FinancialPage() {
       <footer className='pt-10 text-center'>
         <div className='border-tsinelas-border-weak bg-tsinelas-bg-surface inline-flex items-center gap-2 rounded-full border px-4 py-2 shadow-sm'>
           <ShieldCheck className='h-4 w-4 text-tsinelas-text-success' />
-          <span className='text-tsinelas-text-disabled text-[10px] font-bold tracking-widest uppercase'>
+          <span className='text-tsinelas-text-disabled tsinelas-eyebrow'>
             Source: LGU SRE via BLGF and Full Disclosure Policy Portal
           </span>
         </div>

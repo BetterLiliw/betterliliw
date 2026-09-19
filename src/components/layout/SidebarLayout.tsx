@@ -57,12 +57,12 @@ export function SidebarLayout({
 
   return (
     <div className={`bg-tsinelas-bg-surface min-h-screen ${className}`}>
-      <div className='container py-6 md:py-8'>
+      <div className='container py-tsinelas-layout-02 md:py-tsinelas-layout-03'>
         {/* HEADER LOGIC: Custom Node OR Default ModuleHeader */}
         {headerNode ? (
-          <div className='mb-8'>{headerNode}</div>
+          <div className='mb-tsinelas-06'>{headerNode}</div>
         ) : header ? (
-          <div className='mb-6 md:mb-8'>
+          <div className='mb-tsinelas-06'>
             <ModuleHeader title={header.title} description={header.subtitle}>
               {header.actions}
             </ModuleHeader>
@@ -121,7 +121,7 @@ export function SidebarLayout({
                 <div className='mb-2 hidden justify-end md:flex'>
                   <button
                     onClick={() => setIsCollapsed(true)}
-                    className='hover:text-tsinelas-text-brand text-tsinelas-text-disabled flex items-center gap-1 text-[10px] font-bold tracking-widest uppercase transition-colors'
+                    className='hover:text-tsinelas-text-brand text-tsinelas-text-disabled flex items-center gap-1 tsinelas-eyebrow transition-colors'
                   >
                     Hide Menu <PanelLeftClose className='h-3.5 w-3.5' />
                   </button>
@@ -135,7 +135,7 @@ export function SidebarLayout({
           <main className='min-w-0 flex-1 transition-all duration-500 ease-in-out'>
             <div
               id='layout-content'
-              className='border-tsinelas-border-weak bg-tsinelas-bg-surface min-h-[50vh] md:border md:p-8'
+              className='border-tsinelas-border-weak bg-tsinelas-bg-surface min-h-[50vh] md:border md:p-tsinelas-06'
             >
               {children}
             </div>

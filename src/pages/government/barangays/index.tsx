@@ -87,7 +87,7 @@ export default function BarangaysIndex() {
                           brgy.barangay_name.replace('BARANGAY ', '')
                         )}
                       </h3>
-                      <p className='text-tsinelas-text-disabled mt-0.5 text-[10px] font-bold tracking-widest uppercase'>
+                      <p className='text-tsinelas-text-disabled mt-0.5 tsinelas-eyebrow'>
                         Official Barangay Profile
                       </p>
                     </div>

@@ -137,7 +137,7 @@ export default function TermsIndex() {
                       {term.legislativeCount}
                     </span>
                   </div>
-                  <p className='text-tsinelas-text-disabled mt-1 text-[10px] font-bold tracking-widest uppercase'>
+                  <p className='text-tsinelas-text-disabled mt-1 tsinelas-eyebrow'>
                     Councilors
                   </p>
                 </div>
@@ -148,7 +148,7 @@ export default function TermsIndex() {
                       {term.documentCount}
                     </span>
                   </div>
-                  <p className='text-tsinelas-text-disabled mt-1 text-[10px] font-bold tracking-widest uppercase'>
+                  <p className='text-tsinelas-text-disabled mt-1 tsinelas-eyebrow'>
                     Documents
                   </p>
                 </div>

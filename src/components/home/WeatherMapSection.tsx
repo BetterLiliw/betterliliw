@@ -189,11 +189,11 @@ export default function WeatherMapSection() {
   const WeatherIcon = weather ? lucideIconMap[weather.icon || 'Sun'] : Sun;
 
   return (
-    <section className='border-tsinelas-border-weak border-t py-12 bg-tsinelas-bg-surface'>
+    <section className='border-t border-tsinelas-border-subtle-00 bg-tsinelas-background py-tsinelas-layout-03 md:py-tsinelas-layout-04'>
       <div className='container'>
         {/* Header - restored */}
         <div className='mb-12 text-center'>
-          <h2 className='text-2xl font-bold md:text-3xl text-tsinelas-text-strong'>
+          <h2 className='tsinelas-heading-lg text-tsinelas-text-primary'>
             Weather and Map of {config.lgu.name}
           </h2>
         </div>

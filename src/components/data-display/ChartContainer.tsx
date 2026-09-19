@@ -43,7 +43,7 @@ export function ChartTooltip({
         {/* Uses CHART_THEME.text for the label color */}
         <p
           style={{ color: CHART_THEME.text }}
-          className='mb-2 border-b border-tsinelas-border-weak pb-1 text-[10px] font-bold tracking-widest uppercase'
+          className='mb-2 border-b border-tsinelas-border-weak pb-1 tsinelas-eyebrow'
         >
           Year: {label}
         </p>

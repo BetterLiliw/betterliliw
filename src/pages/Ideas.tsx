@@ -130,7 +130,7 @@ const Ideas: FC = () => {
         ]}
       />
 
-      <div className='container py-8 md:py-12'>
+      <div className='container py-tsinelas-layout-02 md:py-tsinelas-layout-03'>
         {/* Header */}
         <header className='mb-8 text-center md:mb-12'>
           <div className='mb-4 flex items-center justify-center'>
@@ -215,7 +215,7 @@ const Ideas: FC = () => {
 
         {/* Project Ideas List */}
         <main>
-          <h2 className='text-tsinelas-text-strong mb-6 text-2xl font-bold'>
+          <h2 className='text-tsinelas-text-primary mb-tsinelas-05 tsinelas-heading-lg'>
             All Project Ideas
           </h2>
           <div className='grid grid-cols-1 gap-6 lg:grid-cols-2'>
@@ -278,7 +278,7 @@ const Ideas: FC = () => {
 
         {/* Call to Action */}
         <section className='bg-tsinelas-bg-surface mt-12 rounded-lg p-8 text-center shadow-xs'>
-          <h2 className='text-tsinelas-text-strong mb-4 text-2xl font-bold'>
+          <h2 className='text-tsinelas-text-primary mb-tsinelas-04 tsinelas-heading-lg'>
             Have an Idea?
           </h2>
           <p className='text-tsinelas-text-support mx-auto mb-6 max-w-2xl'>

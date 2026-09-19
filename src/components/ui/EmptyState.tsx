@@ -26,7 +26,7 @@ export function EmptyState({
   const isExternal = actionHref?.startsWith('http');
 
   return (
-    <div className='animate-in fade-in zoom-in-95 flex flex-col items-center justify-center py-20 text-center duration-500'>
+    <div className='animate-in fade-in zoom-in-95 flex flex-col items-center justify-center py-tsinelas-layout-05 text-center duration-500'>
       {/* Icon Wrapper */}
       <div className='bg-tsinelas-bg-surface-raised mb-tsinelas-md rounded-full p-tsinelas-md ring-8 ring-tsinelas-bg-surface/50'>
         <Icon

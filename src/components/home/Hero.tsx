@@ -142,11 +142,11 @@ const Hero: FC = () => {
   ];
 
   return (
-    <div className='py-12 from-tsinelas-brand-600 to-tsinelas-brand-700 bg-linear-to-r text-tsinelas-text-inverse md:py-24'>
+    <div className='py-tsinelas-layout-04 from-tsinelas-brand-600 to-tsinelas-brand-700 bg-linear-to-r text-tsinelas-text-inverse md:py-tsinelas-layout-05'>
       <div className='container'>
         <div className='grid grid-cols-1 gap-8 items-center lg:grid-cols-2'>
           <div className='animate-fade-in'>
-            <h1 className='mb-4 text-tsinelas-text-inverse tsinelas-heading-xl'>
+            <h1 className='tsinelas-heading-xl mb-tsinelas-04 text-tsinelas-text-inverse'>
               {t('hero.title')}
             </h1>
             <p className='mb-8 max-w-lg opacity-80 text-tsinelas-text-inverse tsinelas-body-md-default'>
@@ -248,7 +248,7 @@ const Hero: FC = () => {
           </div>
 
           <div className='p-6 rounded-xl shadow-lg backdrop-blur-sm animate-slide-in bg-tsinelas-bg-surface/10'>
-            <h2 className='mb-4 text-tsinelas-text-inverse tsinelas-heading-lg'>
+            <h2 className='tsinelas-heading-lg mb-tsinelas-04 text-tsinelas-text-inverse'>
               {t('hero.quickAccess')}
             </h2>
             <div className='grid grid-cols-2 gap-4'>

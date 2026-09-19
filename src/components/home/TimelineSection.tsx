@@ -42,11 +42,11 @@ export default function TimelineSection() {
     : highlightsData.slice(0, COLLAPSE_LIMIT);
 
   return (
-    <section className='border-tsinelas-border-weak border-t py-12 bg-tsinelas-bg-surface-raised'>
+    <section className='border-t border-tsinelas-border-subtle-00 bg-tsinelas-layer-01 py-tsinelas-layout-03 md:py-tsinelas-layout-04'>
       <div className='container'>
         {/* Header - restored */}
         <div className='mb-12 text-center'>
-          <h2 className='text-2xl font-bold md:text-3xl text-tsinelas-text-strong'>
+          <h2 className='tsinelas-heading-lg text-tsinelas-text-primary'>
             History of {config.lgu.name}
           </h2>
         </div>

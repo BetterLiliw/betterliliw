@@ -90,7 +90,7 @@ export default function DepartmentsIndex() {
                           formatGovName(dept.office_name, 'department')
                         )}
                       </h3>
-                      <p className='text-tsinelas-text-disabled mt-0.5 truncate text-[10px] font-bold tracking-widest uppercase'>
+                      <p className='text-tsinelas-text-disabled mt-0.5 truncate tsinelas-eyebrow'>
                         {dept.office_name}
                       </p>
                     </div>

@@ -241,7 +241,7 @@ export function SectionBlock({
     <section
       id={id}
       className={cn(
-        'py-12 md:py-16',
+        'py-tsinelas-layout-03 md:py-tsinelas-layout-04',
         variants[variant],
         'duration-700 animate-in fade-in',
         className
@@ -252,7 +252,7 @@ export function SectionBlock({
         {(title || Icon || action) && (
           <div
             className={cn(
-              'mb-8 flex flex-col gap-4 md:flex-row md:items-end md:justify-between',
+              'mb-tsinelas-06 flex flex-col gap-tsinelas-04 md:flex-row md:items-end md:justify-between',
               stagger > 0 &&
                 'animate-in fade-in slide-in-from-bottom-4 duration-500'
             )}
@@ -260,12 +260,12 @@ export function SectionBlock({
           >
             <div className='flex gap-3 items-center'>
               {Icon && (
-                <div className='bg-tsinelas-bg-surface rounded-xl p-2.5 shadow-sm ring-1 ring-tsinelas-border-weak'>
-                  <Icon className='w-5 h-5 text-tsinelas-text-brand' />
+                <div className='border border-tsinelas-border-subtle-00 bg-tsinelas-layer-01 p-tsinelas-03'>
+                  <Icon className='size-tsinelas-icon-02 text-tsinelas-icon-interactive' />
                 </div>
               )}
               {title && (
-                <h2 className='font-extrabold tracking-tight text-tsinelas-text-strong tsinelas-heading-lg'>
+                <h2 className='tsinelas-heading-lg text-tsinelas-text-primary'>
                   {title}
                 </h2>
               )}
@@ -390,23 +390,25 @@ export function PageHeader({
     return (
       <header
         className={cn(
-          'py-12 bg-linear-to-b from-tsinelas-bg-surface-raised to-tsinelas-bg-surface md:py-16',
+          'py-tsinelas-layout-04 bg-linear-to-b from-tsinelas-bg-surface-raised to-tsinelas-bg-surface md:py-tsinelas-layout-05',
           'duration-700 animate-in fade-in',
           className
         )}
       >
         <div className='container'>
           <div className='flex flex-col items-center text-center'>
-            <h1 className='mb-4 font-bold tracking-tight text-tsinelas-text-strong tsinelas-heading-xl'>
+            <h1 className='tsinelas-heading-xl mb-tsinelas-03 text-tsinelas-text-primary'>
               {title}
             </h1>
             {description && (
-              <p className='mx-auto max-w-2xl text-sm leading-relaxed text-tsinelas-text-disabled md:text-base'>
+              <p className='tsinelas-body-02 mx-auto max-w-2xl text-tsinelas-text-secondary'>
                 {description}
               </p>
             )}
-            {badges && <div className='mt-4'>{badges}</div>}
-            {actions && <div className='mt-8 w-full max-w-xl'>{actions}</div>}
+            {badges && <div className='mt-tsinelas-04'>{badges}</div>}
+            {actions && (
+              <div className='mt-tsinelas-06 w-full max-w-xl'>{actions}</div>
+            )}
           </div>
         </div>
       </header>
@@ -417,7 +419,7 @@ export function PageHeader({
     return (
       <header
         className={cn(
-          'py-8 md:py-12',
+          'py-tsinelas-layout-03 md:py-tsinelas-layout-04',
           'duration-700 animate-in fade-in',
           className
         )}
@@ -425,15 +427,15 @@ export function PageHeader({
         <div className='container'>
           <div className='flex flex-col items-center text-center'>
             {breadcrumbContent}
-            <h1 className='mb-4 font-bold tracking-tight text-tsinelas-text-strong tsinelas-heading-xl'>
+            <h1 className='tsinelas-heading-xl mb-tsinelas-03 text-tsinelas-text-primary'>
               {title}
             </h1>
             {description && (
-              <p className='mx-auto max-w-2xl text-sm leading-relaxed text-tsinelas-text-disabled md:text-base'>
+              <p className='tsinelas-body-02 mx-auto max-w-2xl text-tsinelas-text-secondary'>
                 {description}
               </p>
             )}
-            {badges && <div className='mt-4'>{badges}</div>}
+            {badges && <div className='mt-tsinelas-04'>{badges}</div>}
           </div>
         </div>
       </header>
@@ -444,7 +446,7 @@ export function PageHeader({
   return (
     <header
       className={cn(
-        'py-6 border-b border-tsinelas-border-weak md:py-8',
+        'py-tsinelas-layout-02 border-b border-tsinelas-border-subtle-00 md:py-tsinelas-layout-03',
         'duration-700 animate-in fade-in',
         className
       )}
@@ -453,15 +455,15 @@ export function PageHeader({
         {breadcrumbContent}
         <div className='flex flex-col gap-4 justify-between md:flex-row md:items-start'>
           <div className='max-w-2xl'>
-            <h1 className='font-extrabold tracking-tight text-tsinelas-text-strong tsinelas-heading-xl'>
+            <h1 className='tsinelas-heading-xl text-tsinelas-text-primary'>
               {title}
             </h1>
             {description && (
-              <p className='mt-1 text-sm text-tsinelas-text-disabled md:text-base'>
+              <p className='tsinelas-body-02 mt-tsinelas-02 max-w-2xl text-tsinelas-text-secondary'>
                 {description}
               </p>
             )}
-            {badges && <div className='mt-3'>{badges}</div>}
+            {badges && <div className='mt-tsinelas-03'>{badges}</div>}
           </div>
           {actions && (
             <div className='w-full shrink-0 md:w-auto md:max-w-md'>

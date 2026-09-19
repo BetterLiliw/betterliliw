@@ -21,8 +21,8 @@ const Home: FC = () => {
           <Hero />
         </ErrorBoundary>
 
-        {/* Using space-y-16 for consistent section spacing per design system */}
-        <div className='space-y-16 py-12'>
+        {/* Sections carry their own vertical rhythm (layout-03/04). */}
+        <div>
           <ErrorBoundary name='Services'>
             <ServicesSection />
           </ErrorBoundary>

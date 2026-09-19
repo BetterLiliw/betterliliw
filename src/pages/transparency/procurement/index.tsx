@@ -241,7 +241,7 @@ export default function ProcurementPage() {
   };
 
   return (
-    <div className='animate-in fade-in mx-auto max-w-full space-y-8 px-4 pb-20 duration-500 md:px-8'>
+    <div className='animate-in fade-in mx-auto max-w-full space-y-tsinelas-06 pb-tsinelas-layout-04 duration-500'>
       <SEO
         title='Procurement Transparency'
         description={`Real-time database of bids and awarded contracts from ${lguLabels.fullName}.`}

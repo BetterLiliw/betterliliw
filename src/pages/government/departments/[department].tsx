@@ -90,7 +90,7 @@ export default function DepartmentDetail() {
   };
 
   return (
-    <div className='animate-in fade-in space-y-6 pb-20 duration-500'>
+    <div className='animate-in fade-in space-y-6 pb-tsinelas-layout-04 duration-500'>
       <SEO
         title={officeName}
         description={seoDescription}
@@ -203,7 +203,7 @@ export default function DepartmentDetail() {
             aria-label='Office Leadership'
           >
             <p className='sr-only'>Office Leadership</p>
-            <p className='text-tsinelas-text-disabled pl-1 text-[10px] font-bold tracking-widest uppercase'>
+            <p className='text-tsinelas-text-disabled pl-1 tsinelas-eyebrow'>
               Office Leadership
             </p>
             <Card hover={false} className='rounded-xl'>
@@ -241,7 +241,7 @@ export default function DepartmentDetail() {
             aria-label='Department Services'
           >
             <p className='sr-only'>Department Services</p>
-            <p className='text-tsinelas-text-disabled pl-1 text-[10px] font-bold tracking-widest uppercase'>
+            <p className='text-tsinelas-text-disabled pl-1 tsinelas-eyebrow'>
               Department Services
             </p>
             <div className='grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-3'>
@@ -261,7 +261,7 @@ export default function DepartmentDetail() {
                           <CheckCircle2 className='h-5 w-5' />
                         </div>
                         <div className='min-w-0'>
-                          <p className='text-tsinelas-text-brand mb-0.5 truncate text-[10px] font-bold tracking-widest uppercase'>
+                          <p className='text-tsinelas-text-brand mb-0.5 truncate tsinelas-eyebrow'>
                             Service
                           </p>
                           <p className='group-hover:text-tsinelas-text-brand-bold text-tsinelas-text-support text-sm leading-tight font-bold transition-colors'>
@@ -281,10 +281,14 @@ export default function DepartmentDetail() {
         {/* Office Mandate */}
         <div className='space-y-2' role='group' aria-label='Office Mandate'>
           <p className='sr-only'>Office Mandate</p>
-          <p className='text-tsinelas-text-disabled pl-1 text-[10px] font-bold tracking-widest uppercase'>
+          <p className='text-tsinelas-text-disabled pl-1 tsinelas-eyebrow'>
             Office Mandate
           </p>
-          <Card variant='default' hover={false} className='bg-tsinelas-bg-surface'>
+          <Card
+            variant='default'
+            hover={false}
+            className='bg-tsinelas-bg-surface'
+          >
             <CardContent className='p-6'>
               <p className='text-tsinelas-text-support text-sm leading-relaxed'>
                 The {toTitleCase(dept.office_name)} is a frontline office of the{' '}

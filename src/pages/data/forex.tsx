@@ -142,7 +142,7 @@ const ForexPage: FC = () => {
 
   return (
     <div className='bg-tsinelas-bg-surface-raised min-h-screen'>
-      <div className='container py-8 md:py-12'>
+      <div className='container py-tsinelas-layout-02 md:py-tsinelas-layout-03'>
         {isLoading ? (
           <div className='flex h-64 items-center justify-center'>
             <div className='border-tsinelas-border-brand h-12 w-12 animate-spin rounded-full border-t-2 border-b-2'></div>
@@ -268,7 +268,7 @@ const ForexPage: FC = () => {
                         )}
                       </div>
                       <div>
-                        <h2 className='text-tsinelas-text-support text-2xl font-bold'>
+                        <h2 className='text-tsinelas-text-primary tsinelas-heading-lg'>
                           {selectedCurrencyData.code}
                         </h2>
                         <p className='text-tsinelas-text-strong'>
@@ -441,7 +441,7 @@ const ForexPage: FC = () => {
 
         {/* Forex Information Section */}
         <div className='bg-tsinelas-bg-surface mt-12 rounded-lg p-6 shadow-md'>
-          <h2 className='text-tsinelas-text-support mb-4 text-2xl font-bold'>
+          <h2 className='text-tsinelas-text-primary mb-tsinelas-04 tsinelas-heading-lg'>
             About Foreign Exchange Rates
           </h2>
           <p className='text-tsinelas-text-support mb-4'>

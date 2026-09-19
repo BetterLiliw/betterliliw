@@ -38,10 +38,10 @@ const ServicesSection: FC = () => {
   const displayedCategories = categoriesWithCount.slice(0, 8);
 
   return (
-    <section className='bg-tsinelas-bg-surface py-12'>
+    <section className='bg-tsinelas-bg-surface py-tsinelas-layout-03 md:py-tsinelas-layout-04'>
       <div className='container'>
         <div className='mb-12 text-center'>
-          <h2 className='text-tsinelas-text-strong mb-4 tsinelas-heading-lg font-bold'>
+          <h2 className='tsinelas-heading-lg mb-tsinelas-03 text-tsinelas-text-primary'>
             {t('services.governmentServices')}
           </h2>
           <p className='text-tsinelas-text-support mx-auto max-w-2xl'>

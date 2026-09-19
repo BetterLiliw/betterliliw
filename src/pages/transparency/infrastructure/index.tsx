@@ -199,7 +199,7 @@ export default function InfrastructurePage() {
   );
 
   return (
-    <div className='animate-in fade-in mx-auto max-w-full space-y-8 px-4 pb-20 duration-500 md:px-8'>
+    <div className='animate-in fade-in mx-auto max-w-full space-y-tsinelas-06 pb-tsinelas-layout-04 duration-500'>
       <SEO
         title='Infrastructure Projects'
         description={`Community monitoring of national DPWH infrastructure projects within ${lguLabels.fullName}: budgets, contractors, progress and status.`}

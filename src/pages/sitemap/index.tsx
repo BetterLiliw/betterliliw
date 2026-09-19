@@ -322,7 +322,7 @@ const SitemapPage: FC = () => {
   ];
 
   return (
-    <div className='py-12 min-h-screen bg-tsinelas-bg-surface-raised'>
+    <div className='min-h-screen bg-tsinelas-layer-01 py-tsinelas-layout-03'>
       <SEO
         title='Sitemap'
         description='Complete sitemap — find all pages and services available on this portal.'
@@ -335,7 +335,7 @@ const SitemapPage: FC = () => {
         ]}
       />
 
-      <div className='container py-8 md:py-12'>
+      <div className='container py-tsinelas-layout-02 md:py-tsinelas-layout-03'>
         <div className='mx-auto max-w-5xl'>
           <div className='overflow-hidden rounded-xl bg-tsinelas-bg-surface shadow-xs'>
             <div className='p-6 border-b border-tsinelas-border-weak md:p-8'>

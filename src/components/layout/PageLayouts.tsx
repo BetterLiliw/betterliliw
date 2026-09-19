@@ -22,10 +22,10 @@ export function PageHero({
   metadata?: ReactNode;
 }) {
   return (
-    <header className='animate-in fade-in flex flex-col justify-center py-8 text-center duration-700 md:py-12'>
+    <header className='animate-in fade-in flex flex-col justify-center py-tsinelas-layout-03 text-center duration-700 md:py-tsinelas-layout-04'>
       {breadcrumb && breadcrumb.length > 0 && (
-        <nav className='mb-4' aria-label='Breadcrumb'>
-          <ol className='flex items-center justify-center gap-2 text-sm'>
+        <nav className='mb-tsinelas-04' aria-label='Breadcrumb'>
+          <ol className='tsinelas-body-01 flex items-center justify-center gap-tsinelas-03'>
             {breadcrumb.map((crumb, index) => (
               <li key={crumb.href} className='flex items-center gap-2'>
                 {index > 0 && (
@@ -51,20 +51,20 @@ export function PageHero({
           </ol>
         </nav>
       )}
-      <h1 className='text-tsinelas-text-strong mb-4 tsinelas-heading-xl font-bold tracking-tight'>
+      <h1 className='tsinelas-heading-xl mb-tsinelas-03 text-tsinelas-text-primary'>
         {title}
       </h1>
       {description && (
-        <p className='text-tsinelas-text-on-disabled mx-auto max-w-2xl text-sm leading-relaxed md:text-base'>
+        <p className='tsinelas-body-02 mx-auto max-w-2xl text-tsinelas-text-secondary'>
           {description}
         </p>
       )}
       {metadata && (
-        <div className='mt-4 flex items-center justify-center gap-3'>
+        <div className='mt-tsinelas-04 flex items-center justify-center gap-tsinelas-03'>
           {metadata}
         </div>
       )}
-      {children && <div className='mt-8'>{children}</div>}
+      {children && <div className='mt-tsinelas-06'>{children}</div>}
     </header>
   );
 }
@@ -83,14 +83,14 @@ export function ModuleHeader({
   children?: ReactNode;
 }) {
   return (
-    <div className='border-tsinelas-border-weak mb-8 border-b pb-6'>
-      <div className='flex flex-col justify-between gap-4 md:flex-row md:items-end'>
+    <div className='mb-tsinelas-06 border-b border-tsinelas-border-subtle-00 pb-tsinelas-05'>
+      <div className='flex flex-col justify-between gap-tsinelas-04 md:flex-row md:items-end'>
         <div className='max-w-2xl'>
-          <h2 className='text-tsinelas-text-strong tsinelas-heading-lg font-extrabold tracking-tight'>
+          <h2 className='tsinelas-heading-lg text-tsinelas-text-primary'>
             {title}
           </h2>
           {description && (
-            <p className='text-tsinelas-text-disabled mt-1 text-sm md:text-base'>
+            <p className='tsinelas-body-01 mt-tsinelas-02 text-tsinelas-text-secondary'>
               {description}
             </p>
           )}
@@ -124,12 +124,10 @@ export function DetailSection({
   variant?: 'default' | 'highlighted' | 'compact';
 }) {
   const variants = {
-    default:
-      'bg-tsinelas-bg-surface border-tsinelas-border-weak border shadow-sm rounded-2xl',
+    default: 'bg-tsinelas-layer-01 border border-tsinelas-border-subtle-00',
     highlighted:
-      'bg-tsinelas-bg-surface-brand/30 border-tsinelas-border-brand border-2 shadow-md rounded-2xl',
-    compact:
-      'bg-tsinelas-bg-surface border-tsinelas-border-weak border rounded-lg',
+      'bg-tsinelas-bg-surface-brand/30 border border-tsinelas-border-interactive',
+    compact: 'bg-tsinelas-layer-01 border border-tsinelas-border-subtle-00',
   };
 
   const headerVariants = {
@@ -139,15 +137,20 @@ export function DetailSection({
   };
 
   return (
-    <section className={cn(variants[variant], 'overflow-hidden', className)}>
+    <section
+      data-variant={variant}
+      className={cn(variants[variant], 'overflow-hidden', className)}
+    >
       <div
         className={cn(
           headerVariants[variant],
-          'flex items-center gap-2 border-b px-6 py-4'
+          'flex min-h-tsinelas-container-03 items-center gap-tsinelas-03 border-b px-tsinelas-05 py-tsinelas-03'
         )}
       >
-        {Icon && <Icon className='text-tsinelas-text-brand h-4 w-4' />}
-        <div className='text-tsinelas-text-disabled flex flex-1 items-center justify-between text-[10px] font-bold tracking-widest uppercase'>
+        {Icon && (
+          <Icon className='size-tsinelas-icon-01 text-tsinelas-icon-interactive' />
+        )}
+        <div className='tsinelas-eyebrow flex flex-1 items-center justify-between text-tsinelas-text-secondary'>
           {title}
         </div>
       </div>

@@ -36,8 +36,8 @@ const AboutPage: FC = () => {
           'innovation',
         ]}
       />
-      <div className='container py-8 md:py-12'>
-        <div className='bg-tsinelas-bg-surface mt-4 rounded-lg border p-6 shadow-xs md:p-8 md:py-24'>
+      <div className='container py-tsinelas-layout-02 md:py-tsinelas-layout-03'>
+        <div className='bg-tsinelas-bg-surface mt-4 rounded-lg border p-6 shadow-xs md:p-tsinelas-07'>
           <div className='mx-auto max-w-3xl'>
             <h1 className='text-tsinelas-text-strong tsinelas-heading-xl font-extrabold'>
               {t('title')}
@@ -45,7 +45,7 @@ const AboutPage: FC = () => {
 
             <div className='prose prose-lg max-w-none'>
               <section className='mb-10'>
-                <h2 className='text-tsinelas-text-support mb-4 flex items-center text-2xl font-bold'>
+                <h2 className='text-tsinelas-text-primary mb-tsinelas-04 flex items-center tsinelas-heading-lg'>
                   <TargetIcon className='text-tsinelas-text-brand mr-2 h-6 w-6' />
                   {t('mission.title')}
                 </h2>
@@ -70,7 +70,7 @@ const AboutPage: FC = () => {
               </section>
 
               <section className='mb-10'>
-                <h2 className='text-tsinelas-text-support mb-4 flex items-center text-2xl font-bold'>
+                <h2 className='text-tsinelas-text-primary mb-tsinelas-04 flex items-center tsinelas-heading-lg'>
                   <RocketIcon className='text-tsinelas-text-brand mr-2 h-6 w-6' />
                   {t('mission.goalsIntro')}
                 </h2>
@@ -88,7 +88,7 @@ const AboutPage: FC = () => {
 
               {/* What We Provide Section */}
               <section className='mb-10'>
-                <h2 className='text-tsinelas-text-support mb-4 flex items-center text-2xl font-bold'>
+                <h2 className='text-tsinelas-text-primary mb-tsinelas-04 flex items-center tsinelas-heading-lg'>
                   <RocketIcon className='text-tsinelas-text-brand mr-2 h-6 w-6' />
                   What We Provide
                 </h2>
@@ -147,7 +147,7 @@ const AboutPage: FC = () => {
               </section>
 
               <section className='mb-10'>
-                <h2 className='text-tsinelas-text-support mb-4 text-2xl font-bold'>
+                <h2 className='text-tsinelas-text-primary mb-tsinelas-04 tsinelas-heading-lg'>
                   {t('whyBuilding.title')}
                 </h2>
                 <p className='text-tsinelas-text-support mb-4'>
@@ -178,7 +178,7 @@ const AboutPage: FC = () => {
 
               {/* Our Commitment Section */}
               <section className='mb-10'>
-                <h2 className='text-tsinelas-text-support mb-4 flex items-center text-2xl font-bold'>
+                <h2 className='text-tsinelas-text-primary mb-tsinelas-04 flex items-center tsinelas-heading-lg'>
                   <ZapIcon className='text-tsinelas-text-warning mr-2 h-6 w-6' />
                   Our Commitment
                 </h2>
@@ -215,7 +215,7 @@ const AboutPage: FC = () => {
                 </div>
               </section>
               <section>
-                <h2 className='text-tsinelas-text-support mb-4 text-2xl font-bold'>
+                <h2 className='text-tsinelas-text-primary mb-tsinelas-04 tsinelas-heading-lg'>
                   {t('license.title')}
                 </h2>
                 <p className='text-tsinelas-text-support mb-4'>
@@ -233,7 +233,7 @@ const AboutPage: FC = () => {
 
             {/* Call to Action */}
             <div className='bg-tsinelas-bg-brand-default mt-8 rounded-lg p-8 text-center'>
-              <h3 className='text-tsinelas-text-inverse mb-4 text-2xl font-bold'>
+              <h3 className='text-tsinelas-text-inverse mb-tsinelas-04 tsinelas-heading-lg'>
                 Ready to Make a Difference?
               </h3>
               <p className='text-tsinelas-text-inverse mx-auto mb-6 max-w-2xl opacity-90'>

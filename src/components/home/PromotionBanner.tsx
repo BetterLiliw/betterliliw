@@ -9,7 +9,7 @@ const PromotionBanner: FC = () => {
   const { t } = useTranslation('common');
 
   return (
-    <section className='bg-tsinelas-bg-accent-yellow-weak text-tsinelas-text-inverse py-12'>
+    <section className='bg-tsinelas-bg-accent-yellow-weak text-tsinelas-text-inverse py-tsinelas-layout-03 md:py-tsinelas-layout-04'>
       <div className='container'>
         <div className='items-center justify-between md:flex'>
           <div>

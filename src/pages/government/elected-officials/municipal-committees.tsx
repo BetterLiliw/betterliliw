@@ -123,7 +123,7 @@ export default function MunicipalCommitteesPage() {
                     <h3 className='text-tsinelas-text-strong text-base font-bold leading-tight'>
                       {toTitleCase(committee.committee)}
                     </h3>
-                    <p className='text-tsinelas-text-disabled mt-0.5 text-[10px] font-bold tracking-widest uppercase'>
+                    <p className='text-tsinelas-text-disabled mt-0.5 tsinelas-eyebrow'>
                       Standing Committee
                     </p>
                   </div>

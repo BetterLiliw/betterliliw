@@ -98,9 +98,9 @@ const ContactUs: FC = () => {
         keywords={['contact', 'volunteer', 'feedback', 'support']}
       />
 
-      <div className='container py-8 md:py-12'>
+      <div className='container py-tsinelas-layout-02 md:py-tsinelas-layout-03'>
         {/* Header Section */}
-        <div className='bg-tsinelas-bg-surface border-tsinelas-border-weak mt-4 rounded-lg border p-6 shadow-xs md:p-8 md:py-16'>
+        <div className='bg-tsinelas-bg-surface border-tsinelas-border-weak mt-4 rounded-lg border p-6 shadow-xs md:p-8 md:py-tsinelas-layout-04'>
           <div className='mx-auto max-w-4xl text-center'>
             <div className='mb-6 flex justify-center'>
               <div className='bg-tsinelas-bg-info-weak rounded-full p-4'>

@@ -16,7 +16,7 @@ export default function NotFound() {
       />
 
       <div className='relative'>
-        <div className='relative mx-auto max-w-6xl px-4 pt-16 pb-10 sm:px-6 lg:px-8'>
+        <div className='relative mx-auto max-w-6xl px-4 pt-tsinelas-layout-04 pb-tsinelas-layout-03 sm:px-6 lg:px-8'>
           {/* 404 Section */}
           <div className='mb-16 text-center'>
             <div className='bg-tsinelas-bg-surface/20 mb-8 inline-flex h-24 w-24 items-center justify-center rounded-full backdrop-blur-sm'>

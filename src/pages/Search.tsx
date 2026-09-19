@@ -79,7 +79,7 @@ const SearchPage: FC = () => {
   const activeFiltersCount = (typeFilter ? 1 : 0) + (categoryFilter ? 1 : 0);
 
   return (
-    <div className='container py-8 md:py-12'>
+    <div className='container py-tsinelas-layout-02 md:py-tsinelas-layout-03'>
       <SEO
         title='Search'
         description='Search Liliw government services, requirements and offices in one place.'

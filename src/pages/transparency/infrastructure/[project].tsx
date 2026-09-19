@@ -240,7 +240,7 @@ export default function InfrastructureDetail() {
     value?: string | number | null;
   }) => (
     <div>
-      <label className='text-tsinelas-text-disabled mb-1 block text-[10px] font-bold tracking-widest uppercase'>
+      <label className='text-tsinelas-text-disabled mb-1 block tsinelas-eyebrow'>
         {label}
       </label>
       <p className='text-sm font-bold text-tsinelas-text-strong wrap-break-word'>
@@ -251,7 +251,7 @@ export default function InfrastructureDetail() {
 
   if (loading)
     return (
-      <div className='container pt-20 space-y-8 min-h-screen animate-in fade-in'>
+      <div className='container pt-tsinelas-layout-04 space-y-tsinelas-06 min-h-screen animate-in fade-in'>
         <div className='w-1/3 h-8 rounded animate-pulse bg-tsinelas-bg-hover' />
         <div className='w-full h-64 rounded-3xl animate-pulse bg-tsinelas-bg-hover' />
       </div>
@@ -259,7 +259,7 @@ export default function InfrastructureDetail() {
 
   if (error || !project)
     return (
-      <div className='container pt-20 min-h-screen animate-in fade-in'>
+      <div className='container pt-tsinelas-layout-04 min-h-screen animate-in fade-in'>
         <SEO title='Project Unavailable' noIndex />
         <EmptyState
           title='Project Unavailable'
@@ -298,7 +298,7 @@ export default function InfrastructureDetail() {
   };
 
   return (
-    <div className='pb-20 mx-auto space-y-8 max-w-7xl duration-500 animate-in fade-in'>
+    <div className='pb-tsinelas-layout-04 mx-auto space-y-tsinelas-06 max-w-7xl duration-500 animate-in fade-in'>
       <SEO
         title={project.description}
         description={seoDescription}
@@ -336,7 +336,7 @@ export default function InfrastructureDetail() {
       <div className='mb-8'>
         <Link
           to='/transparency/infrastructure'
-          className='inline-flex gap-2 items-center mb-6 text-xs font-bold tracking-widest uppercase transition-colors hover:text-tsinelas-text-brand text-tsinelas-text-disabled'
+          className='inline-flex gap-2 items-center mb-6 tsinelas-eyebrow transition-colors hover:text-tsinelas-text-brand text-tsinelas-text-disabled'
         >
           <ArrowLeft className='w-4 h-4' /> Return to List
         </Link>
@@ -377,7 +377,7 @@ export default function InfrastructureDetail() {
               <div className='border-tsinelas-border-weak bg-tsinelas-bg-surface-raised text-tsinelas-text-disabled rounded-md border p-1.5'>
                 <DollarSign className='w-4 h-4' />
               </div>
-              <span className='text-tsinelas-text-disabled text-[10px] font-bold tracking-widest uppercase'>
+              <span className='text-tsinelas-text-disabled tsinelas-eyebrow'>
                 Total Budget
               </span>
             </div>
@@ -401,7 +401,7 @@ export default function InfrastructureDetail() {
               <div className='border-tsinelas-border-weak bg-tsinelas-bg-surface-raised text-tsinelas-text-disabled rounded-md border p-1.5'>
                 <Coins className='w-4 h-4' />
               </div>
-              <span className='text-tsinelas-text-disabled text-[10px] font-bold tracking-widest uppercase'>
+              <span className='text-tsinelas-text-disabled tsinelas-eyebrow'>
                 Paid Amount
               </span>
             </div>
@@ -428,7 +428,7 @@ export default function InfrastructureDetail() {
               <div className='border-tsinelas-border-weak bg-tsinelas-bg-surface text-tsinelas-text-disabled rounded-md border p-1.5'>
                 <TrendingUp className='w-4 h-4' />
               </div>
-              <span className='text-tsinelas-text-disabled text-[10px] font-bold tracking-widest uppercase'>
+              <span className='text-tsinelas-text-disabled tsinelas-eyebrow'>
                 Progress
               </span>
             </div>
@@ -452,7 +452,7 @@ export default function InfrastructureDetail() {
               <div className='border-tsinelas-border-weak bg-tsinelas-bg-surface-raised text-tsinelas-text-disabled rounded-md border p-1.5'>
                 <Calendar className='w-4 h-4' />
               </div>
-              <span className='text-tsinelas-text-disabled text-[10px] font-bold tracking-widest uppercase'>
+              <span className='text-tsinelas-text-disabled tsinelas-eyebrow'>
                 Fiscal Year
               </span>
             </div>
@@ -535,7 +535,7 @@ export default function InfrastructureDetail() {
 
               {project.bidders && project.bidders.length > 0 && (
                 <div>
-                  <label className='text-tsinelas-text-disabled mb-3 block text-[10px] font-bold tracking-widest uppercase'>
+                  <label className='text-tsinelas-text-disabled mb-3 block tsinelas-eyebrow'>
                     Participating Bidders
                   </label>
                   <div className='space-y-2'>

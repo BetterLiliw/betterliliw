@@ -87,7 +87,7 @@ function ElectedLeaderCard({ leader }: { leader: ExecutiveOfficial }) {
         </div>
 
         <div className='min-w-0 flex-1'>
-          <p className='text-tsinelas-text-brand text-[10px] font-bold tracking-widest uppercase mb-1'>
+          <p className='text-tsinelas-text-brand tsinelas-eyebrow mb-1'>
             {leader.office || 'Elected Official'}
           </p>
           <h2 className='text-tsinelas-text-strong text-2xl leading-tight font-black'>
@@ -162,7 +162,7 @@ function CouncilMemberCard({
             <UserIcon className='h-5 w-5' />
           </div>
           <div className='min-w-0 flex-1'>
-            <p className='text-tsinelas-text-brand mb-0.5 text-[10px] font-bold tracking-widest uppercase'>
+            <p className='text-tsinelas-text-brand mb-0.5 tsinelas-eyebrow'>
               {member.role}
             </p>
             <h4 className='text-tsinelas-text-strong text-base font-bold leading-tight'>
@@ -181,7 +181,7 @@ function CouncilMemberCard({
           <div className='border-tsinelas-border-weak bg-tsinelas-bg-surface-raised/50 flex flex-col gap-2 rounded-xl border p-3'>
             <div className='mb-1 flex items-center gap-2'>
               <BookOpenIcon className='text-tsinelas-text-disabled h-3 w-3' />
-              <span className='text-tsinelas-text-disabled text-[10px] font-bold tracking-widest uppercase'>
+              <span className='text-tsinelas-text-disabled tsinelas-eyebrow'>
                 Committee Chair
               </span>
             </div>
@@ -318,7 +318,7 @@ export default function ElectedOfficialsPage() {
                     <h4 className='text-tsinelas-text-strong text-sm leading-snug font-bold'>
                       {toTitleCase(official.name)}
                     </h4>
-                    <p className='text-tsinelas-text-brand mt-0.5 truncate text-[10px] font-bold tracking-widest uppercase'>
+                    <p className='text-tsinelas-text-brand mt-0.5 truncate tsinelas-eyebrow'>
                       {official.role}
                     </p>
                   </div>
@@ -389,7 +389,7 @@ export default function ElectedOfficialsPage() {
               <Button
                 variant='outline'
                 size='sm'
-                className='text-[10px] font-bold tracking-widest uppercase'
+                className='tsinelas-eyebrow'
                 rightIcon={<ArrowRight className='h-3 w-3' />}
               >
                 View Committees
@@ -417,7 +417,7 @@ export default function ElectedOfficialsPage() {
           <Button
             variant='outline'
             size='sm'
-            className='text-[10px] font-bold tracking-widest uppercase'
+            className='tsinelas-eyebrow'
             rightIcon={<ArrowRight className='h-3 w-3' />}
           >
             Go to Departments

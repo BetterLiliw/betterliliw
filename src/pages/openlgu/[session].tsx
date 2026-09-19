@@ -126,7 +126,7 @@ export default function SessionDetail() {
               <Badge variant={isRegular ? 'primary' : 'secondary'} dot>
                 {session.type} Session
               </Badge>
-              <span className='text-tsinelas-text-disabled font-mono text-[10px] font-bold tracking-widest uppercase'>
+              <span className='text-tsinelas-text-disabled font-mono tsinelas-eyebrow'>
                 ID: {session.id}
               </span>
             </div>
@@ -137,7 +137,7 @@ export default function SessionDetail() {
           <div className='border-tsinelas-border-weak bg-tsinelas-bg-surface-raised flex items-center gap-4 rounded-xl border p-4'>
             <Calendar className='text-tsinelas-text-brand h-5 w-5' />
             <div>
-              <p className='text-tsinelas-text-disabled text-[10px] font-bold tracking-widest uppercase'>
+              <p className='text-tsinelas-text-disabled tsinelas-eyebrow'>
                 Date Held
               </p>
               <p className='text-tsinelas-text-support text-sm font-bold'>
@@ -180,7 +180,7 @@ export default function SessionDetail() {
 
                 {absentMembers.length > 0 && (
                   <div className='border-tsinelas-border-weak border-t pt-4'>
-                    <h3 className='text-tsinelas-text-accent-orange mb-3 flex items-center gap-2 text-[10px] font-bold tracking-widest uppercase'>
+                    <h3 className='text-tsinelas-text-accent-orange mb-3 flex items-center gap-2 tsinelas-eyebrow'>
                       <XCircle className='h-3.5 w-3.5' /> Absent (
                       {absentMembers.length})
                     </h3>

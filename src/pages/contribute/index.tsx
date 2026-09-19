@@ -16,7 +16,7 @@ const GITHUB_ISSUE_URL = `${config.portal.githubUrl}/issues/new?template=contrib
 
 export default function ContributePage() {
   return (
-    <div className='animate-in fade-in mx-auto max-w-4xl space-y-8 px-4 pb-20 duration-500 md:px-0'>
+    <div className='container animate-in fade-in max-w-4xl space-y-tsinelas-06 pb-tsinelas-layout-04 duration-500'>
       <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem>

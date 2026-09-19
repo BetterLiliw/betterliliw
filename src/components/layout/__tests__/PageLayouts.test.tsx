@@ -126,7 +126,9 @@ describe('PageLayouts Components', () => {
       );
 
       expect(screen.getByText('Highlighted Section')).toBeInTheDocument();
-      expect(container.firstChild).toHaveClass('bg-tsinelas-bg-surface-brand/30');
+      expect(container.firstChild).toHaveClass(
+        'bg-tsinelas-bg-surface-brand/30'
+      );
     });
 
     it('renders with compact variant', () => {
@@ -137,7 +139,7 @@ describe('PageLayouts Components', () => {
       );
 
       expect(screen.getByText('Compact Section')).toBeInTheDocument();
-      expect(container.firstChild).toHaveClass('rounded-lg');
+      expect(container.firstChild).toHaveAttribute('data-variant', 'compact');
     });
 
     it('renders with default variant when not specified', () => {
@@ -148,7 +150,7 @@ describe('PageLayouts Components', () => {
       );
 
       expect(screen.getByText('Default Section')).toBeInTheDocument();
-      expect(container.firstChild).toHaveClass('rounded-2xl');
+      expect(container.firstChild).toHaveAttribute('data-variant', 'default');
     });
   });
 });

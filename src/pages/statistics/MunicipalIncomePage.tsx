@@ -249,10 +249,10 @@ export default function MunicipalIncomePage() {
           </svg>
         </div>
         <div className='space-y-1'>
-          <p className='text-tsinelas-text-strong text-[10px] font-bold tracking-widest uppercase'>
+          <p className='text-tsinelas-text-strong tsinelas-eyebrow'>
             Verified Data Audit
           </p>
-          <p className='text-tsinelas-text-disabled text-[10px] font-bold tracking-widest uppercase'>
+          <p className='text-tsinelas-text-disabled tsinelas-eyebrow'>
             Source:{' '}
             <a
               href='https://data.bettergov.ph/datasets/9/resources/31'

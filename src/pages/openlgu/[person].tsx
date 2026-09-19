@@ -232,7 +232,7 @@ export default function PersonDetail() {
   };
 
   return (
-    <div className='animate-in fade-in mx-auto max-w-6xl space-y-8 px-4 pb-20 duration-500 md:px-0'>
+    <div className='animate-in fade-in mx-auto max-w-6xl space-y-tsinelas-06 pb-tsinelas-layout-04 duration-500'>
       <SEO
         title={`Hon. ${officialName}`}
         description={seoDescription}
@@ -336,7 +336,7 @@ export default function PersonDetail() {
                 {overallAttendanceRate}%
               </span>
             </div>
-            <p className='text-tsinelas-text-disabled text-[10px] font-bold tracking-widest uppercase'>
+            <p className='text-tsinelas-text-disabled tsinelas-eyebrow'>
               Attendance Rate
             </p>
           </div>
@@ -351,7 +351,7 @@ export default function PersonDetail() {
                 {ordCount}
               </span>
             </div>
-            <p className='text-tsinelas-text-disabled mt-1 text-[10px] font-bold tracking-widest uppercase'>
+            <p className='text-tsinelas-text-disabled mt-1 tsinelas-eyebrow'>
               Ordinances
             </p>
           </div>
@@ -362,7 +362,7 @@ export default function PersonDetail() {
                 {resCount}
               </span>
             </div>
-            <p className='text-tsinelas-text-disabled mt-1 text-[10px] font-bold tracking-widest uppercase'>
+            <p className='text-tsinelas-text-disabled mt-1 tsinelas-eyebrow'>
               Resolutions
             </p>
           </div>
@@ -373,7 +373,7 @@ export default function PersonDetail() {
                 {eoCount}
               </span>
             </div>
-            <p className='text-tsinelas-text-disabled mt-1 text-[10px] font-bold tracking-widest uppercase'>
+            <p className='text-tsinelas-text-disabled mt-1 tsinelas-eyebrow'>
               Exec. Orders
             </p>
           </div>
@@ -385,7 +385,7 @@ export default function PersonDetail() {
                   {totalExecutiveOrdersSigned}
                 </span>
               </div>
-              <p className='text-tsinelas-text-disabled mt-1 text-[10px] font-bold tracking-widest uppercase'>
+              <p className='text-tsinelas-text-disabled mt-1 tsinelas-eyebrow'>
                 EOs Signed
               </p>
             </div>
@@ -397,7 +397,7 @@ export default function PersonDetail() {
                   {allAttendanceRecords.length}
                 </span>
               </div>
-              <p className='text-tsinelas-text-disabled mt-1 text-[10px] font-bold tracking-widest uppercase'>
+              <p className='text-tsinelas-text-disabled mt-1 tsinelas-eyebrow'>
                 Sessions
               </p>
             </div>
@@ -505,7 +505,7 @@ export default function PersonDetail() {
                               {/* Section header */}
                               <div className='border-tsinelas-border-weak flex items-center gap-2 border-b pb-2'>
                                 <Users className='text-tsinelas-text-disabled h-4 w-4' />
-                                <span className='text-tsinelas-text-disabled text-[10px] font-bold tracking-widest uppercase'>
+                                <span className='text-tsinelas-text-disabled tsinelas-eyebrow'>
                                   Committee Assignments
                                 </span>
                                 <span className='text-tsinelas-text-disabled ml-auto text-xs'>
@@ -602,7 +602,9 @@ export default function PersonDetail() {
                                   </span>
                                 </span>
                               </div>
-                              <span className='text-tsinelas-text-support'>•</span>
+                              <span className='text-tsinelas-text-support'>
+                                •
+                              </span>
                               <span className='text-tsinelas-text-support'>
                                 <span className='text-tsinelas-text-brand font-semibold'>
                                   {membership.termStats?.ordinances || 0}
@@ -704,7 +706,9 @@ export default function PersonDetail() {
                             <span className='text-tsinelas-text-disabled font-mono text-[10px] font-bold uppercase'>
                               {doc.number}
                             </span>
-                            <span className='text-tsinelas-text-support'>•</span>
+                            <span className='text-tsinelas-text-support'>
+                              •
+                            </span>
                             <span className='text-tsinelas-text-support font-mono text-[10px] font-bold'>
                               {doc.date_enacted}
                             </span>
@@ -839,7 +843,9 @@ export default function PersonDetail() {
             </h3>
             <dl className='space-y-3'>
               <div className='flex items-center justify-between'>
-                <dt className='text-tsinelas-text-support text-sm'>Total Terms</dt>
+                <dt className='text-tsinelas-text-support text-sm'>
+                  Total Terms
+                </dt>
                 <dd className='text-tsinelas-text-strong text-lg font-bold'>
                   {totalTermsServed}
                 </dd>

@@ -76,7 +76,7 @@ export function StatCard(props: StatCardProps) {
         )}
       >
         <div className='flex min-w-0 flex-1 flex-col gap-1'>
-          <p className='text-tsinelas-text-disabled truncate text-[10px] font-bold tracking-widest uppercase'>
+          <p className='text-tsinelas-text-disabled truncate tsinelas-eyebrow'>
             {label}
           </p>
           <div className='text-tsinelas-text-strong flex items-center gap-2 text-3xl font-black'>
@@ -107,7 +107,8 @@ export function StatCard(props: StatCardProps) {
           <div
             className={cn(
               'flex shrink-0 items-center justify-center rounded-xl p-2',
-              iconBg || 'bg-tsinelas-bg-surface-raised text-tsinelas-text-strong',
+              iconBg ||
+                'bg-tsinelas-bg-surface-raised text-tsinelas-text-strong',
               children ? 'h-auto' : 'h-10 w-10'
             )}
           >

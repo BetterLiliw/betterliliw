@@ -96,7 +96,7 @@ export default function ServiceCard({ service }: ServiceCardProps) {
           {/* Service Number (for Citizens Charter services) */}
           {service.serviceNumber && (
             <div className='mb-2'>
-              <span className='text-tsinelas-text-disabled text-[10px] font-bold tracking-widest uppercase'>
+              <span className='text-tsinelas-text-disabled tsinelas-eyebrow'>
                 Service No. {service.serviceNumber}
               </span>
             </div>
@@ -107,7 +107,7 @@ export default function ServiceCard({ service }: ServiceCardProps) {
             <h3 className='group-hover:text-tsinelas-text-brand text-tsinelas-text-strong mb-1 leading-snug font-bold transition-colors'>
               {service.plainLanguageName || service.service}
             </h3>
-            <p className='text-tsinelas-text-disabled text-[10px] font-bold tracking-widest uppercase'>
+            <p className='text-tsinelas-text-disabled tsinelas-eyebrow'>
               {service.category.name}
             </p>
             {/* Office Division (for Citizens Charter services) */}
@@ -121,7 +121,7 @@ export default function ServiceCard({ service }: ServiceCardProps) {
           {/* Footer Row */}
           <div className='mt-6 flex items-center justify-between border-t border-tsinelas-border-weak pt-4'>
             {/* Verification / Data Status */}
-            <div className='flex items-center gap-1.5 text-[10px] font-bold tracking-widest uppercase'>
+            <div className='flex items-center gap-1.5 tsinelas-eyebrow'>
               {needsVerification ? (
                 <>
                   <AlertCircle className='h-3 w-3 text-tsinelas-text-warning' />
@@ -139,7 +139,9 @@ export default function ServiceCard({ service }: ServiceCardProps) {
               ) : isOfficialSource ? (
                 <>
                   <ShieldCheck className='h-3 w-3 text-tsinelas-text-success' />
-                  <span className='text-tsinelas-text-success'>Official Data</span>
+                  <span className='text-tsinelas-text-success'>
+                    Official Data
+                  </span>
                 </>
               ) : (
                 <>

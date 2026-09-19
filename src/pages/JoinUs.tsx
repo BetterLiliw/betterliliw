@@ -31,7 +31,7 @@ const JoinUs: FC = () => {
       {/* Hero Section */}
       <section className='from-tsinelas-brand-600 text-tsinelas-text-inverse relative overflow-hidden bg-linear-to-r via-tsinelas-blue-700 to-tsinelas-purple-700'>
         <div className='bg-tsinelas-bg-surface-bold absolute inset-0 opacity-10'></div>
-        <div className='relative z-10 container py-16 md:py-24'>
+        <div className='relative z-10 container py-tsinelas-layout-04 md:py-tsinelas-layout-05'>
           <div className='mx-auto max-w-4xl text-center'>
             <div className='mb-6 flex justify-center'>
               <div className='bg-tsinelas-bg-surface/20 rounded-full p-4 backdrop-blur-sm'>
@@ -84,7 +84,10 @@ const JoinUs: FC = () => {
       </section>
 
       {/* Mission Section */}
-      <section id='mission' className='bg-tsinelas-bg-surface py-16 md:py-20'>
+      <section
+        id='mission'
+        className='bg-tsinelas-bg-surface py-tsinelas-layout-04 md:py-tsinelas-layout-05'
+      >
         <div className='container'>
           <div className='mb-12 text-center'>
             <div className='bg-tsinelas-bg-brand-weak mb-4 inline-flex items-center justify-center rounded-full p-3'>
@@ -123,7 +126,7 @@ const JoinUs: FC = () => {
       </section>
 
       {/* What We Provide Section */}
-      <section className='bg-tsinelas-bg-surface py-16 md:py-20'>
+      <section className='bg-tsinelas-bg-surface py-tsinelas-layout-04 md:py-tsinelas-layout-05'>
         <div className='container'>
           <div className='mb-12 text-center'>
             <h2 className='text-tsinelas-text-strong mb-4 tsinelas-heading-lg font-bold'>
@@ -185,7 +188,7 @@ const JoinUs: FC = () => {
       </section>
 
       {/* Personal Message Section */}
-      <section className='text-tsinelas-text-inverse relative overflow-hidden bg-linear-to-r from-tsinelas-red-900 via-tsinelas-gray-900 to-tsinelas-purple-900 py-16 md:py-20'>
+      <section className='text-tsinelas-text-inverse relative overflow-hidden bg-linear-to-r from-tsinelas-red-900 via-tsinelas-gray-900 to-tsinelas-purple-900 py-tsinelas-layout-04 md:py-tsinelas-layout-05'>
         <div className='bg-tsinelas-bg-surface-bold/30 absolute inset-0'></div>
         <div className='relative z-10 container'>
           <div className='mx-auto max-w-5xl text-center'>
@@ -250,7 +253,7 @@ const JoinUs: FC = () => {
       </section>
 
       {/* Call to Action Section */}
-      <section className='from-tsinelas-brand-600 bg-linear-to-r to-tsinelas-blue-600 py-16 md:py-20'>
+      <section className='from-tsinelas-brand-600 bg-linear-to-r to-tsinelas-blue-600 py-tsinelas-layout-04 md:py-tsinelas-layout-05'>
         <div className='container text-center'>
           <div className='mx-auto max-w-3xl'>
             <h2 className='text-tsinelas-text-inverse mb-6 tsinelas-heading-lg font-bold'>

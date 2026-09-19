@@ -70,7 +70,7 @@ export function FeesCard({ fees }: FeesCardProps) {
         </div>
         <div className='flex flex-1 items-center justify-between'>
           <div className='text-left'>
-            <p className='text-tsinelas-text-disabled mb-1 text-[10px] font-bold tracking-widest uppercase'>
+            <p className='text-tsinelas-text-disabled mb-1 tsinelas-eyebrow'>
               Fees
             </p>
             <p className='text-tsinelas-text-strong text-xs font-bold'>

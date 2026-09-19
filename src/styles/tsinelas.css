@@ -314,6 +314,16 @@
   --tracking-tsinelas-14: 0.16px;
   --tracking-tsinelas-label: 0.1em; /* all-caps section labels */
 
+  /* The brand ships two weights per family (Poppins 600/700, Source Sans
+   * 400/600), so Tailwind's heavier steps resolve to 700 rather than
+   * synthesising a faux-black. Tailwind's tight tracking steps resolve to
+   * the brand's heading tracking so `tracking-tight` on a heading is a no-op
+   * rather than a second, tighter value. */
+  --font-weight-extrabold: 700;
+  --font-weight-black: 700;
+  --tracking-tighter: var(--tracking-tsinelas-tight);
+  --tracking-tight: var(--tracking-tsinelas-tight);
+
   /* ------------------------------------------------------------------------
    * 5. Shape and elevation
    * Carbon is sharp-cornered and flat: containers are defined by layer
@@ -1212,36 +1222,39 @@
   }
 
   /* --- Legacy names, mapped onto the Carbon tokens --------------------- */
-  /* heading-xl → heading-06, heading-lg → heading-04, heading-md →
-   * heading-03. heading-sm (18px) has no Carbon counterpart and stays a
-   * Tsinelas extension on the 18 step of the scale. */
+  /* These are the page-title (xl), section-title (lg) and card-title (md)
+   * sizes used across the app. They sit one step down the scale from the
+   * expressive sizes they used to alias — the portal is a productive,
+   * information-dense surface, so page titles are heading-05 (32px) rather
+   * than heading-06 (42px), and a section title is 24px rather than 28px.
+   * For the expressive sizes use tsinelas-heading-06/07 or the fluid set. */
   .tsinelas-heading-xl {
     font-family: var(--font-tsinelas-display);
-    font-size: 2.625rem;
+    font-size: 2rem; /* 32px */
     font-weight: 700;
-    line-height: 1.1905;
+    line-height: 1.25; /* 40px */
     letter-spacing: var(--tracking-tsinelas-tight);
   }
   .tsinelas-heading-lg {
     font-family: var(--font-tsinelas-display);
-    font-size: 1.75rem;
+    font-size: 1.5rem; /* 24px */
     font-weight: 600;
-    line-height: 1.2857;
+    line-height: 1.3333; /* 32px */
     letter-spacing: var(--tracking-tsinelas-tight);
   }
   .tsinelas-heading-md {
-    font-family: var(--font-tsinelas-display);
-    font-size: 1.25rem;
-    font-weight: 600;
-    line-height: 1.4;
-    letter-spacing: var(--tracking-tsinelas-tight);
-  }
-  .tsinelas-heading-sm {
     font-family: var(--font-tsinelas-display);
     font-size: 1.125rem; /* 18px */
     font-weight: 600;
     line-height: 1.3333; /* 24px */
     letter-spacing: var(--tracking-tsinelas-tight);
+  }
+  .tsinelas-heading-sm {
+    font-family: var(--font-tsinelas-display);
+    font-size: 1rem; /* 16px */
+    font-weight: 600;
+    line-height: 1.5; /* 24px */
+    letter-spacing: 0;
   }
 
   /* body-md → body-02, body-sm → body-01, body-xs → helper-text-01 metrics.

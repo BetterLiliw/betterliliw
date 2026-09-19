@@ -136,7 +136,7 @@ export default function CompetitivenessPage() {
             key={tab}
             onClick={() => setActiveTab(tab)}
             className={cn(
-              'min-h-[48px] flex-1 rounded-xl py-3 text-xs font-bold tracking-widest uppercase transition-all',
+              'min-h-[48px] flex-1 rounded-xl py-3 tsinelas-eyebrow transition-all',
               activeTab === tab
                 ? 'text-tsinelas-text-brand-bold bg-tsinelas-bg-surface shadow-md'
                 : 'hover:text-tsinelas-text-support text-tsinelas-text-strong'
@@ -273,10 +273,10 @@ export default function CompetitivenessPage() {
           </svg>
         </div>
         <div className='space-y-1'>
-          <p className='text-tsinelas-text-strong text-[10px] font-bold tracking-widest uppercase'>
+          <p className='text-tsinelas-text-strong tsinelas-eyebrow'>
             Verified Data Audit
           </p>
-          <p className='text-tsinelas-text-disabled text-[10px] font-bold tracking-widest uppercase'>
+          <p className='text-tsinelas-text-disabled tsinelas-eyebrow'>
             Source:{' '}
             <a
               href='https://cmci.dti.gov.ph/data-portal.php'

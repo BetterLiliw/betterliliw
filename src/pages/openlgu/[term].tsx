@@ -168,7 +168,7 @@ export default function TermDetail() {
   };
 
   return (
-    <div className='animate-in fade-in mx-auto max-w-5xl space-y-8 pb-20 duration-500'>
+    <div className='animate-in fade-in mx-auto max-w-5xl space-y-tsinelas-06 pb-tsinelas-layout-04 duration-500'>
       <SEO
         title={term.name}
         description={seoDescription}
@@ -351,7 +351,7 @@ export default function TermDetail() {
                         <div className='mt-3 space-y-2'>
                           <div className='border-tsinelas-border-weak flex items-center gap-2 border-t pt-2'>
                             <Users className='text-tsinelas-text-disabled h-3 w-3' />
-                            <span className='text-tsinelas-text-disabled text-[10px] font-bold tracking-widest uppercase'>
+                            <span className='text-tsinelas-text-disabled tsinelas-eyebrow'>
                               {totalCommittees} committee
                               {totalCommittees > 1 ? 's' : ''}
                             </span>
@@ -417,7 +417,7 @@ export default function TermDetail() {
                 <span className='text-tsinelas-text-brand-bold block text-2xl leading-none font-black'>
                   {ordCount}
                 </span>
-                <span className='text-tsinelas-text-brand text-[10px] font-bold tracking-widest uppercase'>
+                <span className='text-tsinelas-text-brand tsinelas-eyebrow'>
                   Ordinances
                 </span>
               </div>
@@ -428,7 +428,7 @@ export default function TermDetail() {
                 <span className='text-tsinelas-text-accent-orange block text-2xl leading-none font-black'>
                   {resCount}
                 </span>
-                <span className='text-tsinelas-text-accent-orange text-[10px] font-bold tracking-widest uppercase'>
+                <span className='text-tsinelas-text-accent-orange tsinelas-eyebrow'>
                   Resolutions
                 </span>
               </div>
@@ -528,7 +528,7 @@ export default function TermDetail() {
                 {visibleDocs < termDocuments.length && (
                   <button
                     onClick={() => setVisibleDocs(prev => prev + 15)}
-                    className='text-tsinelas-text-brand hover:text-tsinelas-text-brand flex min-h-[48px] w-full items-center justify-center gap-2 py-4 text-xs font-bold tracking-widest uppercase'
+                    className='text-tsinelas-text-brand hover:text-tsinelas-text-brand flex min-h-[48px] w-full items-center justify-center gap-2 py-4 tsinelas-eyebrow'
                   >
                     Load More <ChevronDown className='h-4 w-4' />
                   </button>

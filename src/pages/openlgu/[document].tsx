@@ -66,7 +66,10 @@ export default function LegislationDocument() {
         <h2 className='text-tsinelas-text-strong text-xl font-bold'>
           Document not found
         </h2>
-        <Link to={backLink} className='text-tsinelas-text-brand hover:underline'>
+        <Link
+          to={backLink}
+          className='text-tsinelas-text-brand hover:underline'
+        >
           Return to Archive
         </Link>
       </div>
@@ -169,7 +172,7 @@ export default function LegislationDocument() {
         <div className='space-y-4'>
           <div className='flex flex-wrap items-center gap-3'>
             <Badge variant={getDocTypeBadgeVariant(doc.type)}>{doc.type}</Badge>
-            <span className='border-tsinelas-border-weak bg-tsinelas-bg-hover text-tsinelas-text-support flex items-center gap-1.5 rounded border px-2.5 py-1 font-mono text-[10px] font-bold tracking-widest uppercase'>
+            <span className='border-tsinelas-border-weak bg-tsinelas-bg-hover text-tsinelas-text-support flex items-center gap-1.5 rounded border px-2.5 py-1 font-mono tsinelas-eyebrow'>
               <Hash className='h-3 w-3' /> {doc.number}
             </span>
           </div>
@@ -224,7 +227,7 @@ export default function LegislationDocument() {
                 <p className='text-tsinelas-text-strong font-bold'>
                   Official Document
                 </p>
-                <p className='text-tsinelas-text-disabled mt-1 text-[10px] font-bold tracking-widest uppercase'>
+                <p className='text-tsinelas-text-disabled mt-1 tsinelas-eyebrow'>
                   Portable Document Format
                 </p>
               </div>
@@ -245,7 +248,7 @@ export default function LegislationDocument() {
             <dl className='space-y-6'>
               {/* Restored: Term Link */}
               <div>
-                <dt className='text-tsinelas-text-disabled mb-2 flex items-center gap-2 text-[10px] font-bold tracking-widest uppercase'>
+                <dt className='text-tsinelas-text-disabled mb-2 flex items-center gap-2 tsinelas-eyebrow'>
                   <Landmark className='h-3.5 w-3.5' /> Legislative Term
                 </dt>
                 <dd>
@@ -265,7 +268,7 @@ export default function LegislationDocument() {
 
               {/* Restored: Session Link */}
               <div className='border-tsinelas-border-weak border-t pt-4'>
-                <dt className='text-tsinelas-text-disabled mb-2 flex items-center gap-2 text-[10px] font-bold tracking-widest uppercase'>
+                <dt className='text-tsinelas-text-disabled mb-2 flex items-center gap-2 tsinelas-eyebrow'>
                   <Gavel className='h-3.5 w-3.5' /> Approved During
                 </dt>
                 <dd>
@@ -290,7 +293,7 @@ export default function LegislationDocument() {
               </div>
 
               <div className='border-tsinelas-border-weak border-t pt-4'>
-                <dt className='text-tsinelas-text-disabled mb-2 flex items-center gap-2 text-[10px] font-bold tracking-widest uppercase'>
+                <dt className='text-tsinelas-text-disabled mb-2 flex items-center gap-2 tsinelas-eyebrow'>
                   <Calendar className='h-3.5 w-3.5' /> Enacted Date
                 </dt>
                 <dd className='text-tsinelas-text-support pl-5.5 text-sm font-bold'>
@@ -299,7 +302,7 @@ export default function LegislationDocument() {
               </div>
 
               <div className='border-tsinelas-border-weak border-t pt-4'>
-                <dt className='text-tsinelas-text-disabled mb-2 flex items-center gap-2 text-[10px] font-bold tracking-widest uppercase'>
+                <dt className='text-tsinelas-text-disabled mb-2 flex items-center gap-2 tsinelas-eyebrow'>
                   <Activity className='h-3.5 w-3.5' /> Status
                 </dt>
                 <dd className='mt-1 pl-5.5'>

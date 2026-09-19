@@ -247,7 +247,7 @@ export default function LegislationIndex() {
                     {doc.type}
                   </Badge>
                   <span
-                    className='text-tsinelas-text-disabled text-[10px] font-bold tracking-widest uppercase'
+                    className='text-tsinelas-text-disabled tsinelas-eyebrow'
                     aria-label={`Enacted on ${doc.date_enacted}`}
                   >
                     {doc.date_enacted}

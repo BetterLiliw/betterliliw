@@ -1,8 +1,10 @@
-import { ReactNode, useEffect, useState } from 'react';
+import { ReactNode, useEffect, useId, useState } from 'react';
 
 import { useLocation } from 'react-router-dom';
 
-import { Menu, PanelLeftClose, PanelLeftOpen, X } from 'lucide-react';
+import { ChevronDownIcon, PanelLeftClose, PanelLeftOpen } from 'lucide-react';
+
+import { Button } from '@/components/ui/Button';
 
 import { cn } from '@/lib/utils';
 
@@ -21,44 +23,60 @@ export interface SidebarLayoutProps {
   headerNode?: ReactNode;
   collapsible?: boolean;
   defaultCollapsed?: boolean;
+  /** Label of the disclosure that reveals the sidebar on phones. */
+  sidebarLabel?: string;
   className?: string;
 }
 
+/**
+ * SidebarLayout — module hub shell: header, a 256px side nav (Carbon's
+ * side-nav width) that is sticky on desktop and a disclosure on phones,
+ * and the content tile. The sidebar can collapse on desktop for detail
+ * pages that need the width.
+ */
 export function SidebarLayout({
   children,
   sidebar,
   header,
-  headerNode, // New prop
+  headerNode,
   collapsible = false,
   defaultCollapsed = false,
+  sidebarLabel = 'Menu',
   className = '',
 }: SidebarLayoutProps) {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(defaultCollapsed);
   const location = useLocation();
+  const sidebarId = useId();
 
   useEffect(() => {
     setIsCollapsed(defaultCollapsed);
   }, [defaultCollapsed, location.pathname]);
 
-  // Scroll reset
+  // Picking an item navigates (path or query), so fold the phone disclosure
+  // away and show the result.
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [location.pathname, location.search]);
+
   useEffect(() => {
     if (location.state?.scrollToContent) {
       setTimeout(() => {
         const contentElement = document.getElementById('layout-content');
         if (contentElement) {
-          const yScrollOffset = -140;
-          const y = contentElement.offsetTop + yScrollOffset;
+          // Clear the 80px sticky header plus a layout step.
+          const y = contentElement.offsetTop - 96;
           window.scrollTo({ top: y, behavior: 'smooth' });
         }
       }, 100);
     }
   }, [location]);
 
+  const collapsed = collapsible && isCollapsed;
+
   return (
-    <div className={`bg-tsinelas-bg-surface min-h-screen ${className}`}>
+    <div className={cn('min-h-screen bg-tsinelas-background', className)}>
       <div className='container py-tsinelas-layout-02 md:py-tsinelas-layout-03'>
-        {/* HEADER LOGIC: Custom Node OR Default ModuleHeader */}
         {headerNode ? (
           <div className='mb-tsinelas-06'>{headerNode}</div>
         ) : header ? (
@@ -69,73 +87,84 @@ export function SidebarLayout({
           </div>
         ) : null}
 
-        {/* Mobile Sidebar Toggle */}
-        <div className='mb-4 md:hidden'>
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className='border-tsinelas-border-weak bg-tsinelas-bg-surface text-tsinelas-text-support active:bg-tsinelas-bg-surface-raised flex w-full items-center justify-between rounded-xl border px-4 py-3 font-bold shadow-sm'
+        {/* Phone: the sidebar behind a disclosure row */}
+        <div className='mb-tsinelas-05 md:hidden'>
+          <Button
+            variant='tertiary'
+            fullWidth
+            onClick={() => setMobileOpen(open => !open)}
+            aria-expanded={mobileOpen}
+            aria-controls={sidebarId}
+            rightIcon={
+              <ChevronDownIcon
+                className={cn(
+                  'size-tsinelas-icon-01 transition-transform duration-tsinelas-fast-01',
+                  mobileOpen && 'rotate-180'
+                )}
+              />
+            }
           >
-            <span className='text-sm tracking-widest uppercase'>Menu</span>
-            {mobileMenuOpen ? (
-              <X className='h-5 w-5' />
-            ) : (
-              <Menu className='h-5 w-5' />
-            )}
-          </button>
+            {sidebarLabel}
+          </Button>
         </div>
 
-        <div className='relative flex flex-col md:flex-row'>
-          {/* Desktop Expand Button */}
-          <div
-            className={cn(
-              'absolute top-[6rem] left-0 z-10 hidden transition-all duration-500 ease-in-out md:block',
-              collapsible && isCollapsed
-                ? 'translate-x-0 opacity-100'
-                : 'pointer-events-none -translate-x-4 opacity-0'
-            )}
-          >
-            <button
-              onClick={() => setIsCollapsed(false)}
-              className='hover:text-tsinelas-text-brand hover:border-tsinelas-border-brand border-tsinelas-border-weak bg-tsinelas-bg-surface text-tsinelas-text-disabled rounded-lg border p-2 shadow-sm transition-colors'
-              title='Expand Menu'
+        <div className='relative flex flex-col md:flex-row md:items-start'>
+          {/* Desktop: expand control, shown only while collapsed */}
+          {collapsible && (
+            <div
+              className={cn(
+                'absolute top-0 left-0 z-10 hidden md:block',
+                collapsed ? 'opacity-100' : 'pointer-events-none opacity-0'
+              )}
             >
-              <PanelLeftOpen className='h-5 w-5' />
-            </button>
-          </div>
+              <Button
+                variant='tertiary'
+                iconOnly
+                onClick={() => setIsCollapsed(false)}
+                aria-label='Show sidebar'
+                aria-expanded={false}
+              >
+                <PanelLeftOpen className='size-tsinelas-icon-02' />
+              </Button>
+            </div>
+          )}
 
-          {/* Sidebar */}
           <aside
+            id={sidebarId}
             className={cn(
-              'shrink-0',
-              mobileMenuOpen ? 'block' : 'hidden',
-              'md:sticky md:top-[6rem] md:block md:self-start',
-              'transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]',
-              'overflow-hidden',
-              collapsible && isCollapsed
-                ? 'md:mr-12 md:w-0 md:opacity-0'
-                : 'md:mr-8 md:w-64 md:opacity-100 lg:w-72'
+              'shrink-0 overflow-hidden md:sticky md:top-24 md:self-start',
+              'transition-[width,margin] duration-tsinelas-moderate-02 ease-tsinelas-standard-productive',
+              mobileOpen ? 'block' : 'hidden md:block',
+              collapsed
+                ? 'md:mr-tsinelas-layout-04 md:w-0'
+                : 'md:mr-tsinelas-layout-03 md:w-64'
             )}
+            inert={collapsed || undefined}
           >
-            <div className='w-64 lg:w-72'>
+            <div className='w-full md:w-64'>
               {collapsible && (
-                <div className='mb-2 hidden justify-end md:flex'>
-                  <button
+                <div className='mb-tsinelas-03 hidden justify-end md:flex'>
+                  <Button
+                    variant='ghost'
+                    size='sm'
                     onClick={() => setIsCollapsed(true)}
-                    className='hover:text-tsinelas-text-brand text-tsinelas-text-disabled flex items-center gap-1 tsinelas-eyebrow transition-colors'
+                    aria-expanded={true}
+                    rightIcon={
+                      <PanelLeftClose className='size-tsinelas-icon-01' />
+                    }
                   >
-                    Hide Menu <PanelLeftClose className='h-3.5 w-3.5' />
-                  </button>
+                    Hide
+                  </Button>
                 </div>
               )}
               {sidebar}
             </div>
           </aside>
 
-          {/* Main Content */}
-          <main className='min-w-0 flex-1 transition-all duration-500 ease-in-out'>
+          <main className='min-w-0 flex-1'>
             <div
               id='layout-content'
-              className='border-tsinelas-border-weak bg-tsinelas-bg-surface min-h-[50vh] md:border md:p-tsinelas-06'
+              className='min-h-[50vh] bg-tsinelas-background md:border md:border-tsinelas-border-subtle-00 md:p-tsinelas-06'
             >
               {children}
             </div>

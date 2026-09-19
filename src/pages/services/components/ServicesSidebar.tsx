@@ -9,6 +9,7 @@ import { Button } from '@/components/ui/Button';
 
 import { scrollToTop } from '@/lib/scrollUtils';
 import { getCategoryIconBySlug } from '@/lib/serviceIcons';
+import { getMergedServices, getServicesByCategory } from '@/lib/services';
 
 import serviceCategories from '@/data/service_categories.json';
 import { config } from '@/lib/lguConfig';
@@ -28,6 +29,7 @@ export default function ServicesSidebar({
         <SidebarItem
           label='All services'
           icon={FileText}
+          count={getMergedServices().length}
           isActive={selectedCategorySlug === 'all'}
           onClick={() => {
             scrollToTop();
@@ -39,6 +41,7 @@ export default function ServicesSidebar({
             key={category.slug}
             label={category.name}
             icon={getCategoryIconBySlug(category.slug)}
+            count={getServicesByCategory(category.slug).length}
             isActive={selectedCategorySlug === category.slug}
             onClick={() => {
               scrollToTop();

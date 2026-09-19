@@ -15,20 +15,18 @@ export function SidebarContainer({
   title?: string;
 }) {
   return (
-    <aside className='w-full shrink-0 md:w-64'>
-      <div className='sticky top-24 overflow-hidden border border-tsinelas-border-subtle-00 bg-tsinelas-layer-01'>
-        {title && (
-          <div className='flex h-tsinelas-container-03 items-center border-b border-tsinelas-border-subtle-00 px-tsinelas-05'>
-            <h2 className='tsinelas-eyebrow text-tsinelas-text-secondary'>
-              {title}
-            </h2>
-          </div>
-        )}
-        <nav className='scrollbar-thin max-h-[calc(100vh-10rem)] overflow-y-auto py-tsinelas-02'>
-          {children}
-        </nav>
-      </div>
-    </aside>
+    <div className='overflow-hidden border border-tsinelas-border-subtle-00 bg-tsinelas-layer-01'>
+      {title && (
+        <div className='flex h-tsinelas-container-03 items-center border-b border-tsinelas-border-subtle-00 px-tsinelas-05'>
+          <h2 className='tsinelas-eyebrow text-tsinelas-text-secondary'>
+            {title}
+          </h2>
+        </div>
+      )}
+      <nav className='scrollbar-thin max-h-[calc(100vh-12rem)] overflow-y-auto py-tsinelas-02'>
+        <ul>{children}</ul>
+      </nav>
+    </div>
   );
 }
 
@@ -41,12 +39,12 @@ export function SidebarGroup({
   children: ReactNode;
 }) {
   return (
-    <div className='mb-tsinelas-03 last:mb-0'>
+    <li className='mb-tsinelas-03 last:mb-0'>
       <h3 className='tsinelas-eyebrow px-tsinelas-05 py-tsinelas-03 text-tsinelas-text-helper'>
         {title}
       </h3>
       <ul>{children}</ul>
-    </div>
+    </li>
   );
 }
 
@@ -59,6 +57,8 @@ interface SidebarItemProps {
   onClick?: () => void;
   isActive?: boolean;
   description?: string;
+  /** Trailing count or short tag, right-aligned in the row. */
+  count?: number | string;
 }
 
 export function SidebarItem({
@@ -69,6 +69,7 @@ export function SidebarItem({
   onClick,
   isActive,
   description,
+  count,
 }: SidebarItemProps) {
   const location = useLocation();
   const active = isActive ?? (path ? location.pathname === path : false);
@@ -94,7 +95,7 @@ export function SidebarItem({
           )}
         />
       )}
-      <div className='flex flex-col overflow-hidden text-left'>
+      <div className='flex min-w-0 flex-1 flex-col text-left'>
         <span className='truncate'>{label}</span>
         {description && (
           <span className='tsinelas-helper-text-01 text-tsinelas-text-helper'>
@@ -102,6 +103,11 @@ export function SidebarItem({
           </span>
         )}
       </div>
+      {count !== undefined && (
+        <span className='tsinelas-label-01 shrink-0 text-tsinelas-text-helper tsinelas-tabular'>
+          {count}
+        </span>
+      )}
     </>
   );
 

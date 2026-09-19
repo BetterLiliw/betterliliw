@@ -62,6 +62,7 @@ export default function ServicesLayout() {
     <SidebarLayout
       collapsible={true}
       defaultCollapsed={!isIndexPage}
+      sidebarLabel='Browse by category'
       // Unified header using PageHeader component
       headerNode={
         isIndexPage ? (

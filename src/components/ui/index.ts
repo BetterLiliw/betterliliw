@@ -13,7 +13,11 @@ export { Button } from '@/components/ui/Button';
 export { Card } from './Card';
 
 // Form and input components
+export { Dropdown } from './Dropdown';
+export { Input } from './Input';
+export { Label } from './Label';
 export { default as SearchInput } from './SearchInput';
+export { Textarea } from './Textarea';
 export { default as SelectPicker } from './SelectPicker';
 
 // Data display components

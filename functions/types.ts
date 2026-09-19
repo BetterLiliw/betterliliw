@@ -18,6 +18,11 @@ export interface Env {
   CF_ACCOUNT_ID?: string;
   CF_API_TOKEN?: string;
 
+  // Public service-request form -> GitHub issue. Fine-grained token with
+  // Issues: write on GITHUB_REPO (owner/name, set in wrangler.jsonc vars).
+  GITHUB_ISSUES_TOKEN?: string;
+  GITHUB_REPO?: string;
+
   // Admin Authentication
   GITHUB_CLIENT_ID?: string;
   GITHUB_CLIENT_SECRET?: string;

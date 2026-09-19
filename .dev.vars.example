@@ -14,3 +14,8 @@ AUTHORIZED_USERS=["miconficker"]
 # Role assignment (JSON arrays). Absent from both -> viewer (read-only).
 ADMIN_USERS=["miconficker"]
 # EDITOR_USERS=["some-volunteer"]
+
+# Public "request a service" form (/services/request) files GitHub issues.
+# Fine-grained PAT with Issues: write on the repo named by GITHUB_REPO in
+# wrangler.jsonc. Leave unset locally and the page falls back to email.
+# GITHUB_ISSUES_TOKEN=github_pat_...

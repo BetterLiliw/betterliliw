@@ -145,6 +145,9 @@ Everything here costs money or needs an account; none of it blocks local work.
       `docs/MEILISEARCH_INTEGRATION_GUIDE.md`
 - [ ] **`lgu.officialWebsite`** — point at Liliw's actual government site if one
       exists, rather than the portal itself
+- [ ] **`GITHUB_ISSUES_TOKEN`** — Pages secret for the public
+      `/services/request` form: a fine-grained PAT with Issues: write on the
+      repo. Without it the form falls back to email (`hello@betterliliw.org`)
 
 ---
 

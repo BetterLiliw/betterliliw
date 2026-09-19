@@ -9,7 +9,6 @@ import { Badge } from '@/components/ui/Badge';
 import { CardGrid } from '@/components/ui/Card';
 import { EmptyState } from '@/components/ui/EmptyState';
 import { lguLabels } from '@/lib/lguLabels';
-import { config } from '@/lib/lguConfig';
 import { filterServices } from '@/lib/services';
 
 import serviceCategories from '@/data/service_categories.json';
@@ -126,7 +125,7 @@ export default function ServicesPage() {
           message={
             "We couldn't find any services matching your filters. Try adjusting your search or filters."
           }
-          actionHref={`${config.portal.githubUrl}/issues/new?template=contribution.yml`}
+          actionHref='/services/request'
           actionLabel='Suggest New Service'
         />
       </>

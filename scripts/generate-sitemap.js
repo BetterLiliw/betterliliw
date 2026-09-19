@@ -57,6 +57,7 @@ const STATIC_ROUTES = [
   '/data/weather',
   '/data/forex',
   '/services',
+  '/services/request',
   '/government/elected-officials',
   '/government/elected-officials/committees',
   '/government/departments',

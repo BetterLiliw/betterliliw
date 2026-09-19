@@ -42,6 +42,7 @@ const ForexPage = lazy(() => import('@/pages/data/forex'));
 const ServicesLayout = lazy(() => import('@/pages/services/layout'));
 const Services = lazy(() => import('@/pages/services'));
 const ServiceDetail = lazy(() => import('@/pages/services/[service]'));
+const ServiceRequest = lazy(() => import('@/pages/services/request'));
 
 // Government Directory
 const GovernmentRootLayout = lazy(() => import('@/pages/government/layout'));
@@ -204,6 +205,7 @@ function AppContent() {
             {/* Services Module */}
             <Route path='/services' element={<ServicesLayout />}>
               <Route index element={<Services />} />
+              <Route path='request' element={<ServiceRequest />} />
               <Route path=':service' element={<ServiceDetail />} />
             </Route>
 

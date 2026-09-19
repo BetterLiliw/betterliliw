@@ -33,10 +33,12 @@ import {
   DialogTrigger,
 } from '@/components/ui/Dialog';
 import { EmptyState } from '@/components/ui/EmptyState';
+import { Dropdown } from '@/components/ui/Dropdown';
 import { Input } from '@/components/ui/Input';
 import { Label } from '@/components/ui/Label';
 import { PaginationControls } from '@/components/ui/Pagination';
 import { ScrollArea } from '@/components/ui/ScrollArea';
+import { Textarea } from '@/components/ui/Textarea';
 import SearchInput from '@/components/ui/SearchInput';
 import SelectPicker from '@/components/ui/SelectPicker';
 import {
@@ -289,6 +291,25 @@ export default function ComponentsPage() {
             </div>
           </div>
         </Example>
+      </Section>
+
+      <Section
+        id='dropdown'
+        title='Dropdown & Textarea'
+        lede={
+          <>
+            Carbon&apos;s single-select dropdown on the Input recipe: the field
+            is the trigger, the list is the shared menu (layer-01, hairline
+            border, 40px rows, check on the selected row). Built on Radix, so it
+            gets arrow keys, type-ahead and Escape and looks the same on every
+            phone — <strong>never use a native</strong>{' '}
+            <Mono>&lt;select&gt;</Mono>. Multi-select or filterable lists use{' '}
+            <Mono>SelectPicker</Mono>. Source: <Mono>Dropdown.tsx</Mono>,{' '}
+            <Mono>Textarea.tsx</Mono>
+          </>
+        }
+      >
+        <DropdownDemo />
       </Section>
 
       <Section
@@ -723,6 +744,85 @@ export default function ComponentsPage() {
         </Example>
       </Section>
     </div>
+  );
+}
+
+function DropdownDemo() {
+  const [office, setOffice] = useState('');
+  const options = [
+    { value: 'mho', label: 'Municipal Health Office' },
+    { value: 'bplo', label: 'Business Permits and Licensing Office' },
+    { value: 'mswdo', label: 'Municipal Social Welfare and Development' },
+    { value: 'assessor', label: "Municipal Assessor's Office" },
+  ];
+  return (
+    <Example
+      code={`<Label htmlFor="office">Office</Label>
+<Dropdown id="office" value={office} onChange={setOffice} options={options} placeholder="Choose an office" />
+
+<Dropdown size="sm" … /> <Dropdown invalid … /> <Dropdown disabled … />
+<Textarea id="notes" rows={4} placeholder="…" />`}
+    >
+      <div className='grid gap-tsinelas-06 md:grid-cols-2'>
+        <div>
+          <Label htmlFor='ds-office'>Office</Label>
+          <Dropdown
+            id='ds-office'
+            value={office}
+            onChange={setOffice}
+            options={options}
+            placeholder='Choose an office'
+          />
+        </div>
+        <div>
+          <Label htmlFor='ds-office-inv'>Invalid</Label>
+          <Dropdown
+            id='ds-office-inv'
+            value=''
+            onChange={() => {}}
+            options={options}
+            invalid
+            aria-describedby='ds-office-err'
+          />
+          <p
+            id='ds-office-err'
+            className='mt-tsinelas-02 text-tsinelas-text-error tsinelas-helper-text-01'
+          >
+            Choose the office that handles this.
+          </p>
+        </div>
+        <div>
+          <Label htmlFor='ds-office-sm'>Small (32)</Label>
+          <Dropdown
+            id='ds-office-sm'
+            size='sm'
+            value={office}
+            onChange={setOffice}
+            options={options}
+          />
+        </div>
+        <div>
+          <Label htmlFor='ds-office-dis' aria-disabled='true'>
+            Disabled
+          </Label>
+          <Dropdown
+            id='ds-office-dis'
+            value='mho'
+            onChange={() => {}}
+            options={options}
+            disabled
+          />
+        </div>
+        <div className='md:col-span-2'>
+          <Label htmlFor='ds-notes'>Notes</Label>
+          <Textarea
+            id='ds-notes'
+            rows={4}
+            placeholder='Anything else a volunteer should know.'
+          />
+        </div>
+      </div>
+    </Example>
   );
 }
 

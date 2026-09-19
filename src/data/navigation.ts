@@ -178,8 +178,8 @@ export const footerNavigation = {
       target: '_blank',
     },
     {
-      label: 'Discord',
-      href: config.portal.discordUrl,
+      label: 'Email',
+      href: `mailto:${config.portal.contactEmail}`,
       target: '_blank',
     },
     {

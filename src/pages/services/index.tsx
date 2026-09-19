@@ -2,10 +2,9 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import { useOutletContext } from 'react-router-dom';
 
-import { SearchXIcon } from 'lucide-react';
+import { SearchXIcon, XIcon } from 'lucide-react';
 
 import { SEO } from '@/components/layout/SEO';
-import { Badge } from '@/components/ui/Badge';
 import { CardGrid } from '@/components/ui/Card';
 import { EmptyState } from '@/components/ui/EmptyState';
 import { lguLabels } from '@/lib/lguLabels';
@@ -122,21 +121,33 @@ export default function ServicesPage() {
         <EmptyState
           icon={SearchXIcon}
           title='No services found'
-          message={
-            "We couldn't find any services matching your filters. Try adjusting your search or filters."
-          }
+          message='Nothing matches these filters. Try a different word or clear the filters.'
           actionHref='/services/request'
-          actionLabel='Suggest New Service'
+          actionLabel='Suggest a service'
         />
       </>
     );
   }
 
+  const chips = [
+    selectedOfficeDivision !== 'all' && {
+      label: selectedOfficeDivision,
+      clear: () => setOfficeDivision('all'),
+    },
+    selectedSource !== 'all' && {
+      label: selectedSource === 'citizens-charter' ? 'Official' : 'Community',
+      clear: () => setSource('all'),
+    },
+    selectedClassification !== 'all' && {
+      label: `${selectedClassification} transaction`,
+      clear: () => setClassification('all'),
+    },
+  ].filter((c): c is { label: string; clear: () => void } => Boolean(c));
+
   return (
-    <div className='animate-in fade-in space-y-6 duration-500'>
+    <div className='animate-in fade-in space-y-tsinelas-05 duration-500'>
       {seoTag}
 
-      {/* Filter Bar */}
       <FilterBar
         selectedOfficeDivision={selectedOfficeDivision}
         selectedSource={selectedSource}
@@ -146,60 +157,31 @@ export default function ServicesPage() {
         onClassificationChange={setClassification}
       />
 
-      {/* Results Badge */}
-      <div className='flex items-center justify-between'>
-        <Badge
-          variant='slate'
-          className='bg-tsinelas-bg-surface-raised border-tsinelas-border-weak'
+      {/* Result count and active filters */}
+      <div className='flex flex-wrap items-center gap-x-tsinelas-04 gap-y-tsinelas-02'>
+        <p
+          aria-live='polite'
+          className='tsinelas-label-01 text-tsinelas-text-secondary tsinelas-tabular'
         >
-          {filteredServices.length} Results
-        </Badge>
-
-        {/* Active Filters Display */}
-        {(selectedOfficeDivision !== 'all' ||
-          selectedSource !== 'all' ||
-          selectedClassification !== 'all') && (
-          <div className='flex flex-wrap gap-2'>
-            {selectedOfficeDivision !== 'all' && (
-              <Badge variant='primary' className='gap-1'>
-                {selectedOfficeDivision}
-                <button
-                  type='button'
-                  onClick={() => setOfficeDivision('all')}
-                  className='hover:text-tsinelas-text-inverse ml-1'
-                >
-                  ×
-                </button>
-              </Badge>
-            )}
-            {selectedSource !== 'all' && (
-              <Badge variant='primary' className='gap-1'>
-                {selectedSource === 'citizens-charter'
-                  ? 'Official'
-                  : 'Community'}
-                <button
-                  type='button'
-                  onClick={() => setSource('all')}
-                  className='hover:text-tsinelas-text-inverse ml-1'
-                >
-                  ×
-                </button>
-              </Badge>
-            )}
-            {selectedClassification !== 'all' && (
-              <Badge variant='primary' className='gap-1'>
-                {selectedClassification}
-                <button
-                  type='button'
-                  onClick={() => setClassification('all')}
-                  className='hover:text-tsinelas-text-inverse ml-1'
-                >
-                  ×
-                </button>
-              </Badge>
-            )}
-          </div>
-        )}
+          {filteredServices.length.toLocaleString()}{' '}
+          {filteredServices.length === 1 ? 'service' : 'services'}
+        </p>
+        {chips.map(chip => (
+          <span
+            key={chip.label}
+            className='inline-flex h-tsinelas-container-01 items-center gap-tsinelas-02 rounded-full bg-tsinelas-tag-background-navy pr-tsinelas-02 pl-tsinelas-03 text-tsinelas-tag-color-navy tsinelas-label-01'
+          >
+            {chip.label}
+            <button
+              type='button'
+              onClick={chip.clear}
+              aria-label={`Remove filter ${chip.label}`}
+              className='flex size-tsinelas-icon-02 items-center justify-center rounded-full transition-colors duration-tsinelas-fast-01 hover:bg-tsinelas-tag-hover-navy tsinelas-focus'
+            >
+              <XIcon aria-hidden='true' className='size-tsinelas-04' />
+            </button>
+          </span>
+        ))}
       </div>
 
       {/* Services Grid - Using CardGrid for consistency */}
@@ -214,9 +196,11 @@ export default function ServicesPage() {
         {filteredServices.length > currentPage * ITEMS_PER_PAGE && (
           <div
             ref={loadMoreRef}
-            className='flex justify-center py-12 col-span-full'
+            role='status'
+            aria-label='Loading more services'
+            className='col-span-full flex justify-center py-tsinelas-layout-03'
           >
-            <div className='border-tsinelas-border-brand h-6 w-6 animate-spin rounded-full border-2 border-t-transparent' />
+            <div className='size-tsinelas-06 animate-spin rounded-full border-2 border-tsinelas-interactive border-t-transparent' />
           </div>
         )}
       </CardGrid>

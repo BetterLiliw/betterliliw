@@ -23,6 +23,7 @@ export interface DropdownProps {
   className?: string;
   'aria-label'?: string;
   'aria-describedby'?: string;
+  'data-testid'?: string;
 }
 
 const heights = {

@@ -1,16 +1,14 @@
 import { useState } from 'react';
-import {
-  Building2,
-  ChevronDown,
-  ChevronUp,
-  CheckCircle2,
-  Layers,
-} from 'lucide-react';
 
-import { Badge } from '@/components/ui/Badge';
+import { CheckIcon, ChevronDownIcon } from 'lucide-react';
+
+import { Button } from '@/components/ui/Button';
+import { Dropdown } from '@/components/ui/Dropdown';
+import { Label } from '@/components/ui/Label';
+
 import { getAllOfficeDivisions } from '@/lib/services';
+import { cn } from '@/lib/utils';
 
-// Types
 export type ServiceSource = 'citizens-charter' | 'community' | 'all';
 export type ClassificationFilter = 'Simple' | 'Complex' | 'all';
 
@@ -32,145 +30,132 @@ export default function FilterBar({
   onClassificationChange,
 }: FilterBarProps) {
   const [isExpanded, setIsExpanded] = useState(false);
-  const officeDivisions = getAllOfficeDivisions();
 
-  const hasActiveFilters =
-    selectedOfficeDivision !== 'all' ||
-    selectedSource !== 'all' ||
-    selectedClassification !== 'all';
+  const activeCount =
+    (selectedOfficeDivision !== 'all' ? 1 : 0) +
+    (selectedSource !== 'all' ? 1 : 0) +
+    (selectedClassification !== 'all' ? 1 : 0);
+
+  const officeOptions = [
+    { value: 'all', label: 'All offices' },
+    ...getAllOfficeDivisions().map(division => ({
+      value: division,
+      label: division,
+    })),
+  ];
 
   return (
     <div
-      className='border-tsinelas-border-weak bg-tsinelas-bg-surface rounded-2xl border shadow-sm'
+      className='border border-tsinelas-border-subtle-00 bg-tsinelas-layer-01'
       data-testid='filter-bar'
     >
-      {/* Filter Bar Header */}
       <button
         type='button'
         onClick={() => setIsExpanded(!isExpanded)}
-        className='flex w-full items-center justify-between px-4 py-3 transition-colors hover:bg-tsinelas-bg-surface-raised sm:px-5'
+        aria-expanded={isExpanded}
+        aria-controls='service-filters'
+        className='flex h-tsinelas-container-03 w-full items-center justify-between px-tsinelas-05 text-left transition-colors duration-tsinelas-fast-01 ease-tsinelas-standard-productive hover:bg-tsinelas-layer-hover-01 tsinelas-focus'
         data-testid='filter-bar-toggle'
       >
-        <div className='flex items-center gap-3'>
-          <span className='text-tsinelas-text-strong text-sm font-bold'>
+        <span className='flex items-center gap-tsinelas-03'>
+          <span className='tsinelas-heading-compact-01 text-tsinelas-text-primary'>
             Filters
           </span>
-          {hasActiveFilters && (
-            <Badge variant='primary' className='text-xs'>
-              Active
-            </Badge>
+          {activeCount > 0 && (
+            <span className='tsinelas-label-01 text-tsinelas-text-secondary'>
+              {activeCount} active
+            </span>
           )}
-        </div>
-        {isExpanded ? (
-          <ChevronUp className='text-tsinelas-text-disabled h-4 w-4' />
-        ) : (
-          <ChevronDown className='text-tsinelas-text-disabled h-4 w-4' />
-        )}
+        </span>
+        <ChevronDownIcon
+          aria-hidden='true'
+          className={cn(
+            'size-tsinelas-icon-01 text-tsinelas-icon-secondary transition-transform duration-tsinelas-fast-01',
+            isExpanded && 'rotate-180'
+          )}
+        />
       </button>
 
-      {/* Expandable Filter Content */}
       {isExpanded && (
-        <div className='border-tsinelas-border-weak border-t px-4 py-4 sm:px-5'>
-          <div className='flex flex-col gap-4 md:flex-row md:gap-6'>
-            {/* Data Source Filter */}
-            <div className='flex-1'>
-              <div className='mb-2 flex items-center gap-2'>
-                <CheckCircle2 className='text-tsinelas-text-disabled h-3.5 w-3.5' />
-                <h4 className='text-tsinelas-text-disabled text-[10px] font-bold uppercase tracking-wider'>
-                  Source
-                </h4>
-              </div>
-              <div className='flex flex-wrap gap-1.5'>
-                <FilterPill
-                  label='All'
-                  selected={selectedSource === 'all'}
-                  onClick={() => onSourceChange('all')}
-                  data-testid='filter-source-all'
-                />
-                <FilterPill
-                  label='Official'
-                  selected={selectedSource === 'citizens-charter'}
-                  onClick={() => onSourceChange('citizens-charter')}
-                  data-testid='filter-source-official'
-                />
-                <FilterPill
-                  label='Community'
-                  selected={selectedSource === 'community'}
-                  onClick={() => onSourceChange('community')}
-                  data-testid='filter-source-community'
-                />
-              </div>
+        <div
+          id='service-filters'
+          className='tsinelas-layer-02 grid gap-tsinelas-05 border-t border-tsinelas-border-subtle-00 p-tsinelas-05 md:grid-cols-[auto_auto_1fr] md:items-end'
+        >
+          <fieldset>
+            <legend className='mb-tsinelas-03 text-tsinelas-text-secondary tsinelas-label-01'>
+              Source
+            </legend>
+            <div className='flex flex-wrap gap-tsinelas-02'>
+              <FilterTag
+                label='All'
+                selected={selectedSource === 'all'}
+                onClick={() => onSourceChange('all')}
+                data-testid='filter-source-all'
+              />
+              <FilterTag
+                label='Official'
+                selected={selectedSource === 'citizens-charter'}
+                onClick={() => onSourceChange('citizens-charter')}
+                data-testid='filter-source-official'
+              />
+              <FilterTag
+                label='Community'
+                selected={selectedSource === 'community'}
+                onClick={() => onSourceChange('community')}
+                data-testid='filter-source-community'
+              />
             </div>
+          </fieldset>
 
-            {/* Classification Filter */}
-            <div className='flex-1'>
-              <div className='mb-2 flex items-center gap-2'>
-                <Layers className='text-tsinelas-text-disabled h-3.5 w-3.5' />
-                <h4 className='text-tsinelas-text-disabled text-[10px] font-bold uppercase tracking-wider'>
-                  Type
-                </h4>
-              </div>
-              <div className='flex flex-wrap gap-1.5'>
-                <FilterPill
-                  label='All'
-                  selected={selectedClassification === 'all'}
-                  onClick={() => onClassificationChange('all')}
-                  data-testid='filter-classification-all'
-                />
-                <FilterPill
-                  label='Simple'
-                  selected={selectedClassification === 'Simple'}
-                  onClick={() => onClassificationChange('Simple')}
-                  data-testid='filter-classification-simple'
-                />
-                <FilterPill
-                  label='Complex'
-                  selected={selectedClassification === 'Complex'}
-                  onClick={() => onClassificationChange('Complex')}
-                  data-testid='filter-classification-complex'
-                />
-              </div>
+          <fieldset>
+            <legend className='mb-tsinelas-03 text-tsinelas-text-secondary tsinelas-label-01'>
+              Transaction
+            </legend>
+            <div className='flex flex-wrap gap-tsinelas-02'>
+              <FilterTag
+                label='All'
+                selected={selectedClassification === 'all'}
+                onClick={() => onClassificationChange('all')}
+                data-testid='filter-classification-all'
+              />
+              <FilterTag
+                label='Simple'
+                selected={selectedClassification === 'Simple'}
+                onClick={() => onClassificationChange('Simple')}
+                data-testid='filter-classification-simple'
+              />
+              <FilterTag
+                label='Complex'
+                selected={selectedClassification === 'Complex'}
+                onClick={() => onClassificationChange('Complex')}
+                data-testid='filter-classification-complex'
+              />
             </div>
+          </fieldset>
 
-            {/* Office Division Filter */}
-            <div className='flex-1'>
-              <div className='mb-2 flex items-center gap-2'>
-                <Building2 className='text-tsinelas-text-disabled h-3.5 w-3.5' />
-                <h4 className='text-tsinelas-text-disabled text-[10px] font-bold uppercase tracking-wider'>
-                  Office
-                </h4>
-              </div>
-              <select
+          <div className='flex items-end gap-tsinelas-03'>
+            <div className='min-w-0 flex-1'>
+              <Label htmlFor='filter-office'>Office</Label>
+              <Dropdown
+                id='filter-office'
                 value={selectedOfficeDivision}
-                onChange={e => onOfficeDivisionChange(e.target.value)}
-                className='border-tsinelas-border-weak bg-tsinelas-bg-surface-raised text-tsinelas-text-strong w-full rounded-lg border px-3 py-1.5 text-xs font-medium focus:outline-none focus:ring-2 focus:ring-tsinelas-border-brand'
+                onChange={onOfficeDivisionChange}
+                options={officeOptions}
                 data-testid='filter-office-select'
-              >
-                <option value='all'>All Offices</option>
-                {officeDivisions.map(division => (
-                  <option key={division} value={division}>
-                    {division}
-                  </option>
-                ))}
-              </select>
+              />
             </div>
-
-            {/* Clear All Button */}
-            {hasActiveFilters && (
-              <div className='flex items-end'>
-                <button
-                  type='button'
-                  onClick={() => {
-                    onOfficeDivisionChange('all');
-                    onSourceChange('all');
-                    onClassificationChange('all');
-                  }}
-                  className='text-tsinelas-text-brand hover:text-tsinelas-text-accent-orange text-xs font-bold transition-colors'
-                  data-testid='filter-clear-all'
-                >
-                  Clear All
-                </button>
-              </div>
+            {activeCount > 0 && (
+              <Button
+                variant='ghost'
+                onClick={() => {
+                  onOfficeDivisionChange('all');
+                  onSourceChange('all');
+                  onClassificationChange('all');
+                }}
+                data-testid='filter-clear-all'
+              >
+                Clear
+              </Button>
             )}
           </div>
         </div>
@@ -179,31 +164,36 @@ export default function FilterBar({
   );
 }
 
-// Filter Pill Component
-interface FilterPillProps {
-  label: string;
-  selected: boolean;
-  onClick: () => void;
-  'data-testid'?: string;
-}
-
-function FilterPill({
+/* Carbon selectable tag: a round tag that fills with the navy pair when
+ * selected and shows a check. */
+function FilterTag({
   label,
   selected,
   onClick,
   'data-testid': testId,
-}: FilterPillProps) {
+}: {
+  label: string;
+  selected: boolean;
+  onClick: () => void;
+  'data-testid'?: string;
+}) {
   return (
     <button
       type='button'
+      role='switch'
+      aria-checked={selected}
       onClick={onClick}
       data-testid={testId}
-      className={`transition-all ${
+      className={cn(
+        'inline-flex h-tsinelas-container-01 items-center gap-tsinelas-02 rounded-full px-tsinelas-03 transition-colors duration-tsinelas-fast-01 ease-tsinelas-standard-productive tsinelas-label-01 tsinelas-focus',
         selected
-          ? 'border-tsinelas-border-brand bg-tsinelas-bg-brand-weak text-tsinelas-text-brand'
-          : 'border-tsinelas-border-weak bg-tsinelas-bg-surface text-tsinelas-text-support hover:border-tsinelas-border-brand hover:bg-tsinelas-bg-surface-raised'
-      } rounded-md border px-3 py-1 text-xs font-bold`}
+          ? 'bg-tsinelas-tag-background-navy text-tsinelas-tag-color-navy hover:bg-tsinelas-tag-hover-navy'
+          : 'text-tsinelas-text-secondary shadow-[inset_0_0_0_1px_var(--color-tsinelas-border-subtle-01)] hover:bg-tsinelas-layer-hover-01'
+      )}
     >
+      {selected && (
+        <CheckIcon aria-hidden='true' className='size-tsinelas-04 shrink-0' />
+      )}
       {label}
     </button>
   );

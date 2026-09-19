@@ -134,9 +134,10 @@ test.describe('Services Index Page', () => {
     const allCards = page.locator('[data-testid="service-card"]');
     const initialCount = await allCards.count();
 
-    // Select an office from dropdown
+    // Select an office from the Dropdown (a Radix menu, not a native select)
     const officeSelect = page.locator('[data-testid="filter-office-select"]');
-    await officeSelect.selectOption({ index: 1 }); // Select first office (not "All")
+    await officeSelect.click();
+    await page.getByRole('menuitemradio').nth(1).click(); // First office (not "All")
 
     // Wait for filtering to apply
     await page.waitForTimeout(500);

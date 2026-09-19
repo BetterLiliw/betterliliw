@@ -60,33 +60,33 @@ export default function ServiceCard({ service }: ServiceCardProps) {
   return (
     <Link
       to={`/services/${service.slug}`}
-      className='group min-h-[200px]'
+      className='group block tsinelas-focus'
       data-testid='service-card'
       data-service-slug={service.slug}
       aria-label={`View details for ${service.plainLanguageName || service.service}`}
     >
-      <Card
-        hover
-        className='border-tsinelas-border-weak flex h-full flex-col shadow-sm'
-      >
-        <CardContent className='flex h-full flex-col p-6'>
+      <Card hover className='flex h-full flex-col'>
+        <CardContent className='flex h-full flex-col'>
           {/* Icon & Status Badges */}
-          <div className='mb-4 flex items-start justify-between gap-2'>
-            <div className='bg-tsinelas-bg-surface text-tsinelas-text-brand border-tsinelas-border-brand rounded-xl border p-2.5 shadow-xs'>
-              <CategoryIcon className='h-5 w-5' />
+          <div className='mb-tsinelas-04 flex items-start justify-between gap-tsinelas-03'>
+            <div className='border border-tsinelas-border-subtle-01 bg-tsinelas-layer-02 p-tsinelas-03'>
+              <CategoryIcon className='size-tsinelas-icon-02 text-tsinelas-icon-interactive' />
             </div>
-            <div className='flex flex-wrap items-center justify-end gap-1.5'>
+            <div className='flex flex-wrap items-center justify-end gap-tsinelas-02'>
               {/* Source Badge */}
-              <Badge variant={isOfficialSource ? 'success' : 'secondary'} dot>
+              <Badge
+                variant={isOfficialSource ? 'success' : 'secondary'}
+                size='sm'
+              >
                 {isOfficialSource ? 'Official' : 'Community'}
               </Badge>
               {/* Online/Walk-in Badge */}
               {service.url ? (
-                <Badge variant='success' dot>
+                <Badge variant='primary' size='sm'>
                   Online
                 </Badge>
               ) : isTransaction ? (
-                <Badge variant='slate' dot>
+                <Badge variant='slate' size='sm'>
                   Walk-in
                 </Badge>
               ) : null}
@@ -95,75 +95,75 @@ export default function ServiceCard({ service }: ServiceCardProps) {
 
           {/* Service Number (for Citizens Charter services) */}
           {service.serviceNumber && (
-            <div className='mb-2'>
-              <span className='text-tsinelas-text-disabled tsinelas-eyebrow'>
-                Service No. {service.serviceNumber}
-              </span>
-            </div>
+            <p className='tsinelas-label-01 mb-tsinelas-02 text-tsinelas-text-helper tsinelas-tabular'>
+              Service no. {service.serviceNumber}
+            </p>
           )}
 
           {/* Title & Category Label */}
           <div className='flex-1'>
-            <h3 className='group-hover:text-tsinelas-text-brand text-tsinelas-text-strong mb-1 leading-snug font-bold transition-colors'>
+            <h3 className='tsinelas-heading-compact-02 mb-tsinelas-02 text-tsinelas-text-primary transition-colors duration-tsinelas-fast-01 group-hover:text-tsinelas-link-primary'>
               {service.plainLanguageName || service.service}
             </h3>
-            <p className='text-tsinelas-text-disabled tsinelas-eyebrow'>
+            <p className='tsinelas-label-01 text-tsinelas-text-secondary'>
               {service.category.name}
             </p>
             {/* Office Division (for Citizens Charter services) */}
             {service.officeDivision && (
-              <p className='text-tsinelas-text-support mt-1 text-[11px] font-medium leading-tight'>
+              <p className='tsinelas-helper-text-01 mt-tsinelas-01 text-tsinelas-text-helper'>
                 {service.officeDivision}
               </p>
             )}
           </div>
 
           {/* Footer Row */}
-          <div className='mt-6 flex items-center justify-between border-t border-tsinelas-border-weak pt-4'>
+          <div className='mt-tsinelas-05 flex items-center justify-between gap-tsinelas-03 border-t border-tsinelas-border-subtle-01 pt-tsinelas-04'>
             {/* Verification / Data Status */}
-            <div className='flex items-center gap-1.5 tsinelas-eyebrow'>
+            <div className='flex items-center gap-tsinelas-02 tsinelas-label-01'>
               {needsVerification ? (
                 <>
-                  <AlertCircle className='h-3 w-3 text-tsinelas-text-warning' />
+                  <AlertCircle className='size-tsinelas-04 text-tsinelas-text-warning' />
                   <span className='text-tsinelas-text-warning'>
-                    Pending Verification
+                    Pending verification
                   </span>
                 </>
               ) : hasValidDate ? (
                 <>
-                  <ClockIcon className='h-3 w-3 text-tsinelas-text-success' />
-                  <span className='text-tsinelas-text-strong'>
-                    {format(new Date(service.updatedAt!), 'MMM yyyy')}
+                  <ClockIcon className='size-tsinelas-04 text-tsinelas-icon-secondary' />
+                  <span className='text-tsinelas-text-secondary'>
+                    Updated {format(new Date(service.updatedAt!), 'MMM yyyy')}
                   </span>
                 </>
               ) : isOfficialSource ? (
                 <>
-                  <ShieldCheck className='h-3 w-3 text-tsinelas-text-success' />
-                  <span className='text-tsinelas-text-success'>
-                    Official Data
+                  <ShieldCheck className='size-tsinelas-04 text-tsinelas-support-success' />
+                  <span className='text-tsinelas-text-secondary'>
+                    Citizens Charter
                   </span>
                 </>
               ) : (
                 <>
-                  <span className='bg-tsinelas-bg-disabled h-1.5 w-1.5 shrink-0 rounded-full' />
-                  <span className='text-tsinelas-text-inverse-subtle italic'>
-                    Unverified
-                  </span>
+                  <span className='size-tsinelas-02 shrink-0 rounded-full bg-tsinelas-icon-disabled' />
+                  <span className='text-tsinelas-text-helper'>Unverified</span>
                 </>
               )}
             </div>
 
             {/* View Link */}
-            <span className='text-tsinelas-text-brand flex items-center gap-1 text-xs font-bold transition-transform group-hover:translate-x-1'>
-              View <ArrowRightIcon className='h-3 w-3' />
+            <span className='flex items-center gap-tsinelas-02 text-tsinelas-link-primary tsinelas-label-01 group-hover:text-tsinelas-link-primary-hover'>
+              View
+              <ArrowRightIcon
+                aria-hidden='true'
+                className='size-tsinelas-icon-01'
+              />
             </span>
           </div>
 
           {/* Classification Badge (for Citizens Charter services) */}
           {service.classification && (
-            <div className='mt-3 border-t border-tsinelas-border-weak pt-3'>
-              <Badge variant='outline' className='text-[9px]'>
-                {service.classification} Transaction
+            <div className='mt-tsinelas-03'>
+              <Badge variant='outline' size='sm'>
+                {service.classification} transaction
               </Badge>
             </div>
           )}

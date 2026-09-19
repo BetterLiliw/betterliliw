@@ -67,22 +67,24 @@ export default function ServicesLayout() {
         isIndexPage ? (
           <PageHeader
             variant='hero'
-            title='Local Government Services'
-            description='Explore official municipal services from the Citizens Charter and community contributions. Choose a category to filter or search below.'
+            title='Government services'
+            description='Requirements, fees and steps for municipal services, from the Citizens Charter and community contributions. Pick a category or search.'
             actions={
               <SearchInput
-                placeholder='Search for services (e.g., Business Permit)...'
+                placeholder='Search services, e.g. business permit'
                 value={searchQuery}
                 onChangeValue={setSearchQuery}
-                size='md'
+                size='lg'
+                clearable
+                aria-label='Search services'
               />
             }
           />
         ) : (
           <PageHeader
             variant='compact'
-            title='Service Directory'
-            description='Browse requirements and procedures.'
+            title='Service directory'
+            description='Requirements, fees and how to apply.'
             autoBreadcrumbs={true}
           />
         )

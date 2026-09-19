@@ -1,10 +1,11 @@
-import { FileText, PlusCircle } from 'lucide-react';
+import { FileText } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 import {
   SidebarContainer,
   SidebarItem,
 } from '@/components/navigation/SidebarNavigation';
+import { Button } from '@/components/ui/Button';
 
 import { scrollToTop } from '@/lib/scrollUtils';
 import { getCategoryIconBySlug } from '@/lib/serviceIcons';
@@ -22,11 +23,10 @@ export default function ServicesSidebar({
   handleCategoryChange,
 }: ServicesSidebarProps) {
   return (
-    <div className='space-y-6'>
+    <div className='space-y-tsinelas-05'>
       <SidebarContainer title='Categories'>
-        {/* Special "All Services" item */}
         <SidebarItem
-          label='All Services'
+          label='All services'
           icon={FileText}
           isActive={selectedCategorySlug === 'all'}
           onClick={() => {
@@ -34,8 +34,6 @@ export default function ServicesSidebar({
             handleCategoryChange('all');
           }}
         />
-
-        {/* Dynamic Categories */}
         {serviceCategories.categories.map(category => (
           <SidebarItem
             key={category.slug}
@@ -49,26 +47,20 @@ export default function ServicesSidebar({
           />
         ))}
       </SidebarContainer>
-      <div className='p-5 mt-8 space-y-4 rounded-2xl border-2 shadow-sm border-tsinelas-orange-100 bg-tsinelas-bg-accent-orange-weak/30'>
-        <div className='flex gap-3 items-center'>
-          <div className='p-2 rounded-lg bg-tsinelas-bg-accent-orange-weak text-tsinelas-text-accent-orange'>
-            <PlusCircle className='w-5 h-5' />
-          </div>
-          <h4 className='text-sm font-bold leading-tight text-tsinelas-text-strong'>
-            Missing a service?
-          </h4>
-        </div>
 
-        <p className='text-xs leading-relaxed text-tsinelas-text-on-disabled'>
-          {config.portal.name} is community-maintained. Suggest a service that
-          is missing — no account needed.
+      {/* The one accent CTA on the page. */}
+      <div className='space-y-tsinelas-04 border border-tsinelas-border-subtle-00 bg-tsinelas-notification-background-warning p-tsinelas-05'>
+        <h3 className='tsinelas-heading-compact-01 text-tsinelas-text-primary'>
+          Missing a service?
+        </h3>
+        <p className='tsinelas-body-01 text-tsinelas-text-secondary'>
+          {config.portal.name} is maintained by the community. Suggest a service
+          that is missing or out of date — no account needed.
         </p>
-
-        <Link
-          to='/services/request'
-          className='bg-tsinelas-bg-accent-orange-default hover:bg-tsinelas-orange-700 shadow-md text-tsinelas-text-inverse flex min-h-[44px] w-full items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-xs font-bold transition-all'
-        >
-          Suggest New Service
+        <Link to='/services/request' className='block'>
+          <Button variant='accent' fullWidth>
+            Suggest a service
+          </Button>
         </Link>
       </div>
     </div>

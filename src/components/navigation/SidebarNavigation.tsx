@@ -4,6 +4,8 @@ import { Link, useLocation } from 'react-router-dom';
 
 import { LucideIcon } from 'lucide-react';
 
+import { cn } from '@/lib/utils';
+
 // 1. The Outer Wrapper
 export function SidebarContainer({
   children,
@@ -14,15 +16,15 @@ export function SidebarContainer({
 }) {
   return (
     <aside className='w-full shrink-0 md:w-64'>
-      <div className='border-tsinelas-border-weak bg-tsinelas-bg-surface sticky top-32 overflow-hidden rounded-lg border shadow-sm'>
+      <div className='sticky top-24 overflow-hidden border border-tsinelas-border-subtle-00 bg-tsinelas-layer-01'>
         {title && (
-          <div className='border-tsinelas-border-weak bg-tsinelas-bg-surface-raised/50 border-b px-4 py-3'>
-            <h2 className='text-tsinelas-text-strong text-[11px] font-semibold tracking-widest uppercase'>
+          <div className='flex h-tsinelas-container-03 items-center border-b border-tsinelas-border-subtle-00 px-tsinelas-05'>
+            <h2 className='tsinelas-eyebrow text-tsinelas-text-secondary'>
               {title}
             </h2>
           </div>
         )}
-        <nav className='scrollbar-thin max-h-[calc(100vh-200px)] overflow-y-auto p-2'>
+        <nav className='scrollbar-thin max-h-[calc(100vh-10rem)] overflow-y-auto py-tsinelas-02'>
           {children}
         </nav>
       </div>
@@ -39,11 +41,11 @@ export function SidebarGroup({
   children: ReactNode;
 }) {
   return (
-    <div className='mb-4 last:mb-0'>
-      <h3 className='text-tsinelas-text-disabled px-3 py-2 tsinelas-eyebrow'>
+    <div className='mb-tsinelas-03 last:mb-0'>
+      <h3 className='tsinelas-eyebrow px-tsinelas-05 py-tsinelas-03 text-tsinelas-text-helper'>
         {title}
       </h3>
-      <ul className='space-y-1'>{children}</ul>
+      <ul>{children}</ul>
     </div>
   );
 }
@@ -71,29 +73,31 @@ export function SidebarItem({
   const location = useLocation();
   const active = isActive ?? (path ? location.pathname === path : false);
 
-  const baseStyles = `
-    w-full flex items-start gap-3 px-3 py-2 rounded-md text-sm transition-all group
-    border-l-2 
-    ${
-      active
-        ? 'bg-tsinelas-bg-surface text-tsinelas-text-brand-bold font-semibold border-tsinelas-border-brand'
-        : 'text-tsinelas-text-support hover:bg-tsinelas-bg-surface-raised hover:text-tsinelas-text-strong border-transparent'
-    }
-  `;
+  // Carbon side-nav row: 32px, a 3px left rule that lights up when active,
+  // the layer-hover step on hover, no radius.
+  const baseStyles = cn(
+    'group flex w-full items-start gap-tsinelas-03 border-l-[3px] py-tsinelas-02 pr-tsinelas-04 pl-[calc(var(--spacing-tsinelas-05)-3px)] text-left transition-colors duration-tsinelas-fast-01 ease-tsinelas-standard-productive tsinelas-body-compact-01 tsinelas-focus',
+    active
+      ? 'border-tsinelas-border-interactive bg-tsinelas-layer-selected-01 font-semibold text-tsinelas-text-primary'
+      : 'border-transparent text-tsinelas-text-secondary hover:bg-tsinelas-layer-hover-01 hover:text-tsinelas-text-primary'
+  );
 
   const content = (
     <>
       {Icon && (
         <Icon
-          className={`mt-0.5 h-4 w-4 shrink-0 ${active ? 'text-tsinelas-text-brand' : 'group-hover:text-tsinelas-text-on-disabled text-tsinelas-text-disabled'}`}
+          className={cn(
+            'mt-tsinelas-01 size-tsinelas-icon-01 shrink-0',
+            active
+              ? 'text-tsinelas-icon-interactive'
+              : 'text-tsinelas-icon-secondary'
+          )}
         />
       )}
       <div className='flex flex-col overflow-hidden text-left'>
         <span className='truncate'>{label}</span>
         {description && (
-          <span
-            className={`text-[11px] leading-tight ${active ? 'text-tsinelas-text-brand/70' : 'text-tsinelas-text-disabled'}`}
-          >
+          <span className='tsinelas-helper-text-01 text-tsinelas-text-helper'>
             {description}
           </span>
         )}

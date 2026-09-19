@@ -2,76 +2,64 @@ import { Link } from 'react-router-dom';
 
 import { ArrowLeft, LucideIcon, PlusCircle, SearchX } from 'lucide-react';
 
+import { Button } from '@/components/ui/Button';
+
 interface EmptyStateProps {
   title?: string;
   message?: string;
   actionHref?: string;
-  actionLabel?: string; // New prop to customize the button text
+  actionLabel?: string;
   icon?: LucideIcon;
 }
 
+/**
+ * EmptyState — a quiet, on-scale "nothing here" block: a secondary icon,
+ * a card-size heading, one line of help and at most one tertiary action.
+ */
 export function EmptyState({
   title = 'No results found',
   message = 'Try adjusting your search or filters.',
   actionHref,
-  actionLabel = 'Go Back', // Default value
+  actionLabel = 'Go back',
   icon: Icon = SearchX,
 }: EmptyStateProps) {
-  // Adaptive Icon logic: Use Plus icon if it's a contribution, otherwise an Arrow
-  const isContribution =
-    actionLabel.toLowerCase().includes('suggest') ||
-    actionLabel.toLowerCase().includes('add');
-
-  // Auto-detect external links
+  const isContribution = /suggest|add/i.test(actionLabel);
   const isExternal = actionHref?.startsWith('http');
+  const ActionIcon = isContribution ? PlusCircle : ArrowLeft;
+
+  const action = actionHref && (
+    <Button
+      variant='tertiary'
+      size='sm'
+      leftIcon={<ActionIcon className='size-tsinelas-icon-01' />}
+    >
+      {actionLabel}
+    </Button>
+  );
 
   return (
-    <div className='animate-in fade-in zoom-in-95 flex flex-col items-center justify-center py-tsinelas-layout-05 text-center duration-500'>
-      {/* Icon Wrapper */}
-      <div className='bg-tsinelas-bg-surface-raised mb-tsinelas-md rounded-full p-tsinelas-md ring-8 ring-tsinelas-bg-surface/50'>
-        <Icon
-          className='text-tsinelas-text-support h-12 w-12'
-          aria-hidden='true'
-        />
-      </div>
-
-      {/* Text Content */}
-      <h3 className='text-tsinelas-text-strong tsinelas-heading-lg leading-tight'>
+    <div className='animate-in fade-in flex flex-col items-center justify-center py-tsinelas-layout-05 text-center duration-500'>
+      <Icon
+        aria-hidden='true'
+        className='mb-tsinelas-04 size-tsinelas-07 text-tsinelas-icon-secondary'
+      />
+      <h3 className='tsinelas-heading-md text-tsinelas-text-primary'>
         {title}
       </h3>
-      <p className='text-tsinelas-text-support mx-auto mt-tsinelas-xs max-w-sm tsinelas-body-sm-default leading-relaxed'>
+      <p className='tsinelas-body-01 mx-auto mt-tsinelas-02 max-w-sm text-tsinelas-text-secondary'>
         {message}
       </p>
-
-      {/* Conditional Action Button */}
-      {actionHref &&
-        (isExternal ? (
-          <a
-            href={actionHref}
-            target='_blank'
-            rel='noopener noreferrer'
-            className='border-tsinelas-border-weak bg-tsinelas-bg-surface text-tsinelas-text-support hover:border-tsinelas-border-weak hover:bg-tsinelas-bg-surface-raised mt-8 inline-flex min-h-[48px] items-center gap-2 rounded-xl border px-6 py-3 text-sm font-bold transition-all hover:shadow-md'
-          >
-            {isContribution ? (
-              <PlusCircle className='text-tsinelas-text-brand h-4 w-4' />
-            ) : (
-              <ArrowLeft className='text-tsinelas-text-disabled h-4 w-4' />
-            )}
-            {actionLabel}
-          </a>
-        ) : (
-          <Link
-            to={actionHref}
-            className='border-tsinelas-border-weak bg-tsinelas-bg-surface text-tsinelas-text-support hover:border-tsinelas-border-weak hover:bg-tsinelas-bg-surface-raised mt-8 inline-flex min-h-[48px] items-center gap-2 rounded-xl border px-6 py-3 text-sm font-bold transition-all hover:shadow-md'
-          >
-            {isContribution ? (
-              <PlusCircle className='text-tsinelas-text-brand h-4 w-4' />
-            ) : (
-              <ArrowLeft className='text-tsinelas-text-disabled h-4 w-4' />
-            )}
-            {actionLabel}
-          </Link>
-        ))}
+      {action && (
+        <div className='mt-tsinelas-05'>
+          {isExternal ? (
+            <a href={actionHref} target='_blank' rel='noopener noreferrer'>
+              {action}
+            </a>
+          ) : (
+            <Link to={actionHref!}>{action}</Link>
+          )}
+        </div>
+      )}
     </div>
   );
 }

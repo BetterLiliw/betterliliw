@@ -1,62 +1,150 @@
-import { Link } from 'react-router-dom';
+import { FormEvent, useState } from 'react';
 
-import { Button } from '@/components/ui/Button';
-import { AlertTriangleIcon, HomeIcon } from 'lucide-react';
+import { Link, useNavigate } from 'react-router-dom';
+
+import {
+  ArrowRightIcon,
+  BuildingIcon,
+  FileTextIcon,
+  LandmarkIcon,
+  LucideIcon,
+} from 'lucide-react';
 
 import { SEO } from '@/components/layout/SEO';
+import { Button } from '@/components/ui/Button';
+import SearchInput from '@/components/ui/SearchInput';
+
+import { config } from '@/lib/lguConfig';
+
+const DESTINATIONS: {
+  to: string;
+  label: string;
+  description: string;
+  icon: LucideIcon;
+}[] = [
+  {
+    to: '/services',
+    label: 'Services',
+    description: 'Requirements, fees and steps for municipal services.',
+    icon: FileTextIcon,
+  },
+  {
+    to: '/government/elected-officials',
+    label: 'Government',
+    description: 'Officials, departments and the barangay directory.',
+    icon: LandmarkIcon,
+  },
+  {
+    to: '/government/barangays',
+    label: 'Barangays',
+    description: `Contact details for every barangay in ${config.lgu.name}.`,
+    icon: BuildingIcon,
+  },
+];
 
 export default function NotFound() {
+  const navigate = useNavigate();
+  const [query, setQuery] = useState('');
+
+  const search = (event: FormEvent) => {
+    event.preventDefault();
+    const q = query.trim();
+    navigate(q ? `/search?q=${encodeURIComponent(q)}` : '/search');
+  };
+
   return (
-    <div className='min-h-screen bg-linear-to-br from-tsinelas-brand-600 via-tsinelas-brand-700 to-tsinelas-brand-800'>
+    <div className='min-h-[70vh] bg-tsinelas-background'>
       <SEO
-        title='Page Not Found!'
-        description='You might be lost, like some of our government (ghost) services..'
-        keywords={['Not Found', '404', 'Page Not Found']}
+        title='Page not found'
+        description='The page you were looking for is not here.'
+        keywords={['404', 'not found']}
         noIndex
       />
 
-      <div className='relative'>
-        <div className='relative mx-auto max-w-6xl px-4 pt-tsinelas-layout-04 pb-tsinelas-layout-03 sm:px-6 lg:px-8'>
-          {/* 404 Section */}
-          <div className='mb-16 text-center'>
-            <div className='bg-tsinelas-bg-surface/20 mb-8 inline-flex h-24 w-24 items-center justify-center rounded-full backdrop-blur-sm'>
-              <AlertTriangleIcon className='text-tsinelas-text-inverse h-12 w-12' />
-            </div>
-            <h1 className='text-tsinelas-text-inverse mb-4 text-6xl font-bold tracking-tight md:text-8xl'>
-              404
-            </h1>
-            <div className='mb-8 space-y-4'>
-              <h2 className='text-tsinelas-text-inverse tsinelas-heading-lg font-semibold'>
-                Lost in the Digital Bureaucracy?
-              </h2>
-              <p className='mx-auto max-w-2xl text-lg leading-relaxed text-tsinelas-text-inverse/80'>
-                Relax, even the best systems have their maze-like moments. This
-                page seems to have gotten stuck in processing... probably
-                waiting for approval from three (or more) different departments.
-              </p>
-            </div>
-            {/* Actions */}
-            <div className='flex flex-col items-center justify-center gap-4 sm:flex-row'>
-              <Link to='/'>
-                <Button
-                  size='lg'
-                  className='text-tsinelas-text-info hover:bg-tsinelas-bg-info-weak bg-tsinelas-bg-surface px-8 font-semibold'
-                >
-                  <HomeIcon className='mr-2 h-5 w-5' />
-                  Return to Homepage
-                </Button>
-              </Link>
+      <div className='container py-tsinelas-layout-05 md:py-tsinelas-layout-06'>
+        <div className='max-w-2xl border-l-[3px] border-tsinelas-border-interactive pl-tsinelas-06'>
+          <p className='tsinelas-eyebrow text-tsinelas-text-secondary'>
+            Error 404
+          </p>
+          <h1 className='tsinelas-heading-xl mt-tsinelas-03 text-tsinelas-text-primary'>
+            Page not found
+          </h1>
+          <p className='tsinelas-body-02 mt-tsinelas-04 text-tsinelas-text-secondary'>
+            The address may be out of date, or the page may have moved. Try a
+            search, or start from one of the sections below.
+          </p>
+
+          <form
+            onSubmit={search}
+            role='search'
+            className='mt-tsinelas-06 flex flex-col gap-tsinelas-03 sm:flex-row'
+          >
+            <SearchInput
+              value={query}
+              onChangeValue={setQuery}
+              placeholder='Search services, offices, officials…'
+              aria-label='Search the portal'
+              size='lg'
+              className='flex-1'
+            />
+            <Button type='submit' size='lg'>
+              Search
+            </Button>
+          </form>
+
+          <div className='mt-tsinelas-05 flex flex-wrap gap-tsinelas-03'>
+            <Link to='/'>
               <Button
-                variant='outline'
-                size='lg'
-                className='text-tsinelas-text-inverse hover:bg-tsinelas-bg-surface/10 border-white px-8'
-                onClick={() => window.history.back()}
+                variant='tertiary'
+                rightIcon={<ArrowRightIcon className='size-tsinelas-icon-01' />}
               >
-                Go Back
+                Go to the homepage
               </Button>
-            </div>
+            </Link>
+            <Button variant='ghost' onClick={() => navigate(-1)}>
+              Go back
+            </Button>
           </div>
         </div>
+
+        <section
+          aria-labelledby='nf-destinations'
+          className='mt-tsinelas-layout-05 border-t border-tsinelas-border-subtle-00 pt-tsinelas-06'
+        >
+          <h2
+            id='nf-destinations'
+            className='tsinelas-heading-compact-02 text-tsinelas-text-primary'
+          >
+            Popular sections
+          </h2>
+          <ul className='mt-tsinelas-05 grid gap-tsinelas-05 sm:grid-cols-3'>
+            {DESTINATIONS.map(({ to, label, description, icon: Icon }) => (
+              <li key={to}>
+                <Link
+                  to={to}
+                  className='group flex h-full flex-col gap-tsinelas-04 border border-tsinelas-border-subtle-00 bg-tsinelas-layer-01 p-tsinelas-05 tsinelas-tile-clickable tsinelas-focus'
+                >
+                  <Icon
+                    aria-hidden='true'
+                    className='size-tsinelas-icon-02 text-tsinelas-icon-interactive'
+                  />
+                  <div className='flex-1'>
+                    <h3 className='tsinelas-heading-compact-02 text-tsinelas-text-primary group-hover:text-tsinelas-link-primary'>
+                      {label}
+                    </h3>
+                    <p className='tsinelas-body-01 mt-tsinelas-02 text-tsinelas-text-secondary'>
+                      {description}
+                    </p>
+                  </div>
+                  <ArrowRightIcon
+                    aria-hidden='true'
+                    className='size-tsinelas-icon-01 text-tsinelas-icon-secondary group-hover:text-tsinelas-link-primary'
+                  />
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
       </div>
     </div>
   );

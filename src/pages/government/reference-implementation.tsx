@@ -20,7 +20,7 @@ export default function ReferenceImplementation() {
         className='bg-tsinelas-bg-surface-bold border-tsinelas-border-weak'
       />
 
-      <main className='container mx-auto px-tsinelas-md py-tsinelas-lg'>
+      <main className='container py-tsinelas-lg'>
         <div className='grid gap-tsinelas-md md:grid-cols-2 lg:grid-cols-3'>
           {/* Card Example 1: Basic Card */}
           <Card className='bg-tsinelas-bg-surface border-tsinelas-border-weak'>

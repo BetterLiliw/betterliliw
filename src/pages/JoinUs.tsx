@@ -31,7 +31,7 @@ const JoinUs: FC = () => {
       {/* Hero Section */}
       <section className='from-tsinelas-brand-600 text-tsinelas-text-inverse relative overflow-hidden bg-linear-to-r via-tsinelas-blue-700 to-tsinelas-purple-700'>
         <div className='bg-tsinelas-bg-surface-bold absolute inset-0 opacity-10'></div>
-        <div className='relative z-10 container mx-auto px-4 py-16 md:py-24'>
+        <div className='relative z-10 container py-16 md:py-24'>
           <div className='mx-auto max-w-4xl text-center'>
             <div className='mb-6 flex justify-center'>
               <div className='bg-tsinelas-bg-surface/20 rounded-full p-4 backdrop-blur-sm'>
@@ -40,7 +40,9 @@ const JoinUs: FC = () => {
             </div>
             <h1 className='text-tsinelas-text-strong tsinelas-heading-xl font-extrabold leading-tight'>
               Join the{' '}
-              <span className='text-tsinelas-text-accent-yellow'>#CivicTech</span>{' '}
+              <span className='text-tsinelas-text-accent-yellow'>
+                #CivicTech
+              </span>{' '}
               Revolution
             </h1>
             <p className='mb-8 tsinelas-body leading-relaxed text-tsinelas-text-inverse/80'>
@@ -83,7 +85,7 @@ const JoinUs: FC = () => {
 
       {/* Mission Section */}
       <section id='mission' className='bg-tsinelas-bg-surface py-16 md:py-20'>
-        <div className='container mx-auto px-4'>
+        <div className='container'>
           <div className='mb-12 text-center'>
             <div className='bg-tsinelas-bg-brand-weak mb-4 inline-flex items-center justify-center rounded-full p-3'>
               <TargetIcon className='text-tsinelas-text-brand h-8 w-8' />
@@ -122,7 +124,7 @@ const JoinUs: FC = () => {
 
       {/* What We Provide Section */}
       <section className='bg-tsinelas-bg-surface py-16 md:py-20'>
-        <div className='container mx-auto px-4'>
+        <div className='container'>
           <div className='mb-12 text-center'>
             <h2 className='text-tsinelas-text-strong mb-4 tsinelas-heading-lg font-bold'>
               What We Provide
@@ -185,7 +187,7 @@ const JoinUs: FC = () => {
       {/* Personal Message Section */}
       <section className='text-tsinelas-text-inverse relative overflow-hidden bg-linear-to-r from-tsinelas-red-900 via-tsinelas-gray-900 to-tsinelas-purple-900 py-16 md:py-20'>
         <div className='bg-tsinelas-bg-surface-bold/30 absolute inset-0'></div>
-        <div className='relative z-10 container mx-auto px-4'>
+        <div className='relative z-10 container'>
           <div className='mx-auto max-w-5xl text-center'>
             <div className='mb-8 flex justify-center'>
               <div className='rounded-full bg-linear-to-r from-tsinelas-yellow-400 to-tsinelas-orange-400 p-6 shadow-2xl'>
@@ -249,7 +251,7 @@ const JoinUs: FC = () => {
 
       {/* Call to Action Section */}
       <section className='from-tsinelas-brand-600 bg-linear-to-r to-tsinelas-blue-600 py-16 md:py-20'>
-        <div className='container mx-auto px-4 text-center'>
+        <div className='container text-center'>
           <div className='mx-auto max-w-3xl'>
             <h2 className='text-tsinelas-text-inverse mb-6 tsinelas-heading-lg font-bold'>
               Ready to Make a Difference?

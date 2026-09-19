@@ -43,7 +43,7 @@ const NewsSection: FC = () => {
 
   return (
     <section className='bg-tsinelas-bg-surface py-12'>
-      <div className='container mx-auto px-4'>
+      <div className='container'>
         <div className='mb-8 flex items-center justify-between'>
           <h2 className='text-tsinelas-text-strong tsinelas-heading-lg font-bold'>
             {t('news.title')}

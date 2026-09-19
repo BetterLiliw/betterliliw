@@ -23,14 +23,16 @@ const JoinUsStrip: FC = () => {
         </div>
       </div>
 
-      <div className='relative z-10 container mx-auto px-4'>
+      <div className='relative z-10 container'>
         <div className='flex flex-col items-center justify-between gap-2 sm:flex-row'>
           <div className='flex items-center gap-3'>
             <div className='flex items-center gap-2'>
               <div className='rounded-full bg-tsinelas-bg-warning-weak p-1.5'>
                 <UsersIcon className='h-4 w-4 text-tsinelas-text-inverse' />
               </div>
-              <span className='tsinelas-label-md'>{t('joinUs.stripTitle')}</span>
+              <span className='tsinelas-label-md'>
+                {t('joinUs.stripTitle')}
+              </span>
             </div>
             <span className='hidden tsinelas-body-md-default text-tsinelas-text-inverse md:inline'>
               {t('joinUs.stripSubtitle')}

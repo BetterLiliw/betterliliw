@@ -28,7 +28,7 @@ const TermsOfService: FC = () => {
 
       {/* Header Section */}
       <section className='from-tsinelas-brand-600 text-tsinelas-text-inverse bg-linear-to-r to-tsinelas-blue-700 py-16'>
-        <div className='container mx-auto px-4'>
+        <div className='container'>
           <div className='mx-auto max-w-4xl text-center'>
             <div className='mb-6 flex justify-center'>
               <div className='bg-tsinelas-bg-surface/20 rounded-full p-4 backdrop-blur-sm'>
@@ -44,7 +44,7 @@ const TermsOfService: FC = () => {
       </section>
 
       {/* Main Content */}
-      <div className='container mx-auto max-w-4xl px-4 py-12'>
+      <div className='container max-w-4xl py-12'>
         <div className='bg-tsinelas-bg-surface space-y-8 rounded-lg p-8 shadow-lg'>
           {/* Acceptance of Terms */}
           <section>

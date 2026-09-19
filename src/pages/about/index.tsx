@@ -36,7 +36,7 @@ const AboutPage: FC = () => {
           'innovation',
         ]}
       />
-      <div className='container mx-auto px-4 py-8 md:py-12'>
+      <div className='container py-8 md:py-12'>
         <div className='bg-tsinelas-bg-surface mt-4 rounded-lg border p-6 shadow-xs md:p-8 md:py-24'>
           <div className='mx-auto max-w-3xl'>
             <h1 className='text-tsinelas-text-strong tsinelas-heading-xl font-extrabold'>

@@ -57,7 +57,7 @@ export function SidebarLayout({
 
   return (
     <div className={`bg-tsinelas-bg-surface min-h-screen ${className}`}>
-      <div className='container mx-auto py-6 sm:px-4 md:py-8'>
+      <div className='container py-6 md:py-8'>
         {/* HEADER LOGIC: Custom Node OR Default ModuleHeader */}
         {headerNode ? (
           <div className='mb-8'>{headerNode}</div>
@@ -135,7 +135,7 @@ export function SidebarLayout({
           <main className='min-w-0 flex-1 transition-all duration-500 ease-in-out'>
             <div
               id='layout-content'
-              className='border-tsinelas-border-weak bg-tsinelas-bg-surface min-h-[50vh] rounded-2xl border p-4 shadow-sm md:p-8'
+              className='border-tsinelas-border-weak bg-tsinelas-bg-surface min-h-[50vh] md:border md:p-8'
             >
               {children}
             </div>

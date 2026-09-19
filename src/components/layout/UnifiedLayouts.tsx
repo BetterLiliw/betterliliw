@@ -248,7 +248,7 @@ export function SectionBlock({
       )}
       style={{ animationDelay: `${stagger}ms` }}
     >
-      <div className='container px-4 mx-auto'>
+      <div className='container'>
         {(title || Icon || action) && (
           <div
             className={cn(
@@ -395,7 +395,7 @@ export function PageHeader({
           className
         )}
       >
-        <div className='container px-4 mx-auto'>
+        <div className='container'>
           <div className='flex flex-col items-center text-center'>
             <h1 className='mb-4 font-bold tracking-tight text-tsinelas-text-strong tsinelas-heading-xl'>
               {title}
@@ -422,7 +422,7 @@ export function PageHeader({
           className
         )}
       >
-        <div className='container px-4 mx-auto'>
+        <div className='container'>
           <div className='flex flex-col items-center text-center'>
             {breadcrumbContent}
             <h1 className='mb-4 font-bold tracking-tight text-tsinelas-text-strong tsinelas-heading-xl'>
@@ -449,7 +449,7 @@ export function PageHeader({
         className
       )}
     >
-      <div className='container px-4 mx-auto'>
+      <div className='container'>
         {breadcrumbContent}
         <div className='flex flex-col gap-4 justify-between md:flex-row md:items-start'>
           <div className='max-w-2xl'>

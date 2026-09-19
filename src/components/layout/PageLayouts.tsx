@@ -128,7 +128,8 @@ export function DetailSection({
       'bg-tsinelas-bg-surface border-tsinelas-border-weak border shadow-sm rounded-2xl',
     highlighted:
       'bg-tsinelas-bg-surface-brand/30 border-tsinelas-border-brand border-2 shadow-md rounded-2xl',
-    compact: 'bg-tsinelas-bg-surface border-tsinelas-border-weak border rounded-lg',
+    compact:
+      'bg-tsinelas-bg-surface border-tsinelas-border-weak border rounded-lg',
   };
 
   const headerVariants = {
@@ -150,7 +151,7 @@ export function DetailSection({
           {title}
         </div>
       </div>
-      <div className='p-6'>{children}</div>
+      <div className='p-tsinelas-05 md:p-tsinelas-06'>{children}</div>
     </section>
   );
 }

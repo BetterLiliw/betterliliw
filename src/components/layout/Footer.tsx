@@ -63,7 +63,7 @@ export const Footer: FC = () => {
 
   return (
     <footer className='bg-tsinelas-bg-surface-bold selection:bg-primary-500 border-t border-tsinelas-gold-600 text-tsinelas-text-inverse selection:text-tsinelas-text-inverse'>
-      <div className='container px-4 pt-tsinelas-layout-05 pb-tsinelas-layout-04 mx-auto'>
+      <div className='container pt-tsinelas-layout-05 pb-tsinelas-layout-04'>
         <div className='grid grid-cols-1 gap-x-tsinelas-layout-04 gap-y-tsinelas-layout-04 lg:grid-cols-12'>
           {/* Brand Column */}
           <div className='space-y-tsinelas-layout-02 lg:col-span-4 lg:border-r lg:border-tsinelas-brand-400/20 lg:pr-tsinelas-layout-04'>

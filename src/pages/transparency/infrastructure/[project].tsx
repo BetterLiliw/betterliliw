@@ -251,7 +251,7 @@ export default function InfrastructureDetail() {
 
   if (loading)
     return (
-      <div className='container px-4 pt-20 mx-auto space-y-8 min-h-screen animate-in fade-in'>
+      <div className='container pt-20 space-y-8 min-h-screen animate-in fade-in'>
         <div className='w-1/3 h-8 rounded animate-pulse bg-tsinelas-bg-hover' />
         <div className='w-full h-64 rounded-3xl animate-pulse bg-tsinelas-bg-hover' />
       </div>
@@ -259,7 +259,7 @@ export default function InfrastructureDetail() {
 
   if (error || !project)
     return (
-      <div className='container px-4 pt-20 mx-auto min-h-screen animate-in fade-in'>
+      <div className='container pt-20 min-h-screen animate-in fade-in'>
         <SEO title='Project Unavailable' noIndex />
         <EmptyState
           title='Project Unavailable'
@@ -644,13 +644,17 @@ export default function InfrastructureDetail() {
                     </p>
                     <div className='grid grid-cols-2 gap-2 text-xs'>
                       <p>
-                        <span className='text-tsinelas-text-disabled'>Type:</span>{' '}
+                        <span className='text-tsinelas-text-disabled'>
+                          Type:
+                        </span>{' '}
                         <span className='font-medium text-tsinelas-text-strong'>
                           {comp.infraType}
                         </span>
                       </p>
                       <p>
-                        <span className='text-tsinelas-text-disabled'>Work:</span>{' '}
+                        <span className='text-tsinelas-text-disabled'>
+                          Work:
+                        </span>{' '}
                         <span className='font-medium text-tsinelas-text-strong'>
                           {comp.typeOfWork}
                         </span>

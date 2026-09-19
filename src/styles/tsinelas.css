@@ -1461,6 +1461,42 @@
   }
 }
 
+/* The page container. Tailwind builds its own `container` from every
+ * `--breakpoint-*` in the theme, so the Carbon breakpoints above made it
+ * cap at 20rem (320px) on phones — most of the "margin" on mobile was that
+ * cap. This one steps only at Tailwind's default sm/md/lg/xl/2xl widths, so
+ * desktop is unchanged, and is fluid below `sm`. It also owns the page
+ * margin so no caller adds `px-*` beside it: 12px on phones, 16px from
+ * `sm`. A container nested in another (a page header inside a page shell)
+ * drops its margin so the padding never doubles. */
+@utility container {
+  width: 100%;
+  max-width: none;
+  margin-inline: auto;
+  padding-inline: var(--spacing-tsinelas-04);
+
+  @media (min-width: 40rem) {
+    max-width: 40rem;
+    padding-inline: var(--spacing-tsinelas-05);
+  }
+  @media (min-width: 48rem) {
+    max-width: 48rem;
+  }
+  @media (min-width: 64rem) {
+    max-width: 64rem;
+  }
+  @media (min-width: 80rem) {
+    max-width: 80rem;
+  }
+  @media (min-width: 96rem) {
+    max-width: 96rem;
+  }
+
+  .container & {
+    padding-inline: 0;
+  }
+}
+
 /* Carbon's tile hover: a layer step, not a shadow or a lift. */
 @utility tsinelas-tile-clickable {
   transition: background-color var(--duration-tsinelas-fast-01)

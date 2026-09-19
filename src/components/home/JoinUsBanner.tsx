@@ -21,7 +21,7 @@ const JoinUsBanner: FC = () => {
         <UsersIcon className='h-20 w-20 text-tsinelas-text-warning' />
       </div>
 
-      <div className='relative z-10 container mx-auto px-4'>
+      <div className='relative z-10 container'>
         <div className='mx-auto max-w-4xl text-center'>
           <div className='mb-6 flex justify-center'>
             <div className='rounded-full border border-tsinelas-text-warning/40 bg-tsinelas-bg-warning-weak p-4 backdrop-blur-sm'>

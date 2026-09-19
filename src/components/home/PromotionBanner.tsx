@@ -10,7 +10,7 @@ const PromotionBanner: FC = () => {
 
   return (
     <section className='bg-tsinelas-bg-accent-yellow-weak text-tsinelas-text-inverse py-12'>
-      <div className='container mx-auto px-4'>
+      <div className='container'>
         <div className='items-center justify-between md:flex'>
           <div>
             <h2 className='mb-2 tsinelas-heading-lg font-bold'>

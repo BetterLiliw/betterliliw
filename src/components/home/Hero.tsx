@@ -143,7 +143,7 @@ const Hero: FC = () => {
 
   return (
     <div className='py-12 from-tsinelas-brand-600 to-tsinelas-brand-700 bg-linear-to-r text-tsinelas-text-inverse md:py-24'>
-      <div className='container px-4 mx-auto'>
+      <div className='container'>
         <div className='grid grid-cols-1 gap-8 items-center lg:grid-cols-2'>
           <div className='animate-fade-in'>
             <h1 className='mb-4 text-tsinelas-text-inverse tsinelas-heading-xl'>

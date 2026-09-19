@@ -190,7 +190,7 @@ export default function WeatherMapSection() {
 
   return (
     <section className='border-tsinelas-border-weak border-t py-12 bg-tsinelas-bg-surface'>
-      <div className='container px-4 mx-auto'>
+      <div className='container'>
         {/* Header - restored */}
         <div className='mb-12 text-center'>
           <h2 className='text-2xl font-bold md:text-3xl text-tsinelas-text-strong'>

@@ -102,7 +102,7 @@ const Ticker: FC = () => {
   if (isLoading && weatherLoading) {
     return (
       <div className='py-1 bg-tsinelas-bg-surface-bold px-tsinelas-md text-tsinelas-text-inverse'>
-        <div className='container flex justify-center items-center mx-auto'>
+        <div className='container flex justify-center items-center'>
           <LoaderIcon className='mr-2 w-4 h-4 animate-spin' />
           <span className='tsinelas-body-xs-default'>Loading data...</span>
         </div>
@@ -123,7 +123,7 @@ const Ticker: FC = () => {
 
   return (
     <div className='bg-tsinelas-blue-950 py-1.5'>
-      <div className='container flex justify-end px-4 mx-auto'>
+      <div className='container flex justify-end'>
         <div className='flex justify-end items-center'>
           {/* Forex ticker */}
           <div className='overflow-hidden flex-1 pr-4'>

@@ -80,7 +80,7 @@ const WeatherPage: FC = () => {
 
   return (
     <div className='bg-tsinelas-bg-surface-raised min-h-screen'>
-      <div className='container mx-auto px-4 py-8 md:py-12'>
+      <div className='container py-8 md:py-12'>
         {isLoading ? (
           <div className='flex h-64 items-center justify-center'>
             <div className='border-tsinelas-border-brand h-12 w-12 animate-spin rounded-full border-t-2 border-b-2'></div>
@@ -159,7 +159,9 @@ const WeatherPage: FC = () => {
                       </div>
                     </div>
                     <div className='bg-tsinelas-bg-surface/20 rounded-lg p-4 backdrop-blur-xs'>
-                      <div className='text-tsinelas-text-strong/80 mb-1'>Wind</div>
+                      <div className='text-tsinelas-text-strong/80 mb-1'>
+                        Wind
+                      </div>
                       <div className='text-xl font-semibold'>
                         {Math.round(selectedCityData.windSpeed * 3.6)} km/h
                       </div>

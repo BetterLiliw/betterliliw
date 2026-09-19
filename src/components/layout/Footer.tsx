@@ -8,7 +8,7 @@ import {
   SiInstagram,
   SiYoutube,
 } from '@icons-pack/react-simple-icons';
-import { MailIcon } from 'lucide-react';
+import { ArrowUpRightIcon, MailIcon } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
 import { config } from '@/lib/lguConfig';
@@ -30,6 +30,15 @@ const footerLinkClasses = cn(
 const footerLegalLinkClasses = cn(
   'tsinelas-eyebrow text-tsinelas-text-disabled transition-colors duration-tsinelas-fast-01 ease-tsinelas-standard-productive hover:text-tsinelas-text-inverse',
   footerFocusRing
+);
+
+/* Marks a link that leaves betterliliw.org, so it reads as an outbound
+ * link before the click rather than a surprise. */
+const ExternalLinkIndicator: FC = () => (
+  <ArrowUpRightIcon
+    aria-hidden='true'
+    className='w-3 h-3 shrink-0 opacity-70'
+  />
 );
 
 export const Footer: FC = () => {
@@ -112,9 +121,13 @@ export const Footer: FC = () => {
                           href={link.href}
                           target='_blank'
                           rel='noreferrer'
-                          className={footerLinkClasses}
+                          className={cn(
+                            footerLinkClasses,
+                            'inline-flex items-center gap-1'
+                          )}
                         >
                           {link.label}
+                          <ExternalLinkIndicator />
                         </a>
                       ) : (
                         <Link to={link.href} className={footerLinkClasses}>
@@ -152,9 +165,13 @@ export const Footer: FC = () => {
               href={config.portal.githubUrl}
               target='_blank'
               rel='noreferrer'
-              className={footerLegalLinkClasses}
+              className={cn(
+                footerLegalLinkClasses,
+                'inline-flex items-center gap-1'
+              )}
             >
               GitHub
+              <ExternalLinkIndicator />
             </a>
             <Link to='/sitemap' className={footerLegalLinkClasses}>
               Sitemap

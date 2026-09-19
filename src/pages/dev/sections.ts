@@ -16,7 +16,7 @@ export const designSystemSections: NavSection[] = [
 export const componentSections: NavSection[] = [
   { id: 'button', label: 'Button' },
   { id: 'input', label: 'Input & Label' },
-  { id: 'dropdown', label: 'Dropdown & Textarea' },
+  { id: 'dropdown', label: 'Dropdown, Checkbox & Textarea' },
   { id: 'banner', label: 'Banner' },
   { id: 'badge', label: 'Badge (Tag)' },
   { id: 'card', label: 'Card (Tile)' },

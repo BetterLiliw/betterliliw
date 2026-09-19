@@ -13,6 +13,7 @@ export { Button } from '@/components/ui/Button';
 export { Card } from './Card';
 
 // Form and input components
+export { Checkbox } from './Checkbox';
 export { Dropdown } from './Dropdown';
 export { Input } from './Input';
 export { Label } from './Label';

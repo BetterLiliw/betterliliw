@@ -1,200 +1,208 @@
-import { useState } from 'react';
+import { useMemo } from 'react';
 
-import { CheckIcon, ChevronDownIcon } from 'lucide-react';
+import { CheckIcon } from 'lucide-react';
 
 import { Button } from '@/components/ui/Button';
+import { Checkbox } from '@/components/ui/Checkbox';
 import { Dropdown } from '@/components/ui/Dropdown';
 import { Label } from '@/components/ui/Label';
 
-import { getAllOfficeDivisions } from '@/lib/services';
+import {
+  countActiveFilters,
+  getOfficeOptions,
+  type ClassificationFilter,
+  type FacetCounts,
+  type ServiceFilterState,
+  type SortOrder,
+  type SourceFilter,
+} from '@/lib/serviceFilters';
 import { cn } from '@/lib/utils';
 
-export type ServiceSource = 'citizens-charter' | 'community' | 'all';
-export type ClassificationFilter = 'Simple' | 'Complex' | 'all';
-
 interface FilterBarProps {
-  selectedOfficeDivision: string;
-  selectedSource: ServiceSource;
-  selectedClassification: ClassificationFilter;
-  onOfficeDivisionChange: (division: string) => void;
-  onSourceChange: (source: ServiceSource) => void;
-  onClassificationChange: (classification: ClassificationFilter) => void;
+  filters: ServiceFilterState;
+  counts: FacetCounts;
+  onChange: (patch: Partial<ServiceFilterState>) => void;
+  onReset: () => void;
 }
 
+const SOURCE_OPTIONS: { value: SourceFilter; label: string; id: string }[] = [
+  { value: 'all', label: 'All', id: 'all' },
+  { value: 'citizens-charter', label: 'Official', id: 'official' },
+  { value: 'community', label: 'Community', id: 'community' },
+];
+
+const TYPE_OPTIONS: {
+  value: ClassificationFilter;
+  label: string;
+  id: string;
+}[] = [
+  { value: 'all', label: 'All', id: 'all' },
+  { value: 'Simple', label: 'Simple', id: 'simple' },
+  { value: 'Complex', label: 'Complex', id: 'complex' },
+];
+
+const SORT_OPTIONS: { value: SortOrder; label: string }[] = [
+  { value: 'relevance', label: 'Relevance' },
+  { value: 'name', label: 'Name, A to Z' },
+  { value: 'updated', label: 'Recently updated' },
+];
+
+/**
+ * FilterBar — Carbon filter toolbar. Every option shows how many services
+ * it would leave given the other filters, and options that would leave
+ * none are disabled instead of hidden so the layout never jumps.
+ */
 export default function FilterBar({
-  selectedOfficeDivision,
-  selectedSource,
-  selectedClassification,
-  onOfficeDivisionChange,
-  onSourceChange,
-  onClassificationChange,
+  filters,
+  counts,
+  onChange,
+  onReset,
 }: FilterBarProps) {
-  const [isExpanded, setIsExpanded] = useState(false);
+  const active = countActiveFilters(filters);
 
-  const activeCount =
-    (selectedOfficeDivision !== 'all' ? 1 : 0) +
-    (selectedSource !== 'all' ? 1 : 0) +
-    (selectedClassification !== 'all' ? 1 : 0);
-
-  const officeOptions = [
-    { value: 'all', label: 'All offices' },
-    ...getAllOfficeDivisions().map(division => ({
-      value: division,
-      label: division,
-    })),
-  ];
+  const officeOptions = useMemo(
+    () => [
+      { value: 'all', label: 'All offices' },
+      ...getOfficeOptions().map(office => ({
+        value: office,
+        label: `${office} (${counts.office.get(office) ?? 0})`,
+      })),
+    ],
+    [counts.office]
+  );
 
   return (
-    <div
+    <section
+      aria-label='Filter services'
       className='border border-tsinelas-border-subtle-00 bg-tsinelas-layer-01'
       data-testid='filter-bar'
     >
-      <button
-        type='button'
-        onClick={() => setIsExpanded(!isExpanded)}
-        aria-expanded={isExpanded}
-        aria-controls='service-filters'
-        className='flex h-tsinelas-container-03 w-full items-center justify-between px-tsinelas-05 text-left transition-colors duration-tsinelas-fast-01 ease-tsinelas-standard-productive hover:bg-tsinelas-layer-hover-01 tsinelas-focus'
-        data-testid='filter-bar-toggle'
-      >
-        <span className='flex items-center gap-tsinelas-03'>
-          <span className='tsinelas-heading-compact-01 text-tsinelas-text-primary'>
-            Filters
-          </span>
-          {activeCount > 0 && (
-            <span className='tsinelas-label-01 text-tsinelas-text-secondary'>
-              {activeCount} active
-            </span>
-          )}
-        </span>
-        <ChevronDownIcon
-          aria-hidden='true'
-          className={cn(
-            'size-tsinelas-icon-01 text-tsinelas-icon-secondary transition-transform duration-tsinelas-fast-01',
-            isExpanded && 'rotate-180'
-          )}
-        />
-      </button>
-
-      {isExpanded && (
-        <div
-          id='service-filters'
-          className='tsinelas-layer-02 grid gap-tsinelas-05 border-t border-tsinelas-border-subtle-00 p-tsinelas-05 md:grid-cols-[auto_auto_1fr] md:items-end'
-        >
-          <fieldset>
-            <legend className='mb-tsinelas-03 text-tsinelas-text-secondary tsinelas-label-01'>
-              Source
-            </legend>
-            <div className='flex flex-wrap gap-tsinelas-02'>
-              <FilterTag
-                label='All'
-                selected={selectedSource === 'all'}
-                onClick={() => onSourceChange('all')}
-                data-testid='filter-source-all'
-              />
-              <FilterTag
-                label='Official'
-                selected={selectedSource === 'citizens-charter'}
-                onClick={() => onSourceChange('citizens-charter')}
-                data-testid='filter-source-official'
-              />
-              <FilterTag
-                label='Community'
-                selected={selectedSource === 'community'}
-                onClick={() => onSourceChange('community')}
-                data-testid='filter-source-community'
-              />
-            </div>
-          </fieldset>
-
-          <fieldset>
-            <legend className='mb-tsinelas-03 text-tsinelas-text-secondary tsinelas-label-01'>
-              Transaction
-            </legend>
-            <div className='flex flex-wrap gap-tsinelas-02'>
-              <FilterTag
-                label='All'
-                selected={selectedClassification === 'all'}
-                onClick={() => onClassificationChange('all')}
-                data-testid='filter-classification-all'
-              />
-              <FilterTag
-                label='Simple'
-                selected={selectedClassification === 'Simple'}
-                onClick={() => onClassificationChange('Simple')}
-                data-testid='filter-classification-simple'
-              />
-              <FilterTag
-                label='Complex'
-                selected={selectedClassification === 'Complex'}
-                onClick={() => onClassificationChange('Complex')}
-                data-testid='filter-classification-complex'
-              />
-            </div>
-          </fieldset>
-
-          <div className='flex items-end gap-tsinelas-03'>
-            <div className='min-w-0 flex-1'>
-              <Label htmlFor='filter-office'>Office</Label>
-              <Dropdown
-                id='filter-office'
-                value={selectedOfficeDivision}
-                onChange={onOfficeDivisionChange}
-                options={officeOptions}
-                data-testid='filter-office-select'
-              />
-            </div>
-            {activeCount > 0 && (
-              <Button
-                variant='ghost'
-                onClick={() => {
-                  onOfficeDivisionChange('all');
-                  onSourceChange('all');
-                  onClassificationChange('all');
-                }}
-                data-testid='filter-clear-all'
-              >
-                Clear
-              </Button>
-            )}
+      <div className='tsinelas-layer-02 grid gap-tsinelas-05 p-tsinelas-05 md:grid-cols-[1fr_auto] md:items-end'>
+        <div className='grid gap-tsinelas-05 sm:grid-cols-2'>
+          <div>
+            <Label htmlFor='filter-office'>Office</Label>
+            <Dropdown
+              id='filter-office'
+              value={filters.office}
+              onChange={office => onChange({ office })}
+              options={officeOptions}
+              data-testid='filter-office-select'
+            />
+          </div>
+          <div>
+            <Label htmlFor='filter-sort'>Sort by</Label>
+            <Dropdown
+              id='filter-sort'
+              value={filters.sort}
+              onChange={sort => onChange({ sort: sort as SortOrder })}
+              options={SORT_OPTIONS}
+              data-testid='filter-sort-select'
+            />
           </div>
         </div>
-      )}
-    </div>
+        <Checkbox
+          label='Online services only'
+          hint={counts.online}
+          checked={filters.online}
+          onChange={e => onChange({ online: e.target.checked })}
+          disabled={!filters.online && counts.online === 0}
+          data-testid='filter-online'
+          className='md:mb-tsinelas-03'
+        />
+      </div>
+
+      <div className='flex flex-wrap items-center gap-x-tsinelas-07 gap-y-tsinelas-04 border-t border-tsinelas-border-subtle-00 px-tsinelas-05 py-tsinelas-04'>
+        <TagGroup
+          legend='Source'
+          options={SOURCE_OPTIONS}
+          value={filters.source}
+          counts={counts.source}
+          onChange={source => onChange({ source })}
+          testIdPrefix='filter-source'
+        />
+        <TagGroup
+          legend='Transaction'
+          options={TYPE_OPTIONS}
+          value={filters.type}
+          counts={counts.type}
+          onChange={type => onChange({ type })}
+          testIdPrefix='filter-classification'
+        />
+        {active > 0 && (
+          <Button
+            variant='ghost'
+            size='sm'
+            onClick={onReset}
+            className='ml-auto'
+            data-testid='filter-clear-all'
+          >
+            Clear {active} {active === 1 ? 'filter' : 'filters'}
+          </Button>
+        )}
+      </div>
+    </section>
   );
 }
 
-/* Carbon selectable tag: a round tag that fills with the navy pair when
- * selected and shows a check. */
-function FilterTag({
-  label,
-  selected,
-  onClick,
-  'data-testid': testId,
+function TagGroup<T extends string>({
+  legend,
+  options,
+  value,
+  counts,
+  onChange,
+  testIdPrefix,
 }: {
-  label: string;
-  selected: boolean;
-  onClick: () => void;
-  'data-testid'?: string;
+  legend: string;
+  options: { value: T; label: string; id: string }[];
+  value: T;
+  counts: Record<T, number>;
+  onChange: (value: T) => void;
+  testIdPrefix: string;
 }) {
   return (
-    <button
-      type='button'
-      role='switch'
-      aria-checked={selected}
-      onClick={onClick}
-      data-testid={testId}
-      className={cn(
-        'inline-flex h-tsinelas-container-01 items-center gap-tsinelas-02 rounded-full px-tsinelas-03 transition-colors duration-tsinelas-fast-01 ease-tsinelas-standard-productive tsinelas-label-01 tsinelas-focus',
-        selected
-          ? 'bg-tsinelas-tag-background-navy text-tsinelas-tag-color-navy hover:bg-tsinelas-tag-hover-navy'
-          : 'text-tsinelas-text-secondary shadow-[inset_0_0_0_1px_var(--color-tsinelas-border-subtle-01)] hover:bg-tsinelas-layer-hover-01'
-      )}
-    >
-      {selected && (
-        <CheckIcon aria-hidden='true' className='size-tsinelas-04 shrink-0' />
-      )}
-      {label}
-    </button>
+    <fieldset className='flex flex-wrap items-center gap-x-tsinelas-04 gap-y-tsinelas-02'>
+      <legend className='float-left mr-tsinelas-02 text-tsinelas-text-secondary tsinelas-label-01'>
+        {legend}
+      </legend>
+      {options.map(option => {
+        const selected = option.value === value;
+        const count = counts[option.value];
+        const empty = count === 0 && !selected;
+        return (
+          <button
+            key={option.value}
+            type='button'
+            role='radio'
+            aria-checked={selected}
+            disabled={empty}
+            onClick={() => onChange(option.value)}
+            data-testid={`${testIdPrefix}-${option.id}`}
+            className={cn(
+              'inline-flex h-tsinelas-container-01 items-center gap-tsinelas-02 rounded-full pr-tsinelas-03 pl-tsinelas-03 transition-colors duration-tsinelas-fast-01 ease-tsinelas-standard-productive tsinelas-label-01 tsinelas-focus',
+              'disabled:cursor-not-allowed disabled:opacity-50',
+              selected
+                ? 'bg-tsinelas-tag-background-navy text-tsinelas-tag-color-navy hover:bg-tsinelas-tag-hover-navy'
+                : 'text-tsinelas-text-secondary shadow-[inset_0_0_0_1px_var(--color-tsinelas-border-subtle-01)] hover:bg-tsinelas-layer-hover-01 disabled:hover:bg-transparent'
+            )}
+          >
+            {selected && (
+              <CheckIcon
+                aria-hidden='true'
+                className='size-tsinelas-04 shrink-0'
+              />
+            )}
+            {option.label}
+            <span
+              className={cn(
+                'tsinelas-tabular',
+                selected ? 'opacity-80' : 'text-tsinelas-text-helper'
+              )}
+            >
+              {count}
+            </span>
+          </button>
+        );
+      })}
+    </fieldset>
   );
 }

@@ -60,7 +60,7 @@ export default function ServiceCard({ service }: ServiceCardProps) {
   return (
     <Link
       to={`/services/${service.slug}`}
-      className='group block tsinelas-focus'
+      className='group block [content-visibility:auto] [contain-intrinsic-size:auto_16rem] tsinelas-focus'
       data-testid='service-card'
       data-service-slug={service.slug}
       aria-label={`View details for ${service.plainLanguageName || service.service}`}

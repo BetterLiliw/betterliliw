@@ -65,13 +65,6 @@ test.describe('Services Index Page', () => {
   });
 
   test('filter by source works', async ({ page }) => {
-    // Open filter bar
-    const filterToggle = page.locator('[data-testid="filter-bar-toggle"]');
-    await filterToggle.click();
-
-    // Wait for filter content to expand
-    await page.waitForTimeout(300);
-
     // Get initial count
     const allCards = page.locator('[data-testid="service-card"]');
     const initialCount = await allCards.count();
@@ -94,13 +87,6 @@ test.describe('Services Index Page', () => {
   });
 
   test('filter by classification works', async ({ page }) => {
-    // Open filter bar
-    const filterToggle = page.locator('[data-testid="filter-bar-toggle"]');
-    await filterToggle.click();
-
-    // Wait for filter content to expand
-    await page.waitForTimeout(300);
-
     // Get initial count
     const allCards = page.locator('[data-testid="service-card"]');
     const initialCount = await allCards.count();
@@ -123,13 +109,6 @@ test.describe('Services Index Page', () => {
   });
 
   test('filter by office works', async ({ page }) => {
-    // Open filter bar
-    const filterToggle = page.locator('[data-testid="filter-bar-toggle"]');
-    await filterToggle.click();
-
-    // Wait for filter content to expand
-    await page.waitForTimeout(300);
-
     // Get initial count
     const allCards = page.locator('[data-testid="service-card"]');
     const initialCount = await allCards.count();
@@ -151,13 +130,6 @@ test.describe('Services Index Page', () => {
   });
 
   test('clear all filters button works', async ({ page }) => {
-    // Open filter bar
-    const filterToggle = page.locator('[data-testid="filter-bar-toggle"]');
-    await filterToggle.click();
-
-    // Wait for filter content to expand
-    await page.waitForTimeout(300);
-
     // Apply a filter
     const officialFilter = page.locator(
       '[data-testid="filter-source-official"]'
@@ -224,9 +196,9 @@ test.describe('Services Index Page', () => {
     const cards = page.locator('[aria-label*="View details for"]');
     expect(await cards.count()).toBeGreaterThan(0);
 
-    // Check that filter toggle is a button
-    const filterToggle = page.locator('[data-testid="filter-bar-toggle"]');
-    await expect(filterToggle).toHaveAttribute('type', 'button');
+    // Filter tags expose radio semantics
+    const officialTag = page.locator('[data-testid="filter-source-official"]');
+    await expect(officialTag).toHaveAttribute('role', 'radio');
   });
 
   test('services index page visual snapshot @visual', async ({ page }) => {

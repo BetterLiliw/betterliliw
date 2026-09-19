@@ -33,6 +33,7 @@ import {
   DialogTrigger,
 } from '@/components/ui/Dialog';
 import { EmptyState } from '@/components/ui/EmptyState';
+import { Checkbox } from '@/components/ui/Checkbox';
 import { Dropdown } from '@/components/ui/Dropdown';
 import { Input } from '@/components/ui/Input';
 import { Label } from '@/components/ui/Label';
@@ -295,7 +296,7 @@ export default function ComponentsPage() {
 
       <Section
         id='dropdown'
-        title='Dropdown & Textarea'
+        title='Dropdown, Checkbox & Textarea'
         lede={
           <>
             Carbon&apos;s single-select dropdown on the Input recipe: the field
@@ -305,7 +306,7 @@ export default function ComponentsPage() {
             phone — <strong>never use a native</strong>{' '}
             <Mono>&lt;select&gt;</Mono>. Multi-select or filterable lists use{' '}
             <Mono>SelectPicker</Mono>. Source: <Mono>Dropdown.tsx</Mono>,{' '}
-            <Mono>Textarea.tsx</Mono>
+            <Mono>Checkbox.tsx</Mono>, <Mono>Textarea.tsx</Mono>
           </>
         }
       >
@@ -761,6 +762,7 @@ function DropdownDemo() {
 <Dropdown id="office" value={office} onChange={setOffice} options={options} placeholder="Choose an office" />
 
 <Dropdown size="sm" … /> <Dropdown invalid … /> <Dropdown disabled … />
+<Checkbox label="Online services only" hint={12} checked={v} onChange={…} />
 <Textarea id="notes" rows={4} placeholder="…" />`}
     >
       <div className='grid gap-tsinelas-06 md:grid-cols-2'>
@@ -812,6 +814,11 @@ function DropdownDemo() {
             options={options}
             disabled
           />
+        </div>
+        <div className='flex flex-col gap-tsinelas-03 md:col-span-2'>
+          <Checkbox label='Online services only' hint={12} defaultChecked />
+          <Checkbox label='Include archived' />
+          <Checkbox label='Needs a source' disabled />
         </div>
         <div className='md:col-span-2'>
           <Label htmlFor='ds-notes'>Notes</Label>

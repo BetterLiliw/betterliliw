@@ -1,69 +1,77 @@
-import { useEffect, useState } from 'react';
+import { Outlet, useLocation } from 'react-router-dom';
 
-import { Outlet, useLocation, useSearchParams } from 'react-router-dom';
-
-import { useQueryState } from 'nuqs';
+import {
+  parseAsBoolean,
+  parseAsString,
+  parseAsStringLiteral,
+  useQueryStates,
+} from 'nuqs';
 
 import { PageHeader } from '@/components/layout';
 import { SidebarLayout } from '@/components/layout/SidebarLayout';
 import SearchInput from '@/components/ui/SearchInput';
 
+import {
+  CLASSIFICATION_VALUES,
+  DEFAULT_FILTERS,
+  SORT_VALUES,
+  SOURCE_VALUES,
+  type ServiceFilterState,
+} from '@/lib/serviceFilters';
+
 import ServicesSidebar from './components/ServicesSidebar';
 
-// Additional filter types
-export type ServiceSource = 'citizens-charter' | 'community' | 'all';
-export type ClassificationFilter = 'Simple' | 'Complex' | 'all';
+export type { ClassificationFilter, SourceFilter } from '@/lib/serviceFilters';
 
 export interface ServicesOutletContext {
-  searchQuery: string;
-  selectedCategorySlug: string;
-  selectedOfficeDivision: string;
-  selectedSource: ServiceSource;
-  selectedClassification: ClassificationFilter;
-  setOfficeDivision: (division: string) => void;
-  setSource: (source: ServiceSource) => void;
-  setClassification: (classification: ClassificationFilter) => void;
+  filters: ServiceFilterState;
+  setFilters: (patch: Partial<ServiceFilterState>) => void;
+  resetFilters: () => void;
 }
+
+/* Every filter lives in the URL, so a filtered view is linkable, survives a
+ * trip to a detail page and back, and the browser's history works. Keys
+ * keep the names other pages link with (`category`, `search`). */
+const filterParsers = {
+  category: parseAsString.withDefault(DEFAULT_FILTERS.category),
+  search: parseAsString.withDefault(DEFAULT_FILTERS.search),
+  office: parseAsString.withDefault(DEFAULT_FILTERS.office),
+  source: parseAsStringLiteral(SOURCE_VALUES).withDefault(
+    DEFAULT_FILTERS.source
+  ),
+  type: parseAsStringLiteral(CLASSIFICATION_VALUES).withDefault(
+    DEFAULT_FILTERS.type
+  ),
+  online: parseAsBoolean.withDefault(DEFAULT_FILTERS.online),
+  sort: parseAsStringLiteral(SORT_VALUES).withDefault(DEFAULT_FILTERS.sort),
+};
 
 export default function ServicesLayout() {
   const location = useLocation();
-  const [searchParams, setSearchParams] = useSearchParams();
-
   const isIndexPage =
     location.pathname === '/services' || location.pathname === '/services/';
 
-  const initialCategory = searchParams.get('category') || 'all';
-  const [selectedCategorySlug, setSelectedCategorySlug] =
-    useState(initialCategory);
-
-  const handleCategoryChange = (slug: string) => {
-    setSelectedCategorySlug(slug);
-    setSearchParams({ category: slug });
-  };
-
-  useEffect(() => {
-    const categoryFromUrl = searchParams.get('category');
-    if (categoryFromUrl && categoryFromUrl !== selectedCategorySlug) {
-      setSelectedCategorySlug(categoryFromUrl);
-    }
-  }, [searchParams, selectedCategorySlug]);
-
-  const [searchQuery, setSearchQuery] = useQueryState('search', {
-    defaultValue: '',
+  const [filters, setQuery] = useQueryStates(filterParsers, {
+    history: 'replace',
+    // Typing updates state at once; the URL is written at most every 200ms.
+    throttleMs: 200,
+    clearOnDefault: true,
   });
 
-  // New filter states
-  const [selectedOfficeDivision, setSelectedOfficeDivision] = useState('all');
-  const [selectedSource, setSelectedSource] = useState<ServiceSource>('all');
-  const [selectedClassification, setSelectedClassification] =
-    useState<ClassificationFilter>('all');
+  const setFilters = (patch: Partial<ServiceFilterState>) => setQuery(patch);
+  const resetFilters = () =>
+    setQuery({
+      office: null,
+      source: null,
+      type: null,
+      online: null,
+    });
 
   return (
     <SidebarLayout
       collapsible={true}
       defaultCollapsed={!isIndexPage}
       sidebarLabel='Browse by category'
-      // Unified header using PageHeader component
       headerNode={
         isIndexPage ? (
           <PageHeader
@@ -73,8 +81,8 @@ export default function ServicesLayout() {
             actions={
               <SearchInput
                 placeholder='Search services, e.g. business permit'
-                value={searchQuery}
-                onChangeValue={setSearchQuery}
+                value={filters.search}
+                onChangeValue={search => setFilters({ search })}
                 size='lg'
                 clearable
                 aria-label='Search services'
@@ -92,22 +100,15 @@ export default function ServicesLayout() {
       }
       sidebar={
         <ServicesSidebar
-          selectedCategorySlug={selectedCategorySlug}
-          handleCategoryChange={handleCategoryChange}
+          selectedCategorySlug={filters.category}
+          handleCategoryChange={category => setFilters({ category })}
         />
       }
     >
       <Outlet
-        context={{
-          searchQuery,
-          selectedCategorySlug,
-          selectedOfficeDivision,
-          selectedSource,
-          selectedClassification,
-          setOfficeDivision: setSelectedOfficeDivision,
-          setSource: setSelectedSource,
-          setClassification: setSelectedClassification,
-        }}
+        context={
+          { filters, setFilters, resetFilters } satisfies ServicesOutletContext
+        }
       />
     </SidebarLayout>
   );

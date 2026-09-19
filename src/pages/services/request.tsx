@@ -62,7 +62,7 @@ export default function ServiceRequestPage() {
   const [form, setForm] = useState<FormState>({
     type:
       params.get('type') === 'update' || requestedService ? 'update' : 'new',
-    serviceName: requestedService?.service ?? '',
+    serviceName: requestedService?.service ?? params.get('name') ?? '',
     serviceSlug: requestedService?.slug ?? '',
     category: requestedService?.category?.name ?? '',
     office: requestedService?.officeDivision ?? '',

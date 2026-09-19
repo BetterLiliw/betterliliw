@@ -20,10 +20,12 @@ Baseline setup, already in place.
 - [x] Repository created from the BetterLB template (`BetterLiliw/betterliliw`)
 - [x] `config/lgu.config.json` generated for Liliw via `node scripts/setup-lgu.cjs`
 - [x] SEO metadata tokens resolved (`src/data/seo-metadata.json`)
-- [x] `index.html` logo paths repointed to `liliw-*`
+- [x] `index.html` logo paths repointed to `/logos/betterliliw-*`
 - [x] `.env` created (MeiliSearch host/port set, API key blank)
 - [x] Dependencies install and `npm run dev` serves on `http://localhost:5173`
 - [x] README and CONTRIBUTING retargeted to Liliw, with BetterLB credited
+- [x] Package renamed `betterlb-portal` → `betterliliw-portal` in `package.json`
+      and the lock file
 - [x] Listed in the BetterGov.ph LGU directory (PR #251)
 
 ---
@@ -32,11 +34,9 @@ Baseline setup, already in place.
 
 Make the portal *look* like Liliw. Cheap wins, high visible impact.
 
-- [ ] **Logos** — replace `public/logos/svg/betterlb-*.svg` and
-      `public/logos/png/betterlb-*.png` with Liliw assets. Config already points at
-      `liliw-*` filenames, so the navbar logo is currently a broken image. Needed
-      variants: `liliw-icon-white`, `liliw-icon-colored`, `liliw-logo-primary`,
-      `liliw-banner-colored`, `liliw-banner-inverted`, `liliw-blue`
+- [x] **Logos** — `public/logos/betterliliw-{logomark,wordmark}-*` (primary,
+      white, black, plus animated `loop` and `reveal` variants). Config points
+      the navbar at the wordmark and the footer at the white logomark
 - [x] **Hero and footer copy** — `public/locales/en/common.json` now reads
       "Welcome to BetterLiliw" and describes Liliw
 - [x] **Filipino translations** — same strings in `public/locales/fil/common.json`
@@ -44,11 +44,24 @@ Make the portal *look* like Liliw. Cheap wins, high visible impact.
       `{lat: 0, lng: 0}`, which puts the map in the Gulf of Guinea. Set to Liliw's
       municipal hall
 - [ ] **Weather** — set `location.weather.enabled` once coordinates are real
-- [x] **Brand color** — `portal.brandColor` is now `#1c3a5b` (the navy already
-      used in the logo and splash screen), and the Tsinelas `brand` token scale in
-      `src/styles/tsinelas.css` is built from it, so every `bg`/`text`/`border-tsinelas-*
-      -brand*` class across the app uses it
-- [ ] **Favicon / OG image** — follow from the logo work; verify link previews
+- [x] **Brand color** — `portal.brandColor` is `#1c3a5b`, the navy in the logo
+- [x] **Tsinelas design system** — `src/styles/tsinelas.css` rebuilt on IBM
+      Carbon's architecture with the Brand Guidelines v1.0 supplying every value
+      (five brand colors, Poppins + Source Sans 3, sharp corners, flat elevation).
+      Reference pages at `/dev/design-system` and `/dev/components`
+- [ ] **Commit the brand guidelines** — `tsinelas.css` cites
+      `public/BetterLiliw_Brand_Guidelines.pdf`, which is still untracked
+- [x] **Navbar and footer** — rebuilt on Tsinelas: compact 80px header with a
+      navy utility bar, enterprise-style footer directory, language menu
+- [x] **Social and contact** — `portal.facebookUrl` is
+      `facebook.com/betterliliw`; footer email goes to `hello@betterliliw.org`
+- [~] **Favicon / OG image** — `favicon.svg`, `favicon-96x96.png`,
+      `apple-touch-icon.png`, `og_image.png` and the web-app-manifest icons are
+      in `public/`. Verify link previews once the domain is live
+- [ ] **Sweep legacy styling** — pages still carry pre-Tsinelas classes
+      (`rounded-xl`, `shadow-sm`, uppercase tracked labels, `font-black`). The
+      radius and shadow tokens are zeroed so they render flat already, but the
+      class names should go. `e2e/utils/tsinelas.ts` checks main content only
 
 ---
 
@@ -116,9 +129,13 @@ Everything here costs money or needs an account; none of it blocks local work.
 - [ ] **Register a domain.** `betterliliw.org` is a placeholder in config and is
       **not registered**. Update `portal.domain`, `portal.baseUrl`, and
       `lgu.officialWebsite` once real
-- [ ] **`wrangler.jsonc`** ⚠️ still carries the upstream template's values:
-      project `betterlb`, D1 database `betterlb-openlgu`, and its `database_id`.
-      These belong to BetterLosBanos. Replace all three before any deploy attempt
+- [x] **`wrangler.jsonc`** — project is `betterliliw`, D1 database
+      `betterliliw-openlgu`, `GITHUB_REPO` is `BetterLiliw/betterliliw`. The D1
+      binding name `BETTERLB_DB` is referenced by the Functions code and is fine
+      to keep
+- [ ] **Confirm the Cloudflare IDs** — check that the `database_id` and
+      `WEATHER_KV` id in `wrangler.jsonc` belong to BetterLiliw's Cloudflare
+      account, not the template's, before any deploy attempt
 - [ ] **Cloudflare Pages** — create a project for this repo
 - [ ] **D1 database** — provision, then `npm run db:migrate:remote`
 - [ ] **GitHub secrets** — `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID`;
@@ -136,7 +153,8 @@ Everything here costs money or needs an account; none of it blocks local work.
 - [ ] Full pass over the site with fresh eyes: every page, both languages
 - [ ] `npm run build` clean, `npm run lint` clean, `npm run test:e2e` passing
 - [ ] Deploy to production
-- [ ] **Create the Facebook page** and add it to `portal.facebookUrl`
+- [x] **Create the Facebook page** — `facebook.com/betterliliw`, set in
+      `portal.facebookUrl`
 - [ ] **Update the directory entry** — open a follow-up PR on
       `jmacj/better-lgu-directory` titled
       `Update Liliw, Laguna — status change to Active`, adding the domain and

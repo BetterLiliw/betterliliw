@@ -20,6 +20,8 @@ export async function assertTsinelasTokens(page: Page): Promise<void> {
 
   // Tsinelas semantic tokens should be present
   expect(mainHTML).toMatch(/text-tsinelas-text-/);
-  expect(mainHTML).toMatch(/bg-tsinelas-bg-/);
+  // Fills come from several Carbon namespaces (layer-*, background,
+  // notification-*, tag-*), not only the legacy bg-* aliases.
+  expect(mainHTML).toMatch(/bg-tsinelas-/);
   expect(mainHTML).toMatch(/border-tsinelas-border-/);
 }

@@ -1,28 +1,18 @@
+import { ReactNode } from 'react';
+
 import { Link, useParams } from 'react-router-dom';
 
 import { format, isValid } from 'date-fns';
 import {
-  AlertCircle,
-  ArrowRight,
-  Banknote,
-  BookOpen,
-  Building2,
-  Calendar,
-  CalendarCheck,
-  CheckCircle2Icon,
-  ClipboardList,
-  Clock,
-  Edit3,
-  ExternalLink,
-  FileText,
-  HeartHandshake,
-  Info,
-  LinkIcon,
-  LucideIcon,
-  Users,
+  ArrowRightIcon,
+  ExternalLinkIcon,
+  MapPinIcon,
+  PencilLineIcon,
+  PhoneIcon,
+  SearchXIcon,
+  ShieldCheckIcon,
 } from 'lucide-react';
 
-import { DetailSection, useBreadcrumbs } from '@/components/layout';
 import { SEO } from '@/components/layout/SEO';
 import {
   Breadcrumb,
@@ -34,134 +24,317 @@ import {
   BreadcrumbSeparator,
 } from '@/components/navigation/Breadcrumb';
 import { Badge } from '@/components/ui/Badge';
-import { Card } from '@/components/ui/Card';
-import { RequirementGrid } from './components/RequirementGrid';
-import { ProcessTimeline } from './components/ProcessTimeline';
-import { SupportingDocumentsDetail } from './components/SupportingDocumentsDetail';
-import { FeesCard } from './components/FeesCard';
-
-import { getServiceBySlug } from '@/lib/services';
-import { config } from '@/lib/lguConfig';
-import { toTitleCase } from '@/lib/stringUtils';
+import { Banner } from '@/components/ui/Banner';
+import { Button } from '@/components/ui/Button';
+import { EmptyState } from '@/components/ui/EmptyState';
 
 import departmentsData from '@/data/directory/departments.json';
 import executiveData from '@/data/directory/executive.json';
 import legislativeData from '@/data/directory/legislative.json';
+import { config } from '@/lib/lguConfig';
+import { getServiceBySlug } from '@/lib/services';
+import { toTitleCase } from '@/lib/stringUtils';
+import { cn } from '@/lib/utils';
+import type { QuickInfo, Service } from '@/types/servicesTypes';
 
-import type { QuickInfo, Source } from '@/types/servicesTypes';
+import { FeeSchedule } from './components/FeeSchedule';
+import { ProcessTimeline } from './components/ProcessTimeline';
+import { RequirementList } from './components/RequirementList';
+import { SupportingDocumentsDetail } from './components/SupportingDocumentsDetail';
 
-const QUICK_INFO_CONFIG: Record<
-  keyof QuickInfo,
-  { label: string; icon: LucideIcon }
-> = {
-  processingTime: { label: 'Processing Time', icon: Clock },
-  fee: { label: 'Fee', icon: Banknote },
-  whoCanApply: { label: 'Who Can Apply', icon: Users },
-  appointmentType: { label: 'Appointment Type', icon: Calendar },
-  validity: { label: 'Validity Period', icon: CalendarCheck },
-  documents: { label: 'Documents Required', icon: FileText },
+const QUICK_INFO_LABELS: Record<keyof QuickInfo, string> = {
+  processingTime: 'Processing time',
+  fee: 'Fee',
+  whoCanApply: 'Who can apply',
+  appointmentType: 'Appointment',
+  validity: 'Valid for',
+  documents: 'Documents',
 };
 
-export default function ServiceDetail() {
-  const { service: serviceSlug } = useParams<{ service: string }>();
+const FEE_SCHEDULE_ID = 'fee-schedule';
 
-  // Auto-generate breadcrumbs using the hook (must be called before early returns)
-  const breadcrumbs = useBreadcrumbs();
+interface Fact {
+  label: string;
+  value: ReactNode;
+  detail?: string;
+}
 
-  if (!serviceSlug) return null;
+/* ------------------------------------------------------------------------ */
+/* Page-local layout pieces                                                 */
+/* ------------------------------------------------------------------------ */
 
-  const service = getServiceBySlug(decodeURIComponent(serviceSlug));
-  if (!service)
-    return (
-      <div className='text-tsinelas-text-disabled p-20 text-center font-bold tracking-widest uppercase'>
-        Service not found
-      </div>
-    );
+/** A titled region of the page, separated from the last by a hairline. */
+function Section({
+  id,
+  title,
+  lede,
+  children,
+  className,
+}: {
+  id: string;
+  title: string;
+  lede?: ReactNode;
+  children: ReactNode;
+  className?: string;
+}) {
+  const headingId = `${id}-heading`;
+  return (
+    <section
+      id={id}
+      aria-labelledby={headingId}
+      className={cn(
+        'border-t border-tsinelas-border-subtle-00 pt-tsinelas-06',
+        className
+      )}
+    >
+      <h2
+        id={headingId}
+        className='tsinelas-heading-lg text-tsinelas-text-primary'
+      >
+        {title}
+      </h2>
+      {lede && (
+        <p className='tsinelas-body-01 mt-tsinelas-02 max-w-2xl text-tsinelas-text-secondary'>
+          {lede}
+        </p>
+      )}
+      <div className='mt-tsinelas-05'>{children}</div>
+    </section>
+  );
+}
 
-  const officeSlugs = Array.isArray(service.officeSlug)
+/** Sidebar block: a small heading over its content. */
+function AsideBlock({
+  title,
+  children,
+}: {
+  title: string;
+  children: ReactNode;
+}) {
+  return (
+    <section
+      aria-label={title}
+      className='border-t border-tsinelas-border-subtle-00 pt-tsinelas-05'
+    >
+      <h2 className='tsinelas-heading-compact-02 text-tsinelas-text-primary'>
+        {title}
+      </h2>
+      <div className='mt-tsinelas-03'>{children}</div>
+    </section>
+  );
+}
+
+/**
+ * The at-a-glance strip: a definition list laid out as a hairline grid.
+ * Each cell draws its own right and bottom rule and the list the top and
+ * left, so a ragged last row still reads as rows, not as a hole. Columns
+ * are auto-fit so four facts sit in one row on a wide screen.
+ */
+function FactGrid({ facts }: { facts: Fact[] }) {
+  if (facts.length === 0) return null;
+  return (
+    <dl className='grid border-t border-l border-tsinelas-border-subtle-00 sm:grid-cols-[repeat(auto-fit,minmax(13rem,1fr))]'>
+      {facts.map(fact => (
+        <div
+          key={fact.label}
+          className='border-r border-b border-tsinelas-border-subtle-00 bg-tsinelas-layer-01 px-tsinelas-05 py-tsinelas-04'
+        >
+          <dt className='tsinelas-label-01 text-tsinelas-text-secondary'>
+            {fact.label}
+          </dt>
+          <dd className='tsinelas-heading-compact-02 mt-tsinelas-01 text-tsinelas-text-primary'>
+            {fact.value}
+          </dd>
+          {fact.detail && (
+            <dd className='tsinelas-label-01 mt-tsinelas-01 text-tsinelas-text-helper'>
+              {fact.detail}
+            </dd>
+          )}
+        </div>
+      ))}
+    </dl>
+  );
+}
+
+/* ------------------------------------------------------------------------ */
+/* Data shaping                                                             */
+/* ------------------------------------------------------------------------ */
+
+/** The charter records "None"/"" for free services and a bare number now
+ * and then; make those read as a resident would say them. */
+function formatFee(amount: string): string {
+  const trimmed = amount.trim();
+  if (!trimmed || /^(none|free|n\/a)$/i.test(trimmed)) return 'Free';
+  if (/^\d+(\.\d+)?$/.test(trimmed)) return `₱${trimmed}`;
+  return trimmed;
+}
+
+/** Some charter strings arrive with a stray leading comma or dash. */
+function tidy(value: string): string {
+  return value.replace(/^[\s,;:–-]+/, '').trim();
+}
+
+function buildFacts(service: Service): Fact[] {
+  const facts: Fact[] = [];
+  const isOfficial = service.source === 'citizens-charter';
+
+  if (isOfficial) {
+    if (service.processingTime) {
+      facts.push({
+        label: 'Processing time',
+        value: tidy(service.processingTime),
+        detail: 'At the counter',
+      });
+    }
+    if (service.turnaroundTime) {
+      facts.push({
+        label: 'Total turnaround',
+        value: tidy(service.turnaroundTime),
+        detail: 'Including review and release',
+      });
+    }
+    if (service.fees?.amount) {
+      const isSchedule = /schedule/i.test(service.fees.amount);
+      facts.push({
+        label: 'Fee',
+        value:
+          isSchedule && service.feeSchedule?.length ? (
+            <a
+              href={`#${FEE_SCHEDULE_ID}`}
+              className='text-tsinelas-link-primary hover:underline tsinelas-focus'
+            >
+              See the fee schedule
+            </a>
+          ) : (
+            formatFee(service.fees.amount)
+          ),
+        detail: service.fees.description || undefined,
+      });
+    }
+    if (service.whoMayAvail) {
+      facts.push({ label: 'Who can apply', value: service.whoMayAvail });
+    }
+  } else if (service.quickInfo) {
+    for (const [key, value] of Object.entries(service.quickInfo) as [
+      keyof QuickInfo,
+      string,
+    ][]) {
+      if (value) facts.push({ label: QUICK_INFO_LABELS[key], value });
+    }
+  }
+
+  return facts;
+}
+
+function findOffices(service: Service) {
+  const slugs = Array.isArray(service.officeSlug)
     ? service.officeSlug
     : [service.officeSlug].filter(Boolean);
 
-  // Collect offices from all sources (departments, executive, legislative)
-  const involvedOffices = [
+  return [
     ...departmentsData
-      .filter(d => officeSlugs.includes(d.slug))
+      .filter(d => slugs.includes(d.slug))
       .map(d => ({
         slug: d.slug,
-        name: d.office_name,
-        type: 'department',
+        name: toTitleCase(d.office_name),
+        href: `/government/departments/${d.slug}`,
+        address: d.address,
+        phone: d.trunkline?.[0],
       })),
     ...executiveData
-      .filter(e => officeSlugs.includes(e.slug))
+      .filter(e => slugs.includes(e.slug))
       .map(e => ({
         slug: e.slug,
-        name: e.role,
-        type: 'executive',
+        name: toTitleCase(e.role),
+        href: `/government/executive/${e.slug}`,
+        address: e.address,
+        phone: Array.isArray(e.phone) ? e.phone[0] : e.phone,
       })),
     ...legislativeData
-      .filter(l => officeSlugs.includes(l.slug))
+      .filter(l => slugs.includes(l.slug))
       .map(l => ({
         slug: l.slug,
-        name: l.chamber,
-        type: 'legislative',
+        name: toTitleCase(l.chamber),
+        href: `/government/legislative/${l.slug}`,
+        address: l.address,
+        phone: l.trunkline?.[0],
       })),
   ];
+}
+
+/* ------------------------------------------------------------------------ */
+/* Page                                                                     */
+/* ------------------------------------------------------------------------ */
+
+export default function ServiceDetail() {
+  const { service: serviceSlug } = useParams<{ service: string }>();
+  const service = serviceSlug
+    ? getServiceBySlug(decodeURIComponent(serviceSlug))
+    : undefined;
+
+  if (!service) {
+    return (
+      <>
+        <SEO title='Service not found' noIndex />
+        <EmptyState
+          icon={SearchXIcon}
+          title='Service not found'
+          message='The address may be out of date, or the service may have been renamed. Browse the directory to find it.'
+          actionHref='/services'
+          actionLabel='Browse all services'
+        />
+      </>
+    );
+  }
+
+  const isOfficial = service.source === 'citizens-charter';
   const isTransaction = service.type === 'transaction';
-  const updatedAtDate = service.updatedAt ? new Date(service.updatedAt) : null;
-  const isVerified = updatedAtDate !== null && isValid(updatedAtDate);
-
-  // Citizens Charter specific
-  const isOfficialSource = service.source === 'citizens-charter';
   const needsVerification = service.needsVerification === true;
+  const displayName = service.plainLanguageName || service.service;
+  const hasDistinctOfficialName =
+    Boolean(service.plainLanguageName) &&
+    service.plainLanguageName !== service.service;
 
-  const quickInfoArray = service.quickInfo
-    ? (Object.entries(service.quickInfo) as [keyof QuickInfo, string][]).map(
-        ([key, value]) => ({
-          label: QUICK_INFO_CONFIG[key]?.label || key,
-          icon: QUICK_INFO_CONFIG[key]?.icon || FileText,
-          value,
-        })
-      )
+  const updatedAt = service.updatedAt ? new Date(service.updatedAt) : null;
+  const verifiedOn = updatedAt && isValid(updatedAt) ? updatedAt : null;
+
+  const offices = findOffices(service);
+  const facts = buildFacts(service);
+  const actionUrl = service.website || service.url;
+  const actionLabel = service.website
+    ? 'Apply online'
+    : isTransaction
+      ? 'Open the online portal'
+      : 'View the full document';
+
+  const detailedRequirements = isOfficial
+    ? (service.detailedRequirements ?? [])
     : [];
-
-  // Build Citizens Charter specific info items
-  const ccInfoItems: { label: string; value: string; icon: LucideIcon }[] = [];
-  if (service.processingTime) {
-    ccInfoItems.push({
-      label: 'Processing Time',
-      value: service.processingTime,
-      icon: Clock,
-    });
-  }
-  if (service.whoMayAvail) {
-    ccInfoItems.push({
-      label: 'Who Can Apply',
-      value: service.whoMayAvail,
-      icon: Users,
-    });
-  }
-  if (service.classification) {
-    ccInfoItems.push({
-      label: 'Classification',
-      value: service.classification,
-      icon: FileText,
-    });
-  }
+  const plainRequirements = isOfficial ? [] : (service.requirements ?? []);
+  const supportingDetail =
+    isOfficial && service.supportingDocumentsDetail
+      ? service.supportingDocumentsDetail
+      : null;
+  const relatedServices = (service.relatedServices ?? [])
+    .map(slug => getServiceBySlug(slug))
+    .filter((s): s is Service => Boolean(s));
 
   // --- SEO ---
-  const displayName = service.plainLanguageName || service.service;
+  const categoryHref = `/services?category=${service.category.slug}`;
   const seoDescription =
     service.description ||
-    `${displayName} — a ${service.classification ? `${service.classification.toLowerCase()} ` : ''}government service from ${config.lgu.fullName}${
-      service.officeDivision
-        ? `, handled by ${toTitleCase(service.officeDivision)}`
-        : ''
+    `${displayName} — a ${
+      service.classification ? `${service.classification.toLowerCase()} ` : ''
+    }government service from ${config.lgu.fullName}${
+      offices[0] ? `, handled by the ${offices[0].name}` : ''
     }. See requirements, fees and how to apply.`;
 
-  const seoBreadcrumbs = breadcrumbs.map((crumb, index) => ({
-    name: index === breadcrumbs.length - 1 ? displayName : crumb.label,
-    url: crumb.href,
-  }));
+  const seoBreadcrumbs = [
+    { name: 'Home', url: '/' },
+    { name: 'Services', url: '/services' },
+    { name: service.category.name, url: categoryHref },
+    { name: displayName, url: `/services/${service.slug}` },
+  ];
 
   const serviceJsonLd = {
     '@context': 'https://schema.org',
@@ -196,16 +369,13 @@ export default function ServiceDetail() {
           mainEntity: service.faqs.map(faq => ({
             '@type': 'Question',
             name: faq.question,
-            acceptedAnswer: {
-              '@type': 'Answer',
-              text: faq.answer,
-            },
+            acceptedAnswer: { '@type': 'Answer', text: faq.answer },
           })),
         }
       : null;
 
   return (
-    <div className='animate-in fade-in mx-auto max-w-7xl space-y-6 duration-500'>
+    <article className='animate-in fade-in duration-500'>
       <SEO
         title={displayName}
         description={seoDescription}
@@ -213,391 +383,380 @@ export default function ServiceDetail() {
         jsonLd={faqJsonLd ? [serviceJsonLd, faqJsonLd] : serviceJsonLd}
       />
 
-      <Breadcrumb>
+      <Breadcrumb className='py-0'>
         <BreadcrumbList>
-          {breadcrumbs.map((crumb, index) => {
-            const isLast = index === breadcrumbs.length - 1;
-            return (
-              <div key={crumb.href} className='flex items-center gap-2'>
-                {index === 0 ? (
-                  <BreadcrumbItem>
-                    <BreadcrumbHome href={crumb.href} />
-                  </BreadcrumbItem>
-                ) : (
-                  <>
-                    <BreadcrumbSeparator />
-                    <BreadcrumbItem>
-                      {isLast ? (
-                        <BreadcrumbPage>
-                          {service.plainLanguageName || service.service}
-                        </BreadcrumbPage>
-                      ) : (
-                        <BreadcrumbLink href={crumb.href}>
-                          {crumb.label}
-                        </BreadcrumbLink>
-                      )}
-                    </BreadcrumbItem>
-                  </>
-                )}
-              </div>
-            );
-          })}
+          <BreadcrumbItem>
+            <BreadcrumbHome href='/' />
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+          <BreadcrumbItem>
+            <BreadcrumbLink href='/services'>Services</BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+          <BreadcrumbItem>
+            <BreadcrumbLink href={categoryHref}>
+              {service.category.name}
+            </BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+          <BreadcrumbItem>
+            <BreadcrumbPage>{displayName}</BreadcrumbPage>
+          </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
 
-      {/* HEADER */}
-      <header
-        className={`border-tsinelas-border-weak bg-tsinelas-bg-surface overflow-hidden rounded-3xl border p-8 shadow-sm md:p-10 ${
-          isOfficialSource ? 'border-l-4 border-l-tsinelas-border-success' : ''
-        }`}
-      >
-        <div className='max-w-3xl'>
-          <div className='mb-6 flex flex-wrap items-center gap-2'>
-            <Badge variant='primary'>{service.category.name}</Badge>
-            <Badge variant={isTransaction ? 'success' : 'secondary'} dot>
-              {isTransaction ? 'Transactional' : 'Resource'}
+      {/* Header */}
+      <header className='mt-tsinelas-05 border-b border-tsinelas-border-subtle-00 pb-tsinelas-06'>
+        <p className='tsinelas-eyebrow text-tsinelas-text-secondary'>
+          {isOfficial ? (
+            <>
+              {service.serviceNumber && (
+                <>
+                  <span className='tsinelas-tabular'>
+                    Service no. {service.serviceNumber}
+                  </span>
+                  {offices[0] && <span aria-hidden='true'> · </span>}
+                </>
+              )}
+              {offices[0]?.name}
+            </>
+          ) : (
+            'Community contribution'
+          )}
+        </p>
+        <h1 className='tsinelas-heading-xl mt-tsinelas-02 text-tsinelas-text-primary'>
+          {displayName}
+        </h1>
+        {hasDistinctOfficialName && (
+          <p className='tsinelas-body-01 mt-tsinelas-02 text-tsinelas-text-secondary'>
+            Listed in the Citizens Charter as &ldquo;{service.service}&rdquo;.
+          </p>
+        )}
+        {service.description && (
+          <p className='tsinelas-body-02 mt-tsinelas-03 max-w-2xl text-tsinelas-text-secondary'>
+            {service.description}
+          </p>
+        )}
+
+        <div className='mt-tsinelas-04 flex flex-wrap items-center gap-tsinelas-02'>
+          <Badge variant={isOfficial ? 'success' : 'secondary'} dot>
+            {isOfficial ? 'Official' : 'Community'}
+          </Badge>
+          {service.classification && (
+            <Badge variant='outline'>
+              {service.classification} transaction
             </Badge>
-            <Badge variant={isOfficialSource ? 'success' : 'secondary'} dot>
-              {isOfficialSource ? 'Official (CC)' : 'Community'}
+          )}
+          {service.typeOfTransaction && (
+            <Badge variant='slate'>
+              {service.typeOfTransaction === 'G2B'
+                ? 'For businesses'
+                : service.typeOfTransaction === 'G2G'
+                  ? 'For government'
+                  : 'For citizens'}
             </Badge>
-            {service.serviceNumber && (
-              <Badge variant='outline'>
-                Service No. {service.serviceNumber}
-              </Badge>
-            )}
-            {needsVerification && (
-              <Badge variant='warning' dot>
-                Pending Verification
-              </Badge>
-            )}
-          </div>
-
-          <h1 className='text-tsinelas-text-strong tsinelas-heading-xl font-extrabold'>
-            {service.plainLanguageName || service.service}
-          </h1>
-
-          {service.description && (
-            <p className='text-tsinelas-text-support mb-8 max-w-2xl text-base leading-relaxed'>
-              &quot;{service.description}&quot;
-            </p>
           )}
-
-          {/* Who May Avail (Citizens Charter) */}
-          {service.whoMayAvail && !needsVerification && (
-            <div className='border-tsinelas-border-weak bg-tsinelas-bg-surface-raised mb-8 rounded-xl border p-4'>
-              <p className='text-tsinelas-text-support text-sm font-medium'>
-                <span className='text-tsinelas-text-brand font-semibold'>
-                  Who may avail:{' '}
-                </span>
-                {service.whoMayAvail}
-              </p>
-            </div>
-          )}
-
-          {/* SINGLE PRIMARY ACTION */}
-          {service.website && (
-            <a
-              href={service.website}
-              target='_blank'
-              rel='noreferrer'
-              className='bg-tsinelas-bg-brand-default hover:bg-tsinelas-bg-brand-weak text-tsinelas-text-inverse inline-flex min-h-[48px] items-center gap-3 rounded-xl px-6 py-3 font-semibold shadow-sm transition-all'
-            >
-              Access Online Portal
-              <ExternalLink className='h-4 w-4 transition-transform group-hover:translate-x-0.5' />
-            </a>
-          )}
-          {service.url && !service.website && (
-            <a
-              href={service.url}
-              target='_blank'
-              rel='noreferrer'
-              className='bg-tsinelas-bg-brand-default hover:bg-tsinelas-bg-brand-weak text-tsinelas-text-inverse inline-flex min-h-[48px] items-center gap-3 rounded-xl px-6 py-3 font-semibold shadow-sm transition-all'
-            >
-              {isTransaction ? 'Access Online Portal' : 'View Full Document'}
-              <ExternalLink className='h-4 w-4 transition-transform group-hover:translate-x-0.5' />
-            </a>
+          {actionUrl ? (
+            <Badge variant='primary'>Online</Badge>
+          ) : isTransaction ? (
+            <Badge variant='slate'>Walk-in</Badge>
+          ) : null}
+          {needsVerification && (
+            <Badge variant='warning' dot>
+              Pending verification
+            </Badge>
           )}
         </div>
+
+        {actionUrl && (
+          <div className='mt-tsinelas-05'>
+            <a
+              href={actionUrl}
+              target='_blank'
+              rel='noreferrer'
+              className='inline-flex'
+            >
+              <Button
+                size='lg'
+                rightIcon={
+                  <ExternalLinkIcon className='size-tsinelas-icon-01' />
+                }
+              >
+                {actionLabel}
+              </Button>
+            </a>
+          </div>
+        )}
       </header>
 
-      {/* --- CONTENT AREA --- */}
-      <div className='flex flex-col gap-8 xl:flex-row'>
-        <div className='min-w-0 flex-1 space-y-8'>
-          {/* Citizens Charter Info Grid (processing time, fees, etc.) */}
-          {isOfficialSource && ccInfoItems.length > 0 && (
-            <div className='grid grid-cols-2 gap-3 md:grid-cols-3'>
-              {ccInfoItems.map((info, idx) => (
-                <div
-                  key={idx}
-                  className='border-tsinelas-border-weak bg-tsinelas-bg-surface flex items-start gap-3 rounded-2xl border p-4 shadow-xs'
-                >
-                  <div className='text-tsinelas-text-brand bg-tsinelas-bg-surface-raised shrink-0 rounded-lg p-2'>
-                    <info.icon className='h-4 w-4' />
-                  </div>
-                  <div>
-                    <p className='text-tsinelas-text-disabled mb-1 tsinelas-eyebrow'>
-                      {info.label}
-                    </p>
-                    <p className='text-tsinelas-text-strong text-xs font-bold'>
-                      {info.value}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
+      {facts.length > 0 && (
+        <div className='mt-tsinelas-06'>
+          <h2 className='sr-only'>At a glance</h2>
+          <FactGrid facts={facts} />
+        </div>
+      )}
 
-          {/* Fees Card (Citizens Charter) */}
-          {isOfficialSource && service.fees && <FeesCard fees={service.fees} />}
+      {needsVerification && (
+        <div className='mt-tsinelas-06'>
+          <Banner
+            type='warning'
+            title='Details still being verified'
+            description='This entry comes from the Citizens Charter, but its requirements, steps and fees have not been checked against the document yet.'
+          />
+        </div>
+      )}
 
-          {/* Pending Verification Notice */}
-          {needsVerification && (
-            <div className='border-tsinelas-border-warning bg-tsinelas-bg-warning-weak/30 flex items-start gap-3 rounded-2xl border p-4'>
-              <Info className='text-tsinelas-text-warning h-5 w-5 shrink-0' />
-              <div>
-                <p className='text-tsinelas-text-strong mb-1 text-sm font-bold'>
-                  Detailed Information Pending Verification
-                </p>
-                <p className='text-tsinelas-text-support text-xs leading-relaxed'>
-                  This service data is from the Citizens Charter document.
-                  Detailed requirements, steps, and fee information will be
-                  added as we verify and extract data from the official
-                  document.
-                </p>
-              </div>
-            </div>
-          )}
-
-          {/* Requirements (Citizens Charter) */}
-          {isOfficialSource &&
-            service.detailedRequirements &&
-            service.detailedRequirements.length > 0 && (
-              <RequirementGrid requirements={service.detailedRequirements} />
-            )}
-
-          {/* Supporting Documents Detail (Citizens Charter - optional) */}
-          {isOfficialSource &&
-            service.supportingDocumentsDetail &&
-            Object.keys(service.supportingDocumentsDetail).length > 0 && (
-              <div className='space-y-4'>
-                <SupportingDocumentsDetail
-                  detail={service.supportingDocumentsDetail}
-                />
-              </div>
-            )}
-
-          {/* Process Timeline (Citizens Charter) */}
-          {isOfficialSource &&
-            service.clientSteps &&
-            service.clientSteps.length > 0 && (
-              <ProcessTimeline steps={service.clientSteps} />
-            )}
-
-          {/* Regular Steps (community services) */}
-          {!isOfficialSource && service.steps && service.steps.length > 0 && (
-            <DetailSection
-              title={isTransaction ? 'Process Steps' : 'Information Details'}
-              icon={ClipboardList}
+      <div className='mt-tsinelas-layout-03 xl:grid xl:grid-cols-[minmax(0,1fr)_18rem] xl:gap-tsinelas-layout-04'>
+        {/* Main column */}
+        <div className='min-w-0 space-y-tsinelas-layout-03'>
+          {detailedRequirements.length > 0 && (
+            <Section
+              id='requirements'
+              title='What to bring'
+              lede='Bring these to the office, or have them ready to upload.'
             >
-              <div className='space-y-6'>
-                {service.steps.map((step, idx) => (
-                  <div key={idx} className='group flex gap-4'>
-                    <div
-                      className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full border text-sm font-bold transition-colors ${
-                        isTransaction
-                          ? 'bg-tsinelas-bg-surface text-tsinelas-text-brand border-tsinelas-border-brand'
-                          : 'text-tsinelas-text-accent-orange bg-tsinelas-bg-accent-orange-weak border-tsinelas-border-weak'
-                      }`}
-                    >
-                      {idx + 1}
-                    </div>
-                    <p className='text-tsinelas-text-support pt-1 text-sm leading-relaxed md:text-base'>
-                      {step}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </DetailSection>
+              <RequirementList requirements={detailedRequirements} />
+            </Section>
           )}
 
-          {/* Quick Info Grid (community services) */}
-          {!isOfficialSource && isTransaction && quickInfoArray.length > 0 && (
-            <div className='grid grid-cols-2 gap-3 md:grid-cols-3'>
-              {quickInfoArray.map((info, idx) => (
-                <div
-                  key={idx}
-                  className='border-tsinelas-border-weak bg-tsinelas-bg-surface flex items-start gap-3 rounded-2xl border p-4 shadow-xs'
-                >
-                  <div className='text-tsinelas-text-brand bg-tsinelas-bg-surface-raised shrink-0 rounded-lg p-2'>
-                    <info.icon className='h-4 w-4' />
-                  </div>
-                  <div>
-                    <p className='text-tsinelas-text-disabled mb-1 tsinelas-eyebrow'>
-                      {info.label}
-                    </p>
-                    <p className='text-tsinelas-text-strong text-xs font-bold'>
-                      {info.value}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
-
-          {/* Sources and References */}
-          {service.sources && service.sources.length > 0 && (
-            <DetailSection title='Sources & References' icon={BookOpen}>
-              <ul className='grid grid-cols-1 gap-3' role='list'>
-                {service.sources.map((source: Source, idx: number) => (
-                  <li
-                    key={idx}
-                    className='hover:border-tsinelas-border-brand group border-tsinelas-border-weak bg-tsinelas-bg-surface-raised/50 flex items-start gap-3 rounded-xl border p-4 transition-all'
-                  >
-                    <div className='group-hover:text-tsinelas-text-brand bg-tsinelas-bg-surface text-tsinelas-text-disabled rounded-lg p-2 shadow-sm'>
-                      <LinkIcon className='h-3.5 w-3.5' />
-                    </div>
-                    <div className='flex flex-col'>
-                      <p className='text-tsinelas-text-disabled mb-1 tsinelas-eyebrow'>
-                        Reference
-                      </p>
-                      {source.url ? (
-                        <a
-                          href={source.url}
-                          target='_blank'
-                          rel='noreferrer'
-                          className='text-tsinelas-text-brand inline-flex items-center gap-1.5 text-sm font-bold hover:underline'
-                        >
-                          {source.name} <ExternalLink className='h-3 w-3' />
-                        </a>
-                      ) : (
-                        <span className='text-tsinelas-text-support text-sm font-bold'>
-                          {source.name}
-                        </span>
-                      )}
-                    </div>
+          {plainRequirements.length > 0 && (
+            <Section id='requirements' title='What to bring'>
+              <ul className='tsinelas-body-02 list-disc space-y-tsinelas-02 pl-tsinelas-06 text-tsinelas-text-primary'>
+                {plainRequirements.map((item, idx) => (
+                  <li key={idx} data-testid='requirement-card'>
+                    {item}
                   </li>
                 ))}
               </ul>
-            </DetailSection>
+            </Section>
+          )}
+
+          {supportingDetail && (
+            <Section id='supporting-documents' title='Supporting documents'>
+              <SupportingDocumentsDetail detail={supportingDetail} />
+            </Section>
+          )}
+
+          {isOfficial &&
+            service.clientSteps &&
+            service.clientSteps.length > 0 && (
+              <Section id='how-to-apply' title='How to apply'>
+                <ProcessTimeline steps={service.clientSteps} />
+              </Section>
+            )}
+
+          {!isOfficial && service.steps && service.steps.length > 0 && (
+            <Section
+              id='how-to-apply'
+              title={isTransaction ? 'How to apply' : 'What to know'}
+            >
+              <ol
+                data-testid='process-timeline'
+                className='space-y-tsinelas-04'
+              >
+                {service.steps.map((step, idx) => (
+                  <li key={idx} className='flex gap-tsinelas-05'>
+                    <span
+                      aria-hidden='true'
+                      className='tsinelas-heading-compact-01 tsinelas-tabular flex size-tsinelas-07 shrink-0 items-center justify-center border border-tsinelas-border-interactive text-tsinelas-interactive'
+                    >
+                      {idx + 1}
+                    </span>
+                    <p className='tsinelas-body-02 pt-tsinelas-02 text-tsinelas-text-primary'>
+                      {step}
+                    </p>
+                  </li>
+                ))}
+              </ol>
+            </Section>
+          )}
+
+          {service.feeSchedule && service.feeSchedule.length > 0 && (
+            <Section
+              id={FEE_SCHEDULE_ID}
+              title='Fee schedule'
+              lede='Amounts as published in the Citizens Charter.'
+            >
+              <FeeSchedule items={service.feeSchedule} />
+            </Section>
+          )}
+
+          {service.faqs && service.faqs.length > 0 && (
+            <Section id='faqs' title='Common questions'>
+              <dl className='divide-y divide-tsinelas-border-subtle-00 border-y border-tsinelas-border-subtle-00'>
+                {service.faqs.map((faq, idx) => (
+                  <div key={idx} className='py-tsinelas-04'>
+                    <dt className='tsinelas-heading-compact-02 text-tsinelas-text-primary'>
+                      {faq.question}
+                    </dt>
+                    <dd className='tsinelas-body-01 mt-tsinelas-02 text-tsinelas-text-secondary'>
+                      {faq.answer}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+            </Section>
+          )}
+
+          {relatedServices.length > 0 && (
+            <Section id='related' title='Related services'>
+              <ul className='divide-y divide-tsinelas-border-subtle-00 border-y border-tsinelas-border-subtle-00'>
+                {relatedServices.map(related => (
+                  <li key={related.slug}>
+                    <Link
+                      to={`/services/${related.slug}`}
+                      className='group flex items-center justify-between gap-tsinelas-04 py-tsinelas-04 transition-colors duration-tsinelas-fast-01 hover:bg-tsinelas-layer-hover-01 tsinelas-focus'
+                    >
+                      <span>
+                        <span className='tsinelas-heading-compact-01 block text-tsinelas-text-primary group-hover:text-tsinelas-link-primary'>
+                          {related.plainLanguageName || related.service}
+                        </span>
+                        <span className='tsinelas-label-01 mt-tsinelas-01 block text-tsinelas-text-secondary'>
+                          {related.category.name}
+                        </span>
+                      </span>
+                      <ArrowRightIcon
+                        aria-hidden='true'
+                        className='size-tsinelas-icon-01 shrink-0 text-tsinelas-icon-secondary'
+                      />
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </Section>
+          )}
+
+          {service.sources && service.sources.length > 0 && (
+            <Section id='sources' title='Sources'>
+              <ul className='tsinelas-body-01 list-disc space-y-tsinelas-02 pl-tsinelas-06 text-tsinelas-text-secondary'>
+                {service.sources.map((source, idx) => (
+                  <li key={idx}>
+                    {source.url ? (
+                      <a
+                        href={source.url}
+                        target='_blank'
+                        rel='noreferrer'
+                        className='inline-flex items-center gap-tsinelas-02 text-tsinelas-link-primary hover:underline tsinelas-focus'
+                      >
+                        {source.name}
+                        <ExternalLinkIcon
+                          aria-hidden='true'
+                          className='size-tsinelas-icon-01'
+                        />
+                      </a>
+                    ) : (
+                      source.name
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </Section>
           )}
         </div>
 
-        {/* --- SIDEBAR --- */}
-        <aside className='w-full space-y-6 xl:w-80'>
-          {/* Data Integrity Card */}
-          <div
-            className={`flex flex-col gap-3 rounded-2xl border p-5 transition-colors ${
-              isOfficialSource
-                ? 'border-tsinelas-border-success bg-tsinelas-bg-success-weak/30'
-                : isVerified
-                  ? 'border-tsinelas-border-success bg-tsinelas-bg-success-weak/30'
-                  : 'border-tsinelas-border-weak bg-tsinelas-bg-surface'
-            }`}
-          >
-            <div className='flex items-center justify-between'>
-              <p className='text-tsinelas-text-disabled tsinelas-eyebrow'>
-                Data Integrity
-              </p>
-              {isOfficialSource || isVerified ? (
-                <CheckCircle2Icon className='h-4 w-4 text-tsinelas-text-success' />
-              ) : (
-                <AlertCircle className='text-tsinelas-text-support h-4 w-4' />
-              )}
-            </div>
-            <div className='flex items-center gap-3'>
-              <Clock
-                className={`h-5 w-5 ${
-                  isOfficialSource || isVerified
-                    ? 'text-tsinelas-text-success'
-                    : 'text-tsinelas-text-support'
-                }`}
-              />
-              <div>
-                <p
-                  className={`text-sm font-bold ${
-                    isOfficialSource || isVerified
-                      ? 'text-tsinelas-text-strong'
-                      : 'text-tsinelas-text-strong'
-                  }`}
-                >
-                  {isOfficialSource
-                    ? 'Official Data'
-                    : isVerified
-                      ? 'Verified Information'
-                      : 'Unverified Data'}
-                </p>
-                <p className='text-tsinelas-text-disabled text-[11px] font-medium'>
-                  {isOfficialSource
-                    ? 'From Citizens Charter document'
-                    : isVerified
-                      ? `Last Audit: ${format(updatedAtDate!, 'MMMM yyyy')}`
-                      : 'Awaiting official verification'}
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Involved Offices */}
-          {involvedOffices.length > 0 && (
-            <DetailSection title='Responsible Offices' icon={Building2}>
-              <div className='space-y-6'>
-                {involvedOffices.map((off, idx) => {
-                  const officePath =
-                    off.type === 'executive'
-                      ? `/government/executive/${off.slug}`
-                      : off.type === 'legislative'
-                        ? `/government/legislative/${off.slug}`
-                        : `/government/departments/${off.slug}`;
-
-                  return (
-                    <div
-                      key={off.slug}
-                      className={
-                        idx > 0
-                          ? 'border-t border-tsinelas-border-weak pt-5'
-                          : ''
-                      }
+        {/* Aside */}
+        <aside className='mt-tsinelas-layout-03 space-y-tsinelas-06 xl:mt-0'>
+          {offices.length > 0 && (
+            <AsideBlock
+              title={
+                offices.length > 1
+                  ? 'Responsible offices'
+                  : 'Responsible office'
+              }
+            >
+              <ul className='space-y-tsinelas-05'>
+                {offices.map(office => (
+                  <li key={office.slug}>
+                    <Link
+                      to={office.href}
+                      className='tsinelas-heading-compact-01 inline-flex items-center gap-tsinelas-02 text-tsinelas-link-primary hover:text-tsinelas-link-primary-hover hover:underline tsinelas-focus'
                     >
-                      <Link to={officePath} className='group block'>
-                        <h3 className='group-hover:text-tsinelas-text-brand text-tsinelas-text-strong leading-tight font-bold transition-colors'>
-                          {toTitleCase(off.name)}
-                        </h3>
-                        <span className='text-tsinelas-text-brand mt-2 flex items-center gap-1 tsinelas-eyebrow'>
-                          View Profile{' '}
-                          <ArrowRight className='h-3 w-3 transition-transform group-hover:translate-x-1' />
-                        </span>
-                      </Link>
-                    </div>
-                  );
-                })}
-              </div>
-            </DetailSection>
+                      {office.name}
+                      <ArrowRightIcon
+                        aria-hidden='true'
+                        className='size-tsinelas-icon-01'
+                      />
+                    </Link>
+                    {(office.address || office.phone) && (
+                      <address className='tsinelas-label-01 mt-tsinelas-02 space-y-tsinelas-01 text-tsinelas-text-secondary not-italic'>
+                        {office.address && (
+                          <p className='flex items-start gap-tsinelas-02'>
+                            <MapPinIcon
+                              aria-hidden='true'
+                              className='mt-[1px] size-tsinelas-04 shrink-0 text-tsinelas-icon-secondary'
+                            />
+                            {office.address}
+                          </p>
+                        )}
+                        {office.phone && (
+                          <p className='flex items-start gap-tsinelas-02'>
+                            <PhoneIcon
+                              aria-hidden='true'
+                              className='mt-[1px] size-tsinelas-04 shrink-0 text-tsinelas-icon-secondary'
+                            />
+                            <span className='tsinelas-tabular'>
+                              {office.phone}
+                            </span>
+                          </p>
+                        )}
+                      </address>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </AsideBlock>
           )}
 
-          {/* SUGGEST AN EDIT - NEW PLACEMENT & STYLE */}
-          <Card hover={false} className='space-y-4'>
-            <div className='flex items-center gap-3'>
-              <div className='bg-tsinelas-bg-accent-orange-weak text-tsinelas-text-accent-orange rounded-lg p-2'>
-                <HeartHandshake className='h-5 w-5' />
-              </div>
-              <h4 className='text-tsinelas-text-strong text-sm leading-tight font-bold'>
-                Help improve this data
-              </h4>
-            </div>
-            <p className='text-tsinelas-text-disabled text-xs leading-relaxed'>
-              Find an error or outdated info? Our community helps keep this
-              portal accurate.
+          <AsideBlock title='About this information'>
+            <p className='tsinelas-label-01 flex items-start gap-tsinelas-02 text-tsinelas-text-secondary'>
+              {isOfficial || verifiedOn ? (
+                <ShieldCheckIcon
+                  aria-hidden='true'
+                  className='mt-[1px] size-tsinelas-04 shrink-0 text-tsinelas-support-success'
+                />
+              ) : (
+                <span
+                  aria-hidden='true'
+                  className='mt-[6px] size-tsinelas-02 shrink-0 rounded-full bg-tsinelas-icon-disabled'
+                />
+              )}
+              <span>
+                {isOfficial
+                  ? `From the ${config.lgu.name} Citizens Charter.`
+                  : verifiedOn
+                    ? `Contributed by the community and last checked ${format(verifiedOn, 'MMMM yyyy')}.`
+                    : 'Contributed by the community and not yet verified against an official source.'}
+              </span>
             </p>
-            <Link
-              to={`/services/request?type=update&service=${encodeURIComponent(service.slug)}`}
-              className='group border-tsinelas-border-weak text-tsinelas-text-support hover:border-tsinelas-border-weak hover:bg-tsinelas-bg-surface-raised flex min-h-[44px] w-full items-center justify-center gap-2 rounded-xl border-2 px-4 py-2.5 text-xs font-bold transition-all'
-            >
-              <Edit3 className='group-hover:text-tsinelas-text-accent-orange text-tsinelas-text-disabled h-3.5 w-3.5 transition-colors' />
-              Suggest an Edit
-            </Link>
-          </Card>
+          </AsideBlock>
+
+          <div className='bg-tsinelas-layer-01 p-tsinelas-05'>
+            <h2 className='tsinelas-heading-compact-02 text-tsinelas-text-primary'>
+              Spotted something wrong?
+            </h2>
+            <p className='tsinelas-body-01 mt-tsinelas-02 text-tsinelas-text-secondary'>
+              Fees and requirements change. Tell us and we will check it against
+              the office.
+            </p>
+            <div className='mt-tsinelas-04'>
+              <Link
+                to={`/services/request?type=update&service=${encodeURIComponent(service.slug)}`}
+                className='inline-flex'
+              >
+                <Button
+                  variant='tertiary'
+                  size='sm'
+                  rightIcon={
+                    <PencilLineIcon className='size-tsinelas-icon-01' />
+                  }
+                >
+                  Suggest an edit
+                </Button>
+              </Link>
+            </div>
+          </div>
         </aside>
       </div>
-    </div>
+    </article>
   );
 }

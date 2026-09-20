@@ -1,109 +1,101 @@
-import { ClipboardList, ExternalLink } from 'lucide-react';
-import { DetailSection } from '@/components/layout/PageLayouts';
-import { ClientStep } from '@/types/citizens-charter';
+import { ClockIcon, ExternalLinkIcon } from 'lucide-react';
+
+import type { ClientStep } from '@/types/citizens-charter';
 
 interface ProcessTimelineProps {
   steps: ClientStep[];
 }
 
+/**
+ * ProcessTimeline — the client steps from the Citizens Charter as a
+ * vertical progress indicator: a square numbered marker on a hairline
+ * rail, lettered sub-steps, roman-numbered details.
+ */
 export function ProcessTimeline({ steps }: ProcessTimelineProps) {
-  if (!steps || steps.length === 0) {
-    return null;
-  }
+  if (steps.length === 0) return null;
 
   return (
-    <DetailSection title='How to Apply' icon={ClipboardList}>
-      <div className='space-y-6' data-testid='process-timeline'>
-        {steps.map((step, idx) => (
-          <div key={idx} className='group'>
-            <div className='flex gap-4'>
-              <div className='flex h-8 w-8 shrink-0 items-center justify-center rounded-full border-2 border-tsinelas-border-brand bg-tsinelas-bg-surface text-sm font-bold text-tsinelas-text-brand'>
-                {idx + 1}
-              </div>
-              <div className='flex-1'>
-                <div className='flex items-start justify-between gap-4'>
-                  <p className='text-tsinelas-text-support text-sm leading-relaxed flex-1'>
-                    {step.action}
-                  </p>
-                  {step.url && (
-                    <a
-                      href={step.url}
-                      target='_blank'
-                      rel='noreferrer'
-                      className='text-tsinelas-text-brand hover:text-tsinelas-text-accent-orange flex shrink-0 items-center gap-1 text-xs font-bold transition-colors'
-                    >
-                      Visit Portal
-                      <ExternalLink className='h-3 w-3' />
-                    </a>
-                  )}
-                </div>
+    <ol data-testid='process-timeline'>
+      {steps.map((step, idx) => {
+        const isLast = idx === steps.length - 1;
+        return (
+          <li
+            key={step.step ?? idx}
+            className='relative flex gap-tsinelas-05 pb-tsinelas-06 last:pb-0'
+          >
+            {!isLast && (
+              <span
+                aria-hidden='true'
+                className='absolute top-tsinelas-07 bottom-0 left-tsinelas-05 w-px bg-tsinelas-border-subtle-01'
+              />
+            )}
+            <span
+              aria-hidden='true'
+              className='tsinelas-heading-compact-01 tsinelas-tabular flex size-tsinelas-07 shrink-0 items-center justify-center border border-tsinelas-border-interactive bg-tsinelas-background text-tsinelas-interactive'
+            >
+              {idx + 1}
+            </span>
 
-                {/* Sub-steps with letter labels */}
-                {step.sub_steps && step.sub_steps.length > 0 && (
-                  <div className='mt-3 ml-4 space-y-2'>
-                    {step.sub_steps.map((subStep, subIdx) => (
-                      <div
-                        key={subIdx}
-                        className='border-l-2 border-tsinelas-border-weak pl-4'
-                      >
-                        <div className='flex items-start gap-2'>
-                          <span className='text-tsinelas-text-brand bg-tsinelas-bg-brand-weak/20 flex h-5 w-5 shrink-0 items-center justify-center rounded text-xs font-bold'>
-                            {subStep.letter}
-                          </span>
-                          <p className='text-tsinelas-text-support text-xs leading-relaxed flex-1'>
-                            {subStep.action}
-                          </p>
-                        </div>
+            <div className='min-w-0 flex-1 pt-tsinelas-02'>
+              <p className='tsinelas-body-02 text-tsinelas-text-primary'>
+                <span className='sr-only'>Step {idx + 1}: </span>
+                {step.action}
+              </p>
 
-                        {/* Detail items with roman numerals */}
-                        {subStep.details && subStep.details.length > 0 && (
-                          <div className='mt-2 ml-7 space-y-1'>
-                            {subStep.details.map((detail, detailIdx) => (
-                              <div
-                                key={detailIdx}
-                                className='flex items-start gap-2'
-                              >
-                                <span className='text-tsinelas-text-disabled text-xs font-medium'>
-                                  {detailIdx + 1 === 1
-                                    ? 'i.'
-                                    : detailIdx + 1 === 2
-                                      ? 'ii.'
-                                      : detailIdx + 1 === 3
-                                        ? 'iii.'
-                                        : detailIdx + 1 === 4
-                                          ? 'iv.'
-                                          : detailIdx + 1 === 5
-                                            ? 'v.'
-                                            : `${detailIdx + 1}.`}
-                                </span>
-                                <p className='text-tsinelas-text-support text-xs'>
-                                  {detail}
-                                </p>
-                              </div>
+              {step.url && (
+                <a
+                  href={step.url}
+                  target='_blank'
+                  rel='noreferrer'
+                  className='tsinelas-body-compact-01 mt-tsinelas-02 inline-flex items-center gap-tsinelas-02 text-tsinelas-link-primary hover:text-tsinelas-link-primary-hover hover:underline tsinelas-focus'
+                >
+                  Open the online portal
+                  <ExternalLinkIcon
+                    aria-hidden='true'
+                    className='size-tsinelas-icon-01'
+                  />
+                </a>
+              )}
+
+              {step.sub_steps && step.sub_steps.length > 0 && (
+                <ol className='mt-tsinelas-04 space-y-tsinelas-03 border-l border-tsinelas-border-subtle-01 pl-tsinelas-05'>
+                  {step.sub_steps.map(sub => (
+                    <li key={sub.letter} className='flex gap-tsinelas-03'>
+                      <span className='tsinelas-label-01 w-tsinelas-05 shrink-0 pt-[3px] font-semibold text-tsinelas-text-secondary'>
+                        {sub.letter}.
+                      </span>
+                      <div className='min-w-0 flex-1'>
+                        <p className='tsinelas-body-01 text-tsinelas-text-primary'>
+                          {sub.action}
+                        </p>
+                        {sub.details && sub.details.length > 0 && (
+                          <ol className='tsinelas-body-01 mt-tsinelas-02 list-[lower-roman] space-y-tsinelas-01 pl-tsinelas-06 text-tsinelas-text-secondary'>
+                            {sub.details.map((detail, i) => (
+                              <li key={i} className='pl-tsinelas-01'>
+                                {detail}
+                              </li>
                             ))}
-                          </div>
+                          </ol>
                         )}
                       </div>
-                    ))}
-                  </div>
-                )}
+                    </li>
+                  ))}
+                </ol>
+              )}
 
-                {/* Processing time for this step */}
-                {step.processing_time && (
-                  <div className='mt-2 ml-4 flex items-center gap-2'>
-                    <span className='text-tsinelas-text-disabled text-[10px] font-bold uppercase tracking-wider'>
-                      Time:
-                    </span>
-                    <span className='text-tsinelas-text-support text-xs'>
-                      {step.processing_time}
-                    </span>
-                  </div>
-                )}
-              </div>
+              {step.processing_time && (
+                <p className='tsinelas-label-01 mt-tsinelas-03 flex items-center gap-tsinelas-02 text-tsinelas-text-helper'>
+                  <ClockIcon
+                    aria-hidden='true'
+                    className='size-tsinelas-04 shrink-0'
+                  />
+                  {step.processing_time}
+                </p>
+              )}
             </div>
-          </div>
-        ))}
-      </div>
-    </DetailSection>
+          </li>
+        );
+      })}
+    </ol>
   );
 }

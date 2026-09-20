@@ -50,6 +50,10 @@ export default function ServicesLayout() {
   const location = useLocation();
   const isIndexPage =
     location.pathname === '/services' || location.pathname === '/services/';
+  // A service page owns its breadcrumb and title; the shell adds nothing
+  // above it. Only the request form still takes the compact header.
+  const isDetailPage =
+    !isIndexPage && !location.pathname.startsWith('/services/request');
 
   const [filters, setQuery] = useQueryStates(filterParsers, {
     history: 'replace',
@@ -89,7 +93,7 @@ export default function ServicesLayout() {
               />
             }
           />
-        ) : (
+        ) : isDetailPage ? undefined : (
           <PageHeader
             variant='compact'
             title='Service directory'

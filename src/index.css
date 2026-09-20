@@ -167,6 +167,19 @@
       opacity: 1;
     }
   }
+
+  /* Indeterminate bar for `Loading`: a one-third segment sweeping the track
+   * on the expressive curve. Exposed as `animate-tsinelas-indeterminate`. */
+  --animate-tsinelas-indeterminate: tsinelas-indeterminate 1.4s
+    var(--ease-tsinelas-standard-expressive) infinite;
+  @keyframes tsinelas-indeterminate {
+    from {
+      transform: translateX(-100%);
+    }
+    to {
+      transform: translateX(300%);
+    }
+  }
 }
 
 @layer components {

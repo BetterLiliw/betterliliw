@@ -35,6 +35,7 @@ export {
   DialogDescription,
 } from './Dialog';
 export { EmptyState } from './EmptyState';
+export { Loading } from './Loading';
 export { PaginationControls } from './Pagination';
 export { ScrollArea } from './ScrollArea';
 export { Timeline } from './Timeline';

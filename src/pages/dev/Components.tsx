@@ -37,16 +37,13 @@ import { Checkbox } from '@/components/ui/Checkbox';
 import { Dropdown } from '@/components/ui/Dropdown';
 import { Input } from '@/components/ui/Input';
 import { Label } from '@/components/ui/Label';
+import { Loading } from '@/components/ui/Loading';
 import { PaginationControls } from '@/components/ui/Pagination';
 import { ScrollArea } from '@/components/ui/ScrollArea';
 import { Textarea } from '@/components/ui/Textarea';
 import SearchInput from '@/components/ui/SearchInput';
 import SelectPicker from '@/components/ui/SelectPicker';
-import {
-  CardSkeleton,
-  DirectoryGridSkeleton,
-  PageLoadingState,
-} from '@/components/ui/Skeletons';
+import { CardSkeleton, DirectoryGridSkeleton } from '@/components/ui/Skeletons';
 import { StatCard, StatGrid } from '@/components/ui/StatCard';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/Tabs';
 import { Timeline, TimelineItem } from '@/components/ui/Timeline';
@@ -628,6 +625,63 @@ export default function ComponentsPage() {
       </Section>
 
       <Section
+        id='loading'
+        title='Loading'
+        lede={
+          <>
+            The branded indeterminate state: the looping logomark over a 2px
+            indeterminate bar in <Mono>interactive</Mono>, with a{' '}
+            <Mono>label-01</Mono> caption in <Mono>text-secondary</Mono>. Use it
+            when the shape of what is coming is unknown; when it is known,
+            prefer a skeleton. Source: <Mono>Loading.tsx</Mono>
+          </>
+        }
+      >
+        <SpecTable
+          head={['Size', 'Use', 'Mark']}
+          rows={[
+            [
+              <Mono key='p'>page</Mono>,
+              'Route transitions (the Suspense fallback in App.tsx). Fills 40vh.',
+              '64px',
+            ],
+            [
+              <Mono key='s'>section</Mono>,
+              'Inside a page whose header is already on screen. Default.',
+              '48px',
+            ],
+          ]}
+        />
+        <Example code={`<Loading />`}>
+          <Loading />
+        </Example>
+        <Example code={`<Loading size='page' message='Loading officials' />`}>
+          <Loading size='page' message='Loading officials' />
+        </Example>
+        <SubSection title='Behaviour'>
+          <ul className='tsinelas-body-01 list-disc space-y-tsinelas-02 pl-tsinelas-05 text-tsinelas-text-secondary'>
+            <li>
+              Fades in after 150ms so quick transitions never flash a loader.
+            </li>
+            <li>
+              The mark is <Mono>logomark-loop.svg</Mono>, which carries its own
+              reduced-motion fallback; the bar goes static and full under the
+              same preference.
+            </li>
+            <li>
+              The block is a polite live region (
+              <Mono>role=&quot;status&quot;</Mono>), so the caption is announced
+              once and the mark is decorative.
+            </li>
+            <li>
+              <Mono>PageLoadingState</Mono> is a section-size alias kept for
+              existing callers.
+            </li>
+          </ul>
+        </SubSection>
+      </Section>
+
+      <Section
         id='skeletons'
         title='Skeletons'
         lede={
@@ -637,15 +691,12 @@ export default function ComponentsPage() {
           </>
         }
       >
-        <Example
-          code={`<CardSkeleton /> <DirectoryGridSkeleton /> <PageLoadingState message="Loading directory…" />`}
-        >
+        <Example code={`<CardSkeleton /> <DirectoryGridSkeleton />`}>
           <div className='space-y-tsinelas-06'>
             <div className='max-w-sm'>
               <CardSkeleton />
             </div>
             <DirectoryGridSkeleton />
-            <PageLoadingState message='Loading directory…' />
           </div>
         </Example>
       </Section>

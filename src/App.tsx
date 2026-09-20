@@ -11,6 +11,7 @@ import { lazy, Suspense, useEffect } from 'react';
 import { NuqsAdapter } from 'nuqs/adapters/react-router/v6';
 
 import { isComingSoonEnabled, resolvePreviewAccess } from '@/lib/comingSoon';
+import { Loading } from '@/components/ui/Loading';
 import { dismissSplash } from '@/lib/splash';
 import { config } from '@/lib/lguConfig';
 import { Footer } from '@/components/layout/Footer';
@@ -140,13 +141,9 @@ import NotFound from '@/pages/NotFound';
 // ComingSoon — eager: it is the first paint for every visitor while gated
 import ComingSoon from '@/pages/ComingSoon';
 
-/** Minimal loading fallback for route transitions */
+/** Route-transition fallback: the branded loader at page size. */
 function PageLoader() {
-  return (
-    <div className='flex min-h-[40vh] items-center justify-center'>
-      <div className='text-tsinelas-text-muted text-sm'>Loading…</div>
-    </div>
-  );
+  return <Loading size='page' />;
 }
 
 function App() {

@@ -1,3 +1,5 @@
+import { Loading } from './Loading';
+
 export function CardSkeleton() {
   return (
     <div className='border-tsinelas-border-weak bg-tsinelas-bg-surface animate-pulse rounded-xl border p-6'>
@@ -25,17 +27,9 @@ interface PageLoadingStateProps {
   message?: string;
 }
 
+/** Section-size branded loader; kept as an alias of `Loading` for callers. */
 export function PageLoadingState({
-  message = 'Loading...',
+  message = 'Loading',
 }: PageLoadingStateProps) {
-  return (
-    <div className='flex items-center justify-center p-tsinelas-3xl'>
-      <div className='text-tsinelas-text-disabled flex items-center gap-tsinelas-md'>
-        <div className='border-tsinelas-border-brand border-t-tsinelas-bg-brand-default h-5 w-5 animate-spin rounded-full border-2' />
-        <span className='tsinelas-body-sm-default tsinelas-body-sm-strong'>
-          {message}
-        </span>
-      </div>
-    </div>
-  );
+  return <Loading message={message} />;
 }

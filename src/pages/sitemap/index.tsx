@@ -1,408 +1,308 @@
-import { FC, ReactNode } from 'react';
+import { FC } from 'react';
 
 import { Link } from 'react-router-dom';
 
-import {
-  Briefcase,
-  Building2,
-  ChevronRight,
-  FileCheck,
-  FileText,
-  Globe,
-  Home,
-  Waves,
-} from 'lucide-react';
+import { ArrowUpRightIcon } from 'lucide-react';
 
+import { PageHeader } from '@/components/layout';
 import { SEO } from '@/components/layout/SEO';
-import { config } from '@/lib/lguConfig';
 
-interface SitemapSection {
-  title: string;
-  icon: ReactNode;
-  links: {
-    title: string;
-    url: string;
-    description?: string;
-  }[];
+import barangaysData from '@/data/directory/barangays.json';
+import departmentsData from '@/data/directory/departments.json';
+import serviceCategories from '@/data/service_categories.json';
+import { config } from '@/lib/lguConfig';
+import { lguLabels } from '@/lib/lguLabels';
+import { getMergedServices } from '@/lib/services';
+import { toTitleCase } from '@/lib/stringUtils';
+import { cn } from '@/lib/utils';
+
+interface SitemapLink {
+  label: string;
+  href: string;
+  /** Shown under the label, one line. */
+  note?: string;
+  children?: SitemapLink[];
 }
 
-const SitemapPage: FC = () => {
-  const sitemapSections: SitemapSection[] = [
+interface SitemapSection {
+  id: string;
+  title: string;
+  /** Count shown beside the title, e.g. the number of departments. */
+  count?: number;
+  links: SitemapLink[];
+  /** Lay the links out in two columns and let the section span two grid
+   * columns; for long flat lists like the departments. */
+  wide?: boolean;
+}
+
+/* The tree mirrors src/App.tsx and scripts/generate-sitemap.js. Keep the
+ * three in step when routes change. */
+function buildSections(): SitemapSection[] {
+  const sections: SitemapSection[] = [
     {
-      title: 'Main Pages',
-      icon: <Home className='w-5 h-5' />,
+      id: 'portal',
+      title: 'About the portal',
       links: [
-        { title: 'Home', url: '/', description: 'Main landing page' },
-        {
-          title: 'About',
-          url: '/about',
-          description: `About ${config.portal.name}`,
-        },
-        {
-          title: 'Accessibility',
-          url: '/accessibility',
-          description: 'Accessibility statement and features',
-        },
-        {
-          title: 'Search',
-          url: '/search',
-          description: 'Search the entire site',
-        },
+        { label: 'Home', href: '/' },
+        { label: `About ${config.portal.name}`, href: '/about' },
+        { label: 'Contact', href: '/contact' },
+        { label: 'Join us', href: '/join-us' },
+        { label: 'Contribute', href: '/contribute' },
+        { label: 'Ideas', href: '/ideas' },
+        { label: 'Discord community', href: '/discord' },
+        { label: 'Accessibility', href: '/accessibility' },
+        { label: 'Terms of service', href: '/terms-of-service' },
+        { label: 'Search the portal', href: '/search' },
+        { label: 'Weather', href: '/data/weather' },
+        { label: 'Foreign exchange rates', href: '/data/forex' },
       ],
     },
     {
-      title: 'Philippines',
-      icon: <Globe className='w-5 h-5' />,
-      links: [
-        {
-          title: 'About the Philippines',
-          url: '/philippines/about',
-          description: 'General information about the Philippines',
-        },
-        {
-          title: 'History',
-          url: '/philippines/history',
-          description: 'Historical timeline of the Philippines',
-        },
-        {
-          title: 'Culture',
-          url: '/philippines/culture',
-          description: 'Cultural heritage and traditions',
-        },
-        {
-          title: 'Regions',
-          url: '/philippines/regions',
-          description: 'Administrative regions of the Philippines',
-        },
-        {
-          title: 'Map',
-          url: '/philippines/map',
-          description: 'Interactive map of the Philippines',
-        },
-        {
-          title: 'Public Holidays',
-          url: '/philippines/holidays',
-          description: 'Official holidays in the Philippines',
-        },
-        {
-          title: 'Hotlines',
-          url: 'https://hotlines.bettergov.ph/',
-          description: 'Emergency and important contact numbers',
-        },
-      ],
-    },
-    {
-      title: 'Government',
-      icon: <Building2 className='w-5 h-5' />,
-      links: [
-        {
-          title: 'Executive Branch',
-          url: '/government/executive',
-          description: 'Office of the President and executive offices',
-        },
-        {
-          title: 'Office of the Mayor',
-          url: '/government/executive/office-of-the-mayor',
-          description: 'Information about the Office of the President',
-        },
-        {
-          title: 'Office of the Vice Mayor',
-          url: '/government/executive/office-of-the-vice-mayor',
-          description: 'Information about the Office of the Vice Mayor',
-        },
-        {
-          title: 'Presidential Communications Office',
-          url: '/government/executive/presidential-communications-office',
-          description:
-            'Information about the Presidential Communications Office',
-        },
-        {
-          title: 'Other Executive Offices',
-          url: '/government/executive/other-executive-offices',
-          description: 'Other offices under the Executive branch',
-        },
-        {
-          title: 'Departments',
-          url: '/government/departments',
-          description: 'Government departments and agencies',
-        },
-        {
-          title: 'Constitutional Bodies',
-          url: '/government/constitutional',
-          description: 'Constitutional commissions and offices',
-        },
-        {
-          title: 'GOCCs',
-          url: '/government/constitutional/goccs',
-          description: 'Government-Owned and Controlled Corporations',
-        },
-        {
-          title: 'SUCs',
-          url: '/government/constitutional/sucs',
-          description: 'State Universities and Colleges',
-        },
-        {
-          title: 'Legislative Branch',
-          url: '/government/legislative',
-          description: 'Senate and House of Representatives',
-        },
-        {
-          title: 'Municipal Council Committees',
-          url: '/government/legislative/municipal-committees',
-          description: 'Committees in the Municipal Council',
-        },
-        {
-          title: 'House Members',
-          url: '/government/legislative/house-members',
-          description: 'Members of the House of Representatives',
-        },
-        {
-          title: 'Diplomatic Missions',
-          url: '/government/diplomatic/missions',
-          description: 'Philippine diplomatic missions abroad',
-        },
-        {
-          title: 'Consulates',
-          url: '/government/diplomatic/consulates',
-          description: 'Philippine consulates',
-        },
-        {
-          title: 'International Organizations',
-          url: '/government/diplomatic/organizations',
-          description: 'International organizations in the Philippines',
-        },
-        {
-          title: 'Local Government',
-          url: '/government/local',
-          description: 'Local government units by region',
-        },
-      ],
-    },
-    {
+      id: 'services',
       title: 'Services',
-      icon: <FileText className='w-5 h-5' />,
+      count: getMergedServices().length,
       links: [
         {
-          title: 'All Services',
-          url: '/services',
-          description: 'Browse all government services',
+          label: 'All services',
+          href: '/services',
+          note: 'Requirements, fees and how to apply',
+          children: serviceCategories.categories.map(category => ({
+            label: category.name,
+            href: `/services?category=${category.slug}`,
+          })),
         },
         {
-          title: 'Government Websites Directory',
-          url: '/services/websites',
-          description: 'Directory of official government websites',
-        },
-        {
-          title: 'Business & Trade',
-          url: '/services?category=business-trade',
-          description: 'Business registration, permits, and trade services',
-        },
-        {
-          title: 'Certificates & IDs',
-          url: '/services?category=certificates-ids',
-          description: 'Birth certificates, IDs, and other documents',
-        },
-        {
-          title: 'Contributions',
-          url: '/services?category=contributions',
-          description: 'SSS, PhilHealth, and other contribution services',
-        },
-        {
-          title: 'Disaster & Weather',
-          url: '/services?category=disaster-weather',
-          description: 'Disaster preparedness and weather information',
-        },
-        {
-          title: 'Education',
-          url: '/services?category=education',
-          description: 'Educational services and scholarships',
-        },
-        {
-          title: 'Employment',
-          url: '/services?category=employment',
-          description: 'Job search and employment services',
-        },
-        {
-          title: 'Health',
-          url: '/services?category=health',
-          description: 'Health services and medical assistance',
-        },
-        {
-          title: 'Housing',
-          url: '/services?category=housing',
-          description: 'Housing loans and property services',
-        },
-        {
-          title: 'Passport & Travel',
-          url: '/services?category=passport-travel',
-          description: 'Passport application and travel documents',
-        },
-        {
-          title: 'Social Services',
-          url: '/services?category=social-services-assistance',
-          description: 'Social welfare and assistance programs',
-        },
-        {
-          title: 'Tax',
-          url: '/services?category=tax',
-          description: 'Tax filing and payment services',
-        },
-        {
-          title: 'Transport & Driving',
-          url: '/services?category=transport-driving',
-          description: "Driver's license and transportation services",
+          label: 'Suggest a service or a correction',
+          href: '/services/request',
         },
       ],
     },
     {
-      title: 'Travel',
-      icon: <Briefcase className='w-5 h-5' />,
+      id: 'government',
+      title: 'Government',
       links: [
         {
-          title: 'Visa Information',
-          url: '/travel/visa',
-          description: 'Visa requirements for the Philippines',
+          label: 'Elected officials',
+          href: '/government/elected-officials',
+          children: [
+            {
+              label: 'Council committees',
+              href: '/government/elected-officials/committees',
+            },
+          ],
         },
-        {
-          title: 'Visa Types',
-          url: '/travel/visa-types',
-          description: 'Different types of Philippine visas',
-        },
-        {
-          title: 'Special Work Permit',
-          url: '/travel/visa-types/swp-c',
-          description: 'Information about Special Work Permits',
-        },
-      ],
-    },
-    {
-      title: 'Data Services',
-      icon: <FileCheck className='w-5 h-5' />,
-      links: [
-        {
-          title: 'Weather',
-          url: '/data/weather',
-          description: 'Real-time weather information',
-        },
-        {
-          title: 'Foreign Exchange Rates',
-          url: '/data/forex',
-          description: 'Current foreign exchange rates',
-        },
-      ],
-    },
-    {
-      title: 'Infrastructure',
-      icon: <Waves className='w-5 h-5' />,
-      links: [
-        {
-          title: 'Flood Control Projects',
-          url: '/flood-control-projects',
-          description: 'Overview of flood control infrastructure projects',
-        },
-        {
-          title: 'Projects Table View',
-          url: '/flood-control-projects/table',
-          description: 'Detailed table view of all flood control projects',
-        },
-        {
-          title: 'Projects Map View',
-          url: '/flood-control-projects/map',
-          description:
-            'Interactive map showing flood control project locations',
-        },
-        {
-          title: 'Contractors Directory',
-          url: '/flood-control-projects/contractors',
-          description:
-            'Directory of contractors working on flood control projects',
-        },
+        { label: 'Departments and offices', href: '/government/departments' },
+        { label: 'Barangays', href: '/government/barangays' },
       ],
     },
   ];
 
+  if (config.features.statistics) {
+    sections.push({
+      id: 'statistics',
+      title: 'Statistics',
+      links: [
+        { label: 'Population', href: '/statistics/population' },
+        {
+          label: `${lguLabels.adjective} income`,
+          href: '/statistics/municipal-income',
+        },
+        { label: 'Competitiveness', href: '/statistics/competitiveness' },
+      ],
+    });
+  }
+
+  if (config.features.openLGU) {
+    sections.push({
+      id: 'openlgu',
+      title: 'OpenLGU',
+      links: [
+        {
+          label: 'Legislation',
+          href: '/openlgu',
+          note: 'Ordinances, resolutions and executive orders',
+          children: [
+            { label: 'Ordinances', href: '/openlgu?type=ordinance' },
+            { label: 'Resolutions', href: '/openlgu?type=resolution' },
+            {
+              label: 'Executive orders',
+              href: '/openlgu?type=executive_order',
+            },
+          ],
+        },
+        { label: 'Officials', href: '/openlgu/officials' },
+        { label: 'Council terms', href: '/openlgu/terms' },
+      ],
+    });
+  }
+
+  if (config.features.transparency) {
+    sections.push({
+      id: 'transparency',
+      title: 'Transparency',
+      links: [
+        { label: 'Overview', href: '/transparency' },
+        { label: 'Financial reports', href: '/transparency/financial' },
+        { label: 'Procurement', href: '/transparency/procurement' },
+        {
+          label: 'Infrastructure projects',
+          href: '/transparency/infrastructure',
+        },
+      ],
+    });
+  }
+
+  sections.push(
+    {
+      id: 'departments',
+      title: 'Departments and offices',
+      count: departmentsData.length,
+      wide: true,
+      links: departmentsData.map(d => ({
+        label: toTitleCase(d.office_name),
+        href: `/government/departments/${d.slug}`,
+      })),
+    },
+    {
+      id: 'barangays',
+      title: 'Barangays',
+      count: barangaysData.length,
+      links: barangaysData.map(b => ({
+        label: toTitleCase(b.barangay_name),
+        href: `/government/barangays/${b.slug}`,
+      })),
+    }
+  );
+
+  return sections;
+}
+
+const linkClasses =
+  'inline-flex items-center gap-tsinelas-02 text-tsinelas-link-primary hover:text-tsinelas-link-primary-hover hover:underline tsinelas-focus';
+
+function SitemapAnchor({ link }: { link: SitemapLink }) {
+  if (link.href.startsWith('http')) {
+    return (
+      <a
+        href={link.href}
+        target='_blank'
+        rel='noreferrer'
+        className={linkClasses}
+      >
+        {link.label}
+        <ArrowUpRightIcon
+          aria-hidden='true'
+          className='size-tsinelas-04 shrink-0 opacity-70'
+        />
+      </a>
+    );
+  }
   return (
-    <div className='min-h-screen bg-tsinelas-layer-01 py-tsinelas-layout-03'>
+    <Link to={link.href} className={linkClasses}>
+      {link.label}
+    </Link>
+  );
+}
+
+function LinkList({
+  links,
+  columns = false,
+}: {
+  links: SitemapLink[];
+  columns?: boolean;
+}) {
+  return (
+    <ul
+      className={cn(
+        'tsinelas-body-01 space-y-tsinelas-02',
+        columns && 'sm:columns-2 sm:gap-tsinelas-layout-03'
+      )}
+    >
+      {links.map(link => (
+        <li key={link.href} className='break-inside-avoid'>
+          <SitemapAnchor link={link} />
+          {link.note && (
+            <p className='tsinelas-label-01 text-tsinelas-text-secondary'>
+              {link.note}
+            </p>
+          )}
+          {link.children && link.children.length > 0 && (
+            <ul className='tsinelas-body-compact-01 mt-tsinelas-02 mb-tsinelas-03 space-y-tsinelas-01 border-l border-tsinelas-border-subtle-01 pl-tsinelas-04'>
+              {link.children.map(child => (
+                <li key={child.href}>
+                  <SitemapAnchor link={child} />
+                </li>
+              ))}
+            </ul>
+          )}
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+/**
+ * Sitemap — every public page as an index a person can scan, grouped the
+ * way the navigation groups them. Feature-gated modules only appear when
+ * the flag is on, and the directories are read from the same JSON the
+ * pages render from.
+ */
+const SitemapPage: FC = () => {
+  const sections = buildSections();
+
+  return (
+    <>
       <SEO
         title='Sitemap'
-        description='Complete sitemap — find all pages and services available on this portal.'
-        keywords={[
-          'sitemap',
-          'navigation',
-          'government services',
-          'philippines government',
-          'website map',
-        ]}
+        description={`Every page on ${config.portal.name}: services, government offices, barangays, legislation, transparency reports and more.`}
+        keywords={['sitemap', 'site map', 'index', config.lgu.name]}
       />
 
-      <div className='container py-tsinelas-layout-02 md:py-tsinelas-layout-03'>
-        <div className='mx-auto max-w-5xl'>
-          <div className='overflow-hidden rounded-xl bg-tsinelas-bg-surface shadow-xs'>
-            <div className='p-6 border-b border-tsinelas-border-weak md:p-8'>
-              <h1 className='text-tsinelas-text-strong tsinelas-heading-xl font-extrabold'>
-                Sitemap
-              </h1>
-              <p className='mt-2 text-tsinelas-text-support'>
-                A complete guide to all pages and services available on
-                {config.portal.name}
-              </p>
-            </div>
+      <PageHeader
+        variant='compact'
+        title='Sitemap'
+        description={`Every public page on ${config.portal.name}, grouped the way the menu groups them. The XML version for search engines is at /sitemap.xml.`}
+      />
 
-            <div className='p-6 md:p-8'>
-              <div className='space-y-12'>
-                {sitemapSections.map((section, index) => (
-                  <div key={index}>
-                    <div className='flex items-center mb-4'>
-                      <div className='p-2 mr-3 rounded-md bg-tsinelas-bg-surface text-tsinelas-text-brand'>
-                        {section.icon}
-                      </div>
-                      <h2 className='text-xl font-bold text-tsinelas-text-strong'>
-                        {section.title}
-                      </h2>
-                    </div>
-
-                    <div className='grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3'>
-                      {section.links.map((link, linkIndex) => (
-                        <Link
-                          key={linkIndex}
-                          to={link.url}
-                          className='flex flex-col p-4 rounded-lg border transition-colors group hover:border-tsinelas-border-brand hover:bg-tsinelas-bg-surface-brand border-tsinelas-border-weak'
-                        >
-                          <div className='flex justify-between items-center mb-2'>
-                            <h3 className='font-medium group-hover:text-tsinelas-text-brand text-tsinelas-text-strong'>
-                              {link.title}
-                            </h3>
-                            <ChevronRight className='w-4 h-4 group-hover:text-tsinelas-text-link text-tsinelas-text-disabled' />
-                          </div>
-                          {link.description && (
-                            <p className='text-sm text-tsinelas-text-support'>
-                              {link.description}
-                            </p>
-                          )}
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          <div className='mt-8 text-sm text-center text-tsinelas-text-support'>
-            <p>
-              Can&apos;t find what you&apos;re looking for? Try using our{' '}
-              <Link
-                to='/search'
-                className='text-tsinelas-text-brand hover:underline'
+      <div className='container py-tsinelas-layout-04 md:py-tsinelas-layout-05'>
+        <div className='grid gap-x-tsinelas-layout-04 gap-y-tsinelas-layout-04 md:grid-cols-2 xl:grid-cols-3'>
+          {sections.map(section => (
+            <section
+              key={section.id}
+              aria-labelledby={`sitemap-${section.id}`}
+              className={cn(section.wide && 'md:col-span-2')}
+            >
+              <h2
+                id={`sitemap-${section.id}`}
+                className='tsinelas-heading-md flex items-baseline gap-tsinelas-03 border-b border-tsinelas-border-subtle-00 pb-tsinelas-03 text-tsinelas-text-primary'
               >
-                search feature
-              </Link>
-              .
-            </p>
-          </div>
+                {section.title}
+                {section.count !== undefined && (
+                  <span className='tsinelas-label-01 tsinelas-tabular text-tsinelas-text-helper'>
+                    {section.count}
+                  </span>
+                )}
+              </h2>
+              <div className='mt-tsinelas-04'>
+                <LinkList links={section.links} columns={section.wide} />
+              </div>
+            </section>
+          ))}
         </div>
+
+        <p className='tsinelas-body-01 mt-tsinelas-layout-05 border-t border-tsinelas-border-subtle-00 pt-tsinelas-05 text-tsinelas-text-secondary'>
+          Looking for a specific office or service?{' '}
+          <Link to='/search' className={linkClasses}>
+            Search the portal
+          </Link>{' '}
+          or{' '}
+          <Link to='/contact' className={linkClasses}>
+            ask us
+          </Link>
+          .
+        </p>
       </div>
-    </div>
+    </>
   );
 };
 

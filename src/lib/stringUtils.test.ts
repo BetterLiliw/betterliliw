@@ -85,6 +85,11 @@ describe('toTitleCase() - title case formatter', () => {
     expect(result).toBe('BPLO and MDRRMO');
   });
 
+  it('keeps an acronym uppercase inside punctuation', () => {
+    const result = toTitleCase('PERSONS WITH DISABILITY AFFAIRS OFFICE (PDAO)');
+    expect(result).toBe('Persons with Disability Affairs Office (PDAO)');
+  });
+
   it('keeps minor words lowercase except first word', () => {
     const result = toTitleCase('MAYOR OF THE TOWN');
     expect(result).toBe('Mayor of the Town');

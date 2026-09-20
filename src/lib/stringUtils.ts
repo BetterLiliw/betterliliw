@@ -49,6 +49,8 @@ export function toTitleCase(text: string) {
     'BFP',
     'PNP',
     'RHU',
+    'PDAO',
+    'DILG',
   ];
 
   return text
@@ -57,8 +59,9 @@ export function toTitleCase(text: string) {
     .map((word, index) => {
       const upperWord = word.toUpperCase();
 
-      // If it's an acronym, keep it all caps
-      if (acronyms.includes(upperWord)) return upperWord;
+      // If it's an acronym, keep it all caps — also when wrapped in
+      // punctuation, as in "Affairs Office (PDAO)".
+      if (acronyms.includes(upperWord.replace(/[^A-Z]/g, ''))) return upperWord;
 
       // If it's a minor word and not the first word, keep it lowercase
       if (minorWords.includes(word) && index !== 0) return word;

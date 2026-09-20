@@ -9,6 +9,7 @@ import {
   UsersIcon,
 } from 'lucide-react';
 
+import { Accordion, AccordionItem } from '@/components/ui/Accordion';
 import { Badge } from '@/components/ui/Badge';
 import { Banner, BannerType } from '@/components/ui/Banner';
 import { Button, ButtonSize, ButtonVariant } from '@/components/ui/Button';
@@ -514,6 +515,49 @@ export default function ComponentsPage() {
               subtext='Annual income, 2024'
             />
           </div>
+        </Example>
+      </Section>
+
+      <Section
+        id='accordion'
+        title='Accordion'
+        lede={
+          <>
+            Carbon accordion: a hairline above the list and under each item, a
+            full-width heading button with the chevron at the right, layer-hover
+            on hover, the panel indented to the title. Items open independently.
+            Sizes <Mono>md</Mono> (40px rows, default) and <Mono>lg</Mono>{' '}
+            (48px). Source: <Mono>Accordion.tsx</Mono>
+          </>
+        }
+      >
+        <Example
+          code={`<Accordion size="lg">
+  <AccordionItem title="Is BetterLiliw the official website?" defaultOpen>…</AccordionItem>
+  <AccordionItem title="Where does the data come from?">…</AccordionItem>
+  <AccordionItem title="Disabled item" disabled>…</AccordionItem>
+</Accordion>`}
+        >
+          <Accordion size='lg'>
+            <AccordionItem
+              title='Is BetterLiliw the official website of the municipality?'
+              defaultOpen
+            >
+              <p>
+                No. It is an independent, volunteer-run portal that gathers
+                public information in one place.
+              </p>
+            </AccordionItem>
+            <AccordionItem title='Where does the information come from?'>
+              <p>
+                The Citizens Charter, ordinances and resolutions, published
+                reports and contributions from residents.
+              </p>
+            </AccordionItem>
+            <AccordionItem title='A disabled item' disabled>
+              <p>Not reachable.</p>
+            </AccordionItem>
+          </Accordion>
         </Example>
       </Section>
 

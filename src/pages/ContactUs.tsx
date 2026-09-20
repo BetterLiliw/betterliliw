@@ -12,6 +12,7 @@ import {
 
 import { PageHeader } from '@/components/layout';
 import { SEO } from '@/components/layout/SEO';
+import { Accordion, AccordionItem } from '@/components/ui/Accordion';
 import { Button } from '@/components/ui/Button';
 
 import departmentsData from '@/data/directory/departments.json';
@@ -427,21 +428,17 @@ const ContactUs: FC = () => {
         </Section>
 
         <Section id='faq' title='Common questions'>
-          <dl className='divide-y divide-tsinelas-border-subtle-00 border-y border-tsinelas-border-subtle-00'>
-            {faqs.map(faq => (
-              <div
+          <Accordion size='lg'>
+            {faqs.map((faq, index) => (
+              <AccordionItem
                 key={faq.question}
-                className='py-tsinelas-05 md:grid md:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] md:gap-tsinelas-layout-03'
+                title={faq.question}
+                defaultOpen={index === 0}
               >
-                <dt className='tsinelas-heading-compact-02 text-tsinelas-text-primary'>
-                  {faq.question}
-                </dt>
-                <dd className='tsinelas-body-01 mt-tsinelas-02 text-tsinelas-text-secondary md:mt-0'>
-                  {faq.answer}
-                </dd>
-              </div>
+                <p>{faq.answer}</p>
+              </AccordionItem>
             ))}
-          </dl>
+          </Accordion>
         </Section>
       </div>
     </>

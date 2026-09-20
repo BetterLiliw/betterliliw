@@ -62,7 +62,7 @@ Make the portal *look* like Liliw. Cheap wins, high visible impact.
       (`rounded-xl`, `shadow-sm`, uppercase tracked labels, `font-black`). The
       radius and shadow tokens are zeroed so they render flat already, but the
       class names should go. `e2e/utils/tsinelas.ts` checks main content only.
-      Done: search, 404, sitemap, services index and service detail (`/services/:slug`,
+      Done: search, 404, sitemap, contact, services index and service detail (`/services/:slug`,
       which now also shows fee schedules, FAQs and related services), the
       route loader. Still legacy: `Breadcrumb`, `CardContactInfo`,
       `DetailSection`, the government, OpenLGU and transparency modules

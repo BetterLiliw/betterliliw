@@ -22,6 +22,17 @@
       rel="stylesheet"
     />
 
+    <!-- The looping logomark is the route-transition loader
+       (src/components/ui/Loading.tsx). Fetch it at low priority during the
+       splash so the first lazy route never waits on a 55KB SVG. -->
+    <link
+      rel="preload"
+      as="image"
+      type="image/svg+xml"
+      href="/logos/betterliliw-logomark-loop.svg"
+      fetchpriority="low"
+    />
+
     <!-- Social crawlers (Facebook, Messenger, X, LinkedIn, Viber) do not run
        JavaScript, so these static tags — not the runtime ones in
        src/components/layout/SEO.tsx — are what produce link previews.

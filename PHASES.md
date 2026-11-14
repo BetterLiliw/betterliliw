@@ -63,10 +63,11 @@ All files are JSON — no JavaScript needed to contribute.
 - [x] **Departments** — `src/data/directory/departments.json`. All Liliw
       municipal offices and emergency contacts configured. Los Baños records
       removed.
-- [ ] **Executive** — `src/data/directory/executive.json`. Mayor, Vice Mayor,
-      department heads
-- [ ] **Legislative** — `src/data/directory/legislative.json`. Sangguniang Bayan
-      members
+- [x] **Executive** — `src/data/directory/executive.json`. Liliw Mayor, Vice
+      Mayor, and department heads configured. Los Baños records removed.
+- [x] **Legislative** — `src/data/directory/legislative.json`. Liliw
+      Sangguniang Bayan councilors and permanent committees configured.
+      Los Baños records removed.
 - [ ] **Keep the existing shape** — there is no JSON schema for the directory
       files (`src/data/schema/` only covers SEO metadata and service categories),
       so match the field names in the template's records rather than inventing

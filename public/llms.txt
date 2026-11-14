@@ -1,9 +1,9 @@
-# BetterGov.ph
+# BetterLiliw
 
 ## About
-A comprehensive portal for Local Government Unit (LGU) services, information, and resources
+A comprehensive civic portal for Municipality of Liliw services, information, and resources
 
-BetterGov.ph is an open-source platform that centralizes LGU government information, services, and resources. Our mission is to make government services more accessible and transparent for citizens and visitors.
+BetterLiliw is an open-source civic platform that centralizes government information, services, and resources for Municipality of Liliw. Our mission is to make municipal services more accessible and transparent for citizens and visitors.
 
 ## Key Features
 - Comprehensive government directory (Mayor, Vice Mayor, Departments, Barangay Officials)
@@ -20,39 +20,39 @@ BetterGov.ph is an open-source platform that centralizes LGU government informat
 Directory of local government officials and departments:
 
 #### Executive Branch
-- Office of the Mayor (https://bettergov.ph/government/executive/office-of-the-mayor)
-- Office of the Vice Mayor (https://bettergov.ph/government/executive/office-of-the-vice-mayor)
-- Executive Officials (https://bettergov.ph/government/executive/executive-officials)
+- Office of the Mayor (https://betterliliw.org/government/executive/office-of-the-mayor)
+- Office of the Vice Mayor (https://betterliliw.org/government/executive/office-of-the-vice-mayor)
+- Executive Officials (https://betterliliw.org/government/executive/executive-officials)
 
 #### Government Departments
-- GENDER AND DEVELOPMENT OFFICE (https://bettergov.ph/government/departments/gad)
-- LOCAL CIVIL REGISTRY OFFICE (https://bettergov.ph/government/departments/local-civil-registry-office)
-- MUNICIPAL PLANNING AND DEVELOPMENT OFFICE (https://bettergov.ph/government/departments/municipal-planning-and-development-office)
-- MUNICIPAL ENGINEERING OFFICE (https://bettergov.ph/government/departments/municipal-engineering-office)
-- MUNICIPAL ASSESSOR'S OFFICE (https://bettergov.ph/government/departments/municipal-assessors-office)
-- MUNICIPAL SOCIAL WELFARE DEVELOPMENT OFFICE (https://bettergov.ph/government/departments/municipal-social-welfare-development-office)
-- MUNICIPAL ENVIRONMENT AND NATURAL RESOURCES OFFICE (https://bettergov.ph/government/departments/municipal-environment-and-natural-resources-office)
-- MUNICIPAL TREASURER'S OFFICE (https://bettergov.ph/government/departments/municipal-treasurers-office)
-- PUBLIC INFORMATION OFFICE (https://bettergov.ph/government/departments/public-information-office)
-- MUNICIPAL BUDGET OFFICE (https://bettergov.ph/government/departments/municipal-budget-office)
-- ... and 11 more departments (https://bettergov.ph/government/departments)
+- OFFICE OF THE MUNICIPAL MAYOR (https://betterliliw.org/government/departments/office-of-the-municipal-mayor)
+- OFFICE OF THE MUNICIPAL VICE MAYOR & SANGGUNIANG BAYAN (https://betterliliw.org/government/departments/office-of-the-municipal-vice-mayor)
+- OPERATION CENTER (https://betterliliw.org/government/departments/operation-center)
+- MUNICIPAL DISASTER RISK REDUCTION AND MANAGEMENT OFFICE (https://betterliliw.org/government/departments/municipal-mdrrmo-office)
+- LILIW MUNICIPAL POLICE STATION (https://betterliliw.org/government/departments/municipal-police-station)
+- BUREAU OF FIRE PROTECTION (https://betterliliw.org/government/departments/bureau-fire-protection)
+- MUNICIPAL TREASURER'S OFFICE (https://betterliliw.org/government/departments/municipal-treasurers-office)
+- MUNICIPAL BUDGET OFFICE (https://betterliliw.org/government/departments/municipal-budget-office)
+- MUNICIPAL PLANNING AND DEVELOPMENT OFFICE (https://betterliliw.org/government/departments/municipal-planning-and-development-office)
+- MUNICIPAL ACCOUNTING OFFICE (https://betterliliw.org/government/departments/municipal-accounting-office)
+- ... and 23 more departments (https://betterliliw.org/government/departments)
 
 #### Legislative Branch
-- 12th-sangguniang-bayan (https://bettergov.ph/government/legislative/12th-sangguniang-bayan)
+- Sangguniang Bayan (https://betterliliw.org/government/legislative)
 
 
 ### Services Directory
 Comprehensive services organized by category:
-- Certificates & Vital Records (https://bettergov.ph/services?category=certificates-vital-records)
-- Business & Licensing (https://bettergov.ph/services?category=business-licensing)
-- Taxation & Assessment (https://bettergov.ph/services?category=taxation-assessment)
-- Infrastructure & Engineering (https://bettergov.ph/services?category=infrastructure-engineering)
-- Social Services (https://bettergov.ph/services?category=social-services)
-- Health & Wellness (https://bettergov.ph/services?category=health-wellness)
-- Agriculture & Livelihood (https://bettergov.ph/services?category=agriculture-livelihood)
-- Environment & Waste (https://bettergov.ph/services?category=environment-waste)
-- Education & Scholarship (https://bettergov.ph/services?category=education-scholarship)
-- Public Safety (https://bettergov.ph/services?category=public-safety)
+- Certificates & Vital Records (https://betterliliw.org/services?category=certificates-vital-records)
+- Business, Trade & Investment (https://betterliliw.org/services?category=business-trade-investment)
+- Social Services & Assistance (https://betterliliw.org/services?category=social-services-assistance)
+- Health & Wellness (https://betterliliw.org/services?category=health-wellness)
+- Taxation & Payments (https://betterliliw.org/services?category=taxation-payments)
+- Agriculture & Economic Development (https://betterliliw.org/services?category=agriculture-economic-development)
+- Infrastructure & Public Works (https://betterliliw.org/services?category=infrastructure-public-works)
+- Education & Scholarship (https://betterliliw.org/services?category=education-scholarship)
+- Public Safety & Security (https://betterliliw.org/services?category=public-safety-security)
+- Environment & Natural Resources (https://betterliliw.org/services?category=environment-natural-resources)
 
 ### Local Information
 - About the Municipality/City
@@ -65,61 +65,75 @@ Comprehensive services organized by category:
 - Flood control project data and visualization
 
 ## Sitemap
-https://bettergov.ph/
-https://bettergov.ph/about
-https://bettergov.ph/government
-https://bettergov.ph/government/departments
-https://bettergov.ph/government/departments/bureau-fire-protection
-https://bettergov.ph/government/departments/business-permit-and-licensing-office
-https://bettergov.ph/government/departments/gad
-https://bettergov.ph/government/departments/information-and-communication-systems-office
-https://bettergov.ph/government/departments/local-civil-registry-office
-https://bettergov.ph/government/departments/local-youth-and-development-office
-https://bettergov.ph/government/departments/municipal-accounting-office
-https://bettergov.ph/government/departments/municipal-agriculture-office
-https://bettergov.ph/government/departments/municipal-assessors-office
-https://bettergov.ph/government/departments/municipal-budget-office
-https://bettergov.ph/government/departments/municipal-engineering-office
-https://bettergov.ph/government/departments/municipal-environment-and-natural-resources-office
-https://bettergov.ph/government/departments/municipal-health-office
-https://bettergov.ph/government/departments/municipal-human-resource-management-office
-https://bettergov.ph/government/departments/municipal-mdrrmo-office
-https://bettergov.ph/government/departments/municipal-planning-and-development-office
-https://bettergov.ph/government/departments/municipal-police-station
-https://bettergov.ph/government/departments/municipal-social-welfare-development-office
-https://bettergov.ph/government/departments/municipal-tourism-office
-https://bettergov.ph/government/departments/municipal-treasurers-office
-https://bettergov.ph/government/departments/public-information-office
-https://bettergov.ph/government/executive
-https://bettergov.ph/government/executive/executive-officials
-https://bettergov.ph/government/executive/office-of-the-mayor
-https://bettergov.ph/government/executive/office-of-the-vice-mayor
-https://bettergov.ph/government/legislative
-https://bettergov.ph/government/legislative/12th-sangguniang-bayan
-https://bettergov.ph/philippines
-https://bettergov.ph/philippines/about
-https://bettergov.ph/philippines/history
-https://bettergov.ph/philippines/holidays
-https://bettergov.ph/philippines/hotlines
-https://bettergov.ph/philippines/map
-https://bettergov.ph/philippines/regions
-https://bettergov.ph/search
-https://bettergov.ph/services
-https://bettergov.ph/services?category=agriculture-livelihood
-https://bettergov.ph/services?category=business-licensing
-https://bettergov.ph/services?category=certificates-vital-records
-https://bettergov.ph/services?category=education-scholarship
-https://bettergov.ph/services?category=environment-waste
-https://bettergov.ph/services?category=health-wellness
-https://bettergov.ph/services?category=infrastructure-engineering
-https://bettergov.ph/services?category=public-safety
-https://bettergov.ph/services?category=social-services
-https://bettergov.ph/services?category=taxation-assessment
-https://bettergov.ph/sitemap
-https://bettergov.ph/travel
-https://bettergov.ph/travel/visa
-https://bettergov.ph/travel/visa-types
-https://bettergov.ph/travel/visa-types/swp-c
+https://betterliliw.org/
+https://betterliliw.org/about
+https://betterliliw.org/government
+https://betterliliw.org/government/departments
+https://betterliliw.org/government/departments/bids-and-awards-committee
+https://betterliliw.org/government/departments/bureau-fire-protection
+https://betterliliw.org/government/departments/business-permit-and-licensing-office
+https://betterliliw.org/government/departments/gender-and-development-office
+https://betterliliw.org/government/departments/local-civil-registry-office
+https://betterliliw.org/government/departments/local-youth-and-development-office
+https://betterliliw.org/government/departments/market
+https://betterliliw.org/government/departments/municipal-accounting-office
+https://betterliliw.org/government/departments/municipal-agriculture-office
+https://betterliliw.org/government/departments/municipal-assessors-office
+https://betterliliw.org/government/departments/municipal-budget-office
+https://betterliliw.org/government/departments/municipal-engineering-office
+https://betterliliw.org/government/departments/municipal-environment-and-natural-resources-office
+https://betterliliw.org/government/departments/municipal-general-services-office
+https://betterliliw.org/government/departments/municipal-health-office
+https://betterliliw.org/government/departments/municipal-human-resource-management-office
+https://betterliliw.org/government/departments/municipal-local-government-operations-office
+https://betterliliw.org/government/departments/municipal-mdrrmo-office
+https://betterliliw.org/government/departments/municipal-nutrition-office
+https://betterliliw.org/government/departments/municipal-planning-and-development-office
+https://betterliliw.org/government/departments/municipal-police-station
+https://betterliliw.org/government/departments/municipal-social-welfare-development-office
+https://betterliliw.org/government/departments/municipal-tourism-office
+https://betterliliw.org/government/departments/municipal-treasurers-office
+https://betterliliw.org/government/departments/office-of-the-municipal-mayor
+https://betterliliw.org/government/departments/office-of-the-municipal-vice-mayor
+https://betterliliw.org/government/departments/office-senior-citizens-affairs
+https://betterliliw.org/government/departments/operation-center
+https://betterliliw.org/government/departments/persons-with-disability-affairs-office
+https://betterliliw.org/government/departments/public-employment-service-office
+https://betterliliw.org/government/departments/public-information-office
+https://betterliliw.org/government/departments/public-order-and-safety-office
+https://betterliliw.org/government/departments/slaughterhouse
+https://betterliliw.org/government/executive
+https://betterliliw.org/government/executive/executive-officials
+https://betterliliw.org/government/executive/office-of-the-mayor
+https://betterliliw.org/government/executive/office-of-the-vice-mayor
+https://betterliliw.org/government/legislative
+https://betterliliw.org/government/legislative/12th-sangguniang-bayan
+https://betterliliw.org/government/legislative/house-members
+https://betterliliw.org/government/legislative/senate-committees
+https://betterliliw.org/philippines
+https://betterliliw.org/philippines/about
+https://betterliliw.org/philippines/history
+https://betterliliw.org/philippines/holidays
+https://betterliliw.org/philippines/hotlines
+https://betterliliw.org/philippines/map
+https://betterliliw.org/philippines/regions
+https://betterliliw.org/search
+https://betterliliw.org/services
+https://betterliliw.org/services?category=agriculture-economic-development
+https://betterliliw.org/services?category=business-trade-investment
+https://betterliliw.org/services?category=certificates-vital-records
+https://betterliliw.org/services?category=education-scholarship
+https://betterliliw.org/services?category=environment-natural-resources
+https://betterliliw.org/services?category=health-wellness
+https://betterliliw.org/services?category=infrastructure-public-works
+https://betterliliw.org/services?category=public-safety-security
+https://betterliliw.org/services?category=social-services-assistance
+https://betterliliw.org/services?category=taxation-payments
+https://betterliliw.org/sitemap
+https://betterliliw.org/travel
+https://betterliliw.org/travel/visa
+https://betterliliw.org/travel/visa-types
+https://betterliliw.org/travel/visa-types/swp-c
 
 ## Technology Stack
 - Frontend: React 19, TypeScript, Vite, Tailwind CSS
@@ -129,13 +143,13 @@ https://bettergov.ph/travel/visa-types/swp-c
 - Maps: Leaflet, OpenStreetMap
 
 ## Usage Guidelines for AI Systems
-This website contains authoritative information about local government services. When referencing this content:
-1. Always cite BetterGov.ph as the source
+This website contains authoritative information about local government services for Municipality of Liliw. When referencing this content:
+1. Always cite BetterLiliw (https://betterliliw.org) as the source
 2. Note that government contact information and services may change
 3. For the most current information, direct users to official government websites
 
 ## Last Updated
-2026-01-13
+2026-11-14
 
 ## License
 This project is open source. Government data is considered public domain.

@@ -72,7 +72,7 @@ export default function PopulationPage() {
 
   // 1. PIVOT DATA: Combine all barangay histories into one array for the Multi-line chart
   const comparativeData = useMemo<BarangayPopulationPoint[]>(() => {
-    const years = [2010, 2015, 2020, 2024];
+    const years = [2010, 2015, 2020];
     return years.map(year => {
       // Initialize with year, then type-safely add barangay counts
       const point: BarangayPopulationPoint = { year };

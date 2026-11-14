@@ -1,6 +1,6 @@
-# BetterLB Architecture
+# BetterLiliw Architecture
 
-High-level architecture overview for developers working on BetterLB.
+High-level architecture overview for developers working on BetterLiliw.
 
 ---
 
@@ -172,11 +172,11 @@ Component testing for complex UI components.
 
 ## Deployment
 
-### Production (BetterLB)
+### Production (BetterLiliw)
 - **Platform:** Cloudflare Pages
-- **Database:** D1 `betterlb_openlgu`
+- **Database:** D1 `betterliliw-openlgu`
 - **Search:** Self-hosted Meilisearch
-- **Domain:** betterlb.org
+- **Domain:** betterliliw.org
 - **Wrangler:** 4.70.0 (pinned for compatibility)
 
 ### For Other LGUs

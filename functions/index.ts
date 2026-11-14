@@ -16,6 +16,9 @@ export { scheduled as scheduled_getWeather } from './api/weather';
  * Restricts API access to trusted origins only (security fix for T-059)
  */
 const ALLOWED_ORIGINS = [
+  'https://betterliliw.org',
+  'https://www.betterliliw.org',
+  'https://betterliliw.pages.dev',
   'https://betterlb.pages.dev',
   'https://betterlb.gov.ph', // Custom domain if configured
   'http://localhost:5173', // Vite dev server

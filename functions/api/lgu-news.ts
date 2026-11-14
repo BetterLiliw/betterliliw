@@ -1,8 +1,8 @@
 /**
  * LGU News API
- * GET /api/lgu-news - Scrapes losbanos.gov.ph homepage for recent news posts
+ * GET /api/lgu-news - Scrapes betterliliw.org homepage for recent news posts
  *
- * Extracts the 3 most recent posts from the Los Baños LGU website homepage.
+ * Extracts the 3 most recent posts from the Liliw LGU website homepage.
  * Uses KV caching with 15-minute TTL and rate limiting (30 requests/minute).
  */
 import { createKVCache, CACHE_TTL } from '../utils/kv-cache';
@@ -44,7 +44,7 @@ async function fetchAndParse(): Promise<LGUNewsResponse> {
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), 10000);
 
-    const response = await fetch('https://losbanos.gov.ph/', {
+    const response = await fetch('https://betterliliw.org/', {
       signal: controller.signal,
     });
     clearTimeout(timeoutId);
@@ -116,10 +116,10 @@ async function fetchAndParse(): Promise<LGUNewsResponse> {
 
       // Prepend base URL to relative paths
       if (url.startsWith('/')) {
-        url = 'https://losbanos.gov.ph' + url;
+        url = 'https://betterliliw.org' + url;
       }
       if (imageUrl.startsWith('/')) {
-        imageUrl = 'https://losbanos.gov.ph' + imageUrl;
+        imageUrl = 'https://betterliliw.org' + imageUrl;
       }
 
       posts.push({
@@ -133,7 +133,7 @@ async function fetchAndParse(): Promise<LGUNewsResponse> {
 
     return {
       posts,
-      source: 'losbanos.gov.ph',
+      source: 'betterliliw.org',
       cached: false,
     };
   } catch (error) {
@@ -144,7 +144,7 @@ async function fetchAndParse(): Promise<LGUNewsResponse> {
 
 /**
  * GET /api/lgu-news
- * Returns the 3 most recent news posts from losbanos.gov.ph
+ * Returns the 3 most recent news posts from betterliliw.org
  */
 export async function onRequestGet(context: {
   request: Request;

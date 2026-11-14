@@ -8,17 +8,16 @@ template and is still being customised, so you do not need to write code to help
 
 ### Where help is most needed
 
-The portal's structure works; its **content is still the template's**. The most
-valuable contributions right now are Liliw's own data:
+BetterLiliw's core Liliw data is now in place — including all 33 barangays (`src/data/directory/barangays.json`), municipal departments and executive/legislative officials (`src/data/directory/`), Citizens Charter & municipal services (`src/data/services/`, `src/data/citizens-charter/`), local emergency hotlines (`src/data/philippines_hotlines.json`), Liliw history (`src/data/about/`), official PSA population census records (`src/data/statistics/population.json`), and bilingual copy/branding (`public/locales/`, `public/logos/`).
 
-- **Barangay directory** — Liliw's 33 barangays (`src/data/directory/barangays.json`)
-- **Departments and officials** — municipal offices, contact details, the executive and Sangguniang Bayan rosters (`src/data/directory/`)
-- **Services and Citizens Charter** — requirements, fees, and steps for municipal services (`src/data/services/`, `src/data/citizens-charter/`)
-- **Copy** — the hero and footer strings in `public/locales/en/common.json` and `public/locales/fil/common.json`
-- **Logos and branding** — Liliw assets to replace the template's in `public/logos/`
+Ongoing community contributions are most valuable for:
 
-See the Current Status table in the [README](./README.md#-current-status) for what
-is done and what is still inherited from the template. Data contributions do not
+- **Service verification** — keeping municipal Citizens Charter fees, processing times, and office hours verified (`src/data/citizens-charter/`, `src/data/services/`)
+- **Barangay-level contacts & programs** — enriching barangay captain rosters, SK chairs, and health center schedules across all 33 barangays
+- **Financial & CMCI datasets** — importing full multi-quarter BLGF eSRE spreadsheets (`src/data/transparency/sre.json`, `src/data/statistics/ari.json`) and historical CMCI indicator tables (`src/data/statistics/cmci.json`)
+- **Ordinances & resolutions** — adding verified Sangguniang Bayan records to OpenLGU
+
+See the Current Status table in the [README](./README.md#-current-status) for details. Data contributions do not
 require any JavaScript — they are JSON files, and an issue with a source link is
 just as welcome as a pull request.
 
@@ -119,7 +118,7 @@ nvm use  # or fnm use
 npm install
 
 # Prepare data files
-python3 scripts/merge_services.py
+npm run merge:services
 
 # Start dev server
 npm run dev
@@ -216,7 +215,7 @@ export default function PageName() {
 ### Adding a New Service
 
 1. Update service data in `src/data/citizens-charter/`
-2. Run `python3 scripts/merge_services.py`
+2. Run `npm run merge:services` (or `python scripts/merge_services.py`)
 3. Test the service detail page
 
 ### Adding a New Page
@@ -268,7 +267,7 @@ Closes #123
 
 - **Issues:** [github.com/BetterLiliw/betterliliw/issues](https://github.com/BetterLiliw/betterliliw/issues)
 - **Maintainers:** [@Kiko915](https://github.com/Kiko915), [@johnchristiancoronacion](https://github.com/johnchristiancoronacion)
-- **Live Site:** not launched yet
+- **Live Site:** [betterliliw.org](https://betterliliw.org)
 - **Template questions:** for issues with the underlying platform rather than Liliw's
   content, see the upstream
   [BetterLB discussions](https://github.com/BetterLosBanos/betterlb/discussions)

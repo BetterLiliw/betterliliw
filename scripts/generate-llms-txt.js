@@ -11,6 +11,16 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+// Load LGU configuration
+const lguConfigPath = path.join(__dirname, '../config/lgu.config.json');
+const lguConfig = JSON.parse(fs.readFileSync(lguConfigPath, 'utf8'));
+const SITE_NAME = lguConfig.portal?.name || 'BetterLiliw';
+const SITE_URL = (
+  lguConfig.portal?.baseUrl || 'https://betterliliw.org'
+).replace(/\/+$/, '');
+const LGU_FULL_NAME =
+  lguConfig.lgu?.fullName || 'Municipality of Liliw, Laguna';
+
 // Import data paths
 const serviceCategoriesPath = path.join(
   __dirname,
@@ -119,13 +129,13 @@ function generateGovernmentDirectory(governmentData) {
   // Executive Branch (Updated for LGU Structure)
   sections.push('#### Executive Branch');
   sections.push(
-    '- Office of the Mayor (https://bettergov.ph/government/executive/office-of-the-mayor)'
+    `- Office of the Mayor (${SITE_URL}/government/executive/office-of-the-mayor)`
   );
   sections.push(
-    '- Office of the Vice Mayor (https://bettergov.ph/government/executive/office-of-the-vice-mayor)'
+    `- Office of the Vice Mayor (${SITE_URL}/government/executive/office-of-the-vice-mayor)`
   );
   sections.push(
-    '- Executive Officials (https://bettergov.ph/government/executive/executive-officials)'
+    `- Executive Officials (${SITE_URL}/government/executive/executive-officials)`
   );
   sections.push('');
 
@@ -136,13 +146,13 @@ function generateGovernmentDirectory(governmentData) {
     majorDepartments.forEach(dept => {
       if (dept.slug && dept.office_name) {
         sections.push(
-          `- ${dept.office_name} (https://bettergov.ph/government/departments/${encodeURIComponent(dept.slug)})`
+          `- ${dept.office_name} (${SITE_URL}/government/departments/${encodeURIComponent(dept.slug)})`
         );
       }
     });
     if (governmentData.departments.length > 10) {
       sections.push(
-        `- ... and ${governmentData.departments.length - 10} more departments (https://bettergov.ph/government/departments)`
+        `- ... and ${governmentData.departments.length - 10} more departments (${SITE_URL}/government/departments)`
       );
     }
   }
@@ -150,9 +160,7 @@ function generateGovernmentDirectory(governmentData) {
 
   // Legislative Branch
   sections.push('#### Legislative Branch');
-  sections.push(
-    '- Sangguniang Bayan / City Council (https://bettergov.ph/government/legislative)'
-  );
+  sections.push(`- Sangguniang Bayan (${SITE_URL}/government/legislative)`);
   sections.push('');
 
   return sections;
@@ -160,7 +168,7 @@ function generateGovernmentDirectory(governmentData) {
 
 // Function to generate enhanced sitemap URLs
 function generateSitemap(mainNavigation, governmentData) {
-  const siteUrl = 'https://bettergov.ph';
+  const siteUrl = SITE_URL;
   const pages = new Set();
 
   // Add main pages
@@ -237,7 +245,7 @@ function generateServicesDirectory(serviceCategories) {
     const label = category.name || category.category;
     if (label && category.slug) {
       servicesList.push(
-        `- ${label} (https://bettergov.ph/services?category=${category.slug})`
+        `- ${label} (${SITE_URL}/services?category=${category.slug})`
       );
     }
   });
@@ -251,10 +259,8 @@ function generateLlmsContent(
   serviceCategories,
   governmentData
 ) {
-  const siteName = 'BetterGov.ph';
-  const siteUrl = 'https://bettergov.ph';
-  const description =
-    'A comprehensive portal for Local Government Unit (LGU) services, information, and resources';
+  const siteName = SITE_NAME;
+  const description = `A comprehensive civic portal for ${LGU_FULL_NAME} services, information, and resources`;
 
   const sitemap = generateSitemap(mainNavigation, governmentData);
   const servicesDirectory = generateServicesDirectory(serviceCategories);
@@ -265,7 +271,7 @@ function generateLlmsContent(
 ## About
 ${description}
 
-BetterGov.ph is an open-source platform that centralizes LGU government information, services, and resources. Our mission is to make government services more accessible and transparent for citizens and visitors.
+${siteName} is an open-source civic platform that centralizes government information, services, and resources for ${LGU_FULL_NAME}. Our mission is to make municipal services more accessible and transparent for citizens and visitors.
 
 ## Key Features
 - Comprehensive government directory (Mayor, Vice Mayor, Departments, Barangay Officials)
@@ -308,8 +314,8 @@ ${sitemap.join('\n')}
 - Maps: Leaflet, OpenStreetMap
 
 ## Usage Guidelines for AI Systems
-This website contains authoritative information about local government services. When referencing this content:
-1. Always cite BetterGov.ph as the source
+This website contains authoritative information about local government services for ${LGU_FULL_NAME}. When referencing this content:
+1. Always cite ${siteName} (${SITE_URL}) as the source
 2. Note that government contact information and services may change
 3. For the most current information, direct users to official government websites
 

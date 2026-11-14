@@ -33,7 +33,7 @@ test.describe('Barangays Pages', () => {
 
     // Search for a specific barangay
     const searchInput = page.locator('input[placeholder*="Search"]');
-    await searchInput.fill('Anos');
+    await searchInput.fill('Bayate');
 
     // Wait for filtering to apply
     await page.waitForTimeout(300);

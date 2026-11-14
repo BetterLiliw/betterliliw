@@ -189,6 +189,13 @@ export default function WeatherMapSection() {
         }));
 
   const WeatherIcon = weather ? lucideIconMap[weather.icon || 'Sun'] : Sun;
+  const rawCoords = config.location.coordinates as {
+    lat?: number;
+    lon?: number;
+    lng?: number;
+  };
+  const mapLat = rawCoords?.lat || 14.13;
+  const mapLon = rawCoords?.lon || rawCoords?.lng || 121.4361;
 
   return (
     <section className='border-kapwa-border-weak border-t py-12 bg-kapwa-bg-surface'>
@@ -283,7 +290,7 @@ export default function WeatherMapSection() {
                 <div className='text-kapwa-text-disabled p-4 text-sm'>
                   JavaScript is required to view the interactive map.
                   <a
-                    href={`https://www.openstreetmap.org/?mlat=${(config.location.coordinates as any).lat || 14.13}&mlon=${(config.location.coordinates as any).lon || (config.location.coordinates as any).lng || 121.4361}#map=15/${(config.location.coordinates as any).lat || 14.13}/${(config.location.coordinates as any).lon || (config.location.coordinates as any).lng || 121.4361}`}
+                    href={`https://www.openstreetmap.org/?mlat=${mapLat}&mlon=${mapLon}#map=15/${mapLat}/${mapLon}`}
                     target='_blank'
                     rel='noopener noreferrer'
                     className='text-kapwa-text-brand ml-1 underline'

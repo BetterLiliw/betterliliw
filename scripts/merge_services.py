@@ -21,9 +21,13 @@ def merge_services():
 
     # Format with Prettier to match project style
     try:
-        subprocess.run(['npx', 'prettier', '--write', output_file], check=True)
+        subprocess.run(
+            ['npx', 'prettier', '--write', output_file],
+            check=True,
+            shell=(os.name == 'nt'),
+        )
         print(f"Successfully merged and formatted {len(combined)} services into one file.")
-    except subprocess.CalledProcessError:
+    except (subprocess.CalledProcessError, FileNotFoundError):
         print(f"Successfully merged {len(combined)} services into one file (Prettier formatting skipped).")
 
 if __name__ == "__main__":

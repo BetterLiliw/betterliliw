@@ -1,6 +1,30 @@
 {
   "emergencyHotlines": [
     {
+      "name": "Liliw MDRRMO (Disaster & Rescue)",
+      "category": "Emergency",
+      "numbers": ["(049) 503-3621", "0945-135-0537", "0948-938-1301"],
+      "description": "Municipal Disaster Risk Reduction and Management Office - Liliw, Laguna"
+    },
+    {
+      "name": "Liliw Municipal Police Station (PNP)",
+      "category": "Security",
+      "numbers": ["(049) 563-1114", "0906-360-4119", "0998-598-5647"],
+      "description": "Philippine National Police - Liliw MPS"
+    },
+    {
+      "name": "Liliw Fire Station (BFP)",
+      "category": "Emergency",
+      "numbers": ["(049) 503-3175", "0956-769-0379", "0961-722-8127"],
+      "description": "Bureau of Fire Protection - Liliw Fire Station"
+    },
+    {
+      "name": "Liliw Municipal Hall / Rural Health Unit",
+      "category": "Emergency",
+      "numbers": ["(049) 563-1001"],
+      "description": "Municipality of Liliw Main Trunkline and Municipal Health Office"
+    },
+    {
       "name": "National Emergency Hotline",
       "category": "Emergency",
       "numbers": ["911"],
@@ -163,6 +187,24 @@
     }
   ],
   "criticalHotlines": [
+    {
+      "name": "Liliw MDRRMO (Disaster & Rescue)",
+      "category": "Emergency",
+      "numbers": ["(049) 503-3621", "0945-135-0537", "0948-938-1301"],
+      "description": "Municipal Disaster Risk Reduction and Management Office - Liliw, Laguna"
+    },
+    {
+      "name": "Liliw Municipal Police Station (PNP)",
+      "category": "Security",
+      "numbers": ["(049) 563-1114", "0906-360-4119", "0998-598-5647"],
+      "description": "Philippine National Police - Liliw MPS"
+    },
+    {
+      "name": "Liliw Fire Station (BFP)",
+      "category": "Emergency",
+      "numbers": ["(049) 503-3175", "0956-769-0379", "0961-722-8127"],
+      "description": "Bureau of Fire Protection - Liliw Fire Station"
+    },
     {
       "name": "National Emergency Hotline",
       "category": "Emergency",

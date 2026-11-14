@@ -37,30 +37,29 @@ Transparency, and Statistics. Tourism is currently off.
 
 ## 📋 Current Status
 
-The portal identity, branding, SEO metadata, and configuration are set for Liliw.
-The municipal **content** is not yet Liliw's. Outstanding work:
+The portal identity, branding, SEO metadata, configuration, and core municipal datasets are set for Liliw. Status summary:
 
 | Area | State |
 |------|-------|
 | `config/lgu.config.json` | ✅ Liliw |
 | SEO metadata, page titles, navbar | ✅ Liliw |
-| `src/data/directory/barangays.json` | ❌ still the template's 14 Los Baños barangays — needs Liliw's 33 |
-| `src/data/directory/departments.json` | ❌ still template data |
-| `src/data/directory/executive.json`, `legislative.json` | ❌ still template data |
-| `public/locales/{en,fil}/common.json` | ❌ hero copy still reads "Welcome to BetterLB" |
-| `public/logos/` | ⚠️ Liliw brand assets added (`betterliliw-*`); `navbarLogoPath` / `logoWhitePath` still point at non-existent `liliw-*` files |
+| `src/data/directory/barangays.json` | ✅ Liliw (all 33 barangays populated) |
+| `src/data/directory/departments.json` | ✅ Liliw municipal departments & emergency numbers |
+| `src/data/directory/executive.json`, `legislative.json` | ✅ Liliw Mayor, Vice Mayor, Department Heads & Sangguniang Bayan |
+| `public/locales/{en,fil}/common.json` | ✅ Liliw copy ("Welcome to BetterLiliw") |
+| `public/logos/` | ✅ Liliw brand assets (`betterliliw-*`) configured in `config/lgu.config.json` |
 | Favicon, web manifest, OG image | ✅ Liliw |
 | Holding page + `VITE_COMING_SOON` gate | ✅ live |
-| `src/data/services/`, `citizens-charter/`, `statistics/` | ❌ still template data |
-| Domain | ✅ `betterliliw.org` registered, nameservers on Cloudflare, HTTPS live (`www` subdomain not yet bound) |
-| Deployment (`wrangler.jsonc`) | ✅ Cloudflare Pages project `betterliliw`, with its own D1 and KV |
-| `public/sitemap.xml` | ❌ still lists bettergov.ph URLs — needs regenerating |
-| CI auto-deploy | ❌ GitHub Actions secrets unset; deploys are manual for now |
+| `src/data/about/`, `philippines_hotlines.json` | ✅ Liliw history, highlights & local MDRRMO/PNP/BFP/RHU hotlines |
+| `src/data/services/`, `citizens-charter/` | ✅ Liliw public services & Citizens Charter metadata |
+| `src/data/statistics/population.json` | ✅ Liliw PSA census totals (1960–2024) & 33 barangays (2010–2020) |
+| `ari.json`, `sre.json`, `cmci.json` | ⚠️ Liliw metadata & 2024 DTI CMCI headline scores; detailed multi-quarter BLGF eSRE/CMCI tables pending official spreadsheet import |
+| Domain | ✅ `betterliliw.org` registered, nameservers on Cloudflare, HTTPS live |
+| Deployment (`wrangler.jsonc`) | ✅ Cloudflare Pages project `betterliliw`, D1 `betterliliw-openlgu` & `WEATHER_KV` |
+| `public/sitemap.xml`, `public/llms.txt` | ✅ Regenerated for `https://betterliliw.org` |
+| CI auto-deploy | ⏳ Ready once GitHub Actions Cloudflare secrets are configured |
 
-Those ❌ rows are why the portal is gated. Publishing them would put another
-municipality's contact details under Liliw's name, so every route serves the holding
-page until the data is replaced. **Do not turn off `VITE_COMING_SOON` while any ❌ row
-above remains.**
+> Note: Keep `VITE_COMING_SOON` enabled until full multi-quarter BLGF eSRE spreadsheets (`ari.json`, `sre.json`), historical CMCI indicator tables, and Meilisearch credentials are imported and reviewed.
 
 ---
 
@@ -208,17 +207,18 @@ betterliliw/
 
 ### Liliw-Specific Data
 
-Structured data lives in the following places. Rows marked ❌ still hold the
-upstream template's Los Baños data and are pending replacement:
+Structured data lives in the following places:
 
-| Data Type | Location | Description |
-|-----------|----------|-------------|
-| **Departments** ❌ | `/src/data/directory/departments.json` | Municipal departments and offices with contact info |
-| **Barangays** ❌ | `/src/data/directory/barangays.json` | Barangay profiles and officials — Liliw has 33 |
-| **Services** ❌ | `/src/data/services/categories/*.json` | Public services by category (BPLO, Assessor, Engineering, etc.) |
-| **Citizens Charter** ❌ | `/src/data/citizens-charter/citizens-charter.json` | Service requirements, fees, and client steps |
-| **Legislation** | Cloudflare D1 Database | Ordinances, resolutions, executive orders (no Liliw database provisioned yet) |
-| **Statistics** ❌ | `/src/data/statistics/` | Municipal demographics and indicators |
+| Data Type | Location | Status & Description |
+|-----------|----------|----------------------|
+| **Departments** | `/src/data/directory/departments.json` | ✅ Liliw — Municipal departments, offices, and emergency contacts |
+| **Barangays** | `/src/data/directory/barangays.json` | ✅ Liliw — All 33 barangays of Liliw |
+| **Executive & Legislative** | `/src/data/directory/{executive,legislative}.json` | ✅ Liliw — Mayor, Vice Mayor, Department Heads & Sangguniang Bayan |
+| **About & Hotlines** | `/src/data/about/`, `/src/data/philippines_hotlines.json` | ✅ Liliw — Local history milestones, highlights, and emergency numbers |
+| **Services** | `/src/data/services/categories/*.json` | ✅ Liliw — Categorized public services (`schools`, `RHUs`, `OSCA Liliw`, waste schedule) |
+| **Citizens Charter** | `/src/data/citizens-charter/citizens-charter.json` | ✅ Liliw — Service requirements, fees, and client steps |
+| **Legislation** | Cloudflare D1 Database (`betterliliw-openlgu`) | ⏳ Schema migrated; awaiting ingested Liliw Sangguniang Bayan documents |
+| **Statistics & Finance** | `/src/data/statistics/`, `/src/data/transparency/sre.json` | ⚠️ Population & 2024 CMCI pillar scores populated; multi-quarter BLGF eSRE & historical CMCI indicator tables pending official spreadsheet import |
 
 #### Data Pipeline for Legislative Documents
 
@@ -243,9 +243,9 @@ npm install
 ```
 
 ### 2. Prepare Data
-Since the service directory is split into manageable category files, you must merge them before running the app:
+Since the service directory and Citizens Charter are split into modular JSON files, merge them before running or building the app:
 ```bash
-python3 scripts/merge_services.py
+npm run merge:services
 ```
 
 ### 3. Start Development Server
@@ -256,6 +256,7 @@ npm run dev
 
 ### 4. Running Tests
 ```bash
+npx vitest run          # Run unit tests
 npm run test:e2e        # Run all end-to-end tests
 npm run lint            # Check code quality (max warnings = 0)
 npm run format          # Format code with Prettier
@@ -263,10 +264,10 @@ npm run format          # Format code with Prettier
 
 ### 5. Building for Production
 ```bash
-npm run build           # Combines merge_services, TypeScript, and Vite build
+npm run build           # Combines TypeScript, merge:services, generate:sitemap, and Vite build
 ```
 
-**Note:** The build script runs `tsc && npm run merge:data && vite build` automatically
+**Note:** `npm run build` runs `tsc && npm run merge:services && npm run generate:sitemap && vite build` automatically across Windows and Linux/macOS.
 
 ---
 
@@ -287,11 +288,10 @@ President).
 
 ### Departments
 
-The department directory has not yet been populated with Liliw's offices. The
-current contents of `src/data/directory/departments.json` are inherited from the
-upstream template and describe Los Baños, not Liliw. Sourcing Liliw's actual
-department list and contact details is open work — see
-[Current Status](#-current-status).
+The municipal directory is populated for the **Municipality of Liliw**:
+- `src/data/directory/departments.json` lists Liliw's municipal offices, heads, locations, and emergency hotlines
+- `src/data/directory/executive.json` and `src/data/directory/legislative.json` list the Mayor, Vice Mayor, department heads, and Sangguniang Bayan members & committees
+- `src/data/directory/barangays.json` covers all 33 barangays of Liliw
 
 ---
 
@@ -350,20 +350,13 @@ The flag is set on the build step in `deploy.yml` rather than in `.env`, because
 
 ### Deploying
 
-CI deploys are **not working yet** — the `CLOUDFLARE_API_TOKEN` and
-`CLOUDFLARE_ACCOUNT_ID` secrets are unset on both the `production` and `preview`
-environments, and pushes to `main` are currently not triggering workflow runs at all.
-Until that is resolved, deploy manually:
+If CI secrets are not yet configured, you can build and deploy manually:
 
 ```bash
 npx wrangler login                 # once
-npx vite build                     # see note below
+npm run build                      # works cross-platform on Windows and Linux/macOS
 npx wrangler pages deploy dist --project-name=betterliliw
 ```
-
-Use `npx vite build`, not `npm run build`: the full script calls
-`scripts/merge_services.py`, which shells out to `npx` in a way that fails on
-Windows. The merged data files are committed, so skipping that step is safe.
 
 To restore CI, set both secrets on each environment:
 
@@ -372,9 +365,10 @@ gh secret set CLOUDFLARE_API_TOKEN  -R BetterLiliw/betterliliw --env production
 gh secret set CLOUDFLARE_ACCOUNT_ID -R BetterLiliw/betterliliw --env production
 ```
 
-Still outstanding: bind `www.betterliliw.org` as a second custom domain, point
-`.env` at a Meilisearch instance (`VITE_MEILISEARCH_API_KEY`), and regenerate
-`public/sitemap.xml`, which still contains bettergov.ph URLs.
+Still outstanding: bind `www.betterliliw.org` as a second custom domain and
+configure `.env` / Pages environment variables for a Meilisearch instance
+(`VITE_MEILISEARCH_API_KEY`). Both `public/sitemap.xml` and `public/llms.txt`
+are generated from `config/lgu.config.json` for `https://betterliliw.org`.
 
 **Note:** The deployment workflow uses Wrangler 4.70.0 (pinned in both `.github/workflows/deploy.yml` and `package.json`). If upgrading, ensure compatibility with the Wrangler Action and test thoroughly.
 

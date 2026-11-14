@@ -21,12 +21,12 @@ Weather data endpoint with caching.
 **Method:** `GET`
 
 **Query Parameters:**
-- None (uses fixed location: Los Baños)
+- None (uses fixed location: Liliw, Laguna)
 
 **Response:**
 ```json
 {
-  "location": "Los Baños, Laguna",
+  "location": "Liliw, Laguna",
   "temperature": 28,
   "condition": "Partly Cloudy",
   "humidity": 75,

@@ -176,6 +176,7 @@ def map_office_division_to_slug(office_division: str) -> str:
         "MUNICIPAL TOURISM OFFICE": "municipal-tourism-office",
         "MUNICIPAL URBAN DEVELOPMENT AND HOUSING OFFICE": "municipal-urban-development-and-housing-office",
         "PERSON WITH DISABILITY AFFAIRS OFFICE": "persons-with-disability-affairs-office",
+        "PHILIPPINE NATIONAL POLICE (PNP) - LILIW MPS": "municipal-police-station",
         "PHILIPPINE NATIONAL POLICE (PNP) - LOS BAÑOS MPS": "municipal-police-station",
         "PUBLIC EMPLOYMENT SERVICE OFFICE": "public-employment-service-office",
         "SANGGUNIANG BAYAN": "12th-sangguniang-bayan",  # Legislative

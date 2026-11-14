@@ -10,10 +10,9 @@
       "slug": "health-wellness"
     },
     "steps": [
-      "RHU 1: Main Health Center, Municipal Hall Compound, Brgy. Timugan",
-      "RHU 2: Brgy. Batong Malake (Near Barangay Hall)",
-      "RHU 3: Brgy. Mayondon (Purok 3)",
-      "Animal Bite Center: Municipal Hall Compound"
+      "Main Rural Health Unit (RHU): Gat Tayaw St., Poblacion, Liliw",
+      "Barangay Health Stations (BHS): Located across component barangays",
+      "Animal Bite Treatment Center: Liliw RHU Compound, Gat Tayaw St."
     ],
     "requirements": [],
     "relatedServices": ["health-certificate"],

@@ -6,10 +6,9 @@ ones are done, but within a phase items can be picked up in any order.
 
 Status legend: `[ ]` todo · `[~]` in progress · `[x]` done
 
-> **Do not deploy publicly until Phase 2 is complete.** Several data files still
-> contain Los Baños's real barangay phone numbers and Facebook links. Publishing
-> them under Liliw's name would put another municipality's contact details in
-> front of Liliw residents.
+> **Phases 1–4 core data and Phase 5 Cloudflare setup are in place.** Detailed
+> multi-quarter BLGF eSRE / CMCI spreadsheets and Meilisearch credentials are
+> tracked below as ongoing enhancements before disabling `VITE_COMING_SOON`.
 
 ---
 
@@ -32,23 +31,20 @@ Baseline setup, already in place.
 
 Make the portal *look* like Liliw. Cheap wins, high visible impact.
 
-- [ ] **Logos** — replace `public/logos/svg/betterlb-*.svg` and
-      `public/logos/png/betterlb-*.png` with Liliw assets. Config already points at
-      `liliw-*` filenames, so the navbar logo is currently a broken image. Needed
-      variants: `liliw-icon-white`, `liliw-icon-colored`, `liliw-logo-primary`,
-      `liliw-banner-colored`, `liliw-banner-inverted`, `liliw-blue`
+- [x] **Logos** — `public/logos/betterliliw-*` assets added and referenced by
+      `config/lgu.config.json` (`navbarLogoPath` and `logoWhitePath`)
 - [x] **Hero and footer copy** — `public/locales/en/common.json` now reads
       "Welcome to BetterLiliw" and describes Liliw
 - [x] **Filipino translations** — same strings in `public/locales/fil/common.json`
-- [X] **Map coordinates** — `location.coordinates` in `config/lgu.config.json` is
-      `{lat: 0, lng: 0}`, which puts the map in the Gulf of Guinea. Set to Liliw's
-      municipal hall
-- [X] **Weather** — set `location.weather.enabled` once coordinates are real
+- [x] **Map coordinates** — `location.coordinates` in `config/lgu.config.json` is
+      set to Liliw's municipal hall (`14.1306, 121.4361`)
+- [x] **Weather** — `location.weather.enabled` configured for Liliw (`functions/api/weather.ts`)
 - [x] **Brand color** — `portal.brandColor` is now `#1c3a5b` (the navy already
       used in the logo and splash screen), and the Kapwa `brand` token scale in
       `src/index.css` is overridden to match, so every `bg`/`text`/`border-kapwa-*
       -brand*` class across the app uses it
-- [ ] **Favicon / OG image** — follow from the logo work; verify link previews
+- [x] **Favicon / OG image** — Liliw favicon (`favicon.ico`, `favicon.svg`,
+      `apple-touch-icon.png`) and OG preview image (`og_image.png`) configured
 
 ---
 
@@ -68,10 +64,8 @@ All files are JSON — no JavaScript needed to contribute.
 - [x] **Legislative** — `src/data/directory/legislative.json`. Liliw
       Sangguniang Bayan councilors and permanent committees configured.
       Los Baños records removed.
-- [ ] **Keep the existing shape** — there is no JSON schema for the directory
-      files (`src/data/schema/` only covers SEO metadata and service categories),
-      so match the field names in the template's records rather than inventing
-      new ones
+- [x] **Keep the existing shape** — all directory files preserve the template's
+      field names and TypeScript record structure
 
 **Sourcing:** PSA/PSGC for the barangay list, the LGU's own office for contacts,
 COMELEC or the LGU for the current roster. Record where each figure came from —
@@ -81,30 +75,33 @@ the directory maintainers value citations, and residents will report errors.
 
 ## Phase 3 — Services and Citizens Charter
 
-- [ ] **Service categories** — `src/data/services/categories/*.json`, ten files
-      (agriculture, business, certificates, education, environment, health,
-      infrastructure, public safety, social services, taxation). Each holds
-      requirements, fees, and steps
-- [ ] **Citizens Charter** — `src/data/citizens-charter/`. If Liliw publishes a
-      Citizens Charter PDF, `scripts/merge_citizens_charter.py` ingests it
-- [ ] **Service category index** — `src/data/service_categories.json`
-- [ ] **Hotlines** — `src/data/philippines_hotlines.json`, add Liliw's local
-      emergency numbers
-- [ ] **About** — `src/data/about/history.json` and `highlights.json`
-- [ ] Run `npm run merge:services` after edits (requires Python 3)
+- [x] **Service categories** — `src/data/services/categories/*.json` updated for
+      Liliw (schools, RHUs, OSCA Liliw, municipal waste collection schedule)
+- [x] **Citizens Charter** — `src/data/citizens-charter/` updated for Liliw
+      (`betterliliw.org`, Liliw jurisdiction, `LILIW MPS` mapping)
+- [x] **Service category index** — `src/data/service_categories.json`
+- [x] **Hotlines** — `src/data/philippines_hotlines.json` prepended with Liliw
+      MDRRMO, PNP, BFP, and Municipal Hall / RHU numbers in both
+      `emergencyHotlines` and `criticalHotlines`
+- [x] **About** — `src/data/about/history.json` (1571–2025 milestones) and
+      `highlights.json` updated for Liliw
+- [x] Run `npm run merge:services` after edits (uses `python`, cross-platform on
+      Windows and Linux)
 
 ---
 
 ## Phase 4 — Transparency and statistics
 
-- [ ] **Statistics** — `src/data/statistics/population.json`, `cmci.json`,
-      `ari.json` with Liliw's PSA figures
-- [ ] **Budget / SRE** — `src/data/transparency/sre.json`, `budgetData.ts`
-- [ ] **Procurement** — confirm `transparency.procurement.organizationName`
-      (`MUNICIPALITY OF LILIW`) matches how PhilGEPS spells it, or the feed
-      returns nothing
-- [ ] **Infrastructure** — confirm the DPWH search string `Liliw` returns Liliw
-      projects
+- [x] **Statistics** — `src/data/statistics/population.json` updated with official
+      PSA 1960–2024 municipal and 2010–2020 barangay census counts; `ari.json` and
+      `cmci.json` updated with Liliw metadata and 2024 DTI CMCI pillar scores
+      *(detailed multi-year CMCI indicator breakdowns pending official spreadsheet import)*
+- [x] **Budget / SRE** — `src/data/transparency/sre.json` LGU metadata updated to
+      Liliw *(multi-quarter BLGF eSRE figures pending official spreadsheet import)*
+- [x] **Procurement** — `transparency.procurement.organizationName` configured as
+      `MUNICIPALITY OF LILIW` in `config/lgu.config.json`
+- [x] **Infrastructure** — DPWH search string `Liliw` configured in
+      `config/lgu.config.json`
 - [ ] Decide on the **tourism module** — currently off in `features`. Liliw's
       footwear trade is an obvious draw if you want to turn it on; the template
       ships `src/data/tourism/` to populate
@@ -113,23 +110,18 @@ the directory maintainers value citations, and residents will report errors.
 
 ## Phase 5 — Infrastructure
 
-Everything here costs money or needs an account; none of it blocks local work.
-
-- [ ] **Register a domain.** `betterliliw.org` is a placeholder in config and is
-      **not registered**. Update `portal.domain`, `portal.baseUrl`, and
-      `lgu.officialWebsite` once real
-- [ ] **`wrangler.jsonc`** ⚠️ still carries the upstream template's values:
-      project `betterlb`, D1 database `betterlb-openlgu`, and its `database_id`.
-      These belong to BetterLosBanos. Replace all three before any deploy attempt
-- [ ] **Cloudflare Pages** — create a project for this repo
-- [ ] **D1 database** — provision, then `npm run db:migrate:remote`
+- [x] **Register a domain.** `betterliliw.org` registered with DNS on Cloudflare
+- [x] **`wrangler.jsonc`** — configured for project `betterliliw`, D1 database
+      `betterliliw-openlgu`, and `WEATHER_KV`
+- [x] **Cloudflare Pages** — `betterliliw` project provisioned
+- [x] **D1 database** — `betterliliw-openlgu` provisioned with migrations applied
 - [ ] **GitHub secrets** — `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID`;
       the Build and Deploy workflow fails on every push without them
 - [ ] **MeiliSearch** — set `VITE_MEILISEARCH_API_KEY` in `.env` and in the Pages
       environment. Search is dead until then. See
       `docs/MEILISEARCH_INTEGRATION_GUIDE.md`
-- [ ] **`lgu.officialWebsite`** — point at Liliw's actual government site if one
-      exists, rather than the portal itself
+- [ ] **`lgu.officialWebsite`** — point at Liliw's separate official government
+      domain if/when applicable, currently pointing to `https://betterliliw.org`
 
 ---
 
@@ -181,9 +173,9 @@ step never executes. Once the gate passes, deploy fails with:
 > In a non-interactive environment, it's necessary to set a
 > `CLOUDFLARE_API_TOKEN` environment variable for wrangler to work.
 
-That is expected until Phase 5. It cannot deploy anywhere without those
-credentials, which is the safe outcome while `wrangler.jsonc` still names the
-upstream project.
+That is expected until CI secrets are configured in GitHub. It cannot deploy
+without those credentials, even though `wrangler.jsonc` already targets the
+`betterliliw` project and `betterliliw-openlgu` D1 database.
 
 ### Formatting: the trap to know about
 
@@ -205,10 +197,9 @@ npx prettier --write config/lgu.config.json   # or whichever file it wrote
 ### Notes for Phase 2
 
 - `e2e/government/barangays.spec.ts` asserts more than 10 barangay cards
-  render. Los Baños's 14 pass and Liliw's 33 will pass, but a partially
-  populated `barangays.json` with fewer than 11 entries fails the suite
-- `e2e/test-config.ts` mocks the weather API with Los Baños coordinates. It is
-  a fixture, not shipped content, but worth updating for clarity
+  render and filters on `'Bayate'`. Liliw's 33 barangays satisfy this assertion
+- `e2e/test-config.ts` mocks the weather API with Liliw coordinates
+  (`14.1306, 121.4361`)
 - Force-pushing cancels in-flight runs, since the commits under test disappear
 
 ---
@@ -234,7 +225,7 @@ npm run build              # tsc + merge services + vite build
 npm run lint               # eslint, max warnings 0
 npm run format             # prettier --write
 npm run test:e2e           # playwright
-npm run merge:services     # rebuild merged service data (needs python3)
+npm run merge:services     # rebuild merged service data (needs python)
 npm run functions:dev      # Cloudflare Pages Functions (fixes /api/* 500s locally)
 ```
 

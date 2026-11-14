@@ -163,7 +163,7 @@
     },
     "classification": "Simple",
     "typeOfTransaction": "G2C",
-    "whoMayAvail": "All residents of Los Baños",
+    "whoMayAvail": "All residents of Liliw",
     "dataComplete": true,
     "needsVerification": false,
     "detailedRequirements": [
@@ -412,7 +412,7 @@
         "instruction": "Additional requirements that may apply based on your situation:",
         "options": [
           {
-            "condition": "Required if head office is outside Los Baños",
+            "condition": "Required if head office is outside Liliw",
             "document": "Photocopy of Corporate Community Tax Certificate",
             "where_to_secure": "Business Owner",
             "copies": null,
@@ -464,7 +464,7 @@
             "letter": "B",
             "action": "If business has been inspected and inspection report has been duly signed by the inspectors, applicant can now proceed on the online application",
             "details": [
-              "Visit ebosslosbanos.com",
+              "Visit betterliliw.org",
               "If with credentials, log in",
               "If no credentials, create an account"
             ]
@@ -515,7 +515,7 @@
         ]
       }
     ],
-    "website": "https://ebosslosbanos.com",
+    "website": "https://betterliliw.org",
     "fees": {
       "amount": "Based on Schedule of Business Taxes and Other Fees",
       "description": "per annum"
@@ -596,7 +596,7 @@
         "instruction": "Additional requirements that may apply based on your situation:",
         "options": [
           {
-            "condition": "Required if head office is outside Los Baños",
+            "condition": "Required if head office is outside Liliw",
             "document": "Photocopy of Corporate Community Tax Certificate",
             "where_to_secure": "Business Owner",
             "copies": null,
@@ -708,7 +708,7 @@
         "instruction": "Additional requirements that may apply based on your situation:",
         "options": [
           {
-            "condition": "Required if head office is outside Los Baños",
+            "condition": "Required if head office is outside Liliw",
             "document": "Photocopy of Corporate Community Tax Certificate",
             "where_to_secure": "Business Owner",
             "copies": null,
@@ -839,7 +839,7 @@
         "instruction": "Additional requirements that may apply based on your situation:",
         "options": [
           {
-            "condition": "Required if head office is outside Los Baños",
+            "condition": "Required if head office is outside Liliw",
             "document": "Photocopy of Corporate Community Tax Certificate",
             "where_to_secure": "Business Owner",
             "copies": null,
@@ -880,7 +880,7 @@
     "clientSteps": [
       {
         "step": 1,
-        "action": "Go to ebosslosbanos.com and Complete the application process",
+        "action": "Go to betterliliw.org and Complete the application process",
         "sub_steps": [
           {
             "letter": "A",
@@ -951,7 +951,7 @@
         "processing_time": "Same day"
       }
     ],
-    "website": "https://ebosslosbanos.com",
+    "website": "https://betterliliw.org",
     "plainLanguageName": "Renew your business registration"
   },
   {
@@ -1567,7 +1567,7 @@
         "url": "https://ncsc.gov.ph"
       },
       {
-        "name": "Office of the Senior Citizens Affairs (OSCA) Los Baños"
+        "name": "Office of the Senior Citizens Affairs (OSCA) Liliw"
       }
     ],
     "source": "community"
@@ -1611,10 +1611,10 @@
       "slug": "environment-natural-resources"
     },
     "steps": [
-      "Monday & Thursday: Batong Malake, San Antonio, Maahas (Biodegradable)",
-      "Tuesday & Friday: Bayog, Mayondon, Malinta (Biodegradable)",
+      "Monday & Thursday: Poblacion Barangays — Bagong Anyo, Masikap, Maslun, Pag-asa, Rizal (Biodegradable)",
+      "Tuesday & Friday: Lowland & Highway Barangays — Calumpang, Kanlurang Bukal, Silangang Bukal, Mojon, Dagatan (Biodegradable)",
       "Wednesday: All Barangays (Non-Biodegradable / Recyclables)",
-      "Saturday: Special collection for Market area",
+      "Saturday: Special collection for Liliw Public Market & Gat Tayaw St. commercial area",
       "Sunday: No Collection"
     ],
     "requirements": [
@@ -1652,7 +1652,7 @@
     },
     "classification": "Simple",
     "typeOfTransaction": "G2C",
-    "whoMayAvail": "All residents of Los Baños and associations/organizations",
+    "whoMayAvail": "All residents of Liliw and associations/organizations",
     "dataComplete": true,
     "needsVerification": false,
     "detailedRequirements": [
@@ -1692,7 +1692,7 @@
     },
     "classification": "Simple",
     "typeOfTransaction": "G2C",
-    "whoMayAvail": "All residents of Los Baños",
+    "whoMayAvail": "All residents of Liliw",
     "dataComplete": true,
     "needsVerification": false,
     "supportingDocumentsDetail": {
@@ -1866,7 +1866,7 @@
     },
     "classification": "Complex",
     "typeOfTransaction": "G2C",
-    "whoMayAvail": "Prospective house and/or building owners within the jurisdiction of Los Baños",
+    "whoMayAvail": "Prospective house and/or building owners within the jurisdiction of Liliw",
     "dataComplete": true,
     "needsVerification": false,
     "detailedRequirements": [
@@ -2037,7 +2037,7 @@
     },
     "classification": "Simple",
     "typeOfTransaction": "G2C",
-    "whoMayAvail": "Prospective house and/or building owners within the jurisdiction of Los Baños",
+    "whoMayAvail": "Prospective house and/or building owners within the jurisdiction of Liliw",
     "dataComplete": true,
     "needsVerification": false,
     "detailedRequirements": [
@@ -2198,7 +2198,7 @@
     },
     "classification": "Simple",
     "typeOfTransaction": "G2B",
-    "whoMayAvail": "Business Establishment Owners within the jurisdiction of Los Baños",
+    "whoMayAvail": "Business Establishment Owners within the jurisdiction of Liliw",
     "dataComplete": true,
     "needsVerification": false,
     "detailedRequirements": [
@@ -2257,7 +2257,7 @@
     },
     "classification": "Simple",
     "typeOfTransaction": "G2C",
-    "whoMayAvail": "Electrical Service Provider Applicant within the jurisdiction of Los Baños",
+    "whoMayAvail": "Electrical Service Provider Applicant within the jurisdiction of Liliw",
     "dataComplete": true,
     "needsVerification": false,
     "detailedRequirements": [
@@ -2345,7 +2345,7 @@
     },
     "classification": "Simple",
     "typeOfTransaction": "G2C",
-    "whoMayAvail": "House and/or building owners within the jurisdiction of Los Baños",
+    "whoMayAvail": "House and/or building owners within the jurisdiction of Liliw",
     "dataComplete": true,
     "needsVerification": false,
     "detailedRequirements": [
@@ -2385,7 +2385,7 @@
     },
     "classification": "Simple",
     "typeOfTransaction": "G2C",
-    "whoMayAvail": "House and/or building owners within the jurisdiction of Los Baños",
+    "whoMayAvail": "House and/or building owners within the jurisdiction of Liliw",
     "dataComplete": true,
     "needsVerification": false,
     "detailedRequirements": [
@@ -2570,7 +2570,7 @@
     },
     "classification": "Simple",
     "typeOfTransaction": "G2C",
-    "whoMayAvail": "All Los Baños residents, Business Owners",
+    "whoMayAvail": "All Liliw residents, Business Owners",
     "dataComplete": true,
     "needsVerification": false,
     "detailedRequirements": [
@@ -3349,7 +3349,7 @@
     },
     "classification": "Simple",
     "typeOfTransaction": "G2C",
-    "whoMayAvail": "All residents of Los Baños",
+    "whoMayAvail": "All residents of Liliw",
     "dataComplete": true,
     "needsVerification": false,
     "detailedRequirements": [
@@ -3516,7 +3516,7 @@
     },
     "classification": "Simple",
     "typeOfTransaction": "G2C",
-    "whoMayAvail": "All residents of Los Baños",
+    "whoMayAvail": "All residents of Liliw",
     "dataComplete": true,
     "needsVerification": false,
     "detailedRequirements": [
@@ -3789,7 +3789,7 @@
     },
     "classification": "Simple",
     "typeOfTransaction": "G2C",
-    "whoMayAvail": "All residents of Los Baños",
+    "whoMayAvail": "All residents of Liliw",
     "dataComplete": true,
     "needsVerification": false,
     "detailedRequirements": [
@@ -3834,14 +3834,14 @@
       "slug": "education-scholarship"
     },
     "steps": [
-      "Los Baños Central Elementary School (Timugan)",
-      "Mayondon Elementary School",
-      "Bayog Elementary School",
-      "Lalakay Elementary School",
-      "Los Baños National High School (Poblacion)",
-      "Bernardo F. San Juan National High School",
-      "South Hill School (Private)",
-      "University of the Philippines Rural High School"
+      "Liliw Central Elementary School (Poblacion)",
+      "Movement for a Better Liliw Elementary School",
+      "San Isidro Elementary School",
+      "Taykin Elementary School",
+      "Oples Elementary School",
+      "Tuy-Baanan Elementary School",
+      "Liliw National High School",
+      "Liliw Senior High School"
     ],
     "requirements": [],
     "relatedServices": ["scholarship-application"],
@@ -4571,10 +4571,9 @@
       "slug": "health-wellness"
     },
     "steps": [
-      "RHU 1: Main Health Center, Municipal Hall Compound, Brgy. Timugan",
-      "RHU 2: Brgy. Batong Malake (Near Barangay Hall)",
-      "RHU 3: Brgy. Mayondon (Purok 3)",
-      "Animal Bite Center: Municipal Hall Compound"
+      "Main Rural Health Unit (RHU): Gat Tayaw St., Poblacion, Liliw",
+      "Barangay Health Stations (BHS): Located across component barangays",
+      "Animal Bite Treatment Center: Liliw RHU Compound, Gat Tayaw St."
     ],
     "requirements": [],
     "relatedServices": ["health-certificate"],

@@ -52,7 +52,7 @@ export default function BarangaysIndex() {
         <SearchInput
           value={search}
           onChangeValue={setSearchTerm => setSearch(setSearchTerm)}
-          placeholder='Search by name (e.g. Mayondon)...'
+          placeholder='Search by name (e.g. Bayate, Rizal)...'
           className='md:w-72'
         />
       </PageHero>

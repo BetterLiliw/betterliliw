@@ -29,6 +29,30 @@ export const mapWeatherIconToLucide = (iconCode: string): string => {
   return iconMap[iconCode] || 'Cloud';
 };
 
+interface RawHourlyEntry {
+  dt: number;
+  temp: number;
+  icon: string;
+}
+
+interface RawCityWeather {
+  name?: string;
+  main?: {
+    temp?: number;
+    humidity?: number;
+    pressure?: number;
+  };
+  weather?: Array<{
+    description?: string;
+    icon?: string;
+  }>;
+  wind?: {
+    speed?: number;
+  };
+  visibility?: number;
+  hourly?: RawHourlyEntry[];
+}
+
 /**
  * Fetch weather data for configured LGU and transform to frontend type
  */
@@ -47,7 +71,7 @@ export const fetchWeatherData = async (): Promise<WeatherData[]> => {
 
   try {
     // Attempt fetching specific city
-    let data: Record<string, any> | null = null;
+    let data: Record<string, RawCityWeather> | null = null;
     try {
       data = await fetchWithCache(
         `/api/weather?city=${encodeURIComponent(cityName)}`
@@ -85,7 +109,7 @@ export const fetchWeatherData = async (): Promise<WeatherData[]> => {
     // Transform 3-hour forecast (first 4 entries)
     const hourly: HourlyForecast[] = (city.hourly || [])
       .slice(0, 4)
-      .map((h: HourlyForecast) => ({
+      .map((h: RawHourlyEntry) => ({
         hour: new Date(h.dt * 1000).toLocaleTimeString([], {
           hour: 'numeric',
           hour12: true,

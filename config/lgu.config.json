@@ -33,11 +33,13 @@
   },
   "location": {
     "coordinates": {
-      "lat": 0,
-      "lng": 0
+      "lat": 14.13,
+      "lng": 121.4361,
+      "lon": 121.4361
     },
     "weather": {
-      "enabled": false
+      "enabled": true,
+      "defaultCity": "Liliw"
     }
   },
   "transparency": {

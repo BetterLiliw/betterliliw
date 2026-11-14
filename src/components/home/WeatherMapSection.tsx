@@ -111,12 +111,17 @@ export default function WeatherMapSection() {
     try {
       console.log('Map: Initializing Leaflet...');
 
+      const coords = config.location.coordinates as {
+        lat?: number;
+        lon?: number;
+        lng?: number;
+      };
+      const lat = coords?.lat ?? 14.13;
+      const lon = coords?.lon ?? coords?.lng ?? 121.4361;
+
       // Create the map
       mapInstance = L.map(container, {
-        center: [
-          config.location.coordinates.lat,
-          config.location.coordinates.lon,
-        ],
+        center: [lat, lon],
         zoom: 15,
         scrollWheelZoom: false,
         zoomControl: true,
@@ -132,10 +137,7 @@ export default function WeatherMapSection() {
       }).addTo(mapInstance);
 
       // Add marker
-      const marker = L.marker([
-        config.location.coordinates.lat,
-        config.location.coordinates.lon,
-      ]).addTo(mapInstance);
+      const marker = L.marker([lat, lon]).addTo(mapInstance);
       const popupContent = document.createElement('div');
       popupContent.textContent = `${config.lgu.fullName} Municipal Hall`;
       const popupSub = document.createElement('div');
@@ -281,7 +283,7 @@ export default function WeatherMapSection() {
                 <div className='text-kapwa-text-disabled p-4 text-sm'>
                   JavaScript is required to view the interactive map.
                   <a
-                    href={`https://www.openstreetmap.org/?mlat=${config.location.coordinates.lat}&mlon=${config.location.coordinates.lon}#map=15/${config.location.coordinates.lat}/${config.location.coordinates.lon}`}
+                    href={`https://www.openstreetmap.org/?mlat=${(config.location.coordinates as any).lat || 14.13}&mlon=${(config.location.coordinates as any).lon || (config.location.coordinates as any).lng || 121.4361}#map=15/${(config.location.coordinates as any).lat || 14.13}/${(config.location.coordinates as any).lon || (config.location.coordinates as any).lng || 121.4361}`}
                     target='_blank'
                     rel='noopener noreferrer'
                     className='text-kapwa-text-brand ml-1 underline'

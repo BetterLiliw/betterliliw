@@ -1,11 +1,37 @@
 [
   {
+    "slug": "office-of-the-municipal-mayor",
+    "office_name": "OFFICE OF THE MUNICIPAL MAYOR",
+    "address": "2F Municipal Building, Gat Tayaw St., Liliw, Laguna",
+    "trunkline": ["(049) 563-1001"],
+    "website": "https://www.liliwlaguna.gov.ph",
+    "email": "liliwlgu@gmail.com",
+    "department_head": {
+      "name": "ILDEFONSO D. MONLEON",
+      "contact": null,
+      "email": "mayor@betterliliw.org"
+    }
+  },
+  {
+    "slug": "office-of-the-municipal-vice-mayor",
+    "office_name": "OFFICE OF THE MUNICIPAL VICE MAYOR & SANGGUNIANG BAYAN",
+    "address": "2F Municipal Building, Gat Tayaw St., Liliw, Laguna",
+    "trunkline": ["(049) 563-1001"],
+    "website": "https://www.liliwlaguna.gov.ph",
+    "email": "liliwlgu@gmail.com",
+    "department_head": {
+      "name": "ARNOLD A. MONTESINES",
+      "contact": null,
+      "email": "vicemayor@betterliliw.org"
+    }
+  },
+  {
     "slug": "operation-center",
     "office_name": "OPERATION CENTER",
-    "address": null,
-    "trunkline": ["530-2981 ext 1000"],
+    "address": "Ground Floor, Municipal Building, Gat Tayaw St., Liliw, Laguna",
+    "trunkline": ["(049) 503-3621", "0945-135-0537"],
     "website": null,
-    "email": "opcen@losbanos.gov.ph",
+    "email": "opcen@betterliliw.org",
     "department_head": {
       "name": null,
       "contact": null,
@@ -13,12 +39,12 @@
     }
   },
   {
-    "slug": "gender-and-development-office",
-    "office_name": "GENDER AND DEVELOPMENT OFFICE",
-    "address": "2F Municipal Hall",
-    "trunkline": ["530-2981 ext 2013"],
-    "website": "https://losbanos.gov.ph/3",
-    "email": "gado@losbanos.gov.ph",
+    "slug": "municipal-mdrrmo-office",
+    "office_name": "MUNICIPAL DISASTER RISK REDUCTION AND MANAGEMENT OFFICE",
+    "address": "Ground Floor, Municipal Building, Gat Tayaw St., Liliw, Laguna",
+    "trunkline": ["(049) 503-3621", "0945-135-0537", "0948-938-1301"],
+    "website": null,
+    "email": "mdrrmo@betterliliw.org",
     "department_head": {
       "name": null,
       "contact": null,
@@ -26,12 +52,12 @@
     }
   },
   {
-    "slug": "local-civil-registry-office",
-    "office_name": "LOCAL CIVIL REGISTRY OFFICE",
-    "address": "1F Municipal Hall",
-    "trunkline": ["530-2981 ext 1003"],
-    "website": "https://losbanos.gov.ph/7",
-    "email": "mcr@losbanos.gov.ph",
+    "slug": "municipal-police-station",
+    "office_name": "LILIW MUNICIPAL POLICE STATION",
+    "address": "Gat Tayaw St., Poblacion, Liliw, Laguna",
+    "trunkline": ["(049) 563-1114", "0906-360-4119", "0998-598-5647"],
+    "website": null,
+    "email": "pnp_liliw@yahoo.com",
     "department_head": {
       "name": null,
       "contact": null,
@@ -39,64 +65,12 @@
     }
   },
   {
-    "slug": "municipal-planning-and-development-office",
-    "office_name": "MUNICIPAL PLANNING AND DEVELOPMENT OFFICE",
-    "address": "1F Municipal Hall",
-    "trunkline": ["530-2981 ext 1005"],
-    "website": "https://losbanos.gov.ph/8",
-    "email": "mpdo@losbanos.gov.ph",
-    "department_head": {
-      "name": "TWILA T. TORRES",
-      "contact": null,
-      "email": null
-    }
-  },
-  {
-    "slug": "municipal-engineering-office",
-    "office_name": "MUNICIPAL ENGINEERING OFFICE",
-    "address": "1F Municipal Hall",
-    "trunkline": ["530-2981 ext 1007"],
-    "website": "https://www.facebook.com/EngineeringOfficeLB",
-    "email": "meo@losbanos.gov.ph",
-    "department_head": {
-      "name": "Ricky R. Estopace",
-      "contact": null,
-      "email": null
-    }
-  },
-  {
-    "slug": "municipal-assessors-office",
-    "office_name": "MUNICIPAL ASSESSOR'S OFFICE",
-    "address": "1F Municipal Hall",
-    "trunkline": ["530-2981 ext 1014"],
-    "website": "https://losbanos.gov.ph/10",
-    "email": "assessor@losbanos.gov.ph",
-    "department_head": {
-      "name": "OLIVER D. MANAIG",
-      "contact": null,
-      "email": null
-    }
-  },
-  {
-    "slug": "municipal-social-welfare-development-office",
-    "office_name": "MUNICIPAL SOCIAL WELFARE DEVELOPMENT OFFICE",
-    "address": "1F Municipal Hall",
-    "trunkline": ["530-2981 ext 1016"],
-    "website": "https://losbanos.gov.ph/11",
-    "email": "mswdo@losbanos.gov.ph",
-    "department_head": {
-      "name": "HANNA ERIKA E. LAVIÑA",
-      "contact": null,
-      "email": null
-    }
-  },
-  {
-    "slug": "municipal-environment-and-natural-resources-office",
-    "office_name": "MUNICIPAL ENVIRONMENT AND NATURAL RESOURCES OFFICE",
-    "address": "2F Municipal Hall",
-    "trunkline": ["530-2981 ext 2015"],
-    "website": "https://losbanos.gov.ph/12",
-    "email": "menro@losbanos.gov.ph",
+    "slug": "bureau-fire-protection",
+    "office_name": "BUREAU OF FIRE PROTECTION",
+    "address": "Gat Tayaw St., Poblacion, Liliw, Laguna",
+    "trunkline": ["(049) 503-3175", "0956-769-0379", "0961-722-8127"],
+    "website": null,
+    "email": "bfpliliwstation@gmail.com",
     "department_head": {
       "name": null,
       "contact": null,
@@ -106,25 +80,12 @@
   {
     "slug": "municipal-treasurers-office",
     "office_name": "MUNICIPAL TREASURER'S OFFICE",
-    "address": "1F Municipal Hall",
-    "trunkline": ["530-2981 ext 1011"],
-    "website": "https://losbanos.gov.ph/13",
-    "email": null,
+    "address": "1F Municipal Building, Gat Tayaw St., Liliw, Laguna",
+    "trunkline": ["(049) 563-1001"],
+    "website": null,
+    "email": "treasury@betterliliw.org",
     "department_head": {
-      "name": "MARIA LUISA G. DIAZ",
-      "contact": null,
-      "email": null
-    }
-  },
-  {
-    "slug": "public-information-office",
-    "office_name": "PUBLIC INFORMATION OFFICE",
-    "address": "3F Municipal Hall",
-    "trunkline": ["530-2981 ext 3017"],
-    "website": "https://losbanos.gov.ph/14",
-    "email": "pio@losbanos.gov.ph",
-    "department_head": {
-      "name": "JOHN MARVIN S. CANARIA",
+      "name": "VIOLETA E. MONEVA",
       "contact": null,
       "email": null
     }
@@ -132,10 +93,23 @@
   {
     "slug": "municipal-budget-office",
     "office_name": "MUNICIPAL BUDGET OFFICE",
-    "address": "3F Municipal Hall",
-    "trunkline": ["530-2981 ext 3006"],
-    "website": "https://losbanos.gov.ph/15",
-    "email": "ombo@losbanos.gov.ph",
+    "address": "1F Municipal Building, Gat Tayaw St., Liliw, Laguna",
+    "trunkline": ["(049) 563-1001"],
+    "website": null,
+    "email": "budget@betterliliw.org",
+    "department_head": {
+      "name": "NOEMI B. COLLANTES",
+      "contact": null,
+      "email": null
+    }
+  },
+  {
+    "slug": "municipal-planning-and-development-office",
+    "office_name": "MUNICIPAL PLANNING AND DEVELOPMENT OFFICE",
+    "address": "2F Municipal Building, Gat Tayaw St., Liliw, Laguna",
+    "trunkline": ["(049) 563-1001"],
+    "website": null,
+    "email": "mpdo@betterliliw.org",
     "department_head": {
       "name": null,
       "contact": null,
@@ -145,10 +119,10 @@
   {
     "slug": "municipal-accounting-office",
     "office_name": "MUNICIPAL ACCOUNTING OFFICE",
-    "address": "3F Municipal Hall",
-    "trunkline": ["530-2981 ext 3008"],
-    "website": "https://losbanos.gov.ph/16",
-    "email": "omacc@losbanos.gov.ph",
+    "address": "1F Municipal Building, Gat Tayaw St., Liliw, Laguna",
+    "trunkline": ["(049) 563-1001"],
+    "website": null,
+    "email": "accounting@betterliliw.org",
     "department_head": {
       "name": null,
       "contact": null,
@@ -156,51 +130,64 @@
     }
   },
   {
-    "slug": "municipal-human-resource-management-office",
-    "office_name": "MUNICIPAL HUMAN RESOURCE MANAGEMENT OFFICE",
-    "address": "3F Municipal Hall",
-    "trunkline": ["530-2981 ext 3015"],
-    "website": "https://losbanos.gov.ph/17",
-    "email": "hrmo@losbanos.gov.ph",
+    "slug": "municipal-assessors-office",
+    "office_name": "MUNICIPAL ASSESSOR'S OFFICE",
+    "address": "1F Municipal Building, Gat Tayaw St., Liliw, Laguna",
+    "trunkline": ["(049) 563-1001"],
+    "website": null,
+    "email": "assessor@betterliliw.org",
     "department_head": {
-      "name": "MIRAFLOR O. TADO",
+      "name": null,
       "contact": null,
       "email": null
     }
   },
   {
-    "slug": "municipal-tourism-office",
-    "office_name": "MUNICIPAL TOURISM OFFICE",
-    "address": null,
-    "trunkline": ["530-2981 ext 4000"],
-    "website": "https://losbanos.gov.ph/18",
-    "email": "tourism@losbanos.gov.ph",
+    "slug": "municipal-engineering-office",
+    "office_name": "MUNICIPAL ENGINEERING OFFICE",
+    "address": "1F Municipal Building, Gat Tayaw St., Liliw, Laguna",
+    "trunkline": ["(049) 563-1001"],
+    "website": null,
+    "email": "engineering@betterliliw.org",
     "department_head": {
-      "name": "EDMARIE Z. CALUNGSOD",
+      "name": null,
       "contact": null,
       "email": null
     }
   },
   {
-    "slug": "information-and-communication-systems-office",
-    "office_name": "INFORMATION AND COMMUNICATION SYSTEMS OFFICE",
-    "address": "1F Municipal Hall",
-    "trunkline": ["530-2981 ext 3013"],
-    "website": "https://losbanos.gov.ph/19",
-    "email": "icso@losbanos.gov.ph",
+    "slug": "municipal-health-office",
+    "office_name": "MUNICIPAL HEALTH OFFICE",
+    "address": "Liliw Rural Health Unit, Gat Tayaw St., Liliw, Laguna",
+    "trunkline": ["(049) 563-1001"],
+    "website": null,
+    "email": "health@betterliliw.org",
     "department_head": {
-      "name": "ANTONIO L. ADILLE IV",
+      "name": null,
       "contact": null,
       "email": null
     }
   },
   {
-    "slug": "local-youth-and-development-office",
-    "office_name": "LOCAL YOUTH AND DEVELOPMENT OFFICE",
-    "address": "3F Municipal Hall",
-    "trunkline": ["530-2981 ext 3014"],
-    "website": "https://losbanos.gov.ph/20",
-    "email": "lydo@losbanos.gov.ph",
+    "slug": "local-civil-registry-office",
+    "office_name": "LOCAL CIVIL REGISTRY OFFICE",
+    "address": "1F Municipal Building, Gat Tayaw St., Liliw, Laguna",
+    "trunkline": ["(049) 563-1001"],
+    "website": null,
+    "email": "civilregistry@betterliliw.org",
+    "department_head": {
+      "name": null,
+      "contact": null,
+      "email": null
+    }
+  },
+  {
+    "slug": "municipal-social-welfare-development-office",
+    "office_name": "MUNICIPAL SOCIAL WELFARE AND DEVELOPMENT OFFICE",
+    "address": "1F Municipal Building, Gat Tayaw St., Liliw, Laguna",
+    "trunkline": ["(049) 563-1001"],
+    "website": null,
+    "email": "mswdo@betterliliw.org",
     "department_head": {
       "name": null,
       "contact": null,
@@ -210,23 +197,10 @@
   {
     "slug": "municipal-agriculture-office",
     "office_name": "MUNICIPAL AGRICULTURE OFFICE",
-    "address": null,
-    "trunkline": [null],
-    "website": "https://losbanos.gov.ph/21",
-    "email": null,
-    "department_head": {
-      "name": "Cheryl L. Gonzales",
-      "contact": null,
-      "email": null
-    }
-  },
-  {
-    "slug": "municipal-mdrrmo-office",
-    "office_name": "MUNICIPAL DISASTER RISK REDUCTION AND MANAGEMENT OFFICE",
-    "address": null,
-    "trunkline": ["0977 204 9641"],
-    "website": "https://losbanos.gov.ph/21",
-    "email": null,
+    "address": "1F Municipal Building, Gat Tayaw St., Liliw, Laguna",
+    "trunkline": ["(049) 563-1001"],
+    "website": null,
+    "email": "agriculture@betterliliw.org",
     "department_head": {
       "name": null,
       "contact": null,
@@ -234,38 +208,12 @@
     }
   },
   {
-    "slug": "municipal-police-station",
-    "office_name": "Municipal Police Station",
-    "address": null,
-    "trunkline": ["0927 509 1198"],
-    "website": "https://www.facebook.com/losbanospnpwebsite",
-    "email": null,
-    "department_head": {
-      "name": null,
-      "contact": null,
-      "email": null
-    }
-  },
-  {
-    "slug": "municipal-health-office",
-    "office_name": "Municipal Health Office",
-    "address": null,
-    "trunkline": ["530-2981 ext 4004"],
-    "website": "https://www.facebook.com/LBMHO",
-    "email": "rhu@losbanos.gov.ph",
-    "department_head": {
-      "name": "ALVIN A. ISIDORO",
-      "contact": null,
-      "email": null
-    }
-  },
-  {
-    "slug": "bureau-fire-protection",
-    "office_name": "Bureau of Fire Protection",
-    "address": null,
-    "trunkline": ["049 536 7965", "049 310 9572", "0939 432 5837"],
-    "website": "https://www.facebook.com/lbfirestation",
-    "email": null,
+    "slug": "municipal-environment-and-natural-resources-office",
+    "office_name": "MUNICIPAL ENVIRONMENT AND NATURAL RESOURCES OFFICE",
+    "address": "Municipal Building, Gat Tayaw St., Liliw, Laguna",
+    "trunkline": ["(049) 563-1001"],
+    "website": null,
+    "email": "menro@betterliliw.org",
     "department_head": {
       "name": null,
       "contact": null,
@@ -274,11 +222,11 @@
   },
   {
     "slug": "business-permit-and-licensing-office",
-    "office_name": "Business Permit and Licensing Office",
-    "address": null,
-    "trunkline": [null],
+    "office_name": "BUSINESS PERMIT AND LICENSING OFFICE",
+    "address": "1F Municipal Building, Gat Tayaw St., Liliw, Laguna",
+    "trunkline": ["(049) 563-1001"],
     "website": null,
-    "email": null,
+    "email": "bplo@betterliliw.org",
     "department_head": {
       "name": null,
       "contact": null,
@@ -286,64 +234,12 @@
     }
   },
   {
-    "slug": "municipal-general-services-office",
-    "office_name": "MUNICIPAL GENERAL SERVICES OFFICE",
-    "address": "3F Municipal Hall",
-    "trunkline": ["530-2981 ext 4002"],
+    "slug": "municipal-tourism-office",
+    "office_name": "MUNICIPAL TOURISM OFFICE",
+    "address": "Municipal Building, Gat Tayaw St., Liliw, Laguna",
+    "trunkline": ["(049) 563-1001"],
     "website": null,
-    "email": "gso@losbanos.gov.ph",
-    "department_head": {
-      "name": "Raymond Joseph B. Paraiso",
-      "contact": null,
-      "email": null
-    }
-  },
-  {
-    "slug": "persons-with-disability-affairs-office",
-    "office_name": "PERSONS WITH DISABILITY AFFAIRS OFFICE (PDAO)",
-    "address": null,
-    "trunkline": ["530-2981 ext 1004"],
-    "website": null,
-    "email": "pdao@losbanos.gov.ph",
-    "department_head": {
-      "name": "SHIRLEY D. ANDRADE",
-      "contact": null,
-      "email": null
-    }
-  },
-  {
-    "slug": "municipal-urban-development-and-housing-office",
-    "office_name": "MUNICIPAL URBAN DEVELOPMENT AND HOUSING OFFICE",
-    "address": "3F Municipal Hall",
-    "trunkline": ["530-2981 ext 3012"],
-    "website": null,
-    "email": "mudho@losbanos.gov.ph",
-    "department_head": {
-      "name": "Raymond Joseph B. Paraiso",
-      "contact": null,
-      "email": null
-    }
-  },
-  {
-    "slug": "office-senior-citizens-affairs",
-    "office_name": "OFFICE FOR THE SENIOR CITIZENS' AFFAIRS",
-    "address": "1F Municipal Hall",
-    "trunkline": [null],
-    "website": "https://www.facebook.com/profile.php?id=61559573828843",
-    "email": null,
-    "department_head": {
-      "name": null,
-      "contact": null,
-      "email": null
-    }
-  },
-  {
-    "slug": "municipal-nutrition-office",
-    "office_name": "MUNICIPAL NUTRITION OFFICE",
-    "address": null,
-    "trunkline": ["530-2981 ext 3011"],
-    "website": null,
-    "email": "lbnutritionoffice@gmail.com",
+    "email": "tourism@betterliliw.org",
     "department_head": {
       "name": null,
       "contact": null,
@@ -353,10 +249,10 @@
   {
     "slug": "public-employment-service-office",
     "office_name": "PUBLIC EMPLOYMENT SERVICE OFFICE",
-    "address": null,
-    "trunkline": ["530-2981 ext 4008"],
+    "address": "1F Municipal Building, Gat Tayaw St., Liliw, Laguna",
+    "trunkline": ["(049) 563-1001"],
     "website": null,
-    "email": "peso@losbanos.gov.ph",
+    "email": "peso@betterliliw.org",
     "department_head": {
       "name": null,
       "contact": null,
@@ -364,12 +260,25 @@
     }
   },
   {
-    "slug": "municipal-local-government-operations-office",
-    "office_name": "MUNICIPAL LOCAL GOVERNMENT OPERATIONS OFFICE (DILG)",
-    "address": null,
-    "trunkline": [null],
+    "slug": "municipal-human-resource-management-office",
+    "office_name": "MUNICIPAL HUMAN RESOURCE MANAGEMENT OFFICE",
+    "address": "2F Municipal Building, Gat Tayaw St., Liliw, Laguna",
+    "trunkline": ["(049) 563-1001"],
     "website": null,
-    "email": "mlgoolosbanos2@gmail.com",
+    "email": "hrmo@betterliliw.org",
+    "department_head": {
+      "name": null,
+      "contact": null,
+      "email": null
+    }
+  },
+  {
+    "slug": "municipal-general-services-office",
+    "office_name": "MUNICIPAL GENERAL SERVICES OFFICE",
+    "address": "Municipal Building, Gat Tayaw St., Liliw, Laguna",
+    "trunkline": ["(049) 563-1001"],
+    "website": null,
+    "email": "gso@betterliliw.org",
     "department_head": {
       "name": null,
       "contact": null,
@@ -379,10 +288,10 @@
   {
     "slug": "bids-and-awards-committee",
     "office_name": "BIDS AND AWARDS COMMITTEE",
-    "address": null,
-    "trunkline": ["530-2981 ext 3006"],
+    "address": "2F Conference Room, Municipal Building, Gat Tayaw St., Liliw, Laguna",
+    "trunkline": ["(049) 563-1001"],
     "website": null,
-    "email": "bac@losbanos.gov.ph",
+    "email": "bac@betterliliw.org",
     "department_head": {
       "name": null,
       "contact": null,
@@ -390,12 +299,12 @@
     }
   },
   {
-    "slug": "market",
-    "office_name": "MUNICIPAL ECONOMIC ENTERPRISE - MARKET",
-    "address": null,
-    "trunkline": [null],
+    "slug": "gender-and-development-office",
+    "office_name": "GENDER AND DEVELOPMENT OFFICE",
+    "address": "2F Municipal Building, Gat Tayaw St., Liliw, Laguna",
+    "trunkline": ["(049) 563-1001"],
     "website": null,
-    "email": null,
+    "email": "gad@betterliliw.org",
     "department_head": {
       "name": null,
       "contact": null,
@@ -403,12 +312,77 @@
     }
   },
   {
-    "slug": "slaughterhouse",
-    "office_name": "MUNICIPAL ECONOMIC ENTERPRISE - SLAUGHTERHOUSE",
-    "address": null,
-    "trunkline": [null],
+    "slug": "local-youth-and-development-office",
+    "office_name": "LOCAL YOUTH AND DEVELOPMENT OFFICE",
+    "address": "Municipal Building, Gat Tayaw St., Liliw, Laguna",
+    "trunkline": ["(049) 563-1001"],
     "website": null,
-    "email": null,
+    "email": "lydo@betterliliw.org",
+    "department_head": {
+      "name": null,
+      "contact": null,
+      "email": null
+    }
+  },
+  {
+    "slug": "persons-with-disability-affairs-office",
+    "office_name": "PERSONS WITH DISABILITY AFFAIRS OFFICE (PDAO)",
+    "address": "Municipal Building, Gat Tayaw St., Liliw, Laguna",
+    "trunkline": ["(049) 563-1001"],
+    "website": null,
+    "email": "pdao@betterliliw.org",
+    "department_head": {
+      "name": null,
+      "contact": null,
+      "email": null
+    }
+  },
+  {
+    "slug": "office-senior-citizens-affairs",
+    "office_name": "OFFICE FOR THE SENIOR CITIZENS' AFFAIRS",
+    "address": "Municipal Building, Gat Tayaw St., Liliw, Laguna",
+    "trunkline": ["(049) 563-1001"],
+    "website": null,
+    "email": "osca@betterliliw.org",
+    "department_head": {
+      "name": null,
+      "contact": null,
+      "email": null
+    }
+  },
+  {
+    "slug": "municipal-nutrition-office",
+    "office_name": "MUNICIPAL NUTRITION OFFICE",
+    "address": "Rural Health Unit Building, Gat Tayaw St., Liliw, Laguna",
+    "trunkline": ["(049) 563-1001"],
+    "website": null,
+    "email": "nutrition@betterliliw.org",
+    "department_head": {
+      "name": null,
+      "contact": null,
+      "email": null
+    }
+  },
+  {
+    "slug": "municipal-local-government-operations-office",
+    "office_name": "MUNICIPAL LOCAL GOVERNMENT OPERATIONS OFFICE (DILG)",
+    "address": "2F Municipal Building, Gat Tayaw St., Liliw, Laguna",
+    "trunkline": ["(049) 563-1001"],
+    "website": null,
+    "email": "dilg_liliw@yahoo.com",
+    "department_head": {
+      "name": null,
+      "contact": null,
+      "email": null
+    }
+  },
+  {
+    "slug": "public-information-office",
+    "office_name": "PUBLIC INFORMATION OFFICE",
+    "address": "2F Municipal Building, Gat Tayaw St., Liliw, Laguna",
+    "trunkline": ["(049) 563-1001"],
+    "website": null,
+    "email": "pio@betterliliw.org",
     "department_head": {
       "name": null,
       "contact": null,
@@ -418,10 +392,36 @@
   {
     "slug": "public-order-and-safety-office",
     "office_name": "PUBLIC ORDER AND SAFETY OFFICE",
-    "address": null,
-    "trunkline": [null],
+    "address": "Ground Floor, Municipal Building, Gat Tayaw St., Liliw, Laguna",
+    "trunkline": ["(049) 563-1001", "(049) 503-3621"],
     "website": null,
-    "email": null,
+    "email": "poso@betterliliw.org",
+    "department_head": {
+      "name": null,
+      "contact": null,
+      "email": null
+    }
+  },
+  {
+    "slug": "market",
+    "office_name": "MUNICIPAL ECONOMIC ENTERPRISE - MARKET",
+    "address": "Liliw Public Market, Poblacion, Liliw, Laguna",
+    "trunkline": ["(049) 563-1001"],
+    "website": null,
+    "email": "market@betterliliw.org",
+    "department_head": {
+      "name": null,
+      "contact": null,
+      "email": null
+    }
+  },
+  {
+    "slug": "slaughterhouse",
+    "office_name": "MUNICIPAL ECONOMIC ENTERPRISE - SLAUGHTERHOUSE",
+    "address": "Liliw Municipal Slaughterhouse, Liliw, Laguna",
+    "trunkline": ["(049) 563-1001"],
+    "website": null,
+    "email": "slaughterhouse@betterliliw.org",
     "department_head": {
       "name": null,
       "contact": null,

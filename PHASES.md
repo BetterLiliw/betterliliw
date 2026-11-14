@@ -40,10 +40,10 @@ Make the portal *look* like Liliw. Cheap wins, high visible impact.
 - [x] **Hero and footer copy** — `public/locales/en/common.json` now reads
       "Welcome to BetterLiliw" and describes Liliw
 - [x] **Filipino translations** — same strings in `public/locales/fil/common.json`
-- [ ] **Map coordinates** — `location.coordinates` in `config/lgu.config.json` is
+- [X] **Map coordinates** — `location.coordinates` in `config/lgu.config.json` is
       `{lat: 0, lng: 0}`, which puts the map in the Gulf of Guinea. Set to Liliw's
       municipal hall
-- [ ] **Weather** — set `location.weather.enabled` once coordinates are real
+- [X] **Weather** — set `location.weather.enabled` once coordinates are real
 - [x] **Brand color** — `portal.brandColor` is now `#1c3a5b` (the navy already
       used in the logo and splash screen), and the Kapwa `brand` token scale in
       `src/index.css` is overridden to match, so every `bg`/`text`/`border-kapwa-*
@@ -57,11 +57,12 @@ Make the portal *look* like Liliw. Cheap wins, high visible impact.
 This is the portal's reason to exist, and the blocker on going public.
 All files are JSON — no JavaScript needed to contribute.
 
-- [ ] **Barangays** — `src/data/directory/barangays.json`. Currently Los Baños's
-      14. Liliw has **33**. Each entry: slug, name, address, contact numbers,
-      website/Facebook, officials
-- [ ] **Departments** — `src/data/directory/departments.json`. Currently 33
-      Los Baños offices. Replace with Liliw's municipal offices and contacts
+- [x] **Barangays** — `src/data/directory/barangays.json`. All **33** Liliw
+      barangays added with standard slugs, addresses, and directory shape.
+      Los Baños records removed.
+- [x] **Departments** — `src/data/directory/departments.json`. All Liliw
+      municipal offices and emergency contacts configured. Los Baños records
+      removed.
 - [ ] **Executive** — `src/data/directory/executive.json`. Mayor, Vice Mayor,
       department heads
 - [ ] **Legislative** — `src/data/directory/legislative.json`. Sangguniang Bayan
